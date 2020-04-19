@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>前端开发日常注意点汇总</title>
+    <!-- 
+    (1)建站步骤与注意点：
+        1.新建站点文件夹且名字不能是中文，需要用英文；至少有css、js、images三个文件夹；一个index.html文件
+        2.设置网站的favicon：搜索ico图标生成——上传图标——下载生成好的图标，然后将此图标放到根目录下，最后导入<link rel="shortcut icon" 
+            href="favicon.ico"
+        3.添加网站三大优化标签：
+            title：网页的第一重要标签，是搜索引擎了解网页的入口，对网页主题的最佳判断点，Google限制长度35个汉字以内，baidu则为28个英文字母以内；
+                    即网站名（产品名）-网站的介绍：特点：越先出现的词语权重越高。例如：京东(JD.COM)-正品低价、品质保障、配送及时、轻松购物！ 
+            Keywords（关键字）：应限制在6-8个关键词左右，电商类网站可以多几个；例如：<meta name="Keywords" content="网上购物,网上商城,手机,笔记
+                    本,电脑,MP3,CD,VCD,DV,相机,数码,配件,手表,存储卡,京东">
+            Description（网站说明）：补充title和keywords中未能详细表述的内容，字符数包括空格在内不能超过120个汉字，描述中包含关键字，与正文内容相
+                    关，要比较详细，提高用户点击率，此外还将被搜索引擎当成网页的摘要显示。
+            <meta name="description" content="京东JD.COM-专业的综合网上购物商城,
+                销售家电、数码通讯、电脑、家居百货、服装服饰、母婴、图书、食品等数万个品牌优质商品.便捷、诚信的服务，为您提供愉悦的网上购物体验!">
+        4.导入CSS Reset/Normalize 类库：【reset.css】将浏览器自带的样式重置掉，保持浏览器渲染的一致性
+                                    【normalize.css】保护浏览器有用的样式而不是全部重置掉，修复浏览器的bug并保证各浏览器的一致性
+                                                    优化CSS可用性：用一些小技巧，用注释或详细的文档来解释代码
+                                               链接：https://github.com/necolas/normalize.css/
+        5.设置全局样式：body{
+                            font:12px/1,em "Microsoft Yahei",tahoma,arial,"Hiragino Sang GB";
+                            color: #999;
+                            background: #f2f2f2;}
+        6.优雅降级【针对高级浏览器构建完整功能，再针对低级浏览器进行兼容处理】企业开发中优先选择优雅降级，给低级浏览器编写一个单页，让其跳转                                                         
+            渐进增强【针对低级浏览器构建页面，保证最基本的功能，再针对高级浏览器进行效果和交互等功能的改进】
+     -->
+</head>
+<body>
+    
+</body>
+</html>
