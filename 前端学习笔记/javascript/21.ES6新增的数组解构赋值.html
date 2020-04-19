@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>21.数组解构赋值</title>
+    <script>
+        //解构赋值即将数组中的数据一一对应赋值给相同[]的变量;
+       /* let traversal=[1,2,5,8,0];
+        let [a,b,c,d,e]=traversal;//左边可以赋值,若右边无数据可以解构则输出左边赋值的值
+        console.log("a="+a);
+        console.log("b="+b);
+        console.log("c="+c);
+        console.log("d="+d);
+        console.log("e="+e);*/
+        //ES6中新增的扩展运算符...   注意:扩展运算符只能用在最后一个索引;
+        let [a,b,...c]=[1,2,5,8,0];//c前面增加了扩展运算符...,则除了赋值给a,b的数据,其他数据都赋值给c;
+        console.log("a="+a);
+        console.log("b="+b);
+        console.log("c="+c);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

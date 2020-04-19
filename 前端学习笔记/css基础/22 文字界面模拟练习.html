@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文字界面</title>
+    <style>
+        body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{
+            margin:0;
+            padding:0;
+            /*通配符会遍历所有标签，性能不好，因此企业开发中比较少用
+            通常使用如上方式清空默认边距，目的是为了更好更准确地控制元素的定位
+            */
+        }
+        .box1{
+            margin:0 auto;
+            box-sizing:border-box;
+            width: 372px;
+            height:232px;
+            border:1px solid #666;
+            padding:15px;
+            background-color: #efefef;
+        }
+        h1{
+            font:bold 18px 微软雅黑;
+            border-bottom:solid 1px #666;
+            padding-bottom:10px;
+        }
+        span{
+            font-size:14px ;
+        }
+        ul{
+            margin-top:10px;
+            list-style:none;
+        }
+        ul li{
+            line-height:30px;
+            border-bottom:1px dashed ;
+            font-family: 微软雅黑 ;
+            font-size: 12px;
+            color:#242424;
+            padding-left:20px;
+        }
+    </style>
+</head>
+<body>
+<div class="box1">
+    <h1>最新文章/<span>New Articles</span></h1>
+    <ul>
+        <li>我是第一行</li>
+        <li>我是第二行</li>
+        <li>我是第三行</li>
+        <li>我是第四行</li>
+        <li>我是第五行</li>
+    </ul>
+</div>
+</body>
+</html>

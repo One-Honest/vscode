@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>过渡模块基本使用</title>
+    <style>
+        /* 
+            简写模式（简化代码）transition: property（属性） duration（时间） timing-function（速率） delay（延迟）;
+            并且可多种属性连写，同理只需在设置完一个属性后用逗号隔开再设置另外一个属性
+            比如div：hover的代码可以简化如下：
+            transition:width 1s linear 1s,height 2s linear 2s,background-color 3s linear 3s;
+            注意：1连写时如果没有特殊要求，可省略后面两个属性的设置（速率和延迟），记住三要素（变化、属性、时间）即可产生效果
+                2若是全部属性的变化一样，可简化如下
+                transition:all 1s;
+            
+            过渡属性（transition）的使用条件（三要素）
+            1.必须有属性变化（:hover）
+            2须告诉系统哪个属性发生了变化(width,height,background-color)
+            3可设置发生过渡变化效果的持续时间(1s,2s,3s...)
+
+            注意：
+            当多个属性需要变化，要用逗号（,）号隔开，不要单个设置，否则只会显示最后一个属性的变化
+            transition-property: width,height,background-color;
+            transition-duration: 1s,2s,3s;
+
+            另外，transition属性写在标签和写在（标签：hover）中效果都一样（狗头）
+         */
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 100px;
+            height: 50px;
+            background-color: pink;
+             /* transition-property: height;
+            transition-duration: 1s; */
+            transition-property: width,height,background-color;
+            /* property（属性、性质）
+                transition（过渡、转换）
+             */
+            transition-duration: 1s,2s,3s;
+            /* duration(持续时间，期间的意思) */
+            transition-delay:1s,2s,3s;
+            /* 延迟多久才执行transition效果 */
+
+
+        }
+        div:hover{
+            width: 200px;
+            height: 100px;
+            background-color: #ccc;
+           
+        }
+        /* hover伪类选择器可以为其他标签使用 */
+        ul{
+            width:800px;
+            height: 600px;
+            margin: 0 auto;
+            background-color: pink;
+            border: #ccc;
+        }
+        ul li{
+            list-style: none;
+            width: 100px;
+            height: 50px;
+            background-color: yellow;
+            margin-top: 50px;
+            line-height: 50px;
+            transition-property: margin-left;
+            transition-duration: 5s;
+        }
+        ul li:nth-child(1){
+            transition-timing-function: linear;
+            /* linear(直线的; 线状的;) ,即过渡动画效果是匀速的*/
+        }
+        ul li:nth-child(2){
+            transition-timing-function: ease;
+            /* 规定慢速开始，然后变快，然后慢速结束的过渡效果 */
+        }
+        ul li:nth-child(3){
+            transition-timing-function: ease-in;
+            /* 规定以慢速开始的过渡效果 */
+        }
+        ul li:nth-child(41){
+            transition-timing-function: ease-out;
+            /* 规定以慢速结束的过渡效果 */
+        }
+        ul li:nth-child(5){
+            transition-timing-function: ease-in-out;
+            /* 规定以慢速开始和结束的过渡效果 */
+        }
+        ul:hover li{
+            margin-left: 700px;
+        }
+    </style>
+</head>
+<body>
+    <div id="top">我在顶部</div>
+    <ul>
+        <li>linear</li>
+        <li>ease</li>
+        <li>ease-in</li>
+        <li>ease-out</li>
+        <li>ease-in-out</li>
+    </ul>
+    <a href="#top">回到顶部</a>
+</body>
+</html>

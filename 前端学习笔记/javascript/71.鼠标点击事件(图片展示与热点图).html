@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>71.鼠标点击事件(图片展示与热点图的结合)</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 670px;
+            border: 1px solid skyblue;
+            margin: 100px auto;
+            position: relative;
+        }
+        div>img{
+            vertical-align: bottom;
+        }
+        div>p{
+            width: 100%;
+            height: 64px;
+            position: absolute;
+            left: 0;
+            top: 45%;
+            transform: translateY(-50%);
+        }
+        div>p>span{
+            display: inline-block;
+            width: 30px;
+            height: 64px;
+            background: url("images/index.png") no-repeat;
+            background-position:-82px -145px;
+        }
+        div>p>span:last-child{
+            background-position:-120px -145px;
+            float: right;
+        }
+        ul{
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+        }
+        ul>li{
+            border: 2px solid transparent;
+        }
+        ul>li>img{
+            width: 120px;
+            vertical-align: bottom;
+            /* 设置图片的对齐方式,默认与baseline对齐 */
+        }
+        .current{
+            border: 2px solid yellowgreen;   
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <img src="images/ad2.jpg" alt="">
+        <p>
+            <span id="back"></span>
+            <span id="next"></span>
+        </p>
+        <ul>
+            <li><img src="images/ad1.jpg" alt=""></li>
+            <li><img src="images/ad2.jpg" alt=""></li>
+            <li><img src="images/ad3.jpg" alt=""></li>
+            <li><img src="images/ad4.jpg" alt=""></li>
+            <li><img src="images/ad5.jpg" alt=""></li>
+        </ul>
+    </div>
+
+<script>
+    //1.获取需要操作的元素
+    let oImg=document.querySelector("div>img");
+    let backBtn=document.querySelector("#back");
+    let nextBtn=document.querySelector("#next");
+    //2.定义数组保存所有需要展示的图片      注意点:企业开发中都是通过网络请求到服务器上获取(后续学习内容)
+    let images=[
+        "images/ad1.jpg",
+        "images/ad2.jpg",
+        "images/ad3.jpg",
+        "images/ad4.jpg",
+        "images/ad5.jpg",
+    ];
+    //3.监听按钮的点击事件
+    let currentIndex=0;//让第一张图片首先显示;
+    let maxIndex=images.length-1;//为了减少循环中对此的请求次数,直接在循环体外定义;
+    backBtn.onclick=function(){
+        currentIndex--;
+        if(currentIndex<0){
+            currentIndex=maxIndex;
+        }
+        oImg.src=images[currentIndex];
+    }
+    nextBtn.onclick=function(){
+        currentIndex++;
+        if(currentIndex>maxIndex){
+            currentIndex=0;
+        }
+        oImg.src=images[currentIndex];
+    }
+
+    //.onmouseenter鼠标移入移出
+    let oItems=document.querySelectorAll("li>img");
+    for(let item of oItems){
+        // item.onclick=change;点击事件
+        item.onmouseenter=function(){
+            //1.给小图的父元素添加边框
+            this.parentNode.className="current";
+            //2.将小图的地址传给大图
+            oImg.src=this.src;
+        }
+        item.onmouseleave=function(){
+            //移除小图父元素的边框
+            this.parentNode.className="";
+        }
+    }
+    function change(){//将赋值方法独立出来,解决性能问题:每次赋值给大图片都会开辟一个存储空间;
+        oImg.src=this.src;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+/* 头部开始 */
+.header{
+    display: none;
+}
+.main .main_nav h1,p{
+    display: none;
+}
+.main .main_nav ul{
+    display: none;
+}
+/* 头部结束 */
+/* 内容开始 */
+.main .main_nav>img{
+    width: 300px;
+    height: 200px;
+    position: absolute;
+    top: 100px;
+    left:50%;
+    transform: translateX(-50%);
+}
+.main .main_nav .logo{
+    width: 200px;
+    position: absolute;
+    top: 290px;
+    left:50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+.main .phonenav{
+    width: 100%;
+    display: block;
+    display: flex;
+    justify-content: space-between;
+}
+.main .phonenav>a{
+    text-decoration: none;
+    font-size: 100px;
+    color: #fff;
+}
+.main .main_nav{
+    padding: 0;
+}
+.footer .footer_top div{
+    flex: none;
+    width: 100%;
+    margin-top: 5px;
+}
+.footer .footer_top div>a>img{
+    width: 100%;
+}
+/* 内容结束 */
+/*  底部开始*/
+.footer .list{
+    width: 100%;
+    float: none;
+    flex-wrap: wrap;
+}
+.footer .list>dl{
+    width: 100%;
+    flex: none;
+}
+.footer .list>dl dt{
+     width: 100%; 
+     padding-left: 10px;
+}
+.footer .list>dl dt>h3{
+    float: left;
+    margin-bottom:30px;
+}
+ .footer .list>dl>dt>i{
+    contain: "";
+    /* display: inline-block; */
+    float: right; 
+    width: 20px;
+    height: 20px;
+    background: url("../images/dog.jpg") center center no-repeat;
+    background-size: 20px 20px;
+}
+.footer .list>dl dd{
+    display: none;
+}
+.footer>p{
+    display: block;
+    width:100%;
+    font-size: 12px;
+    color: #666;
+    position:absolute;
+    left: 50%;
+    bottom: -340px;
+    transform: translateX(-50%);
+    text-align: center;
+}
+/* 底部结束 */
+.footer .footer_bottom{
+    width: 100%;
+}
+.footer .phone1{
+    display: inline-block;
+    width: 100%;
+    height:100px;
+    /* background-color: red; */
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    top:350px;
+    margin: 20px 40%;
+}
+.footer .phone1>p{
+    display: inline-block;
+    width: 100%;
+}
+.footer .phone1>p:nth-child(2){
+    font-size: 20px;
+    color: #417fff;
+}
+.footer .phone1>p:nth-child(3){
+    font-size: 14px;
+}

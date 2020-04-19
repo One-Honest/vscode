@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            /* width: 100%; */
+            background-color: skyblue;
+        }
+        .container{
+            background-color: #ccc;
+            padding: 0 200px;
+            overflow: hidden;
+            position: relative;
+            min-width: 400px;
+        }
+        .container>div{
+            float: left;
+        }
+        .center{
+            width: 100%;
+            height:200px;
+            background-color: red;
+        }
+        .left{
+            width: 200px;
+            height: 200px;
+            background-color: green;
+            margin-left: -100%;
+            position: relative;;
+            left: -200px;
+        }
+        .right{
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+            margin-left: -200px;
+            position: relative;;
+            right: -200px;
+        }
+        /* 双飞翼布局 */
+        .container1{
+            margin-top: 100px;
+            background-color: #ccc;
+            overflow: hidden;
+        }
+        .container1>div{
+            float: left;
+        }
+        .center_in{
+            /* width: 100%; 注意不要给子盒子添加宽度,避免添加margin的时候出现误差(只有左边会腾出位置) */
+            height: 200px;
+            background-color: yellow;
+            margin: 0 200px;
+        }
+        .center1{
+            width: 100%;
+            height:200px;
+            background-color: red;
+        }
+        .left1{
+            width: 200px;
+            height: 200px;
+            background-color: green;
+            margin-left: -100%;
+        }
+        .right1{
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+            margin-left: -200px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 圣杯布局 -->
+    <div class="container">
+        <div class="center">圣杯布局的特点:<br>
+            1.设置一个容器包含3个盒子,中间盒子先渲染 <br>
+            2.给中间盒子设置宽度为容器宽度(高度固定),
+            给左右两个盒子设置固定宽度和高度<br>
+            3.将三个盒子都左浮动<br>
+            4.给容器分别设置左右padding值为左右盒子的宽度(注意不要给容器设定宽度)<br>
+            5.给左盒子设置margin-left:-100%;给右盒子设置margin-left:-右盒子自身的宽度<br>
+            6.给左右盒子设置相对定位属性:左盒子left:-做盒子自身的宽度;右盒子right:-右盒子自身的宽度 <br>
+            7.给容器设置一个min-width(最小宽度)防止浏览器变得足够小之后布局会变形
+        </div>
+        <div class="left">圣杯布局</div>
+        <div class="right"></div>
+    </div>
+    <!-- 双飞翼布局 -->
+    <div class="container1">
+        <div class="center1">
+            <div class="center_in">
+                双飞翼布局的特点:<br>
+                1.设置一个容器包含3个盒子,中间盒子先渲染 <br>
+                2.给中间盒子设置宽度为容器宽度(高度固定)并添加一个不设置宽度的子盒子(不设置宽度是避免添加margin的时候出现误差(只有左边会腾出位置),
+                给左右两个盒子设置固定宽度和高度<br>
+                3.将三个盒子都左浮动<br>
+                4.给中间盒子的子盒子分别设置左右padding值为左右盒子的宽度(再次注意不要给子盒子设定宽度)<br>
+                5.给左盒子设置margin-left:-100%;给右盒子设置margin-left:-右盒子自身的宽度<br>
+            </div>
+        </div>
+        <div class="left1">双飞翼布局</div>
+        <div class="right1"></div>
+    </div>
+</body>
+</html>

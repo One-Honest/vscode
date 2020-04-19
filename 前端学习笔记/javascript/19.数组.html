@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>19.数组</title>
+    <script>
+        /*
+        什么是数组?数组就是专门用于储存一组数据的数据结构,可将其看作一个单行表格;数组是JS中唯一用来存储与操作有序数据的集的数据结构;是引用数据类型(对象类型);
+        如何创建一个数组?  let 变量名称=new Array(size);//创建数组后,系统会将该数组分成size份,每一份用0-size来表示,即索引号;
+        如何往数组中存储数据? 变量名称[索引号] =需要存储的数据;
+        如何引用数组中存储的数据?   使用对应函数引用:变量名称[索引号]
+        数组的特点:
+            1.若没给数组存储数据,则默认存储数据为unfedined;
+            2.若调用size之外的索引不会报错,会返回undefined;
+            3.js中数组存储空间不够时会自动扩容;
+            4.js中数组可以存储不同类型的数据
+            5.其他编程语言分配存储空间有序且便于查找,因为其他编程语言定义一个数组只能存储同类数据并且不能存储超出size的数据;
+            而js中若存储不同类型的数据,则分配的存储空间无序,若存储相同数据类型则尽量(因为js中数组能存储超出size的数据)分配有序的存储空间
+            6.创建数组的两种方式:
+                1.通过构造函数创建数组
+                    let 变量名称=new Array(size);//此处size可不用写,即创建空数组,当存储数据时,数组会自动扩容;
+                    let 变量名称=new Array(data1,data2....);//创建带数据的数组;
+                2.通过字面量创建数组[即通过构造函数创建数组的简写格式]  企业开发中建议使用这种方式;
+                    let 变量名称=[data1,data2....];
+        */
+       let num=new Array(3);
+       num[0]=1;
+       num[4]='我没在索引内,但js中数组存储空间不够时会自动扩容'
+       num[5]=true;
+       console.log(num[0]);//存储了数据返回值1;
+       console.log(num[1]);//未存储数据返回值未unfedined;
+       console.log(num[2]);//未存储数据返回值未unfedined;
+       console.log(num[3]);
+       console.log(num[4]);//js中数组存储空间不够时会自动扩容
+       console.log(num[5]);//js中数组可以存储不同类型的数据
+       console.log(num[7]);//调用size之外的索引,返回undefined;
+       console.log(num);
+
+       let dat=new Array('我','自带','数据哦');//创建带数据的数组;
+       console.log(dat);
+       let data=['我是','简写','格式'];
+       console.log(data);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

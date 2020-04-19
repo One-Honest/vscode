@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>79.循环索引同步问题巩固练习(排他)</title>
+    <!-- 排他思想就是清楚其他未选中的元素的样式，只设置当前选中的元素的样式 -->
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            width: 400px;
+            list-style: none;
+            border: 1px solid;
+            margin:200px auto;
+        }
+        .current{
+            background-color: yellowgreen;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <ul>
+            <li class="current">第一个li</li>
+            <li>第二个li</li>
+            <li>第三个li</li>
+            <li>第四个li</li>
+            <li>第五个li</li>
+        </ul>
+    </div>
+    <script>
+        /* let oItems=document.querySelectorAll("li");
+        let previousItemIndex=0;
+        for(let i=0;i<oItems.length;i++){
+            let item=oItems[i];
+            item.onclick=function(){
+                let preItem=oItems[previousItemIndex];
+                preItem.className="";
+                this.className="current";
+                previousItemIndex=i;
+            }
+        } */
+        
+        /* //利用排他思想除去未选中的li的类名;
+        let oItems=document.querySelectorAll("li");
+        for(let i=0;i<oItems.length;i++){
+            let item=oItems[i];
+            item.onclick=function(){
+               for(let j=0;j<oItems.length;j++){//通过循环将所有的li都取出来并清楚掉类名,在循环之后再重新给li添加类名;
+                                                //但性能不好,因为每点击一次都要将所有li的类型全部删除一次,所以建议使用上面例子的ES6方法;
+                   let preItem=oItems[j];
+                   preItem.className="";
+               }
+                this.className="current";
+                previousItemIndex=i;
+            }
+        } */
+        //ES6之前的做法:
+        let oItems=document.querySelectorAll("li");
+        let previousItemIndex=0;
+        for(let i=0;i<oItems.length;i++){
+            let item=oItems[i];
+            (function(index){
+               item.onclick=function(){
+                   //排他
+                   let preItem=oItems[previousItemIndex];
+                   preItem.className="";
+                this.className="current";
+                previousItemIndex=index;
+               }
+            })(i);
+        }
+    </script>
+</body>
+</html>

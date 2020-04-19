@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>122.瀑布流基本结构(有bug,理解逻辑)</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            padding-top: 10px;
+            padding-left: 10px;
+            background: red;
+            float: left;
+        }
+        .box>img{
+            vertical-align: bottom;
+            border: 10px solid #fff;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div class="box">
+        <img src="images/ad1.jpg" alt="">
+    </div>
+    <div class="box">
+        <img src="images/ad2.jpg" alt="">
+    </div> -->
+    <div class="main"></div>
+    <a href="#">返回顶部</a>
+
+    <script src="tools/tools.js"></script>
+    <script>
+        window.onload=function(){
+            //1.初始化图片
+            let oMain=document.querySelector(".main");
+            let oItems=initImages(oMain);
+            // let oItems=document.querySelectorAll(".box");
+            //2.初始化容器main的宽度
+            let cols=resetMain(oMain,oItems);
+            //3.实现流式布局
+            // waterFall(oItems,cols);
+            //4.监听可视区域的变化
+            window.onresize=throttle(function(){
+                let cols=resetMain(oMain,oItems);
+                waterFall(oItems,cols);
+            },500);
+        }
+        function waterFall(oItems,cols){
+            //1.定义一个数组保存第一行所有元素的高度
+            let rowHeight=[];
+            //2.遍历取出所有的图片
+            for(let i=0;i<oItems.length;i++){
+                //获取当前图片
+                let item=oItems[i];
+                if(i<cols){
+                    item.style.position="";
+                    //1.判断是否为第一行的图片
+                    rowHeight.push(item.offsetHeight);
+                    console.log(rowHeight);
+                }else{
+                    //2.非第一行则按照流式布局排版
+                    //2.1利用Math.min方法查找第一行中最矮的图片
+                    let minHeight=Math.min.apply(this,rowHeight);
+                    //2.2找到最矮图片的索引
+                    let minIndex=rowHeight.findIndex(function(value){
+                        return value===minHeight;
+                    });
+                    //2.3根据索引取出最矮图片
+                    let minItem=oItems[minIndex];
+                    //2.4获取最矮图片的offsetLeft
+                    let minLeft=minItem.offsetLeft;
+                    //2.5设置当前图片的定位
+                    item.style.position="absolute";
+                    item.style.left=minLeft+"px";
+                    item.style.top=minHeight+"px";
+                    //2.6修改当前列的高度
+                    rowHeight[minIndex]+=item.offsetHeight;
+                }
+            }
+        }
+        function resetMain(oMain,oItems){
+            //1.获取可视区域宽度
+            let {width,height}=getScreen();
+            //2.获取每一张图片的宽度
+            let imgWidth=oItems[0].offsetWidth;
+            //3.计算main的每一行可以放置多少张图片
+            let cols=Math.floor(width/imgWidth);
+            //4.计算main的宽度
+            let mainWidth=imgWidth*cols;
+            //5.设置main的宽度
+            oMain.style.width=mainWidth+"px";
+            oMain.style.margin="0 auto";
+            //6.返回当前的列数
+            return cols;
+        }
+        function initImages(oMain){
+            //1.创建图片
+            for(let i=1;i<=24;i++){
+                let oDiv=document.createElement("div");
+                oDiv.className="box";
+                oMain.appendChild(oDiv);
+                let oImg=document.createElement("img");
+                let index=i<25?i:"0"+i;
+                oImg.src=`images/ad${index}.jpg`;
+                oDiv.appendChild(oImg);
+                console.log(oImg.offsetHeight);
+            }
+            //2.返回创建好的图片
+            let oItems=document.querySelectorAll(".box");
+            return oItems;
+        }
+    </script>
+</body>
+</html>

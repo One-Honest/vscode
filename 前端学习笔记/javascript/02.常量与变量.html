@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>02.常量与变量</title>
+    <!-- 常量:表示固定不变的数据
+        1.整数常量[整数]
+        2.实数常量[小数]
+        3.字符串常量[引号内的内容]
+        4.布尔常量[true或者false]
+        5.自定义常量[const xx=xx]定义之后,该名称的自定义常量将不能修改[ES6新增属性]
+
+        变量:表示可以修改的数据
+        定义变量:var=xxx;
+        储存变量:xxx=aaa;[第一次给变量赋值即变量的初始化]若无初始化,则输出的是undefined;
+        使用变量:console.log(变量);即输出语句(变量)
+        修改变量值:重新给变量赋值即可 xxx=bbb;
+
+        变量的注意点:
+            1.变量之间可以相互赋值;
+            2.若定义了多个相同名称的变量,后定义的会覆盖前定义的变量;[缺点:不易纠错]
+            3.在ES6之前的版本,先使用变量再赋值不会报错,但输出为undefined;[不易纠错]
+            因为渲染之前浏览器会预处理代码:
+            预处理示例:
+            预处理前的代码方式
+            console.log(num);
+            var num=666;
+            预处理后的代码方式
+            var num;  定义的变量会放到javascipt标签内的最前面;
+            console.log(num);
+            num=666;
+
+            为了解决多次定义同名称变量不报错的问题,ES6之后的版本开始使用新的定义词;
+            let num=666;
+            let num=888;  这样定义多个同名称的变量,输出时会报错;
+            console.log(num);
+
+            console.log(num);先输出再定义会报错
+            let num=666;
+
+
+        JavaScript 标识符
+            标识符是名称。[关键字与保留字不能作为标识符]
+            在 JavaScript 中，标识符用于命名变量（以及关键词、函数和标签）。
+            在大多数编程语言中，合法名称的规则大多相同。
+            在 JavaScript 中，首字符必须是字母、下划线（-）或美元符号（$）。
+            连串的字符可以是字母、数字、下划线或美元符号。
+            提示：数值不可以作为首字符。这样，JavaScript 就能轻松区分标识符和数值。
+        命名方式:1.见名知义[标识符名称与对象的意义一致]
+                2.驼峰式命名:标识符由多个单词组成时,第二个单词开始首字母需大写;  
+                3.中文也可以作为标识符,但企业开发中不要用      
+     -->
+    <script>
+      /*多行注释不能包含多行注释*/
+      var num;
+      num = "我不做大哥好多年";
+      console.log(num);
+      num = "我才是大哥"; //修改变量
+      console.log(num);
+      var name = "纪";
+      //  定义变量的同时初始化赋值
+      console.log(name);
+
+      // 用逗号隔开可以同时定义多个变量并且同时初始化多个变量,最后也可以同时输出多个变量;
+      var firstname = "谢",
+        name = "壹诚",
+        age = 26;
+      // 若两个变量初始值一样,可令两个变量相等然后同时赋值;
+      age = body = 26;
+      num = age;
+      // 变量之间可以相互赋值;
+      console.log(firstname + name + age);
+      console.log(num);
+    </script>
+  </head>
+  <body>
+    <ul>
+      <li>
+        <div><p><ul><li></li></ul></p></div>
+    </li>
+    </ul>
+  </body>
+</html>

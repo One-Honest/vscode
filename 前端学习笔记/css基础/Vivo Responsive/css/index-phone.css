@@ -1,0 +1,162 @@
+body{
+    position: relative;
+}
+.header{
+    display: none;
+}
+.content{
+    height: 720px;
+    display: flex;
+}
+.content .contentnav{
+    display: none;
+}
+.content>a .big{
+    display: none;
+}
+.content>a .small{
+    display:block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.order{
+    left: 50%;
+    transform: translateX(-50%);
+    top:10%;
+    text-align: center;
+}
+.order>a>img{
+    width:40.625vw;
+}
+.order>a>h2{
+    margin-bottom: 0;
+    font-size: 3.90625vw;
+}
+.order p{
+    display: none;
+}
+.order .orderbtn{
+    margin-top: 0px;
+}
+.order .orderbtn>a{
+    font-size: 2.1vw;
+}
+/* 横幅广告开始 */
+.banner .banner_top{
+    margin-top: 5px;
+}
+.banner .banner_middle,.banner_bottom{
+    display: none;
+}
+.banner .banner_top{
+    flex-direction: column;
+    height: 1200px;
+}
+.banner .banner_top>div{
+    width: 100vw;
+    height:50%;
+}
+/* 横幅广告结束 */
+/* 小横幅广告开始 */
+.banner .banner_top{
+    margin-top: 5px;
+}
+.banner .banner_left{
+    margin-bottom: 5px;
+}
+.bannersmall{
+    margin-top: 5px;
+}
+.bannersmall .list{
+    flex-direction: column;
+    height: 2400px;
+}
+.bannersmall .list>li{
+    flex: none;
+    width: 100vw;
+    height:24.7%;
+    margin-bottom: 5px;
+}
+/* 小横幅广告结束 */
+/* 底部开始 */
+.footer{
+    position: absolute;
+    bottom:-2180px;
+    left: 0;
+}
+.footer .footer_nav{
+    /* flex-direction: column; */
+    width:74vw;
+    display: block;
+    border-bottom: none;
+}
+.footer .footer_left{
+    flex-direction: column;
+}
+.footer .footer_left>dl>dt::after{
+    content: "";
+    float: right;
+    width: 20px;
+    height: 20px;
+    background: url("../favicon.ico") center center no-repeat;
+    background-size: contain;
+}
+.footer .footer_left>dl>dd{
+    display: none;
+}
+.footer .footer_right{
+    flex: none;
+    width: 74vw;
+}
+.footer .connect{
+    left:80px;
+}
+.footer .footer_bottomnav{
+    width:78vw;
+    position: absolute;
+    left:100px;
+    top:180px;
+}
+.footer .footer_bottomnav span:first-child{
+    float: none;
+    position: absolute;
+    left:260px;
+    top:31px;
+}
+.focus>ul{
+    position: relative;
+    left: 80px;
+}
+.focus>p{
+    position: absolute;
+    left: 0;
+    top:205px;
+}
+.content .smallnav{
+    display: block;
+    width: 100%;
+    height:100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 999;
+}
+.content .smallnav>ul{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.content .smallnav>ul>li{
+    /* width: 30vw; */
+    height: 100%;
+}
+.content .smallnav>ul>li>a{
+    font-size:80px;
+    color: seashell;
+}
+.content .smallnav>ul>li:nth-child(2)>a{
+    font-size:90px!important;
+}
+/* 底部结束 */

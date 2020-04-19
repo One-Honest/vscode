@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>块级元素与行内元素及其转化</title>
+    <style>
+        img{
+            width: 300px;
+            height: 400px;
+            display:block;
+            /*将行内块级元素img转化为块级元素，会独自占据一行*/
+        }
+        span{
+            display: block;
+            /*将行内元素span标签转化为块级元素后可设置宽高等*/
+            width: 200px;
+            height: 50px;
+            background-color: pink;
+        }
+    </style>
+
+</head>
+<body>
+<p>块级元素（p、div、h、ul、、、）会独占一行，若不设置宽度，其宽度会继承其父元素的宽度</p>
+<span>行内元素</span><strong>不会独占一行，且默认宽度与内容等宽，且无法设置宽高</strong><del>我要独占一行</del>
+<img src="images/1.jpg" alt="行内块级元素既不独占一行又能设置宽高">
+<!-- 可变元素一般有：
+                    applet（java applet）
+                    button 按钮
+                    del 删除文本
+                    iframe  inline frame
+                    ins 插入的文本
+                    map 图片区块
+                    object  object对象
+                    script客户端脚本
+                 -->
+</body>
+</html>

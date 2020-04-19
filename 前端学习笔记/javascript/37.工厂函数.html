@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>37.工厂函数[不专业]</title>
+    <script>
+        /*
+        什么是工厂函数?即专门用于创建对象的函数;
+        工厂函数的格式:
+            function createPerson(myName,myAge){
+                let obj=new Object();
+                obj.name:myName,
+                obj.age:myAge,
+                obj.learn:()=>console.log('正在学习javascript'),
+                return obj;
+            }
+
+        工厂函数:
+        function createPerson(myName,myAge){
+                let obj=new Object();
+                obj.name=myName;
+                obj.age=myAge;
+                obj.learn=()=>console.log('正在学习javascript');
+                return obj;
+            }
+        let a=createPerson('谢壹诚',26);
+        console.log(a);
+        构造函数:
+            
+        */
+        function createPerson(myName,myAge){
+                let obj={
+                name:myName,
+                age:myAge,
+                learn:()=>console.log('正在学习javascript'),
+                }
+                return obj;//需要将obj返回给函数,函数才能被调用;
+            }
+        let a=createPerson('谢壹诚',26);
+        console.log(a);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

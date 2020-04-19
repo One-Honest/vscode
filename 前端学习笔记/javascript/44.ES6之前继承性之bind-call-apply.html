@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>44.js继承性之bind-call-apply</title>
+    <script>
+        /*
+        1.bind-call-apply这三个方法都是用于修改函数或者方法中的this的;
+        2.bind
+            作用:修改函数或方法中的this为指定的对象,并且会返回一个修改之后的新函数给我们;
+            注意点:除了可以修改函数或方法中的this,还可以传递参数,不过参数必须写在this对象的后面;
+        3.call
+            作用:修改函数或者方法中的this为指定的对象, 并且会立即调用修改之后的函数 
+            注意点: call方法除了可以修改this以外, 还可以传递参数, 只不过参数必须写在this对象的后面
+        4.apply
+            修改函数或者方法中的this为指定的对象, 并且会立即调用修改之后的函数 
+            注意点: apply方法除了可以修改this以外, 还可以传递参数,只不过参数必须通过数组的方式传递
+        */
+
+        /*练习1:
+       let obj={
+           name:"张三",
+       }
+       function test(a,b){
+           console.log(a,b);
+           console.log(this);
+       }
+       bind方法:
+       let fn=test.bind(obj,10,20);
+       fn();
+
+      //call方法:   test.call(obj,10,20);
+
+      test.apply(obj,[10,20]);//与call方法一样修改this之后会立即返回修改之后的新函数,区别在于apply传递参数的方式必须是数组的方式;
+       */
+
+      /*练习2:
+      function Person(){
+           this.name="谢壹诚",
+           this.say=function(){
+               console.log(this);
+           }
+       }
+       let p =new Person();
+       let ns=p.say.bind(obj);//bind方法
+            ns();
+        p.say.call(obj);//call方法
+        p.say.apply(obj);//apply方法
+       */
+    /*练习3:优化前面的代码;
+    function Person(myName,myAge){
+           this.name=myName,
+           this.age=myAge,
+           this.say=function(){
+               console.log(this.name,this.age);
+           }
+       }
+    function Student(myName,myAge,myScore){
+        //let stu=new Object();
+        //let this=stu;
+        Person.call(this,myName,myAge);//即让Person函数被stu调用;函数被谁调用谁就是this,改变了函数的this,即改变了函数的调用对象;
+        //即Person.call(stu);此处的this=stu;
+                                    //也就是将Person构造函数中的this改成了stu;其中的this.name=myName=>stu.name=myName;
+        this.score=myScore;
+        this.study=function(){
+            console.log('好好学习天天向上');
+           }
+        //reeturn this;
+       }
+       let stu=new Student('壹诚谢',27,98);//通过定义对象stu调用Student()
+                            //可以传递参数;
+       console.log(stu.name);
+       console.log(stu.age);
+       stu.say();
+       console.log(stu);*/
+
+       /*练习4:优化前面的代码;将Person的say方法提取到Person的原型对象中;
+    function Person(myName,myAge){
+           this.name=myName,
+           this.age=myAge
+        //    this.say=function(){
+        //        console.log(this.name,this.age);
+        //    }
+       }
+    Person.prototype.say=function(){
+               console.log(this.name,this.age);
+           }
+    function Student(myName,myAge,myScore){
+        //let stu=new Object();
+        //let this=stu;
+        Person.call(this,myName,myAge);//即让Person函数被stu调用;函数被谁调用谁就是this,改变了函数的this,即改变了函数的调用对象;
+        //即Person.call(stu);此处的this=stu;
+                                    //也就是将Person构造函数中的this改成了stu;其中的this.name=myName=>stu.name=myName;
+        this.score=myScore;
+        this.study=function(){
+            console.log('好好学习天天向上');
+           }
+        //reeturn this;
+       }
+
+       //修改:若想使用Person的原型对象,则需要将Student的原型对象改为Person的原型对象;
+       //但这样改1.会破坏Person与其原型对象和实例对象之间的关系;2.由于修改之后Person和Student共用同一个原型对象,
+       //则通过Student的原型对象给Student添加一个方法或者属性,对应的Person也会新增一个方法或者属性;
+
+       Student.prototype=Person.prototype;
+       Student.prototype.constructor=Student;
+       Student.prototype.run=function(){
+           console.log('我是Student新增的方法;');
+       }
+       let per=new Person();
+       per.run();//调用Student的原型对象新增的方法;
+
+       let stu=new Student('壹诚谢',27,98);//通过定义对象stu调用Student()
+                            //可以传递参数;
+       console.log(stu.name);
+       console.log(stu.age);
+       stu.say();
+       console.log(stu);
+       stu.run();//调用Student的原型对象新增的方法;*/
+//5.完整版的优化代码:
+function Person(myName,myAge){
+           this.name=myName,
+           this.age=myAge
+        //    this.say=function(){
+        //        console.log(this.name,this.age);
+        //    }
+       }
+    Person.prototype.say=function(){
+               console.log(this.name,this.age);
+           }
+    function Student(myName,myAge,myScore){
+        //let stu=new Object();
+        //let this=stu;
+        Person.call(this,myName,myAge);//即让Person函数被stu调用;函数被谁调用谁就是this,改变了函数的this,即改变了函数的调用对象;
+        //即Person.call(stu);此处的this=stu;
+                                    //也就是将Person构造函数中的this改成了stu;其中的this.name=myName=>stu.name=myName;
+        this.score=myScore;
+        this.study=function(){
+            console.log('好好学习天天向上');
+           }
+        //reeturn this;
+       }
+
+       //若想使用Person的原型对象,直接让Student的原型对象调用Person构造函数,则当Student调用的属性或方法无法在其实例对象中找到,
+       //会去其原型对象(此时相当于Person构造函数的实例对象)中查找,还找不到就去Person函数的原型对象中查找;
+       Student.prototype=new Person();//让
+       Student.prototype.constructor=Student;
+       Student.prototype.run=function(){
+           console.log('我是Student新增的方法;');
+       }
+       let per=new Person();
+       //per.run();//修改之后Person的实例对象则不能调用Student的原型对象新增的方法;
+
+       let stu=new Student('壹诚谢',27,98);//通过定义对象stu调用Student()
+                            //可以传递参数;
+       console.log(stu.name);
+       console.log(stu.age);
+       stu.say();
+       console.log(stu);
+       stu.run();//调用Student的原型对象新增的方法;
+
+
+    </script>
+</head>
+<body>
+    <p>总结:继承的终极方法:
+        1.在子类的构造函数中通过call借助父类的构造函数;
+        2.将子类的原型对象修改为父类的实例对象;即可使用父类的原型对象中地方法或属性;
+    </p>
+    <img src="images/jicheng.png" alt="">
+</body>
+</html>

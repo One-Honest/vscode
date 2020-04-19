@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>72.移入移出事件(移入移出菜单)</title>
+    <link rel="stylesheet" href="fonts/iconfont.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            position: fixed;
+            right: 0;
+            top:50%;
+            transform: translateY(-50%);
+        }
+        ul{
+            width: 50px;
+            height: 150px;
+            background: skyblue;
+            border-radius: 5px;
+        }
+        ul>li{
+            list-style: none;
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            border-bottom: 1px solid #ccc;
+            box-sizing: border-box;
+            color: rgb(37, 156, 21);
+            font-size:30px !important;
+        }
+        ul>li:last-child{
+            border-bottom:none;
+        }
+        .subMenu{
+            width: 250px;
+            height: 270px;
+            padding: 20px;
+            box-sizing: border-box;
+            border-radius:5px;
+            background-color: rgb(245, 239, 239);
+            margin-right: 70px;
+            display: none;
+        }
+        .subMenu>img{
+            width: 100%;
+        }
+        /* div{
+            width: 300px;
+            height: 300px;
+            background-color: red;
+        } */
+    </style>
+</head>
+<body>
+    <div>
+        <ul>
+            <li id="wechat" class="iconfont icon-weixin"></li>
+            <li class="iconfont icon-qq"></li>
+            <li class="iconfont icon-youxiang_"></li>
+        </ul>
+        <div class="subMenu">
+            <p>微信二维码</p>
+            <img src="images/close.jpg" alt="">
+        </div>
+    </div>
+    
+<script>
+    let weChat=document.querySelector("#wechat");
+    let subMenu=document.querySelector(".subMenu");
+    weChat.onmouseenter=function(){
+        subMenu.style.display="block";
+    }
+    weChat.onmouseleave=function(){
+        subMenu.style.display="none";
+    }
+/*     let oDiv=document.querySelector("div");
+    //移入事件onmouseenter
+    oDiv.onmouseover=function(){//onmouseenter也可以监听移入事件,为避免BUG,建议初学者使用onmouseenter
+        oDiv.style.backgroundColor="skyblue";
+    }
+    //移出事件onmouseleave
+    oDiv.onmouseout=function(){//nomouseleave也可以监听移出事件,为避免BUG,建议初学者使用onmouseleave
+        oDiv.style.backgroundColor="yellow";
+    }
+    //鼠标移动事件
+    oDiv.onmousemove=function(){
+        oDiv.style.width="200px";
+    } */
+</script>
+</body>
+</html>

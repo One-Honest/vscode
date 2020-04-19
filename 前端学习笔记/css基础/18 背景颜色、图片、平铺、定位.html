@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>背景颜色、图片、属性、定位</title>
+    <style>
+        div{
+            width: 900px;
+            height: 500px;
+            margin: 10px;
+        }
+        .box1{
+            background-color:chartreuse;
+
+        }
+        .box2{
+            background-image:url("images/1.jpg");
+            background-attachment:fixed;
+            /*让背景图片不会随滚动条滚动而滚动*/
+        }
+        .box3{
+            background-image:url("images/2.jpg");
+            /*背景图片若比div小，则以平铺方式显示*/
+            background-repeat:repeat-y;
+            /*repeat-x;no-repeat;repeat; 可通过设置background-repeat属性修改图片显示方式，默认属性为repeat*/
+            /*若背景图片比较大并且图案重复，则可以利用repeat属性设置平铺，降低图片大小，提高网页的访问速度*/
+        }
+        .box4{
+            background-color: chartreuse;
+            background-image:url("images/2.jpg");
+            background-repeat:no-repeat;
+            background-position: center top;
+            /*此属性设置为多数前端设置常用的背景图定位设置，当图片大于显示器显示范围时可以令图片一直居中显示主要内容*/
+            /*定位的属性有：right、left、center、top、bottom，也可以用px来代替,且px可以取负值*/
+        }
+        .box5{
+            background-repeat:no-repeat;
+            background-color: chartreuse;
+            background-image: url("images/1.jpg");
+            /*background-position:center top;*/
+            background-position:-190px -190px;
+
+        }
+        .box6{
+            background: aqua url("images/1.jpg") no-repeat center top;
+            /*background:颜色 图片 平铺 关联 定位 */
+        }
+        /*背景图与插入图的区别：
+                背景图不会占用div的储存空间，而插入图片则会占用
+                背景图有自己的专属定位属性
+                但插入图片具有较强的语义性，所以比较容易被搜索引擎搜索到
+        */
+        /*
+        css精灵图：是一种图像合成技术
+        作用：能够减少请求次数，降低服务器的处理压力
+        如何实现：利用背景图片的定位属性取负值来实现图片的特定区域显示
+        辅助工具：fireworks
+        */
+        .name div{
+            width:169px;
+            height:127px;
+            background-color: pink;
+            background-image: url("images/a-z.jpg");
+            background-position: -423px -536px;
+        }
+    </style>
+</head>
+<body>
+<div class="box1"></div>
+<div class="box2"></div>
+<div class="box3"></div>
+<div class="box4"></div>
+<div class="box5"></div>
+<div class="box6"></div>
+<div class="name">
+    <div>x</div>
+</div>
+</body>
+</html>

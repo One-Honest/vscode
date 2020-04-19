@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>68.小渔打字</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+        body{
+            background: url("images/bg.jpg") center center no-repeat;
+            background-size: cover;
+            overflow: hidden;
+        }
+        img{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform:translateX(-50%);
+        }
+        .ghost{
+            width: 300px;
+            height: 300px;
+            background: url("images/ghost.jpg");
+            position: absolute;
+            top: 870px;
+        }
+        .ghost>span{
+            position: absolute;
+            top:63%;
+            left:30%;
+            font-size:46px;
+            color: aliceblue;
+            text-shadow: 5px 5px 5px rgb(230, 183, 183);
+        }
+    </style>
+</head>
+<body>
+<img src="images/bt.png" alt="">
+<audio src="images/bgmusic.mp3" autoplay loop></audio>
+<!-- 注意点:谷歌浏览器默认情况下不允许自动播放音乐,只有用户与网页交互之后才可以播放音乐
+    解决方案1:修改谷歌浏览器的配置:chrome://flags  然后在搜索框输入autoplay,将default改为no user gesture is required
+    解决方案2:让用户与网页交互之后再播放音乐
+\ -->
+<!-- <div class="ghost">
+    <span>U</span>
+</div> -->
+<script>
+    let oImg=document.querySelector("img");
+    let oAudio=document.querySelector("audio");
+    let list=[];//定义数组来保存所有创建出来的ghost对象;
+    oImg.onclick=function(){
+        oImg.parentNode.removeChild(oImg);
+        oAudio.play();//引用音频的播放函数play
+        setInterval(() => {//设置定时器每隔两秒钟产生一个幽灵对象;
+            let s=new Ghost();
+            s.fly();
+            list.push(s);//每创建一个鬼魂对象s,就将其放入数组的最后;
+        }, 2000);
+    }
+    
+    class Ghost{
+        constructor(){
+            let oDiv=document.createElement("div");
+            oDiv.style.top="870px";
+            oDiv.style.left=Math.random()*1500+"px";
+            let oSpan=document.createElement("span");
+            let key=this.generateKey();
+            oDiv.className="ghost "+key;//同时给div添加两个类名;一个类型为样式类型ghost,另外一个类名为内容的类名;
+            oSpan.innerText=key;//调用随机生成字母的方法;
+            oDiv.appendChild(oSpan);
+            document.body.appendChild(oDiv);
+            this.oDiv=oDiv;//将oDiv保存为Ghost的属性
+        }
+        bomb(){
+            //1.删除当前的幽灵对象
+            document.body.removeChild(this.oDiv);
+            //2.删除当前幽灵对应的定时器
+            clearInterval(this.timer);
+        }
+        fly(){
+            //1.获取幽灵当前的top值;
+            let offset=parseInt(this.oDiv.style.top);
+            //let self=this;//这里的this表示的是s,s调用了fly方法;
+            this.timer=setInterval(()=>{//设置一个定时器让幽灵对象的top值不断减少;
+               
+                offset-=20;
+                if(offset<=0){//当幽灵对象移出屏幕就删除对应的幽灵并且停止对应的定时器;
+                    this.bomb();
+                }
+                this.oDiv.style.top=offset+"px";
+            },200);
+        }
+        
+        generateKey(){
+            let num=Math.floor(Math.random()*(90- 65+1))+ 65;
+            return String.fromCharCode(num);
+        }
+    }
+      document.body.onkeydown=function(event){
+        // console.log(event.keyCode);返回键码值
+        // console.log(event.key);返回按键名称
+        let key=event.key.toUpperCase();//将返回的按键转化为大写字母;
+        let oDiv=document.querySelector("."+key);//查找拥有key类名的div
+        // document.body.removeChild(oDiv);
+        //1.根据div找到其对应的鬼魂对象在数组中的位置;
+        let currentIndex=list.findIndex(function(currentValue){
+            return currentValue.oDiv===oDiv;//判断鬼魂中的oDiv是否与找到的div是同一个,是就返回这个找到的div在数组中对应的索引号;
+        });
+        if(currentIndex===-1){return;} ;
+        //2.根据位置取出对应的鬼魂对象;
+        let currentGhost=list[currentIndex];
+        //3.将鬼魂对应的div从body中删除;
+        currentGhost.bomb();
+        //4.将删除的鬼魂从数组中删除
+        list.splice(currentIndex,1);
+      }
+      
+</script>
+<!-- 
+    keycode:字母与数字的键码值
+    String.fromCharCode(num);//将数值转换成对应键码值的字母;
+     let num=getRandomInt(60, 90);
+    let char=String.fromCharCode(num);
+    console.log(char);
+    function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min+1)) + min; //不含最大值，含最小值
+    }
+    大小字母转换方法:console.log('ABC'.toLowerCase());
+                    console.log('abc'.toUpperCase());
+ -->
+</body>
+</html>

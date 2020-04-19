@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>结构伪类选择器</title>
+    <style>
+      /* （first）为同级该名称的标签的第一个标签设置属性
+      p:first-child{
+            color: red;
+        }*/
+
+
+      /*（second）
+        p:first-of-type{
+            color:green;
+        }
+        p:last-child{
+            color: blue;
+        } */
+
+      /*（third）
+        p:last-of-type{
+            color:blue;
+        }*/
+
+      /* （fourth）
+       p:nth-child(2){
+            color:purple;
+        }*/
+
+      /*（fifth）
+        p:nth-of-type(2){
+            color:red;
+        }*/
+
+      /*（sixth）
+        p:nth-last-child(2){
+            color:red;
+        }*/
+      /* （seventh）
+       p:nth-last-of-type(2){
+            color:red;
+        }*/
+      /*（eight）
+      p:only-child{
+            color:red;
+        }*/
+      /* (ninth)
+      p:only-of-type{
+            color:red;
+        }*/
+      /*  （tenth）会遍历其他标签，同级中的该标签为奇数才会变色
+        p:nth-child(odd) {
+          color: red;
+      }
+      p:nth-child(even){
+            color:green;
+      }*/
+ /*   (eleventh)
+   p:nth-of-type(odd){
+            color:red;
+        }
+      p:nth-of-type(even){
+          color:green;
+      }*/
+       /*（twelfth）
+        p:nth-child(3n+0){
+            color: red;
+        }*/
+        p:nth-of-type(3n+0){
+            color:red;
+        }
+    </style>
+</head>
+<body>
+<!--（first）
+<div>
+    <p>我是第一个儿子，我会变红</p>
+    <p>我是第二个儿子，不会变红</p>
+</div>-->
+
+<!--（second）
+<div>
+    <p>第一个就可以变绿哦</p>
+    <p>不变</p>
+    <span>
+        <p>我也是同级的第一个,我也可以变绿</p>
+        <p>最底层的同级的最后一个会变蓝</p>
+    </span>
+</div>
+-->
+
+<!--（third）
+<div>
+    <p>第一个就可以变绿哦</p>
+    <p>我也是同级最后一个，我也可以变蓝</p>
+    <span>
+        <p>我也是同级的第一个,我也可以变绿</p>
+        <p>同级最后一个会变蓝</p>
+    </span>
+</div>-->
+
+<!--（fourth）p标签的同级标签里的第n个p标签会设置属性，若同级上面有两个及以上其他标签，则选不中该级的p标签
+<div>
+    <h1>1</h1>
+    <h2>2</h2>
+    <p>第一个不变</p>
+    <p>第二个</p>
+    <span>
+        <p>第一个不变</p>
+        <p>第二个</p>
+    </span>
+    <ul>
+        <li>
+
+            <p>6666</p>
+            <p>7777</p>
+        </li>
+    </ul>
+</div>-->
+
+<!--（fifth）只要是同级的第二个p元素就可以选中，不管前后是否插入其他标签
+<div>
+    <h1>1</h1>
+    <h2>2</h2>
+    <p>第一个不变</p>
+    <p>第二个</p>
+    <span>
+        <p>第一个不变</p>
+        <p>第二个</p>
+    </span>
+    <ul>
+        <li>
+
+            <p>6666</p>
+            <p>7777同级第二</p>
+        </li>
+    </ul>
+</div>-->
+
+<!--（sixth）
+<div>
+    <h1>1</h1>
+    <h2>2</h2>
+    <p>不是同级中的第二个，同级中还有其他标签，所以不变</p>
+    <p>不变</p>
+    <span>
+        <p>不变</p>
+        <p>同级中的倒数第二个变红</p>
+        <p>不变</p>
+    </span>
+    <ul>
+        <li>
+            <p>不变</p>
+            <p>同级中的倒数第二个变红</p>
+            <p>不变</p>
+        </li>
+    </ul>
+</div>-->
+
+<!--（seventh）
+<div>
+    <h1>1</h1>
+    <h2>2</h2>
+    <p>同级别同类中的倒数第二个，就算同级中还有其他标签，我也可以变红的</p>
+    <p>不变</p>
+    <span>
+        <p>不变</p>
+        <p>同级同类中的倒数第二个变红</p>
+        <p>不变</p>
+    </span>
+    <ul>
+        <li>
+            <p>不变</p>
+            <p>同级同类中的倒数第二个变红</p>
+            <p>不变</p>
+        </li>
+    </ul>
+</div>-->
+
+<!--（eight）
+<div>
+    <p>同级中有两个p标签，不变</p>
+    <p>同级中有两个p标签，不变</p>
+    <span>
+        <h1>1</h1>
+        <h2>2</h2>
+        <p>同级中只有一个p标签，但含有其他标签，也不能变红</p>
+    </span>
+    <ul>
+        <li>
+            <p>同级中只有一个p标签，变红</p>
+    </ul>
+</div>-->
+
+<!--(ninth)
+<div>
+    <p>同级中有两个p标签，不变</p>
+    <p>同级中有两个p标签，不变</p>
+    <span>
+        <h1>1</h1>
+        <h2>2</h2>
+        <p>同级中只有一个p标签，就算含有其他标签，我也能变红</p>
+    </span>
+    <ul>
+        <li>
+            <p>同级中只有一个p标签，变红</p>
+    </ul>
+</div>-->
+
+<!--（tenth）
+<div>
+    <p>奇数项变红</p>
+    <p>偶数项变绿</p>
+    <span>
+        <h1>1</h1>
+        <p>同级中我属于偶数项，变绿</p>
+        <p>同级中我属于奇数项，变红</p>
+    </span>
+</div>-->
+<!--(eleventh)
+<div>
+    <p>奇数项变红</p>
+    <p>偶数项变绿</p>
+    <span>
+        <h1>1</h1>
+        <p>同级同类中我属于奇数项，变红</p>
+        <p>同级同类中我属于偶数项，变绿</p>
+    </span>
+</div>-->
+<!--（twelfth）
+<div>
+    <p>不变</p>
+    <p>不变</p>
+    <p>第三项会变红</p>
+    <span>
+        <h1>同级第一项</h1>
+        <p>同级第二项，同类第一项</p>
+        <p>同级第三项，会变红（同类第二项）</p>
+        <p>同级第四项，同类第三项</p>
+    </span>
+</div>-->
+<div>
+    <p>不变</p>
+    <p>不变</p>
+    <p>第三项会变红</p>
+    <span>
+        <h1>同级第一项</h1>
+        <p>同级第二项,同类第一项</p>
+        <p>同级第三项,同类第二项</p>
+        <p>同级第四项,同类第三项,会变红</p>
+    </span>
+</div>
+</body>
+</html>

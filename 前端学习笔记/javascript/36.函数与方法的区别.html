@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>36.函数与方法的区别</title>
+    <script>
+        /*
+        1.什么是函数?
+            函数即没有和其他的类绑定在一起;
+            function(){"我没有和其他类绑定在一起,所以我是函数,可以被()直接调用"};
+        2.什么是方法?
+            方法即和其他类绑定在一起;
+            let obj={
+            name:'谢壹诚',//注意,此处给对象的属性赋值用:并且属性与属性之间用,分隔;
+            age:26,
+            learn:()=>console.log('我和其他类绑定在一起,所以我是方法,不可以被()直接调用,需要在我前面加上对象的名称才能调用我;')
+            }
+            obj.learn();//方法需要通过对象来调用;
+
+        3.无论是函数还是方法,其内部都有this;谁调用了函数或者方法那谁就是this;
+           区别: 函数内部的this输出的是window,方法内部的this输出的是当前调用了方法的对象;
+        */
+        function hanshu(){
+            console.log("我没有和其他类绑定在一起,所以我是函数,可以被()直接调用");
+            console.log(this);//window调用了hanshu(),所以这里的this就是window;
+        };
+        hanshu();
+        
+        let obj={
+            name:'谢壹诚',//注意,此处给对象的属性赋值用:并且属性与属性之间用,分隔;
+            age:26,
+            learn:function (){console.log(this);}//若用箭头函数则是window调用this了?
+            }
+            obj.learn();//对象obj调用了learn方法,所以learn中的this是obj对象;
+            console.log(this);//window调用了obj.learn(),所以这里的this就是window;
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

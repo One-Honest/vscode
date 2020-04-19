@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS3之翻转菜单综合练习ment</title>
+    <style>
+        /* 疑问：鼠标为何悬停在.sub的li范围内也会翻转？ */
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .nav{
+            width: 400px;
+            height: 40px;
+            margin: 0 auto;
+            margin-top:100px;
+            background-color: pink;
+        }
+        .nav>li{
+            list-style: none;
+            width: 120px;
+            height: 40px;
+            background-color: yellow;
+            margin-left: 10px;
+            float:left;
+            text-align: center;
+            line-height: 40px;
+            position: relative;
+        }
+        sub{
+            width: 120px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .sub li{
+           list-style: none; 
+           background-color:rgb(152, 203, 250);
+           transform: rotateY(180deg);
+           transition: all 1s;
+           opacity: 0;
+        }
+        .nav>li:hover .sub li{
+            transform:none;
+            opacity: 1;
+        }
+        .nav>li:hover .sub li:nth-child(1){
+            transition-delay: 0ms;
+        }
+        .nav>li:hover .sub li:nth-child(2){
+            transition-delay: 20ms;
+        }
+        .nav>li:hover .sub li:nth-child(3){
+            transition-delay: 400ms;
+        }
+        .nav>li:hover .sub li:nth-child(4){
+            transition-delay: 600ms;
+        }
+        .nav>li:hover .sub li:nth-child(5){
+            transition-delay: 800ms;
+        }
+        .nav>li .sub li:nth-child(5){
+            transition-delay: 0ms;
+        }
+        .nav>li .sub li:nth-child(4){
+            transition-delay: 20ms;
+        }
+        .nav>li .sub li:nth-child(3){
+            transition-delay: 400ms;
+        }
+        .nav>li .sub li:nth-child(2){
+            transition-delay: 600ms;
+        }
+        .nav>li .sub li:nth-child(1){
+            transition-delay: 800ms;
+        }
+        .article{
+            width: 400px;
+            height:300px;
+            background-color: rgb(39, 218, 107);
+            margin:0 auto;
+        }
+    </style>
+</head>
+<body>
+    <ul class="nav">
+        <li>一级菜单
+            <ul class="sub">
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+            </ul>
+        </li>
+        <li>一级菜单
+                <ul class="sub">
+                        <li>二级菜单</li>
+                        <li>二级菜单</li>
+                        <li>二级菜单</li>
+                        <li>二级菜单</li>
+                    </ul>
+        </li>
+        <li>一级菜单
+                <ul class="sub">
+                        <li>二级菜单</li>
+                        <li>二级菜单</li>
+                        <li>二级菜单</li>
+                        <li>二级菜单</li>
+                    </ul>
+        </li>
+    </ul>
+    <div class="article">
+        我是蚊子我是蚊子我是蚊子我是蚊子我是蚊子我是蚊子
+        awslawslawslawslawslawslawslawslawslawslawslawsl
+        awslawslawslawslawslawslawslawslawslawslawslawsl
+        awslawslawslawslvawslawslawslawslawslawslawslaws
+    </div>
+</body>
+</html>

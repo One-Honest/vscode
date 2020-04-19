@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>盒子的概念</title>
+    <style>
+        body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{
+            margin:0;
+            padding:0;
+            /*通配符会遍历所有标签，性能不好，因此企业开发中比较少用
+            通常使用如上方式清空默认边距，目的是为了更好更准确地控制元素的定位
+            */
+        }
+        .box1{
+            box-sizing:border-box;
+             width: 200px;
+             height: 200px;
+             background-color: deepskyblue;
+            border: 5px solid greenyellow;
+            /* 给box1添加边框属性,则不会受box2的margin属性的影响 */
+         }
+        .box2{
+            /*margin-top:20px;*/
+            /*margin:0 auto;
+            此属性取值可让嵌套内的盒子 水平居中 于大盒子*/
+            margin-top:50px;
+            margin-left:50px;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+
+            border-style:solid;
+            line-height: 100px;
+            text-align:center;
+            /*text-align:center仅设置盒子中的文字与图片水平居中,而对盒子中的盒子无效  */
+            /*每一行皆有行高，若在盒子中使用行高属性，盒子需先有边框属性
+                通常在企业开发中将盒子高度与行高设置为一样，能使文字在盒子中垂直居中
+                注意：企业开发中盒子存储的内容为文字时，以左边的内边距为基准
+                    因为文字可能会自动换行而导致右边内边距有误差
+                盒子的内边距为边框到内容的行高顶部
+            */
+        }
+    /*注意：
+        若盒子为嵌套关系，设置其中一个盒子的外边距，另一盒子也会使用此外边距属性，
+        因此企业开发中应优先使用padding属性定位两盒子间的距离
+        若不要另一盒子继承此属性，可给另一盒子添加边框属性
+    */
+        span{
+            width:100px;
+            height:100px;
+            /* display: inline-block; */
+            background-color: deeppink;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+<p>盒子;所有的标签都可以设置宽高、内边距、外边距、储存内容等</p>
+<div class="box1">
+    <div class="box2">我是行高</div>
+</div>
+<span class="hz2">为什么两个span标签间会产生空隙?</span>
+<span class="hz1">并且添加文字后与上面盒子也产生了距离?</span>
+
+</body>
+</html>

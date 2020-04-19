@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>浮动流-1</title>
+    <style>
+        body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{
+            margin:0;
+            padding:0;
+        }
+        .box1{
+            width:100px;
+            height:100px;
+            background-color: red;
+            float:left;
+            margin-right:10px;
+
+            /*margin:0 auto;
+            此属性在浮动流中无效
+            */
+        }
+        .box2{
+            width:200px;
+            height:200px;
+            background-color: greenyellow;
+            line-height:15px;
+            /*float:right;*/
+        }
+        .box3{
+            width:200px;
+            height:200px;
+            background-color: deepskyblue;
+            float:left;
+        }
+        .box4{
+              width:300px;
+              height:300px;
+              background-color: deeppink;
+              float:left;
+          }
+        .box5{
+            width:300px;
+            height:300px;
+            background-color: mediumpurple;
+            float:left;
+        }
+        .box6{
+            width:300px;
+            height:400px;
+            background-color:yellow;
+
+        }
+        .box7{
+            width:300px;
+            height:100px;
+            background-color:indianred;
+            float:left;
+        }
+        /*
+            浮动排版只对水平方向左或向右对齐
+            在浮动流中margin：0 auto ；属性无法生效使元素水平居中
+            浮动流中不区分块级、行内、行内块级元素，且都可以设置宽高
+            浮动的元素会显示在不浮动元素的上方
+            相同方向的浮动元素，先浮动的元素会显示在前，后浮动的元素靠后
+            不同方向上的浮动元素，左找左，右找右（与上一条原则一致）
+            浮动后的元素由其之前在标准流中的位置决定（浮动前在第几行则在第几行开始浮动）
+            浮动元素的贴靠现象：
+                即当父级盒子宽度不够时，靠右边的浮动元素会找寻其浮动后所靠元素的上一级元素去贴靠
+                直到最后贴靠到父级元素的边框为止（拉伸浏览器边框可观察此现象）
+        */
+    </style>
+</head>
+<body>
+<div class="box1"></div>
+<div class="box2">斯蒂芬·库里（Stephen Curry），1988年3月14日出生于美国俄亥俄州阿克伦（Akron,Ohio）
+    ，美国职业篮球运动员，司职控球后卫，效力于NBA金州勇士队。 [1]
+     </div>
+<!--浮动元素会占用不浮动元素的内容空间，不浮动元素里面的内容会围绕浮动元素排布
+        一般可以用于图文混排-->
+<div class="box3"></div>
+<div class="box4"></div>
+<div class="box5"></div>
+<div class="box6"></div>
+<span class="box7"></span>
+</body>
+</html>

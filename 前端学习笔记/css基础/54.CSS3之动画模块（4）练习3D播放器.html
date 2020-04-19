@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>54.CSS3之动画模块（4）练习3D播放器</title>
+    <style>
+        /* 效果有点小问题，爱心移动会出现损痕路迹 */
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: url("images/jacky/bg.jpg") no-repeat;
+            background-size: cover;
+            overflow: hidden;
+        }
+        ul{
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            bottom: 100px;
+            left: 50%;
+            margin-left:-100px;
+            transform-style: preserve-3d;
+            /* transform: rotateX(-10deg); */
+            /* 同类样式前面的会被后面的覆盖，注意不要重复设置 */
+            animation:sport 6s linear 0s infinite normal;
+        }
+      
+        ul li{
+            list-style: none;
+            width: 200px;
+            height: 200px;
+            font-size: 50px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            text-align: center;
+            line-height:200px;
+            background-color: black;
+        }
+        ul li:nth-child(1){
+            /* background-color: red; */
+            transform: rotateY(60deg) translateZ(200px);
+            /* 旋转之后Z轴也随着改变，因此每次旋转之后，再在改变之后的Z轴上移动200px，最终形成环绕效果图 */
+        }
+        ul li:nth-child(2){
+            /* background-color: green; */
+            transform: rotateY(120deg) translateZ(200px);
+        }
+        ul li:nth-child(3){
+            /* background-color:blue; */
+            transform: rotateY(180deg) translateZ(200px);
+        }
+        ul li:nth-child(4){
+            /* background-color: purple; */
+            transform: rotateY(240deg) translateZ(200px);
+        }
+        ul li:nth-child(5){
+            /* background-color: yellow; */
+            transform: rotateY(300deg) translateZ(200px);
+        }
+        ul li:nth-child(6){
+            /* background-color: pink; */
+            transform: rotateY(360deg) translateZ(200px);
+        }      
+        ul li img{
+            width: 200px;
+            height: 200px;
+            border: 5px solid skyblue;
+            box-sizing: border-box;
+        } 
+        ul:hover{
+            animation-play-state: paused;
+        }
+        ul:hover li img{
+            opacity: 0.5;
+        }
+        ul li:hover img{
+            opacity: 1;
+        }
+        .heart{
+            position: absolute;
+            left: 100px;
+            bottom: 100px;
+            animation: move 6s linear 0s infinite normal;
+        }
+        @keyframes move{
+            0%{
+                left:100px;
+                bottom: 100px;
+                opacity: 1;
+            }
+            20%{
+                left:300px;
+                bottom: 300px;
+                opacity: 0;
+            }
+            40%{
+                left:500px;
+                bottom: 600px;
+                opacity: 1;
+            }
+            60%{
+                left:800px;
+                bottom: 400px;
+                opacity: 0;
+            }
+            80%{
+                left:1200px;
+                bottom: 100px;
+                opacity: 1;
+            }
+            100%{
+                left:800px;
+                bottom: -200px;
+                opacity: 0;
+            }
+        }
+        @keyframes sport{
+           from{
+                transform:rotateX(-10deg) rotateY(0deg) ;
+                /* 固定不变的值放前面（如上若X与Y调换，效果将截然不同） */
+            }
+            to{
+                transform:rotateX(-10deg) rotateY(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><img src="images/jacky/gakki3.jpg" ></li>
+        <li><img src="images/jacky/gakki4.jpg" ></li>
+        <li><img src="images/jacky/gakki5.jpg" ></li>
+        <li><img src="images/jacky/gakki3.jpg" ></li>
+        <li><img src="images/jacky/gakki4.jpg" ></li>
+        <li><img src="images/jacky/gakki5.jpg" ></li>
+    </ul>
+    <img src="images/jacky/xin.png" class="heart">
+<audio src="images/jacky/江哥最爱的歌.mp3" autoplay="autoplay" loop="loop"></audio>
+</body>
+</html>

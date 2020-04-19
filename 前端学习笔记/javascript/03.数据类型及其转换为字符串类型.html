@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>03.数据类型及其转换为字符串类型</title>
+    <script>
+        /*数据类型
+        1.整数常量[整数]number
+        2.实数常量[小数]    number
+        3.字符串常量[引号内的内容]string
+        4.布尔常量[true或者false]Boolean
+        5.null
+        6.undefined
+        数据类型包涵了常量,常量是一种数据类型!
+
+
+        可以用typeof属性来测试数据的类型
+        let res=typeof 123;
+        console.log(res);
+        */
+        /*let res=typeof '我是什么数据类型?';
+        console.log(res);*/
+
+        /*数据类型之间的转换[其他类型转为字符串类型]
+        1.number/boolean/undefied/null数据类型转为字符串[string]类型
+            <1>number>string:使用.toString()的方式转换,并且不会影响原数字类型的值;
+            注意:不能用常量直接使用.toString()方式直接转换,因为常量不可更改
+          例1:
+                let value=123;
+                console.log(value);
+                console.log(typeof value);
+                let str=value.toString();
+                console.log(str);
+                console.log(typeof str);
+            <2>boolean>string:与number类型转换为字符串类型一致
+           例2: let value=true;
+                console.log(value);
+                console.log(typeof value);
+                let str=value.toString();
+                console.log(str);
+                console.log(typeof str);
+            <3>使用String()方式可以将变量/常量/null/undefined都可以变为字符串类型
+                boolean>string
+            例3: let value=undefined;
+                console.log(value);
+                console.log(typeof value);
+                let str=String(value);
+                console.log(str);
+                console.log(typeof str);
+                同理null>string
+            <4>
+            例4: let value=null;
+                console.log(value);
+                console.log(typeof value);
+                let str=String(value);
+                console.log(str);
+                console.log(typeof str);
+            <5>还可以直接在数据后面直接加+''或者+""的方式让数据转换成字符串类型
+            例5:    let value=123+'';
+                console.log(value);
+                console.log(typeof value);
+                
+        */
+        /*例1    let value=123;
+        console.log(value);//开发者工具中数字类型颜色为蓝紫色
+        console.log(typeof value);
+        let str=value.toString();
+        console.log(str);//字符串类型在开发者工具中为灰黑色
+        console.log(typeof str);*/
+
+        /*例2    let value=true;
+        console.log(value);
+        console.log(typeof value);
+        let str=value.toString();
+        console.log(str);
+        console.log(typeof str);*/
+
+        /*let value=undefined;
+        console.log(value);
+        console.log(typeof value);
+        let str=String(value);//代码的含义就是将得到的value值重新定义为字符串类型
+        console.log(str);
+        console.log(typeof str);*/
+        /*例4:
+        let value=null;
+        console.log(value);
+        console.log(typeof value);
+        let str=String(value);
+        console.log(str);
+        console.log(typeof str);*/
+
+        //例5:这种方式的本质也是与例4一样,引用了String()函数;
+        let value=123+'';
+        console.log(value);
+        console.log(typeof value);
+        let str=null+"";
+                console.log(str);
+                console.log(typeof str);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

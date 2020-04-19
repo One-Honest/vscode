@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>46.javascript三大特性之多态[了解]</title>
+    <script>
+        /**
+        1.什么是强类型语言?比如c++,java等编译型语言
+            一般的编译型语言都是强类型语言:要求变量的使用严格符合定义;例如:int num,则num中将来只能够存储整数类型;
+        2.什么是弱类型语言?比如js;
+            一般的解释型语言都是弱类型语言:不会要求变量的使用严格符合定义;例如:let num,则num中将来既能够存储整数类型又能够存储布尔类型等数据;
+
+        3.什么是多态?
+            表示事物 的多种状态;
+            同一件事发生在不同的对象上会产生不同的结果;
+
+        */
+       function Dog(){
+           this.eat=function(){
+               console.log("狗头吃东西");
+           }
+       }
+       function Cat(){
+           this.eat=function(){
+               console.log("猫咪吃东西");
+           }
+       }
+       function feed(pet){//创建一个方法函数;
+           pet.eat();
+       }
+       let dog=new Dog();
+       feed(dog);
+       let cat=new Cat();
+       feed(cat);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

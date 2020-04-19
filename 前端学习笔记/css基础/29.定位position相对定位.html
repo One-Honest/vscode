@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>定位流之相对定位</title>
+    <style>
+        *{
+            margin:0;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+        }
+        .box1{
+            background-color: red;
+        }
+        .box2{
+            background-color: green;
+            position: relative;
+            top: 20px;
+            /* 相对于标准流中的位置移动相应的位置 */
+            /* right:20px; 使用了left就不使用right，同一方向只用一个来设置*/
+            /* bottom: 20px; */
+            left: 20px;
+
+            margin-top:20px;
+            margin-bottom: 20px;
+        }
+        /*  相对定位不脱离标准流
+            会区分块级、行内、行内块级
+            设置margin值会影响布局
+            企业开发中的作用
+            1对元素微调
+            2配合绝对定位使用
+         */
+        .box3{
+            background-color: blue;
+        }
+        span{
+            width: 100px;
+            height:100px;
+            background-color: rgb(225, 255, 93);
+        }
+    </style>
+</head>
+<body>
+  <div class="box1"></div>
+  <div class="box2"></div>
+  <div class="box3"></div>  
+  <span>gwsgewr</span>
+</body>
+</html>

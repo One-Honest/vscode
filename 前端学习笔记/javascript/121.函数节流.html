@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>121.函数节流</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left:50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <script src="tools/tools.js"></script>
+    <script>
+        /* 
+        函数节流也是优化高频执行js代码的一种手段,可以减少代码执行次数,提升网页性能;
+        函数节流的应用场景:oninput/onmousemove/onscroll/onresize等事件;
+        函数节流与函数防抖的区别:函数节流是减少高频操作调用函数的次数(例如调用10次,只执行3-4次,而函数防抖则只执行1次);
+         */
+        //需求:让盒子的宽高永远等于可视区域的一半
+        let oDiv=document.querySelector(".box");
+        function resetSize(){
+            let{width,height}=getScreen();
+            oDiv.style.width=width/2+"px";
+            oDiv.style.height=height/2+"px";
+        }
+        resetSize();
+        /* let timerId=null;
+        let flag=true;
+        window.onresize=function(){
+            if(!flag){
+                return;
+            }
+            flag=false;
+            timerId&&clearTimeout;
+            timerId=setTimeout(function(){
+                flag=true;
+                resetSize();
+                console.log('变化次数');
+            },500)
+        } */
+        window.onresize=throttle(function(){
+            resetSize();
+            console.log('变化次数');
+        },500);
+    </script>
+</body>
+</html>

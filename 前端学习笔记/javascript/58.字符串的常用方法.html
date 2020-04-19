@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>58.字符串的常用方法</title>
+    <script>
+        /*字符串类似于数组:
+        1.获取字符串的长度:length
+            let str="我是一串字符串";
+            console.log(str.length);
+        2.通过索引获取字符串中的某一个字符;
+            console.log(str[1]);或者console.log(str.charAt(1));
+        3.字符串的查找:indexOf(返回索引号) lastIndexOf(返回索引号) includes
+            str.indexOf("串")           str.lastIndexOf("串")   str.includes("串")
+        4.拼接字符串 concat和+
+                str+str1       str.concat(str1) 
+        5截取一段字符串
+            console.log(str.slice(1,3));//截取方法1[特点:包头不包尾]从索引1开始截取到3为止[不包括3]
+console.log(str.substring(1,3));//截取方法2[特点:包头不包尾]从索引1开始截取到3为止[不包括3][企业开发中推荐使用]
+console.log(str.substr(1,3));//截取方法3:从索引1开始截取3个字符串;
+        6.字符串的切割(将字符串转换成数组)
+            数组转换成字符串:Array.join(接收的参数变成分隔字符串的符号);
+            字符串转换成数组:str.split("字符之间相同的分隔符号都可以,字符之间没有分隔符号则直接使用双引号即可")
+        7.[ES6]判断字符串是否以指定字符串开头:
+            str.startsWith("我是");   返回值true或者false;
+        8.[ES6]判断字符串是否以指定字符串结尾:
+            str.endsWith("我是");   返回值true或者false;
+        9.[ES6]字符串模版
+            ES6之前:''或者""定义字符串;
+            ES6新增:``反引号也可以定义字符串=>为了解决将代码转换为字符串时需要添加+号来串联的缺点;
+            let str3=`<ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>`;
+            let name="谢壹诚";
+            let age=26;
+            let str="我的名字是"+name+"我"+age+"岁了";
+        */
+       let str="我是一串字符串=>";
+       console.log(str.length);//获取字符串的长度
+       console.log(str[0]);//获取字符串某一个字符的方法1,缺点:有兼容性问题,只有高级浏览器能够解析;
+    console.log(str.charAt(1));//获取字符串某一个字符的方法2
+       console.log(str.indexOf("串"));//获取字符串中某一个字符的索引;
+       console.log(str.lastIndexOf("串"));//反向获取字符串中某一个字符的索引;
+       console.log(str.includes("串"));//判断字符串中是否含有某个字符;返回true或者false;
+       let str1="我是另外一串字符串";
+    console.log(str+str1);//拼接方法1(企业开发中推荐使用这种方式)
+       console.log(str.concat(str1));//拼接方法2
+
+       console.log(str.slice(1,3));//截取方法1[特点:包头不包尾]从1开始截取到3为止[不包括3]
+    console.log(str.substring(1,3));//截取方法2[特点:包头不包尾]从索引1开始截取到3为止[不包括3][企业开发中推荐使用]
+       console.log(str.substr(1,3));//截取方法3:从索引1开始截取3个字符串;
+       
+       console.log(str.split(""));//字符串的切割
+
+       console.log(str.startsWith("我是"));//判断字符串以指定字符子串开头
+       console.log(str.endsWith("=>"));//判断字符串以指定字符子串结尾
+
+        //将代码转换为字符串,若使用双引号或者单引号将代码转换为字符串,系统会报错;
+       let str3=`<ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>`;
+    console.log(str3);
+    let name="谢壹诚";
+    let age=26;
+    let str2="我的名字是"+name+"我"+age+"岁了";
+
+    let arr=[3,5,7,9];
+    let str6=arr.join("|");
+    console.log(str6);
+    console.log(typeof str6);
+    console.log(str6.split("|"));//字符串的切割
+    </script>
+</head>
+<body>
+</body>
+</html>

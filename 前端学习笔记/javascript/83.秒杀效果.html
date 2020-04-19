@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>83.秒杀效果</title>
+    <link rel="stylesheet" href="fonts/font_5j0195677hg/iconfont.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 280px;
+            height: 330px;
+            background-color: rgb(165, 11, 11);
+            color: aliceblue;
+            margin: 100px auto;
+            text-align: center;
+            padding-top: 40px;
+            box-sizing: border-box;
+        }
+        .box>h2{
+            font-size: 26px;
+        }
+        .box p:nth-of-type(1){
+            margin-top:5px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        .box p:nth-of-type(2){
+            font-size: 45px;
+            margin:15px 0;
+        }
+        .box>.time{
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        .time>div{
+            width:40px;
+            height:40px;
+            background-color: #333;
+            line-height: 40px;
+            text-align: center;
+            font-weight: bold;
+            position: relative;
+        }
+        .time>div::before{
+            content: "";
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: #dd0000;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .time>.day{
+            margin-right: 10px;
+        }
+        .time>.minute{
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>2019年倒计时</h2>
+        <p>To 2020</p>
+        <p class="iconfont icon-lightningbshandian"></p>
+        <p>距离2019年结束还剩</p>
+        <div class="time">
+            <div class="day">00</div>
+            <div class="hour">00</div>
+            <div class="minute">00</div>
+            <div class="second">00</div>
+        </div>
+    </div>
+
+    <script>
+        //1.获取需要操作到的元素
+        let oDay=document.querySelector(".day");
+        let oHour=document.querySelector(".hour");
+        let oMinute=document.querySelector(".minute");
+        let oSecond=document.querySelector(".second");
+        //2.获取时间的差值
+        let remDate=new Date("2020-01-01 00:00:00");//设置截止时间
+        setTime(remDate);//定时器开始之前先将差值赋值给元素;
+        setInterval(() => {//开启定时器,每隔一秒获取一次当前时间
+            //3.将差值赋值给元素
+            this.setTime(remDate);
+        }, 1000);
+
+        //传递差值的方法
+        function setTime(remDate){
+            let obj=grtDifferTime(remDate);
+            //3.将差值赋值给元素
+            oDay.innerText=obj.differDays;
+            oHour.innerText=obj.differHours;
+            oMinute.innerText=obj.differMinutes;
+            oSecond.innerText=obj.differSecond;
+        }
+        
+        //获取差值的方法
+        function grtDifferTime(remDate,curDate=new Date()){
+            //1.得到两个时间之间的毫秒值;
+            let differTime=remDate-curDate;//相当于let differTime=remDate.valueOf()-curDate.valueOf();获得两个时间的毫秒差值
+            //2.得到两者之间的秒差值
+            let differSeconds=differTime/1000;
+            //3.计算两者间的相差的天数;
+            let differDays=parseInt(differSeconds/(60*60*24));//天数取整
+            differDays=differDays>=10?differDays:"0"+differDays;
+            //4.计算两者之间相差的小时
+            let differHours=parseInt(differSeconds/(60*60)%24);
+            differHours=differHours>=10?differHours:"0"+differHours;
+            //5.计算两者之间相差的分钟
+            let differMinutes=parseInt(differSeconds/60%60);//此处parseInt可以用Math.floor代替(向下取整)
+            differMinutes=differMinutes>=10?differMinutes:"0"+differMinutes;
+
+            //6.计算两者之间相差的秒数
+            let differSecond=parseInt(differSeconds%60);
+            differSecond=differSecond>=10?differSecond:"0"+differSecond;
+            //返回差值
+            return {
+                differDays:differDays,
+                differHours:differHours,
+                differMinutes:differMinutes,
+                differSecond:differSecond
+            }
+        }
+    </script>
+</body>
+</html>

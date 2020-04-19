@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>18.循环嵌套规律</title>
+    <script>
+        /*
+        需求:在界面中打印****;
+        
+       for(let i=1;i<=4;i++){
+           document.write("*");
+       }*/
+        /*
+        需求:在界面中打印三行****;
+        for(let j=1;j<=3;j++){
+            for(let i=1;i<=4;i++){
+           document.write("*");
+        }
+        document.write("<br>");
+       }
+        规律:在这里内循环控制列数,外循环控制行数;
+        */
+       //练习1:输出以下图形
+       /*
+       *****
+       ****
+       ***
+       **
+       *
+       */
+      /*规律:尖尖朝下则只需将外循环体的变量的值赋值给内循环体的变量即可;
+       for(let j=1;j<=5;j++){//j每循环一次都会自增;
+            for(let i=j;i<=5;i++){//此处将j的值赋值给i,因为j每循环一次都会自增一次,因此j辅助给i的值越大,则i所处的循环语句中循环的次数越少;
+                document.write("*");
+            }
+        document.write("<br>");
+       }*/
+       //:规律:尖尖朝上则只需将外循环体的变量的值赋值给内循环的条件表达式中的变量即可;
+       for(let j=1;j<=5;j++){//j每循环一次都会自增;
+            for(let i=1;i<=j;i++){//此处将j的值赋值给条件表达式中的变量,因为j每循环一次都会自增一次,因此j赋值给变量的值越大,则i所处的循环语句中循环的次数越来越多;
+                document.write("*");
+            }
+        document.write("<br>");
+       }
+
+       //练习:九九乘法表;
+       /*
+       1
+       12
+       123
+    
+       1
+       22
+       333
+
+       -*****
+       --***
+       ---*
+       */
+      for(b=1;b<4;b++){//1 12 123
+        for(a=0;a<b;a++){
+          document.write(a+1);
+        }
+        document.write("<br/>");
+      }
+      for(c=1;c<4;c++){//1 22 333
+        for(d=0;d<c;d++){
+          document.write(c);
+        }
+        document.write("<br/>");
+      }
+      for(f=1;f<=9;f++){//九九乘法表
+          for(e=1;e<=f;e++){
+              document.write(e+"*"+f+"="+e*f);
+              document.write("&nbsp&nbsp&nbsp");
+          }
+          document.write("<br/>");
+      }
+      for(g=1;g<=3;g++){//倒三角星号打印
+          let w=1;//设置在括号外,循环之后的变量值依然可以调用;
+        //   let h=1;此处h可以不用赋值;
+        for(;w<=g;w++){//第一次循环w自增一次,第二次循环w自增两次,第三次循环w自增三次;
+            document.write("&nbsp");
+          }
+        for(h=w+g-2;h<=5;h++){//此处的w是自增后的w;h只在此循环中使用,因此不用在括号外单独赋值;每一行星号的差是2;第一次循环到此处,w的值为自增一次后的2;
+                              //g的第二次循环因为g值自增为2;因跳出g的循环后w值不可用,w重新赋值为1,且w所在的for语句需要循环两次,w自增两次后的值为3;
+                              //g的第三次循环因为g值自增为3;因跳出g的循环后w值不可用,w重新赋值为1,且w所在的for语句需要循环三次,w自增两次后的值为4;
+            document.write("*");
+          }
+          document.write("<br/>");
+      }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

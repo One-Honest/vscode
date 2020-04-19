@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>62.径向渐变</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 400px;
+            height: 400px;
+            margin: 200px auto;
+            background-color: yellow;
+            border: 1px solid ;
+            /* background: radial-gradient(at 200px 200px, red,yellow); */   
+            /* 径向渐变：由中心向四周渐变[默认]
+            可用at+方位名词（top、right、bottom、left）确定由哪个点开始径向渐变
+            或者at+两个像素【代表定位】确定从哪个点开始径向渐变
+             */
+
+            background: radial-gradient( 400px at top right, red,yellow,orange,skyblue);
+            /*  可在渐变色前加像素来设置渐变的渐变色范围
+            注意：若要确定从哪个点开始渐变，又要设置渐变的范围，需要在at的前面添加设置的范围即可
+
+            径向渐变一般可用于制作图标的高光部分
+            */
+
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

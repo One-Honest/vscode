@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>54.数组的高级API之遍历</title>
+    <script>
+        /*
+        1.用for循环遍历数组
+             let traversal=[1,true,false,null,'注意:字符串需要引号包裹;'];//注意:字符串需要引号包裹;
+            for(i=0;i<traversal.length;i++){
+                console.log(traversal[i]);
+            }
+            console.log(traversal);
+        2.用for in循环遍历数组
+                注意:企业开发中不推荐使用此方法,因为for in循环是专门用于遍历对象的;for in循环遍历无序的数据,而数组是有序的;
+            for(let key in traversal){
+                console.log(traversal[key]);
+            }
+            function Person(){
+            this.name="谢壹诚";
+            this.age=26;
+            this.score=666;
+       }
+       //注意点:对象中的属性是无序的;for in循环遍历无序的数据,而数组是有序的;所以不推荐使用for in循环遍历数组
+       let p=new Person();
+       console.log(p);
+
+       3.使用ES6新增的for of方法遍历数组;
+        let traversal=[1,true,false,null,'注意:字符串需要引号包裹;'];
+        for(let value of traversal){
+            console.log(value);
+        }
+        4.利用Array对象的forEach方法来遍历数组
+            forEach方法会自动调用传入的函数,每次调用都会将遍历到的元素,索引,数组传递给这个函数;
+        let traversal=[1,true,false,null,'注意:字符串需要引号包裹;'];
+        traversal.forEach(function(currentValue,currentIndex,currentArray){
+            console.log(currentValue);
+        });
+        */
+
+    方法4的实现原理:
+        let traversal=[1,true,false,null,'注意:字符串需要引号包裹;'];
+        Array.prototype.myForEach=function(fn){
+            for(let i=0;i<this.length;i++){
+                fn(this[i],i,this);
+            }
+        }
+        traversal.myForEach(function(currentValue,currentIndex,currentArray){
+            console.log(currentValue,currentIndex,currentArray);
+        });
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

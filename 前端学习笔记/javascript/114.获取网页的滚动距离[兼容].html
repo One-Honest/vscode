@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>114.获取网页的滚动距离</title>
+</head>
+<body>
+    <p>我是内容啊</p>
+    <p>我是内容啊</p>
+    <p>我是内容啊</p>
+    <p>我是内容啊</p>
+    <p>我是内容啊</p>
+    <p>我是内容啊</p>
+    <p>我是内容啊</p>
+    <p>我是内容啊</p>
+    <p>我是内容啊</p>
+    <p>我是内容啊</p>
+    <p>我是内容啊</p>
+    <p>我是内容啊</p>
+    <p>我是内容啊</p>
+    <p>我是内容啊</p>
+    <p>我是内容啊</p>
+    <p>我是内容啊</p>
+    <p>我是内容啊</p>
+    <p>我是内容啊</p>
+    <p>我是内容啊</p>
+    <p>我是内容啊</p>
+    <p>我是内容啊</p>
+    <p>我是内容啊</p>
+    <p>我是内容啊</p>
+    <p>我是内容啊</p>
+    <p>我是内容啊</p>
+    <p>我是内容啊</p>
+    <p>我是内容啊</p>
+    <p>我是内容啊</p>
+    <p>我是内容啊</p>
+    <p>我是内容啊</p>
+    <p>我是内容啊</p>
+    <p>我是内容啊</p>
+    <p>我是内容啊</p>
+    <script>
+        window.onscroll=function(){
+           /*  //1.ie9以上的浏览器
+            console.log(window.pageYOffset);
+            //2.标准模式下的浏览器
+            console.log(document.documentElement.scrollTop);
+            //3.混杂模式下的浏览器
+            console.log(document.body.scrollTop); */
+        let{x,y}=getPageScroll();
+        console.log(x,y);
+        function getPageScroll(){
+            let x,y;
+            if(window.pageXOffset){
+                x=window.pageXOffset;
+                y=window.pageYOffset;
+            }else if(document.compatMode==="BackCompat"){
+                x=document.body.scrollLeft;
+                y=document.body.scrollTop;
+            }else{
+                x=document.documentElement.scrollLeft;
+                y=document.documentElement.scrollTop;
+            }
+            return{
+                x:x,
+                y:y
+            }
+        }
+        }
+
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>66.javascript的点击事件</title>
+</head>
+<body>
+    <button>
+        我是按钮
+    </button>
+    <a href="http://www.baidu.com">我是a标签</a>
+<script>
+    /*  1.什么叫事件?
+        事件就是用户与浏览器之间的交互行为;比如:点击,移入移出等;
+        2.如何给元素绑定事件?
+            在JS中所有html标签都可以绑定事件
+            元素.事件名称=function(){};
+            当对应的事件被触发时,就会自动执行function中的代码;
+
+     */
+    let oBtn=document.querySelector("button");
+    oBtn.onclick=function(){
+        confirm("我是按钮我被点击了");
+    }
+    let oA=document.querySelector("a");
+    oA.onclick=function(){
+        confirm("我是a标签系统给我自动绑定了同名点击事件,但我可以另外设置点击事件先执行并且不会覆盖系统绑定的点击事件,系统绑定的点击事件会后被执行");
+        return false;//用我们自定义的点击事件覆盖系统绑定的事件;
+    }
+</script>
+</body>
+</html>

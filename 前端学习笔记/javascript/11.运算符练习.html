@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>11.运算符练习</title>
+    <script>
+        /*
+        1.let value=true;
+          let res=+value;//将value转换为数值类型为1
+          console.log(res);//返回值为1
+        2.let str='123px';//字符串中有非数值类型数据,Number()将其转换为NaN
+          let num=-str;
+          console.log(num);//返回值NaN
+        3.let res=1+NaN;//所有与NaN相加的数据都转换为NaN;
+            console.log(res);//返回值NaN
+        4.let res=3%-10;
+            console.log(res);//返回值3,正负性取决于前者
+        5.let res=2*2*undefined;//所有与NaN相乘的数据都转换为NaN;
+            console.log(res);//返回值NaN
+6.let res=2*2*null;//空 类型null为数值类型中的0
+            console.log(res);//返回值0
+        7.let res=5;
+            res+=2*2;
+            console.log(res);//返回值9
+        8.let res=5;
+            res*=2+2;
+            console.log(res);//返回值20
+        9.let a=5,b,c;
+b=a=c;//赋值运算符的结合性为右
+            console.log(a,b,c);//返回值都是undefined
+10.let res=6==6==6;//关系运算符结合性为左,会先运算前面两个6==6;
+            console.log(res);//返回值false
+        11.let res=1==6>=3;//>=优先级高于==,会先运算6>=3,输出为true;
+            console.log(res);//返回值true
+12.let res=null&&666;//一假则假,非布尔类型数据参与&&运算,表达式A不成立则输出A;
+            console.log(res);//返回值null
+           let res=null||666;//非布尔类型数据参与&&运算,表达式A不成立则输出B;
+            console.log(res);//返回值666
+        13.let res=(1+1,2+2,3+3);//若无括号包裹,则运算无法运行,系统报错;
+            console.log(res);//返回值6
+        14.let a=5;
+            let res1=++a + ++a;//先自增再参加运算,第一个++a自增后为6,第二个++a,因为a自增过后为6,再自增则变为7,所以返回值=6+7=13;
+            console.log(res1);//返回值13
+           let a=5;//先参加运算再自增,第一个a++参加运算的值为5,第二个++a,因为a自增过后为6,所以返回值=5+6=13;
+            let res=a++ + a++;
+            console.log(res);//返回值11
+            console.log(a);//a经过两次自增之后为7;
+        15.需求:要求用户输入一个整数,判断这个数是否是100~200之间的数
+                let num=prompt("请输入一个整数");
+                console.log(num);
+                num>=100&&num<=200?alert("是"):alert("不是");
+        16.需求:要求用户输入两个整数,判断两者大小后输出最大的那个整数
+            let num1=prompt("请输入第一个整数");
+            let num2=prompt("请输入第二个整数");
+            let max=num1>num2 ? num1:num2;
+            alert("最大值是"+max);//有bug:只能比较首字母的大小,例如3与222相比较,则输出的的3是最大值;?[因为三目运算只截取等长的数值来进行比较吗?]
+        17.需求:要求用户输入三个整数,判断三者大小后输出最大的那个整数
+            let num1=prompt("请输入第一个整数");
+            let num2=prompt("请输入第二个整数");
+            let num3=prompt("请输入第二个整数");
+            let max=num1>num2 ? num1:num2;
+            let maxx=max>num3?max:num3;
+            alert("最大值是"+maxx);//有bug:只能比较首字母的大小,例如3与222相比较,则输出的的3是最大值;?[因为三目运算只截取等长的数值来进行比较吗?]
+18.需求:有两个变量,要求交换两个变量中保存的数据
+            第一种方法:
+                let num1=prompt("请输入第一个整数");
+                let num2=prompt("请输入第二个整数");
+                let num3;
+                num3=num1;//注意:此处只交换数值而不要重新定义变量,否则num1的值赋值给num3之后会被清空,系统报错?
+                num1=num2;
+                num2=num3;
+                alert("num1的值是"+num1 +"num2的值是"+num2);
+            第二种方法:
+                let num1=prompt("请输入第一个整数");
+                let num2=prompt("请输入第二个整数");
+                num1=num1+num2;
+                num2=num1-num2;
+                num1=num1-num2;
+                alert("num1的值是"+num1+";" +"num2的值是"+num2);
+
+        */
+        let num1=prompt("请输入第一个整数");
+                let num2=prompt("请输入第二个整数");
+                num1=num1+num2;
+                num2=num1-num2;
+                num1=num1-num2;
+                alert("num1的值是"+num1+";" +"num2的值是"+num2+"为何num1和num2中最小为多少位数后面就会多了多少个0?");//为何num1和num2中最小为多少位数后面就会多了多少个0?
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

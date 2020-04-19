@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>子元素选择器</title>
+    <style>
+      /*  ul>.red>p{
+            color: red;
+        }*/
+      ul>li>p{
+            color: red}
+        /*只会选择下一级（即儿子）的标签，下级的下级不会选中*/
+    </style>
+</head>
+<body>
+<ul>
+    <li class="red"><p>我变红了</p></li>
+    <li>
+        <div>
+            <p>
+                我没变红哦
+            </p>
+        </div>
+    </li>
+    <li></li>
+</ul>
+</body>
+</html>

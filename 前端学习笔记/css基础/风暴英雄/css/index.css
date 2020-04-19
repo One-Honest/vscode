@@ -1,0 +1,276 @@
+/* 背景开始 */
+video{
+    width: 100%;
+    height: 1080px;
+    object-fit: cover;
+    /* 与background-size属性的作用差不多 */
+}
+/* 背景结束 */
+/* 头部开始 */
+.header{
+    width: 1196px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    /* z-index属性让父元素先绝对定位而不会影响子元素的显示 */
+    z-index: 999;
+}
+.header>ul{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    list-style: none;
+    margin-top:89px;
+}
+.header>ul>li{
+    width: 200px;
+    height: 60px;
+    line-height: 60px;
+    float: left;
+    background:linear-gradient(to bottom,#46018c,#0200a1);
+}
+.header>ul>li:nth-child(2){
+    margin-right: 393px;
+}
+.header>ul>li>a{
+    font-size: 18px;
+    color:#fff;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    text-align: center;
+    /* background: url("../images/tm.jpg");运用一个透明的背景制作花纹效果 */
+    border-bottom: 1px solid transparent;
+    box-sizing: border-box;
+    transition: all 1s;
+}
+.header>ul>li>a:hover{
+    border-color: #fff;
+}
+.header>ul>li:nth-of-type(4) a{
+    background-color: rgb(248, 84, 34);
+}
+.header>ul>li:nth-of-type(odd){
+    border-right: 1px solid rgba(255, 255, 255, 0.4);
+    box-sizing: border-box;
+}
+.header>h1{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    padding: 0;
+}
+.header>h1>img{
+    width: 393px;
+}
+/* 头部结束 */
+/* 内容开始 */
+.content{
+    width: 100%;
+    height: 1080px;
+    position: absolute;
+    top: 0;
+    left:0;
+}
+.content>img{
+    width: 400px;
+    position: absolute;
+    top: 350px;
+    left:50%;
+    transform: translateX(-50%);
+}
+.content .list{
+    margin: 0;
+    padding: 0;
+    width: 1010px;
+    /* background-color: orange; */
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    /* overflow: hidden; */
+    z-index: 666;
+}
+.content .list>li{
+    width: 310px;
+    height: 205px;
+    background-color: pink;
+    position: relative;
+}
+.content .list>li:nth-child(1){
+    animation: first 1s linear 1s normal;
+    animation-fill-mode: forwards;
+}
+@keyframes first{
+    from{
+        bottom: 0px;
+    }
+    to{
+        bottom: 120px;
+    }
+}
+.content .list>li:nth-child(2){
+    animation: first 1s linear 2s normal;
+    animation-fill-mode: forwards;
+}
+.content .list>li:nth-child(3){
+    animation: first 1s linear 3s normal;
+    animation-fill-mode: forwards;
+}
+/* .content .list>li:nth-child(2){
+    animation: second 1s linear 2s normal;
+    animation-fill-mode: forwards;
+}
+@keyframes second{
+    from{
+        bottom: 0px;
+    }
+    to{
+        bottom: 120px;
+    }
+}
+.content .list>li:nth-child(3){
+    animation: third 1s linear 3s normal;
+    animation-fill-mode: forwards;
+}
+@keyframes third{
+    from{
+        bottom: 0px;
+    }
+    to{
+        bottom: 120px;
+    }
+} */
+.content .list>li>h3{
+    font-size: 20px;
+    color: #fff;
+    line-height: 50px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    border: 2px solid #2a2658;
+    box-sizing: border-box;
+    background-color: #15112d;
+}
+.content .list>li>a{
+    display: inline-block;
+    width: 100%;
+    border: 2px solid #655fc7;
+    box-sizing: border-box;
+}
+.content .list>li>a>img{
+    width: 100%;
+    height: 150px;
+    vertical-align: bottom;
+}
+/* 内容结束 */
+/* 底部区域开始 */
+.footer{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 502px;
+    background-color: #2a2658;
+    position: absolute;
+    top: 1080px;
+    left: 0;
+    border: 2px solid #655fc7;
+    box-sizing: border-box;
+}
+.footer .footer_in{
+    width: 1000px;
+    height: 422px;
+    /* background-color: pink; */
+    margin: 0 auto;
+}
+.footer .footer_top{
+    padding-top: 125px;
+    padding-bottom: 45px;
+}
+.footer .fl>a{
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    font-size: 14px;
+    margin-right: 10px;
+    /* text-align: center;
+    此处不能用text-align
+属性让子元素居中对齐？     */
+}
+.footer .fl>a>i{
+    display: inline-block;
+    width: 19px;
+    height: 19px;
+    background:url("../images/logo.jpg");
+    background-position: 40px 40px;
+    margin-right: 10px;
+    vertical-align: middle; 
+}
+.footer .fr>span{
+    font-size: 14px;
+    color: #fff;
+    margin: 0 10px;
+}
+.footer .fr>p{
+    height: 30px;
+    line-height: 30px;
+}
+.footer .fr>i{
+    display: inline-block;
+    height: 95px;
+    height: 26px;
+    background-image: url("../images/logo.jpg");
+    background-position: 80px 40px;
+    vertical-align: text-top;
+}
+.footer .fr>b{
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    line-height: 14px;
+    text-align: center;
+    font-size: 12px;
+    background: #2b0473;
+    border: 1px solid #462385;
+    box-sizing: border-box;
+    color: #fff;
+}
+.footer .fl:nth-child(1){
+    margin-right: 75px;
+    /* 注意:企业开发中，元素为左浮动之后，不要再设置margin-left属性，避免出现bug */
+}
+.footer .fl>img{
+    width: 100px;
+}
+.footer .fl>p{
+    color: #ccc;
+    font-size: 14px;
+}
+.footer .fl>p>a{
+    text-decoration: none;
+    color: #ccc;
+}
+.footer .fl>p>a:hover{
+    color: #fff;
+}
+.footer .fl>p>span{
+    
+    margin: 0 10px;
+}
+.footer .bottom{
+    margin-top: 35px;
+}
+.footer .bottom>p{
+    font-size: 12px;
+    line-height: 10px;
+    color: #417aa1;
+    text-align: center;
+}
+/* 底部区域结束 */

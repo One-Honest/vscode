@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+         *{
+            margin:0;
+        }
+       div{
+            width: 100px;
+            height: 100px;
+        }
+        
+        .box1{
+            background-color: red;
+            position: relative;
+            padding: 10px;
+        }
+        .box11{
+            width: 50px;
+            height: 50px;
+            background-color: pink;
+            position: absolute;
+            
+        }
+        .box2{
+            background-color: green;
+            width:2000px;
+        }
+        .box3{
+            background-color: blue;
+            height: 200px;
+            position: absolute;
+            right:0;
+            bottom:0;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        1如果一个绝对定位的元素是以body为参考点，只是以网页首屏的宽高作为参考点，而不是网页的整体宽高为参考点
+        2绝对定位的元素可以占用祖先元素的padding值的位置（ps若是不设置，元素默认与祖先元素设置的padding值相同）
+     -->
+        <div class="box1">
+            <div class="box11"></div>
+        </div>
+        <div class="box2"></div>
+        <div class="box3"></div>
+
+</body>
+</html>

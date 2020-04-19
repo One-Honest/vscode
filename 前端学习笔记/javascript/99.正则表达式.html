@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>99.正则表达式</title>
+    <!-- 
+        正则表达式注意点:
+            1.默认情况下严格区分大小写
+            2.若想不区分大小写,给正则表达式的括号传递两个参数,第一个参数为需要判断的字符串,第二个参数为i;
+            3.默认情况下在正则表达式中一旦匹配就会停止查找;
+     -->
+</head>
+<body>
+    <img src="images/zz1.png" alt="">
+    <img src="images/zz2.png" alt="">
+    <!-- 
+        常用的正则表达式合集:
+     -->
+    <script>
+        /* 
+        什么是正则表达式?正则表达式是对字符串操作的一种逻辑公式;
+        正则表达式的作用:1.在字符串中"查找"是否包含指定的字符串
+                        2.从字符串中"提取"子串
+                        3.对字符串中指定的内容进行"替换"
+        回顾JS中查找/提取/替换字符串的方法:
+        let str="123abc456"
+        //查找:
+        let index=str.indexOf("abc");
+        let index=str.lastIndexOf("abc");
+        let flag=str.includes("123");
+        //提取
+        let startIndex=str.indexOf("a");
+        console.log(str.substr(startIndex,"abc".length));//从a字母开始截取3个字符;
+        console.log(str.slice(1,3));//截取方法1[特点:包头不包尾]从索引1开始截取到3为止[不包括3]
+        //替换
+        str.replace("abc","cba");将abc改为cba;
+         */
+
+        /* //利用正则表达式进行对字符串的查找
+        let str="123abc456";
+        //第一步:创建正则表达式
+        // let reg=new RegExp();
+        //第二步:在括号内指定判断的规则
+        let reg=new RegExp("A","i");//判断是否含有a字符;
+        //第三步:利用正则表达式的test方法匹配需要判断的对象
+        reg.test(str);
+        console.log(reg.test(str));//返回值为true或者false; */
+
+        //练习1查找:判断下面的字符串是否包含日期;
+        let str="abc2019-11-12def2019-11-13hfakfh";
+        //通过构造函数创建正则表达式
+        // let reg=new RegExp("\\d{4}-\\d{1,2}-\\d{1,2}");
+        //也可以通过字面量的方式创建正则表达式
+        let reg=/\d{4}-\d{1,2}-\d{1,2}/g;//在最后加上g可以执行全局匹配(而不是匹配第一个后就停止查找)
+        
+        console.log(reg.test(str));//返回值为true或者false
+
+        //练习2提取:
+        str.match(reg);//返回一个伪数组;并且只会提取查找到的第一个符合正则表达式的字符串
+        console.log(str.match(reg));//返回一个伪数组
+
+        //练习3替换:
+        str.replace(reg,"2020-01-01");
+        console.log(str);
+        console.log(str.replace(reg,"2020-01-01"));
+
+        var str5="Visit W3School!"
+        document.write(str5.search(/i/));//search方法只从头到尾检索第一个查找到的正则表达式,且无法设置;
+    </script>
+</body>
+</html>

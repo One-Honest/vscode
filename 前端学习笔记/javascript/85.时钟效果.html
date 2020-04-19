@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="fonts/jiantou/iconfont.css">
+    <title>85.时钟效果</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .clock{
+            width: 500px;
+            height:500px;
+            background: url("images/clock.png");
+            margin: 50px auto;
+            position: relative;
+        }
+        .box{
+            width:300px;
+            height:300px;
+            background:red;
+            position: absolute;
+            left: 50%;
+            bottom:100px;
+            transform: translateX(-50%);
+        }
+        .hour, .minute, .second{
+            width: 24px;
+            height:300px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background: url("images/zhen.jpg") no-repeat;
+            top: 100px;
+            transform-origin:10px 72px;
+        }
+        /* .hour{
+            transform:rotate(30deg);
+            
+        }
+        .minute{
+            transform:rotate(60deg);
+        }
+        .second{
+            transform:rotate(90deg);
+        } */
+    </style>
+</head>
+<body>
+    <div class="clock">
+        <div class="box">
+            <div class="hour"></div>
+            <div class="minute"></div>
+            <div class="second"></div>
+        </div>
+    </div>
+    <script>
+        class TimeClock{
+            constructor(){
+                this.oHour=document.querySelector(".hour");
+                this.oMinute=document.querySelector(".minute");
+                this.oSecond=document.querySelector(".second");
+                this.date=new Date();
+                this.showTime=setInterval(() => {
+                    this.date=new Date();
+                    this.setTime()
+                }, 1000);
+            }
+            setTime(){
+            //根据当前时间设置时分秒针的旋转度数
+            this.oHour.style.transform=`rotate(${this.date.getHours()*30}deg)`;
+            this.oMinute.style.transform=`rotate(${this.date.getMinutes()*6}deg)`;
+            this.oSecond.style.transform=`rotate(${this.date.getSeconds()*6}deg)`;
+            }
+        }
+        let timeClock=new TimeClock();
+        timeClock.setTime();
+
+        /* let oHour=document.querySelector(".hour");
+        let oMinute=document.querySelector(".minute");
+        let oSecond=document.querySelector(".second");
+        setTime()
+        setInterval(() => {
+            setTime()
+        }, 1000);
+        function setTime(){
+            //获取当前时间
+            let date=new Date();
+            //根据当前时间设置时分秒针的旋转度数
+            oHour.style.transform=`rotate(${date.getHours()*30}deg)`;
+            oMinute.style.transform=`rotate(${date.getMinutes()*6}deg)`;
+            oSecond.style.transform=`rotate(${date.getSeconds()*6}deg)`;
+        } */
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>94.事件执行的三个阶段</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .father{
+            width: 400px;
+            height: 400px;
+            background-color: red;
+        }
+        .son{
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+    <img src="images/事件冒泡.png" alt="">
+    <script>
+        /* 
+        事件执行的三个阶段:捕获阶段[从外向内的传递事件]>当前目标阶段[执行回调函数]>冒泡阶段[从内向外的传递事件]
+        注意点:三个阶段只能有两个阶段同时被执行[捕获+当前]或者[当前+冒泡],js发展遗留问题;
+        onclick方式默认执行的是[当前+冒泡]并且不能设置[捕获+当前],只有addEventListener方法才可以设置[捕获+当前];
+
+         */
+        let oFather=document.querySelector(".father");
+        let oSon=document.querySelector(".son");
+        oFather.addEventListener("click",function(){
+            console.log("father");
+            alert("父亲的点击事件");},false);
+        //addEventListener中可以接收true和false参数,给父元素添加true参数执行的是[捕获+当前];false执行的是[当前+冒泡];
+        oSon.addEventListener("click",function(){
+            console.log("son");
+            alert("儿子的点击事件");},false);//给子元素添加true或者false属性,执行的都是[当前+冒泡];
+    </script>
+</body>
+</html>

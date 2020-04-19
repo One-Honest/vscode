@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>兄弟选择器</title>
+    <style>
+        a+p{
+            color:red;
+        }
+        /*相邻兄弟选择器，只会选择相邻的兄弟标签*/
+        a~h2{
+            color:blue;
+        }
+        /*同级兄弟选择器可以选中跟a同级该标签名称的所有相同标签*/
+    </style>
+</head>
+<body>
+<div>
+    <a href="#">我是默认色</a>
+    <p>我会变红额</p>
+    <p>我不会变红</p>
+    <p>我不会变红</p>
+</div>
+<a href="#">我是默认色</a>
+<h1>我不会变蓝额</h1>
+<span>
+    <p>我可不会变蓝哦，我不是a的兄弟</p>
+    <h2>我不会变蓝因为我与a标签不同级</h2>
+</span>
+<h2>我可以变蓝</h2>
+<h2>我也可以变蓝</h2>
+</div>
+</body>
+</html> 

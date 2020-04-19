@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>74.表单事件(表单效果)待完善</title>
+</head>
+<body>
+    <form action="">
+        <input type="text" placeholder="请输入搜索关键字">
+        <input type="submit" placeholder="搜索">
+    </form> 
+
+    <script>
+        let oText=document.querySelector("input[type=text]");
+        let oSubmit=document.querySelector("input[type=submit]");
+        //注意点:JS中当标签名称与取值一样时会返回true或者false
+        //需求:当输入框没有内容时禁用搜索按钮;
+        oSubmit.disabled=true;
+        //监听text表单的内容
+        oText.oninput=function(){
+             oSubmit.disabled=this.value.length===0;//等于0时this.value.lengtph===0为真(true),则oSubmit.disabled=true;submit则被禁用;
+        }
+        //注意点:通过代码给input设置数据不能触发oninput事件
+        // oText.value="666";
+    </script>
+</body>
+</html>

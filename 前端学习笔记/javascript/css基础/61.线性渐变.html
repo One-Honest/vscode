@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>61.线性渐变</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: black;
+        }
+        .first{
+            width: 300px;
+            height: 200px;
+            border: 1px solid  ;
+            box-sizing: border-box;
+            margin: 200px auto;
+            /* background:linear-gradient(to top,red,pink) ; */
+            background: linear-gradient(45deg,pink 50px,purple 160px ,red 300px);
+        }
+        /* linear-grradient属性默认为从上至下的渐变
+        取值有： 
+        to top【由下至上】to bottom【由上至下（默认）】
+        to left【由右至左】 to right【由左至右】
+        deg【往多少度的方向渐变】
+
+        注意点:1.至少設置两种颜色
+            2.渐变色的范围可以设置
+            设置格式：颜色 范围
+            除了第一个范围设置是设置纯色的范围，后面的都是设置渐变色的范围
+            最后一个颜色的纯色范围等于渐变方向范围减去渐变范围
+         */
+         .train{
+             width: 600px;
+             height: 200px;
+             font-size: 150px;
+             font-weight: bold;
+             line-height: 200px;
+             border: 1px solid yellowgreen;
+             margin: 200px auto;
+             /* color: aquamarine; */
+             background: linear-gradient(-45deg,transparent 100px,white 150px,white 180px,transparent 220px);
+             background-position: -450px 0;
+             background-repeat: no-repeat;
+             color: rgba(255, 255, 255, 0.3);
+             -webkit-background-clip:text;
+             transition: all 3s;
+/*  
+             background: skyblue;
+             color: transparent;
+             -webkit-background-clip:text; */
+             /*-webkit-background-clip 将背景的范围裁剪为文字的范围
+             -webkit-background-clip是私有属性
+             -webkit-animation、-moz-animation、-o-animation、-ms-animation 表示分别兼容：谷歌，火狐，Opera，IE等各浏览器。
+              */
+         }
+         .train:hover{
+             background-position: 450px 0;
+         }
+
+        .klok{
+            width: 800px;
+            height: 78px;
+            line-height: 78px;
+            font-size: 75px;
+            font-weight: bold;
+            border: 1px solid white;
+            margin: 100px auto;
+            text-indent:1em;
+
+            background-color: pink;
+            color: transparent;
+            -webkit-background-clip: text;
+
+            background-image: url("images/ad6.jpg") ;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: -770px 0;
+            animation: sport 5s linear 0s infinite  normal;
+        }
+        @keyframes sport {
+            from{
+                background-position: -770px 0;
+            }
+            to{
+                background-position: 0 0;
+            }
+        }
+        .gakki{
+            text-align: center;
+            width: 1000px;
+             height: 200px;
+             font-size: 150px;
+             font-weight: bold;
+             line-height: 200px;
+             border: 1px solid yellowgreen;
+             margin: 200px auto;
+             color: rgba(138, 252, 46, 0.3);
+             background: linear-gradient(-45deg,transparent 120px,white 170px,white 200px,transparent 240px);
+             background-position: -850px 0;
+             background-repeat: no-repeat;
+             -webkit-background-clip: text;
+             transition: all 3s;
+        }
+        .gakki:hover{
+            background-position:0;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="first"></div>
+    <div class="train">
+        新垣结衣
+    </div>
+    <div class="gakki">
+        Aragakki Yui
+    </div>
+    <div class="klok">
+        新垣结衣唱小小恋歌
+    </div>
+</body>
+</html>

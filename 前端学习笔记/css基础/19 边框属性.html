@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>边框属性</title>
+    <style>
+        div{
+            width:200px;
+            height: 200px;
+            margin: 10px;
+        }
+        .box1{
+            border:5px solid red;
+            /* width style color */
+        }
+        .box2{
+            border-top:5px dashed red;
+            border-right:5px dashed  green;
+            border-bottom:5px dashed  blue;
+            border-left: 5px dashed deeppink;
+        }
+        .box3{
+            border-width: 5px 5px 10px 10px;
+            border-style:solid dashed;
+            border-color:red blue;
+        }
+        .box4{
+            border-top-width:5px;
+            border-top-style:solid;
+            border-top-color:darkred;
+            border-bottom-width:5px;
+            border-bottom-style:solid;
+            border-bottom-color:darkred;
+        }
+        .box5{
+            border: 20px solid pink;
+            border-bottom: none;
+            border-color: pink white;
+            width: 0;
+            height: 0;
+        }
+        /*设置单条边框的属性 较少用*/
+    </style>
+</head>
+<body>
+<div class="box1"></div>
+<div class="box2"></div>
+<div class="box3"></div>
+<div class="box4"></div>
+<div class="box5"></div>
+
+</body>
+</html>

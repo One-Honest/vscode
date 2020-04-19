@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>获取元素宽高的方法-offsetWidthHeight</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            padding:50px;
+            border:50px solid;
+            background-color: red;
+            background-clip: content-box;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        /*1.通过getComputedStyle(oDiv)方式获取元素的宽高(不包括内边距和边框)
+            1.既可以获取通过css设置的元素宽高也可以获取通过js设置的元素宽高
+            2.不能设置元素的宽高;
+            3.缺点:浏览器兼容问题:只支持ie9以上的浏览器;
+        */
+       let oDiv=document.querySelector("div");
+        //oDiv.style.width="150px";
+        /*  let style=getComputedStyle(oDiv);
+        console.log(style.width);
+        console.log(style.height); */
+
+        //2.通过元素的currentStyle属性也可以获取元素的宽高(不包括元素的内边距和边框);
+        //1.只在旧版ie浏览器支持 ;2.不能设置元素的宽高;3.既可以获取通过css设置的元素宽高也可以获取通过js设置的元素宽高     
+       /*  let style=oDiv.currentStyle;
+        console.log(style.width);
+        console.log(style.height); */
+
+        //3.通过元素的style属性获取元素的宽高(只能获取通过js设置的宽高,不包括元素的内边距和边框);1.能设置元素的宽高;2.没有浏览器兼容性的问题
+        /* oDiv.style.width="150px";
+        oDiv.style.height="150px";
+        console.log(oDiv.style.width);
+        console.log(oDiv.style.height); */
+
+        /*4通过元素的offset属性获取元素的宽高(包括元素的内边距和边框)
+            1.没有兼容性问题 2.不能设置元素的宽高 3.既可以获取通过css设置的元素宽高(外链和内联)也可以获取通过js设置(行内)的元素宽高
+        */
+        oDiv.style.width="150px";
+        oDiv.style.height="150px";
+        console.log(oDiv.offsetWidth);
+        console.log(oDiv.offsetHeight);
+    </script>
+</body>
+</html>

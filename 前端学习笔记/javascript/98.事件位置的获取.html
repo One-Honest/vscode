@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>98.事件位置的获取</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        /* div{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            margin-left: 100px;
+            margin-top: 100px;
+        } */
+    </style>
+</head>
+<body>
+    <!-- <div id="box"></div> -->
+    <img src="images/curry.gif" alt="">
+    <script>
+        /* event事件中包含的属性:
+        offsetX/offsetY:事件触发时相对于元素自身的位置;
+        clientX/clientY:事件触发时相对于浏览器可视区域的位置;注意:可视区域不包括滚动出去的范围;
+        pageX/pageY:事件触发时相对于整个网页的位置;注意:包括滚动出去的范围;
+        screenX/screenY:事件触发时相对于显示屏的位置
+         */
+        /* var oDiv=document.querySelector("#box");
+        oDiv.onclick=function(event){
+            event=event||window.event;
+            console.log("offsetX",event.offsetX);
+            console.log("offsetY",event.offsetY);
+            console.log("clientX",event.clientX);
+            console.log("clientY",event.clientY);
+             console.log("pageX",event.pageX);
+            console.log("pageY",event.pageY);
+            console.log("screenX",event.screenX);
+            console.log("screenY",event.screenY);
+        } */
+
+        //练习1
+        //注意点:event.clientX,event.clientY为所有浏览器所支持;而pageX/pageY仅为ie9以上的浏览器所支持;
+        let oImg=document.querySelector("img");
+        let style=getComputedStyle(oImg);//获取对象的属性
+        document.body.onmousemove=function(event){
+            event=event||window.event;
+            console.log(event.clientX,event.clientY);
+            oImg.style.marginLeft=event.clientX-parseFloat(style.width)/2+"px";
+            oImg.style.marginTop=event.clientY-parseFloat(style.height)/2+"px";
+        }
+    </script>
+</body>
+</html>

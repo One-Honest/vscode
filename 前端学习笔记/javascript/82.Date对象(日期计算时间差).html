@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>82.Date对象(日期)</title>
+</head>
+<body>
+    
+    <script>
+        /* 
+        1.如何获取当前时间?
+        let date=new Date();
+        2.获取当前时间距离1970年1月1日(世界标准时间)起的总毫秒值
+        date.valueOf()
+        Date.now();
+        3.创建指定的时间
+        let pointDate=new Date("2019-10-31 18:00:00");
+        或者let pointDate=new Date(2019,10,31,18,00,00);这种方式月份会多一个月并且无法识别31日;
+        4.单独获取年月日时分秒
+        let date=new Date();
+        console.log(date.getFullYear());
+        console.log(date.getMonth()+1);//注意点:获取的月份会少 一个月
+        console.log(date.getDate());
+        console.log(date.getHours());
+        console.log(date.getMinutes());
+        console.log(date.getSeconds());
+        5.时间的格式化
+        function formartDate(date){
+            return `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}&lt;${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+        }
+        let res=formartDate(date);
+        console.log(res);
+         */
+        //练习:计算时差:下面两个时间相差10天1小时29分钟20秒;
+        let curDate=new Date("2020-4-19 22:30:20");
+        let remDate=new Date("2020-4-30 00:00:00");
+        //1.得到两个时间之间的毫秒值;
+        let differTime=remDate-curDate;//相当于let differTime=remDate.valueOf()-curDate.valueOf();获得两个时间的毫秒差值
+        //2.得到两者之间的秒差值
+        let differSeconds=differTime/1000;
+        //3.计算两者间的相差的天数;
+        let differDays=parseInt(differSeconds/(60*60*24));//天数取整
+        //4.计算两者之间相差的小时
+        let differHours=parseInt(differSeconds/(60*60)%24);
+        //5.计算两者之间相差的分钟
+        let differMinutes=parseInt(differSeconds/60%60);
+        //6.计算两者之间相差的秒数
+        let differSecond=parseInt(differSeconds%60);
+        console.log(`时间差为:${differDays}天${differHours}小时${differMinutes}分钟${differSecond}秒`);
+    </script>
+</body>
+</html>

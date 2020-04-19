@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>04.其他数据类型转换为 数值类型</title>
+    <script>
+        /*string/boolean/undefied/null数据类型转为数值[number]类型
+        <1>string>number
+            let str='123';
+            console.log(str));
+            console.log(typeof str);
+            let num=Number(str);
+            console.log(num);
+            console.log(typeof num);
+        <2>boolean>number
+            let bool=Number(true);
+            console.log(bool);
+            console.log(typeof bool);
+        <3>null>number
+            let boole=Number(null);
+            console.log(boole);
+            console.log(typeof boole);
+        <4>undefined>number
+            let boolea=Number(undefined);
+            console.log(boolea);
+            console.log(typeof boolea);
+
+        */
+        let str='123';
+        console.log(str);
+        console.log(typeof str);
+        let num=Number(str);
+        console.log(num);
+        console.log(typeof num);
+        let numb=Number("456");//可以直接放数值
+        console.log(numb);
+        console.log(typeof numb);
+        let numbe=Number("");//若没有数据放入或数据为空格,返回值都为0;
+        console.log(numbe);
+        console.log(typeof numbe);
+        let number=Number('12px');//若放入的数据还有其他类型数据,则返回NaN即Not a Number
+        console.log(number);
+        console.log(typeof number);
+
+        let bool=Number(true);//布尔类型true为数值类型中的1,false则为0;
+        console.log(bool);
+        console.log(typeof bool);
+        let boole=Number(null);//空 类型null为数值类型中的0;
+        console.log(boole);
+        console.log(typeof boole);
+
+        let boolea=Number(undefined);//未定义类型undefined类型转换为数值类型返回值为NaN
+        console.log(boolea);
+        console.log(typeof boolea);
+
+    //通过+或-号也可以将其他数据类型转换为数值类型,但减号会改变数值的正负性,因此多用+号转换;
+        let stri='我是字符串类型,通过+-号将其他数据类型转换为数值类型';
+        console.log(stri);
+        console.log(typeof stri);
+        let numbb=+'';//+或-号本质也是引用了Number()函数
+        console.log(numbb);
+        console.log(typeof numbb);
+
+        let strii='我是字符串类型通过加减号将其他数据类型转换为数值类型';
+        console.log(strii);
+        console.log(typeof stri);
+        let numbbe=+strii;//+或-号本质也是引用了Number()函数
+        console.log(numbbe);//若所赋值的数据不为数据类型,则返回NaN
+        console.log(typeof numbbe);
+
+
+    //前面两种方式都有弊端,当赋值不为数据类型时,返回的是NaN
+    //因此用parseInt()或parsesFloat()函数可解析一个字符串,并返回一个整数
+    //注意1,parseInt()或parsesFloat()方式从左到右提取,遇到非数值类型就停止,例如,当下例赋值为:PX3.14PX则无法提取数值,返回NaN
+    let strri='3.14px';
+        console.log(strri);
+        console.log(typeof strri);
+        let numbbee=parseInt(strri);//这种方式可提取数据中 整数 的数值类型
+        //let numbbee=parseFloat(strri);这种方式则可以提取包括整数在内的实数数值类型;
+        console.log(numbbee);//若所赋值的数据不为数据类型,则返回NaN
+        console.log(typeof numbbee);
+     //注意2,parseInt()或parsesFloat()将输入的值当做字符串,所以当输入的数据为布尔类型,返回NaN
+        let strrii='true';
+        console.log(strrii);
+        console.log(typeof strrii);
+        let numbbeee=parseInt(strrii);
+        console.log(numbbeee);//若所赋值的数据不为数据类型,则返回NaN
+        console.log(typeof numbbeee);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

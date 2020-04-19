@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>118.橱窗展示效果</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 800px;
+            height:330px;
+            margin: 100px auto;
+            border: 1px solid;
+            /* box-sizing: border-box; */
+            position: relative;
+            overflow: hidden;
+        }
+        ul{
+            /* height:300px; */
+            list-style: none;
+            /* display: flex; */
+            position: relative;
+            
+        }
+        ul>li{
+            width: 670px;
+            float: left;
+        }
+        ul img{
+            vertical-align: top;
+        }
+        .progress{
+            width: 100%;
+            height: 30px;
+            background-color: #ccc;
+            position:absolute;
+            left: 0;
+            bottom: 0;
+        }
+        .line{
+            height:100%;
+            border:1px solid;
+            border-radius: 15px;
+            background-color: skyblue;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul>
+            <li><img src="images/ad1.jpg" alt=""></li>
+            <li><img src="images/ad2.jpg" alt=""></li>
+            <li><img src="images/ad3.jpg" alt=""></li>
+            <li><img src="images/ad4.jpg" alt=""></li>
+            <li><img src="images/ad5.jpg" alt=""></li>
+            <li><img src="images/ad1.jpg" alt=""></li>
+            <li><img src="images/ad2.jpg" alt=""></li>
+            <li><img src="images/ad3.jpg" alt=""></li>
+            <li><img src="images/ad4.jpg" alt=""></li>
+            <li><img src="images/ad5.jpg" alt=""></li>
+        </ul>
+        <div class="progress">
+            <div class="line"></div>
+        </div>
+    </div>
+    <script>
+        //1.获取操作元素ul
+        let oUl=document.querySelector("ul");
+        let oItems=document.querySelectorAll("ul>li");
+        let oBox=document.querySelector(".box");
+        let oProgress=document.querySelector(".progress");
+        let oLine=document.querySelector(".line");
+        //2.计算ul的宽度
+        let ulWidth=oItems[0].offsetWidth*oItems.length;
+        console.log(oItems[0].offsetWidth);
+        //3.设置ul的宽度
+        oUl.style.width=ulWidth+"px";
+        //4.计算滚动条的宽度:滚动条的宽度=容器的宽度/内容的宽度*滚动条的范围
+        let  lineWidth=oBox.offsetWidth/ulWidth*oProgress.offsetWidth;
+        //5.设置滚动条的宽度
+        oLine.style.width= lineWidth+"px";
+        //6.计算滚动条最大滚动距离
+        let maxLineX=oProgress.offsetWidth-lineWidth;
+        //7.计算图片的 最大滚动距离
+        let maxImgX=oBox.offsetWidth-ulWidth;
+        //监听鼠标的按下事件
+        oLine.onmousedown=function(event){
+            event=event||window.event;
+            //获取滚动条当前的位置
+            let begin=parseFloat(oLine.style.left)||0;
+            //1.获取鼠标在按下时滚动条中位置
+            let mouseX=event.pageX-oBox.offsetLeft;
+            //7.监听鼠标的移动事件
+            oLine.onmousemove=function(event){
+                event=event||window.event;
+            //2.获取鼠标在滚动条中移动后的位置
+            let moveMouseX=event.pageX-oBox.offsetLeft;
+            //3.计算移动后的偏移位
+            let offsetX=moveMouseX-mouseX+begin;
+            //4.安全检验
+            offsetX=offsetX<0?0:offsetX;
+            offsetX=offsetX>maxLineX?maxLineX:offsetX;
+            //5.将偏移位设置给滚动条
+            oLine.style.left=offsetX+"px";
+            //6.计算图片的滚动距离:滚动条滚动的距离/滚动条最大滚动=图片的滚动距离/图片最大的滚动距离;
+            let imgOffsetX=offsetX/maxLineX*maxImgX;
+            //7.重新设置图片的位置
+            oUl.style.left=imgOffsetX+"px";
+            }
+        }
+        document.onmouseup=function(){
+            oLine.onmousemove=null;
+        }
+    </script>
+</body>
+</html>

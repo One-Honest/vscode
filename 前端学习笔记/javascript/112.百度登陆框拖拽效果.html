@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>112.百度登陆框拖拽效果</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        p{
+            background-color: skyblue;
+            text-align: center;
+            width: 65px;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        .mask{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: rgba(0,0,0,0.5);
+            display: none;
+        }
+        .login{
+            width: 300px;
+            height:400px;
+            background: url("images/baidu.png") no-repeat;
+            background-size:contain;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            display: none;
+            cursor:move;
+        }
+        .login>span{
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <p>登录</p>
+    <a href="https://www.baidu.com">百度首页</a>
+    <div class="mask"></div>
+    <div class="login">
+        <span></span>
+    </div>
+    <script>
+        //1.获取需要操作的元素
+        let oBtn=document.querySelector("p");
+        let oMask=document.querySelector(".mask");
+        let oLogin=document.querySelector(".login");
+        let oSpan=document.querySelector("span");
+        //2.监听元素的点击事件
+        oBtn.onclick=function(){
+            oMask.style.display="block";
+            oLogin.style.display="block";
+        }
+        oSpan.onclick=function(){
+            oMask.style.display="none";
+            oLogin.style.display="none";
+        }
+        //3.监听登录框的鼠标按下和移动事件
+        oLogin.onmousedown=function(event){
+            event=event||window.event;
+            //1.计算pageX与ofssetLeft之间的差值(不会随鼠标的移动而变化)
+            let x=event.pageX-oLogin.offsetLeft;
+            let y=event.pageY-oLogin.offsetTop;
+            //2.监听登陆框内的鼠标移动事件
+            oLogin.onmousemove=function(event){
+                console.log(x);
+                event=event||window.event;
+                //3.计算鼠标移动后的offsetX/Y;
+                let offsetX=event.pageX-x;
+                let offsetY=event.pageY-y;
+                //4重新设置登陆框的位置
+                oLogin.style.left=offsetX+"px";
+                oLogin.style.top=offsetY+"px";
+            }
+        }
+        oLogin.onmouseup=function(){
+            oLogin.onmousemove=null;
+        }
+    </script>
+</body>
+</html>

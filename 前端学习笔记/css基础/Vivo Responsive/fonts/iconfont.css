@@ -1,0 +1,25 @@
+@font-face {font-family: "iconfont";
+  src: url('iconfont.eot?t=1586875753551'); /* IE9 */
+  src: url('iconfont.eot?t=1586875753551#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAO8AAsAAAAAB/gAAANtAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDBgqDYIMuATYCJAMMCwgABCAFhG0HNxv1BsiOwzhGXOIlduUQBKgzT5aiuMoj0Vhgnl0C2pg24DzuBdw6+/q13/6P6XTb6ZhJPtl35++e3OGRLFo/0xlCJ3mDCKFxcDn+kQc4z7LAstDGnDTWxADjgAIaa1OYWAFii3rNxEKzLh6HAAxJtJDr6FrZgXIUeJwAxOIFjgHlFR1qIFNgI9AdSxViLx5sa5v1Ftijfi9+UyZssPBI8EnD587aMPGt+Ntx6bgOk6WDs50FcFaBBAoAFIipnbbxFGXBAoowkax4OFGjEFhbeVwXFC9W6Iv+8SwQGpweAEAOhCz4VszoEPDt+AtYAEgANGADp4HXoIpYepMOCwgJSUqOClz2qn+/r2/P79/p7d3t718fMz6zzNaSffi8339iLj+NEyeeZfsuPQHn8Vhz+2MDj596ffe+NIvTnw93XIkf9yDEusOHL0aMvt0eNfbemO0RByO5ixzzNGOAebTuILZ7Yt7hiMr8iJyDOJG5h3w7oqPzjxw+XAIW59CODaccPtz/+tLl0KPO+r8L3Kd6/UVnibr3B6Z1c1Yc/+0ruId3yocPJRLvtDkgKnKoPReypOANIJpsR0kS4fq4R0uunwnycur6kht7Ar1Be8r2/qw/c3PayTSlPfWbUsZn5lPhu3iX8carwvyBWobFthU36GcNk8SeYG1rXS6xb35xET+haLhF6mTI65LxRR5J2g4ywu84byrvmjfh4tTcR0wHAPelfCpbXRcUVtL/PA95ra1wWl3Df9unABh69M9TYheXv1TIVgD7bu0C/p5esYkoFmK9VKGMwUoBSBz0u6nEYAAX0xXG33JHJFBYBLbLB7DwkggSmwxEEQrAg48K0Ng0gyGf+dU+wpEUIdQwII9zBIIQnsEiiGcgCeELUYRf8BDFP2hChATDWBG+pY8sscC0ryRDk40zj3CBxWNGjbpSZ26Rk4aGLAsVaY+k8jxYWlRSj8xTTHKLGasyp2u1ZjhX8gi70GkUhhyXS+6Tpdvma50MFRfP7XpT2yweQSXtSAgDDWGDmByBeFhwYphoralsfH8LwiElxEAONIwY9yAkCq9zpJM2OiYg87J4UsOrvKLIcOhCo2EgDAknAplDFiIkQQ6SdA/yISw0bbgL/AlDtBvN2FRZ2/GK6Pm2AQa8pxSWkEKhVy1LVcqL1y7IOAAAAAA=') format('woff2'),
+  url('iconfont.woff?t=1586875753551') format('woff'),
+  url('iconfont.ttf?t=1586875753551') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('iconfont.svg?t=1586875753551#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-sousuo:before {
+  content: "\e62f";
+}
+
+.icon-vivo:before {
+  content: "\e69a";
+}
+

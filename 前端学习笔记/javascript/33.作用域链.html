@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>33.作用域链</title>
+    <script>
+        /*了解作用域链,最好将ES6之气与ES6之后分开研究
+            1.ES6之前通过var定义变量,并且没有块级作用域;只区分函数{}外是全局变量,函数{}内为局部变量;
+            ES6之前的作用域链:
+                1.全局作用域又称为0级作用域,函数开启一个新的作用域,即函数外的作用域为0级作用域,函数内的为1级作用域;
+                    函数内再定义函数就会开辟2级作用域,以此类推,最终形成0>1>2>3>4...这样的作用域链;
+                2.除0级作用域外,其他作用域等于上一级作用域+1;
+                3变量在作用域中的查找规则:
+                    1.先在当前作用域找,找不到再去上一级作用域查找;
+                    2.因此类推直到查找到0级作用域,若还是查找不到系统会报错;
+                        var num=123;
+                        function demo(){
+                            var num=456;
+                            function test(){
+                                var num=789;
+                                console.log(num);
+                            }
+                            test();//调用函数才会输出;
+                        }
+                        demo();
+2.ES6之后通过let定义变量,新增了块级作用域,但函数{}内通过let定义的变量都是局部变量;
+              与ES6之前的不同点是ES6不仅可以通过函数开启一个新的作用域,用代码块也可以开启一个新的作用域;
+              查找的规则与ES6之前一致;
+              var num=123;
+                {//代码块开启1级作用域;
+                  var num=456;
+                    function test(){
+                     var num=789;
+                     console.log(num);
+                    }
+                    test();//调用函数才会输出;
+                }
+        */
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

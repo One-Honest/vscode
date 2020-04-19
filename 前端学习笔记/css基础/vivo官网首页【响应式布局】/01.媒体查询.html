@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>1.媒体查询</title>
+    <!-- 什么是媒体查询？
+            1.媒体查询就是获取浏览器当前的宽度之后，根据不同的宽度设置元素的不同样式
+            2.注意点：不适合用于结构较复杂的网页
+            3.媒体查询的样式：
+            media即媒体的意思，也可理解为当或者如果。。。就。。。
+                内联式：@media 条件{}
+                外链式：     <link rel="stylesheet" href="xxxxxx.css" media="条件">
+                @import url("phone.css") screen and (max-width:360px);//不建议使用,会增加HTTP请求影响加载速度;
+     -->
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <style>
+         *{
+             margin: 0;
+             padding: 0;
+         }
+         /* 代码表示：当前网页只有在电脑平板或手机上显示并且宽度大于等于1200px，才执行大括号里面的代码 */
+         @media screen and (min-width: 1200px) {
+             /* 此处的screen and可省略,默认关键字为all and,即所有属性,若非需针对特定媒体类型,省略即可*/
+             div{
+                width: 500px;
+                height: 500px;
+                background-color: red;
+             }   
+         }
+         @media screen and (max-width: 1199px) {
+             div{
+                width: 400px;
+                height: 400px;
+                background-color: pink;
+             }   
+         }
+         @media screen and (max-width: 768px) {
+             div{
+                width: 200px;
+                height: 200px;
+                background-color: skyblue;
+             }   
+         }
+     </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

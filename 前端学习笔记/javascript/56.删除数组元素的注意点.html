@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>56.删除数组元素的注意点</title>
+    <script>
+        /*  
+
+        */
+       //要求:遍历的同时删除数组的所有元素;
+       //删除数组元素的两种方式:1.arr.splice(0,2);从第几个开始删除几个元素
+                            //2.delete arr[2];删除第几个元素;只接收一个索引号,若同时多个索引号则只接收最后一个;并且数组的长度不变;
+       let arr=[1,2,3,4,5];
+       /*方法1: let len=arr.length;//删除数据之后数组的length会变化,所以先将最初的length赋值给一个新的变量,根据新的变量去实现循环;
+        for(let i=len-1;i>=0;i--){//因为删除数组的元素,后面的会顶上被删除元素的位置,因此删除从最后开始;
+            arr.splice(i,1);
+        }
+        console.log(arr);*/
+
+        for(let i=0;i<arr.length;i++){
+            delete arr[i];//delelte函数只情况数组中的元素但元素的位置依然保留;
+        }
+        console.log(arr);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>内外边距</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+        .box1{
+            padding: 10px 20px 10px 20px;
+            box-sizing:border-box;
+            margin-bottom:20px;
+            /*
+            内边距会继承盒子的颜色
+            设置内边距后，元素宽高也会随之变化，若想设置边框或者内边距后元素宽高不变，可设置box-sizing:border-box;
+            单独设置某一方向的内边距如下：
+              padding-top:10px;
+              padding-right;20px;
+              padding-bottom;10px;
+              padding-left;20px;
+            */
+        }
+        .box2{
+            margin: 10px 20px 10px 20px;
+            /*
+            外边距不会继承盒子的颜色
+            无论省略几个取值，都按上右下左的顺序，上与下相等，左与右相等
+            单独设置某一方向的外边距如下：
+              margin-top:10px;
+              margin-right;20px;
+              margin-bottom;10px;
+              margin-left;20px;*/
+        }
+        /*注意：
+            给相邻的盒子都设置外边距，则水平方向的外边距会叠加，而垂直风方向的外边距则会合并（取最大值）
+        */
+        
+    </style>
+</head>
+<body>
+<div class="box1"></div>
+<div class="box2"></div>
+</body>
+</html>

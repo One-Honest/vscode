@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>61.JS中的DOM</title>
+    <!-- 
+        /*  1.什么是window?
+            window是一个全局变量,代表浏览器中一个打开的窗口,每一个打开的窗口都是一个window对象;
+            2.什么是document?
+                documment是window的一个属性,这个属性是一个对象;
+                document代表当前窗口的整个网页;
+                通过document我们就可以操作整个网页上的所有内容;
+            3.什么是DOM?
+                DOM定义了访问和操作HTML文档(网页)的标准方法(Document Object Model 文档模型对象)
+                所以学习DOM就是学习如何通过document对象操作网页上的内容;
+            4.HTML标签也称为DOM元素;
+            5.使用document的时候前面可以不用加window;
+            6.通过什么方式查找DOM元素?
+                1.通过DOM元素id名称查找,由于id名称的不可重复,通过document.getElementById("id")找到标签会将标签包装成一个对象返回给我们,找不到就返回null;
+                注意:DOM操作返回的是一个对象,这个对象是宿主类型对象(即浏览器提供的对象);
+                2.通过DOM元素class名称查找,由于class名称可以重复,所以会将查找到的拥有此类名的标签通过一个伪数组返回;
+                3.通过DOM元素name名称查找,由于name名称可以重复,所以会将查找到的拥有此名称的标签通过一个伪数组[节点列表]返回;
+                4.通过DOM元素名称查找,由于标签名称可以重复,所以会将查找到的拥有此标签名称通过一个伪数组[节点列表]返回;
+
+            重点5.通过选择器querySelector("#box/.father");
+                    注意点:通过querySelector查找只会返回查找到的第一个元素;
+                6.通过选择器querySelectorAll(".father");
+                7.通过选择器查找到一个元素后,可以用其children属性获取该元素内的所有子元素;
+                8.通过选择器查找到一个元素后,可以用其childNodes属性获取该元素内的所有节点;
+                    补充:什么是节点?DOM的document对象是以树的形式保存界面上的所有内容;HTML的每一部分都是树的节点[由元素.文本和注释组成?]
+        */
+     -->
+</head>
+<body>
+<!-- <div class="father">
+    <form action="">
+        <input type="text" name="bd">
+        <input type="password" name="bd">
+    </form>
+</div>
+<div class="father" id="box">
+    <img src="" alt="">
+</div> -->
+<div>
+    <!-- 空格也是节点 -->
+    <h1>1</h1>
+    <h2>2</h2>
+    <p class="item">3</p>
+    <p>4</p>
+    <span>5</span>
+</div>
+
+
+
+
+<script>
+        console.log(document.getElementById("box"));//1.通过id名称查找
+        console.log(document.getElementsByClassName("father"));//2/通过class名称查找
+        console.log(document.getElementsByName("test"));//3.通过name名称查找
+        console.log(document.getElementsByTagName("test"));//4.通过标签名称查找
+        console.log(document.querySelector("#box>img"));//5.通过选择器查找[只找到第一个类名为father的元素]
+        console.log(document.querySelectorAll(".father"));//6.通过选择器查找所有拥有符合此选择器查找到的元素;
+        //获取指定元素的所有子元素
+        console.log(document.querySelector("div").children);//7.通过选择器查找到一个元素后,可以用其children属性获取该元素内的所有子元素;
+        console.log(document.querySelector("div").firstElementChild);//8.查找到一个元素后,可用其firstElementChild属性获取该元素内的第一个子元素;
+        console.log(document.querySelector("div").lastElementChild);//9.可用其lastElementChild属性获取该元素内的第一个子元素;
+        console.log(document.querySelector("div").childNodes);//10.通过选择器查找到一个元素后,可以用其childNodes属性获取该元素内的所有节点;
+        //若只需要childNodes属性获取的节点中的标签元素,可通过nodeType判断节点的类型(元素.文本和注释等);
+        let oDiv=document.querySelector("div");
+        for(let node of oDiv.childNodes){//遍历childNodes属性获取的节点
+            if(node.nodeType===Node.ELEMENT_NODE){
+                console.log(node);
+            }
+        }
+        console.log(document.querySelector("div").firstChild);//11.获取指定节点中的第一个子节点;
+        console.log(document.querySelector("div").lastChild);//12.获取指定节点中的最后一个子节点;
+        console.log(document.querySelector(".item").parentElement);//13.通过子元素获取父元素/父节点;
+        console.log(document.querySelector(".item").parentNode);
+        //兼容性问题:火狐9之前不支持parentElement,现已全部支持;兼容性写法:let parentEle=parentElement||parentNode;
+        console.log(document.querySelector(".item").previousSibling);//14.获取上一个同胞节点;
+        console.log(document.querySelector(".item").nextSibling);//14.获取下一个同胞节点;
+        console.log(document.querySelector(".item").previousElementSibling);//15.获取上一个同胞元素;
+        console.log(document.querySelector(".item").nextElementSibling);//15.获取下一个同胞元素;
+</script>
+</body>
+</html>

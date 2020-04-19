@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>65.伸缩布局【换行与换行对齐】</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .box{
+            list-style: none;
+            width: 600px;
+            height: 600px;
+            border: 1px solid black;
+            margin: 100px auto;
+            display: flex;
+            flex-wrap: wrap-reverse;
+            /* 换行然后以行为单位反转，即以3的底部为轴翻转180deg */
+            /* 默认情况下，伸缩项总体宽度比伸缩器要大时，不会换行，而会等比拉缩伸缩项
+            flex-wrap属性可用来设置伸缩器里的伸缩项是否需要换行【默认取值为no-wrap（不换行）【取值wrap则当伸缩项宽度大于伸缩器时需要换行】
+                        【wrap-reverse属性代表需要换行然后以行为单位反转】
+             */
+             align-content: space-around;
+             /* align-content属性专门用于设置伸缩器中换行之后的伸缩项的位置【只有当伸缩项换行此属性才有效】
+             取值有：flex-start[换行之后与侧轴起点的方向一致] ；
+                    flex-end【换行之后伸缩项与侧轴的终点方向一致】将换行之后的所有伸缩项当成整体来移动
+                    center【换行之后所有伸缩项与侧轴得中点对齐】
+                    space-between【换行之后与侧轴的两端对齐】
+                    space-around【换行之后在侧轴方向上伸缩项的上下两侧等距排列】
+                    stretch【默认取值，侧轴方向上的拉伸以空白填充，保证拉伸在之后的内容能将侧轴上的空间填满】
+              */
+        }
+        .box>li{
+            width: 300px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            font-size: 30px;
+            background-color: yellowgreen;
+        }
+        .box>li:nth-child(2){
+            background-color: pink;
+            order: 2;
+            /* 伸缩项的排序属性，按伸缩项的取值大小【从大到小】排序 ，所有的伸缩项默认取值为0 */
+            flex-grow:1;
+            /* 伸缩项的扩张属性flex-grow
+            可给每一个伸缩项设置此属性，按照所取的值的比例大小扩张至与伸缩器的大小一致
+            注意：只有当伸缩项的宽度总和小于伸缩器宽度时此属性才能生效 
+            默认值为0
+            扩充的公式：
+            （伸缩器宽度-伸缩项的总宽度）/所有的伸缩器的flex-grow的取值=扩充一份（取值为1）的大小
+            然后将每一个伸缩项的宽度加上其对应取值的份数的扩充，即可得到每一个伸缩项扩充后的宽度
+            上述例子的公式：（600-300）/（0+2+0）=150
+                                    300+2*150=600
+             */
+        }
+        .box>li:nth-child(3){
+            background-color: skyblue;
+            flex-grow: 2；
+            /* 注意：只有当伸缩项的宽度小于伸缩器时此属性才能生效 */
+        }
+    </style>
+</head>
+<body>
+    <ul class="box">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+</body>
+</html>

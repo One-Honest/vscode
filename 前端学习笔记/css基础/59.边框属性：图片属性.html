@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>59.边框属性：图片属性</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .image{
+            width: 200px;
+            height: 200px;
+            margin: 150px auto;
+            border: 130px solid red;
+            border-image-source: url("images/3.jpg");
+            /* border-image-source属性会将图片分别放置在边框的四个角 */
+            /* border-image-slice: 250 250 250 250 fill; */
+            /* border-image-slice属性图片边框向内偏移。原理：将图片按照对应数值按上右下左分别切割成九块 ，中间的一块不会被应用到，使用fill属性可以使其显示，其属性与其他的切块设置的属性一致*/
+
+            /* border-image-width: 25px; */
+            /* 设置边框图片的显示大小，注意不是设置边框的大小，边框的宽度还是原来的宽度 */
+
+            /* 下列皆为除四个定点之外的区域的变化 */
+            /* border-image-repeat: stretch; 默认属性为拉伸stretch*/
+            /* border-image-repeat: round;平铺与拉伸结合【即平铺整数个切块之后拉伸】 */
+            /* border-image-repeat: repeat; */
+            /* 平铺 */
+            
+              /* 上述边框图片属性设置的简写模式如下：资源地址(source)  切割方式(slice)  填充模式(repeat) */
+             border-image:url("images/3.jpg") 200 fill stretch;
+            /* 简写模式无法设置order-image-outset属性并且若写在order-image-outset属性后面会使order-image-outset属性失效 */
+
+             /* border-image-outset:100px 100px 100px 100px;  */
+             /* 设置变框图片向外移动，取值有四个，分别代表上右下左四个方向 */
+
+              
+        }
+    </style>
+</head>
+<body>
+    <div class="image"></div>
+</body>
+</html>

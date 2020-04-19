@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>102.location对象</title>
+</head>
+<body>
+    <button id="forward">度娘</button>
+    <button id="reload">刷新</button>
+    <button id="hard">强制刷新</button>
+    <button id="back">后退</button>
+    <script>
+        console.log(location.href);
+        let btn=document.querySelector("#forward");
+        btn.onclick=function(){
+            location.href="https://www.baidu.com";
+        }
+        let btn1=document.querySelector("#reload");
+        btn1.onclick=function(){
+            location.reload();//默认刷新并不一定会刷新缓存
+        }
+        let btn2=document.querySelector("#hard");
+        btn2.onclick=function(){
+            location.reload(true);//传递true参数可设置强制刷新;强制刷新会刷新缓存
+        }
+        /* 其他
+        window.location.href 返回当前页面的 href (URL)
+        window.location.hostname 返回 web 主机的域名
+        window.location.pathname 返回当前页面的路径或文件名
+        window.location.protocol 返回使用的 web 协议（http: 或 https:）
+        window.location.assign 加载新文档 */
+        let back=document.querySelector("#back");
+        back.onclick=function(){//后退
+            // history.back();
+            history.go(-1);
+        }
+    </script>
+</body>
+</html>

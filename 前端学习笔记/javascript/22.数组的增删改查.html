@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>22.数组的增删改查</title>
+    <script>
+        let traversal=['a','b','c'];
+        //需求:获取索引为1的数据;(查)
+        console.log(traversal[1]);
+        //需求:将数据中索引为1的数据改为m;(改)
+        traversal[1]='m';
+        console.log(traversal);
+        //需求:将数据中索引为1的数据改为d,索引为2的数据改为e;(改)
+        // traversal[1]='d';
+        // traversal[2]='e';
+traversal.splice(1,2,"d","e");//参数1表示从什么位置开始替换;参数2表示替换的个数;之后的都是替换的数据;
+        console.log(traversal);
+
+        //需求:要求在数组最后面增加一条数据;(增)
+        traversal.push("push属性表示替换数组中最后一个索引的数据且会将新增数据之后的数组长度返回");
+        console.log(traversal);
+        //需求:要求在数组最后面增加两条数据;(增)
+        traversal.push("在最后新增一个数据","push可以接收多个修改数据,用逗号隔开");
+        console.log(traversal);
+        //需求:要求在数组最前面增加一条数据;(增)
+        traversal.unshift("unshift属性可在数组最前面新增一个数据且会将新增数据之后的数组长度返回");
+        console.log(traversal);
+        //需求:要求在数组最前面增加两条数据;(增)
+        traversal.unshift("unshift属性可在数组最前面新增一个数据","unshift可以接收多个修改数据,用逗号隔开");
+        console.log(traversal);
+
+        //需求:要求删除数组最后面一条数据;(删)
+        traversal.pop();//pop方法会删除数组最后一条数据并且将该数据返回给我们
+        console.log(traversal);
+        //需求:要求删除数组最前面一条数据;(删)
+        traversal.shift();//shift方法会删除数组最后一条数据并且将该数据返回给我们
+        console.log(traversal);
+        
+        //需求:删除索引为1的数据;
+        traversal.splice(1,1);
+        console.log(traversal);
+        //删除除了索引为0以外的所有数据;
+        traversal.splice(1,4);//从索引1开始删除4个数组中的数据;
+        console.log(traversal);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

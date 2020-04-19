@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>103.history对象</title>
+</head>
+<body>
+    <button id="forward">前进</button>
+    <button id="reload">刷新</button>
+    <a href="http://localhost:52330/javascript/102.location%E5%AF%B9%E8%B1%A1.html">跳转到第二个页面</a>
+    <script>
+        /* history对象代表浏览器的历史信息,可通过history对象设置网页的前进后退和刷新 */
+        let forward=document.querySelector("#forward");
+        let reload=document.querySelector("#reload");
+        forward.onclick=function(){//前进
+            // history.forward();//可设置前进到下一页(需之前已经浏览过的)
+            history.go(1);//go方法可传参:[1,~)表示前进多少个页面;0表示刷新;(~,-1]表示后退多少个页面
+        }
+        reload.onclick=function(){//刷新
+            history.go(0);
+        }
+    </script>
+</body>
+</html>

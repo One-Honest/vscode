@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>正方体(长方体)之企业开发</title>
+    <style>
+            *{
+                 margin:0 auto;
+                 padding: 0;
+            }
+            ul{
+                width: 200px;
+                height: 200px;
+                border: 1px solid black;
+                margin-top:200px;
+                box-sizing: border-box;
+                position: relative;
+                transform: rotateX(130deg) rotateY(30deg);
+                transform-style: preserve-3d;
+            }
+            ul li{
+                width: 200px;
+                height: 200px;
+                list-style: none;
+                font-size: 50px;
+                text-align: center;
+                line-height:200px;
+                position:absolute;
+                top: 0;
+                left: 0;
+            }
+            ul li:nth-child(1){
+                background-color: red;
+                transform:rotateX(90deg) translateZ(100px) scale(2,1) ;
+            }
+            ul li:nth-child(2){
+                background-color: greenyellow;
+                transform:rotateX(180deg) translateZ(100px) scale(2,1) ;
+            }
+            ul li:nth-child(3){
+                background-color: blue;
+                transform:rotateX(270deg) translateZ(100px) scale(2,1);
+            }
+            ul li:nth-child(4){
+                background-color: yellow;
+                transform:rotateX(360deg) translateZ(100px) scale(2,1);
+            }
+             ul li:nth-child(5){
+                background-color: purple;
+                transform:translate(-200PX) rotateY(270deg)  ;
+            }
+            ul li:nth-child(6){
+                background-color: pink;
+                transform:translate(200PX) rotateY(90deg)  ;
+            } 
+         </style>
+</head>
+<body>
+        <ul>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                 <li>5</li>
+                <li>6</li>
+            </ul>
+</body>
+</html>

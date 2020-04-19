@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>28.函数形参默认值</title>
+    <script>
+        /*
+        在ES6之前可以使用逻辑运算符给形参设置默认值:或||  格式:条件表达式A||条件表达式B  返回值:true或false  特点:一真则真
+        逻辑||运算中,若参与的不是布尔类型,返回值有一特点:若条件A成立则返回A[一真则真],若条件A不成立则无论条件B是否成立都返回B;
+        function getDev(a,b){
+            if a=a||"我是默认值";
+            if b=b||"我也是默认值";
+            console.log(a,b);
+        }
+        */
+        function getDev(a,b){
+            a=a||"我是默认值";
+            b=b||"我也是默认值";
+            console.log(a,b);
+        }
+        getDev();
+        //在ES6之后,可以通过在形参后面加等号给形参设置默认值;
+        //注意点:在ES6之后,给形参设置的默认值可以从其他函数调用数据当作默认值;
+        function getDefault(){
+            return "我可以调用其他函数作为默认值";
+        }
+        function getDeva(a="通过等号给形参设置默认值",b=getDefault()){
+            console.log(a,b);
+        }
+        getDeva();
+
+        //注意点:函数也可以作为其他函数的参数和返回值;函数之中可以嵌套函数;
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>13.js的流程控制[选择结构]练习</title>
+    <script>
+        //练习1.需求让用户输入一个整数,判断其是偶数[返回even]还是奇数[返回odd]
+            //方法1
+            let num=prompt("请输入一个整数");
+        num%2===0?alert("even"):alert("odd");
+            //方法2
+            let num1=prompt("请输入一个整数");
+            if(num1%2===0){
+                alert("even");
+                num1=666;
+                console.log(num1);
+            }
+            else{
+                alert("odd");
+                num=333;
+            }
+        //注意:在企业开发中,若条件满足之后只有一句代码需要执行则使用三目运算符;若有多条语句需要执行则使用选择结构;
+        //练习2:需求:接收用户输入的整数,判断是星期几,最终输出对应的星期;
+            let str=prompt("请输入1~7的整数");
+            let day=+str;//因为prompt返回的数值都是字符串类型的数据,因此此处需要先转换为数值类型再参与运算;
+            if(1===day){//===既判断数值是否相同又判断数据类型是否相同;
+                alert("今天是星期一");
+            }else if(2===day){
+                alert("今天是星期二");
+            }
+            else if(3===day){
+                alert("今天是星期三");
+            }
+            else if(4===day){
+                alert("今天是星期四");
+            }
+            else if(5===day){
+                alert("今天是星期五");
+            }
+            else if(6===day){
+                alert("今天是星期六");
+            }
+            else if(7===day){
+                alert("今天是星期天");
+            }
+            else{
+                alert("输入错误!请重新输入1~7的整数");
+            }
+        //练习3.需求:接收用户输入1~12的整数,判断是春夏秋冬哪个季节后输出;
+            let str1=prompt("请输入1~12的整数");
+            let day1=+str1;//因为prompt返回的数值都是字符串类型的数据,因此此处需要先转换为数值类型再参与运算;
+            if(3===day1||4===day1||5===day1){//===既判断数值是否相同又判断数据类型是否相同;
+                alert("现在是春天");
+            }else if(6===day1||7===day1||8===day1){
+                alert("现在是夏天");
+            }
+            else if(9===day1||10===day1||11===day1){
+                alert("现在是秋天");
+            }
+            else if(12===day1||1===day1||2===day1){
+                alert("现在是冬天");
+            }
+            else{
+                alert("输入错误!请重新输入1~12的整数");
+            }
+            //也可以如下表示
+            let str2=prompt("请输入1~12的整数");
+            let day2=+str2;
+            if(day2<1||day2>12){
+                alert("输入错误!请重新输入1~12的整数");
+            }
+            else{
+                if(3===day1||4===day1||5===day1){//===既判断数值是否相同又判断数据类型是否相同;
+                alert("现在是春天");
+                }else if(6===day1||7===day1||8===day1){
+                    alert("现在是夏天");
+                }
+                else if(9===day1||10===day1||11===day1){
+                    alert("现在是秋天");
+                }
+                else if(12===day1||1===day1||2===day1){
+                alert("现在是冬天");
+                }
+            }
+        //练习4.需求:三个变量a,b,c,要求用至少两种方法将其升序后输出;排序前a=5;b=3;c=4;
+            //方法1:
+            let a=5,b=3,c=4,temp;
+            if(a>b){
+                temp=a;
+                a=b;
+                b=temp;
+            }
+            if(a>c){
+                temp=a;
+                a=c;
+                c=temp;
+            }
+            if(b>c){
+                temp=b;
+                b=c;
+                c=temp;
+            }
+            console.log(a,b,c);
+            //方法2:
+            let a1=5,b1=3,c1=4,temp1;
+            if(a1>b1){
+                temp1=a1;
+                a1=b1;
+                b1=temp1;
+            }
+            if(b1>c1){
+                temp1=b1;
+                b1=c1;
+                c1=temp1;
+            }
+            if(a1>c1){
+                temp1=a1;
+                a1=c1;
+                c1=temp1;
+            }
+            console.log(a1,b1,c1);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

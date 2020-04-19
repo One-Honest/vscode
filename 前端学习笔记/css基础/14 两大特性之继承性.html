@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>继承性</title>
+    <style>
+        ul{
+            color:red;
+            list-style: none;
+        }
+        /*子元素可以继承父元素的属性（仅限于font、color、text、line，字体｜字号｜颜色｜行距等
+        且有特例：a标签的文字颜色以及下划线不可继承
+        以及h标签的大小不可继承
+        其作用于设置网页的公共信息的属性(一般设置给body元素)
+        注意：例子中如果给div设置list-style样式，li标签继承不了其属性
+        以下属性不可继承：
+        边框属性；边界属性；补白属性；背景属性；定位属性；布局属性；元素宽高；
+        */
+    </style>
+
+</head>
+<body>
+<div>
+    <ul>
+        <li>我可以继承div的设置的属性</li>
+        <li><a href="#">我可不变红并且我有下划线</a></li>
+    </ul>
+</div>
+</body>
+</html>

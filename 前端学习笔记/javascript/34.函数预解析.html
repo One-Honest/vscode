@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>34.函数的预解析</title>
+    <script>
+        /*什么是预解析?浏览器在执行JS代码之前会先将JS代码加工渲染之后再去执行;
+        预解析的规则:1将变量声明和函数声明提升到当前作用域的最前面;
+                    2.再将剩余代码按书写顺序依次放到后面;
+        注意点:通过let声明的变量不会被预解析;
+
+        ES6之前定义函数的方式及其预解析:
+            第一种:预解析之前:say();
+                function say(){
+                    console.log("hello world");
+                }
+            预解析之后:
+                function say(){//函数的声明是整个函数;
+                    console.log("hello world");
+                }  
+                say();
+            第二种://若将一个函数赋值给一个var定义的变量,那么函数不会被预解析,只有变量才会被预解析;
+            预解析之前:say();
+            var say=function(){
+                console.log("hello world");
+            }   
+            预解析之后:
+                console.log(say);//返回值为undefined;
+                var say;//say被预解析成了变量
+                say();  //因此此处报错:say is not a function;
+                say=function(){
+                console.log("hello world");
+            }
+
+        ES6之后定义函数的方式及其预解析://不会被预解析;
+            say();//返回值:say is not defined;因为let定义的变量不会被预解析,所以say不会被提升到前面,自然也就没被定义了;
+            let say=()=>console.log("hello world");
+        */
+       /*练习1.说出下面代码的运行结果;返回值为undefined;
+            var num=123;
+            fun();
+            function fun(){
+                console.log(num);
+                var num=666;
+            }
+            //预解析之后的代码如下:
+            var num;
+            function fun(){
+                var num;
+                console.log(num);//undefined,可以预解析,但没有定义变量值,所以此处num的返回值是undefined;
+                num=666;
+            }
+            num=123;
+            fun();
+
+            function fun1(){
+                console.log(num);
+                var num=666;
+            }
+            fun1();*/
+        /*练习2.
+            var a=666;
+            test();
+            function test(){
+                var b=777;
+                console.log(a);
+                console.log(b);
+                console.log(c);
+                var a=888;
+                let c=999;
+            }
+            //预解析之后的代码如下:
+            var a;
+            function test(){
+                var b;
+                var a;
+                b=777;
+                console.log(a);//undefined
+                console.log(b);//777
+                console.log(c);//报错;
+                a=888;
+                let c=999;
+            }
+            a=666;
+            test();*/
+/*练习3.下面代码执行结果如何?[此代码一般用于面试题或考试]
+            if(true){
+                function demo(){
+                    console.log("hello,demo111");
+                }
+            }else{
+                function demo(){
+                    console.log("hello,demo222");
+                }
+            }
+            demo();
+            //低级浏览器中[ie10之前]该代码预解析之后,后定义的函数会将先定义的函数覆盖
+            //而在高级浏览器中,只要条件语句中为true,则直接输出第一个得脉函数;
+            function demo(){
+                    console.log("hello,demo111");
+                }
+            function demo(){
+                    console.log("hello,demo222");
+                }
+            if(true){}else{};
+            demo();*/
+//练习4.下面代码执行结果如何?注意:企业开发中不要让变量名称与函数名相同;
+                console.log(value);//返回函数value;
+                var value=123;
+                function value(){
+                    console.log("fn value");
+                }
+                console.log(value);//返回123;
+                /*预解析之后的代码如下:原因及注意点:因为当变量名称与函数名称一样时,函数的优先级高于变量;
+
+                function value(){
+                    console.log("fn value");
+                }
+                console.log(value);//
+                var value;
+                value=123;
+                console.log(value);*/
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

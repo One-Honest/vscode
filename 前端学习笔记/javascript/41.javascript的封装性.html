@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>41.javascript的封装性</title>
+    <script>
+        /*
+        封装就是隐藏实现的细节,只公开对外接口;
+        封装就是将数据隐藏起来,只能用公共的方法才能读取或者设置数据,防止被外部任意修改,封装是面向对象的设计本质(将变化隔离),
+        这样就降低了数据被误用的可能性,提高了安全性和灵活性;
+        */
+        function Person(myName,myAge){
+                this.name=myName;
+                let age=26;//私有属性默认值
+                this.setAge=function(myAge){
+                    if(myAge>=0){
+                        age=myAge;
+                    }
+                }
+                this.getAge=function(){
+                    return age;
+                }
+                this.learn=function(){
+                console.log("构造函数中的learn方法");
+                };
+            }
+        let a=new Person('壹诚谢',27);
+        console.log(a);
+        console.log(a.age);//构造函数的公有属性可以被调用和修改,但此处的age是局部变量,只能被Person[或者a]内部的函数才能调用;,因此返回值为undefined;
+        a.setAge(18);//此处的值经过公共的方法setAge赋值给了age,而age是Person函数的私有属性,因此需要使用Person的公有属性getAge来调用;
+        console.log(a.getAge());//使用Person的公有属性getAge来调用age;
+
+        //注意点:若是不使用公有方法去设置age,而是直接调用Person函数本身不存在的age属性,则会给Person新增一个age属性并赋值;最终会修改Person函数的属性;
+        a.age=28;//在给一个对象设置一个其本身不存在的属性的时候,不会去其原型对象中查找,而是直接给当前的对象设置这个属性然后直接调用;
+        console.log(a.age);
+        console.log(a);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

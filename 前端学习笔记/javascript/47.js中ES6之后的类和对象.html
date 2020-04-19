@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>47.js中ES6之后的类和对象</title>
+    <script>
+        /*1.ES6新增class创建一个类:
+        class Dog{
+            //当用new创建对象时,系统会自动调用constructor;
+            constructor(itsName,itsAge){
+                //实例属性
+                this.name=itsName;
+                this.age=itsAge;
+            }
+            //实例方法
+            jump(){
+                console.log("蹦蹦跳跳");
+            }
+            static value="expensive";
+        }
+        class Teddy{
+            constructor(itsColor){
+                this.color=itsColor;
+            }
+            //静态属性
+            static value="cheap";
+            //静态方法
+            static run(){
+           console.log('我是Teddy的静态方法;');
+       }
+        }
+        Teddy.prototype.run=function(){
+           console.log('我是Teddy新增的方法;');
+       }
+        let ted=new Teddy("black");
+        console.log(ted);
+        ted.run();
+        console.log(Teddy.value);
+        Teddy.run();
+
+        let dog=new Dog("小黑",3);
+        console.log(dog);
+        console.log(Dog.value);
+        dog.jump();        */
+    
+    //2.
+    class Dog{
+            //当用new创建对象时,系统会自动调用constructor;
+            constructor(itsName,itsAge){
+                //实例属性
+                this.name=itsName;
+                this.age=itsAge;
+                this.body="fat";
+            }
+            //直接定义实例属性:这个方法非ES6标准写法,大部分浏览器不支持;应该在定义在constructor中
+            //body="fat";
+            //实例方法
+            jump(){
+                console.log("蹦蹦跳跳");
+            }
+            //直接定义静态属性:这个方法非ES6标准写法,大部分浏览器不支持;应该直接使用类添加属性:Dog.value="expensive";
+            //static value="expensive";
+        }
+    class Teddy{
+            constructor(itsColor,itsName,itsAge){
+                this.color=itsColor;
+                this.name=itsName;
+                this.age=itsAge;
+                this.catch=function(){//实例方法直接写在类中会被放置到类的原型对象里,若想直接放在类里面,应该设置在constructor;
+                console.log("抓抓抓");
+                }
+            }
+            run(){//在类的原型对象中添加方法;
+                //注意点:想在类的原型对象中添加新地方法或属性,只能通过动态地添加,例如:Teddy.home="sz";Teddy.backHome=function(){};
+                console.log('我是Teddy新增的方法;');
+            }
+            //静态方法
+            static run(){
+                console.log('我是Teddy的静态方法;');
+            }
+        }
+        Teddy.prototype.run=function(){//添加静态方法;
+           console.log('我是Teddy新增的方法;');
+       }
+       Dog.value="expensive";//添加静态属性;
+    let ted=new Teddy("black");
+    console.log(ted);
+    let dog=new Dog("小黑",6);
+    console.log(dog.body);
+    console.log(Dog.value);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

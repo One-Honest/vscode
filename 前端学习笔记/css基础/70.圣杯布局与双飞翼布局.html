@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>70.圣杯布局与双飞翼布局</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .cup{
+            background-color: pink;
+            padding:0 200px;
+            overflow: hidden;
+            min-width: 400px;
+        }
+        .center{
+            width: 100%;
+            height: 200px;
+            background-color: red;
+            float: left;
+        }
+        .left, .right{
+            width: 200px;
+            height: 200px;
+            background-color: greenyellow;
+            float: left;
+        }
+        .left{
+            margin-left: -100%;
+            position: relative;
+            left: -200px;
+        }
+        .right{
+            margin-left: -200px;
+            position:relative;
+            right: -200px;
+        }
+        /* 双飞翼布局 */
+        .plane{
+            width: 100%;
+            height: 400px;
+            margin: 100px auto;
+            background-color: pink;
+        }
+        .left1,.right1{
+            width: 200px;
+            height: 200px;
+            float: left;
+            background-color: yellow;
+        }
+        .left1{
+            margin-left: -100%;
+        }
+        .right1{
+            margin-left: -200px;
+        }
+        .center1{
+            float: left;
+            background-color: green;
+        }
+        .center-in{
+            height: 200px;
+            background-color: yellowgreen;
+            margin: 0 200px;
+            /* min-width: 300px; 此处不能加min-width属性，否则缩小后会变形*/
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <!-- 圣杯布局 -->
+    <div class="cup">
+        <div class="center">合法化合法回复哈回复哈发哈合法化合法回复哈回复哈发哈合法化合法回复哈回
+            复哈发哈合法化合法回复哈回复哈发哈合法化合法回复哈回复哈发哈合法化合法回复哈回复哈发哈</div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <img src="images/cup.png" alt="">
+    </div>
+
+    <!-- 双飞翼布局 -->
+    <div class="plane">
+        <div class="center1">
+            <div class="center-in">
+            合法化合法回复哈回复哈发哈合法化合法回复哈回复哈发哈合法化合法回复哈回
+            复哈发哈合法化合法回复哈回复哈发哈合法化合法回复哈回复哈发哈合法化合法回复哈回复哈发哈
+            </div>
+        </div>
+        <div class="left1"></div>
+        <div class="right1"></div>
+        <img src="images/plane.png" alt="">
+    </div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+.clearfix:after{
+    content: "";
+    /* 设置增加的子元素内容为空 */
+    display: block;
+    /* 设置新增的子元素为块级元素 */
+    height: 0;
+    /* 设置子元素高度为0 */
+    visibility: hidden；
+    /* 设置子元素不可见 */
+     /* clear:both;  */
+}
+.clearfix{
+    zoom: 1;
+    /* 兼容ie6 */
+}

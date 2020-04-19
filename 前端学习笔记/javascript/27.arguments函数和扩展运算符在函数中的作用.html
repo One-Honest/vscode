@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>27.arguments函数和扩展运算符在函数中的作用</title>
+    <script>
+/*arguments函数     arguments对象是所有（非箭头）函数中都可用的局部变量
+        可以使用arguments对象在函数中引用函数的参数。此对象包含传递给函数的每个参数，第一个参数在索引0处。例如，如果一个函数传递了三个参数，你可以以如下方式引用他们：
+arguments[0]
+arguments[1]
+arguments[2]
+arguments[2]
+
+
+
+参数也可以被设置：
+arguments[1] = 'new value';
+
+arguments对象不是一个 Array 。它类似于Array，但除了length属性和索引元素之外没有任何Array属性。例如，它没有 pop 方法。
+但是它可以被转换为一个真正的Array：
+var args = Array.prototype.slice.call(arguments);
+var args = [].slice.call(arguments);
+
+// ES2015
+const args = Array.from(arguments);
+const args = [...arguments];
+对参数使用slice会阻止某些JavaScript引擎中的优化 (比如 V8 - 更多信息)。如果你关心性能，尝试通过遍历arguments对象来构造一个新的数组。
+另一种方法是使用被忽视的Array构造函数作为一个函数：
+var args = (arguments.length === 1 ? [arguments[0]] : Array.apply(null, arguments));
+
+如果调用的参数多于正式声明接受的参数，则可以使用arguments对象。这种技术对于可以传递可变数量的参数的函数很有用。
+使用 arguments.length来确定传递给函数参数的个数，然后使用arguments对象来处理每个参数。要确定函数签名中（输入）参数的数量，
+请使用Function.length属性。对参数使用slice会阻止某些JavaScript引擎中的优化 (比如 V8 - 更多信息)。如果你关心性能，
+尝试通过遍历arguments对象来构造一个新的数组。另一种方法是使用被忽视的Array构造函数作为一个函数：
+var args = (arguments.length === 1 ? [arguments[0]] : Array.apply(null, arguments));
+
+如果调用的参数多于正式声明接受的参数，则可以使用arguments对象。这种技术对于可以传递可变数量的参数的函数很有用。
+使用 arguments.length来确定传递给函数参数的个数，然后使用arguments对象来处理每个参数。要确定函数签名中（输入）参数的数量，
+请使用Function.length属性。
+
+        1.console.log()也是一种函数;log是函数主体,console是函数面向的对象(即开发者工具);
+        2.log函数的特点是可以同时接收1到多个参数,其实现原理就是使用了arguments属性;
+        3.arguments的作用:保存所有传递给函数的形参;arguments是一个伪数组,可以使用数组获取数据的方式获取保存在arguments中的数据;
+        */
+       function getSum(){
+            let sum=0;
+            for(i=0;i<arguments.length;i++){
+                // let num=arguments[i];
+                sum+=arguments[i];
+            }
+            return sum;//返回函数值,则sum的值在进入下一个循环之前就变了;
+       }
+       console.log(getSum(10,20,30,40));
+
+       /*扩展运算符在函数中的作用
+       1.扩展运算符的特点:
+            1.在等号左边,其作用是将剩余的数据打包到一个数组中,且扩展运算符只能放在最后;
+            let [a,...b]=[1,2,3];则a=[1];b=[2,3];
+            2.在等号右边,其作用是将数组中的数据解开;
+            let a=[1,2];b=[3,4]
+            let c=[...a,...b]=[1,2,3,4];
+        2.扩展运算符在函数形参列表中的作用:将传递给函数的所有实参打包到一个数组中;与arguments作用一样,只是arguments将数据存储在一个伪数组中;
+            其特点也是必须放在形参的最后;
+            function getName(...name){
+                console.log("我叫"+name);
+            }
+
+            function getName(name,...name1){//正确的表达方式,若变成(...name1,name)则是错误的;
+                console.log("我叫"+name);
+            }
+       */
+       function getName(...name){
+                console.log("我叫"+name);
+            }
+            getName('张三');
+            let args=new Array();
+            args = [...arguments];
+            console.log(args);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

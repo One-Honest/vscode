@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css样式之id与class选择器</title>
+    <style>
+        #aa{
+            color:red;
+        }
+        #bb{
+            color: green;
+        }
+        #cc{
+            color:blue;
+        }
+    /*id选择器：
+        同一个界面中id的名称不能重复
+        编写id选择器时需要在前面添加#符号
+        id名称编写规范：只能由字母、数字、下划线组成并且不能以数字开头
+                        不能以标签符号来命名id   前端开发中id是给js使用的，平时注意使用
+                        若需添加如上效果，请使用.class(类)标签
+        class类选择器在同一个页面是可以重复设置的，使用方法在class名称前加.
+             专门给css使用
+             同一个标签可以设置多个类名class="a1 a2 a3"
+             其他属性与id选择器一致
+
+             企业开发中要注重冗余代码的抽取，将一些公共代码抽取到同一个类中，然后让标签与该类选择器绑定
+             需要注意什么时候该抽取，什么时候不该抽取,如下例：
+
+    */
+        .aa{
+            color: red;
+        }
+        .bb{
+            text-decoration: underline;
+        }
+        .cc{
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+<p id="aa">1红</p>
+<p id="bb">2绿</p>
+<p id="cc">3蓝</p>
+<p class="aa bb">1红下划线</p>
+<p class="bb cc">2下划线斜体</p>
+<p class="aa cc">3红斜体</p>
+</body>
+</html>

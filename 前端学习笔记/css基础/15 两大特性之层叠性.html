@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>层叠性</title>
+    <style>
+
+        /* div {
+            color: red;
+        }
+
+
+      
+        li[type=a123]{
+            color:rgb(0, 162, 255);
+        }
+        .a666{
+            color:blue;;
+        } */
+/*
+        *{
+            color:purple!important;
+        }
+*/
+
+/*
+    优先级判断步骤：（1）是否直接选择（选直接选中者）
+                    （2）是否为相同的选择器（是则选后者）
+                    （3）都为直接选中，但不是同类选择器（id>类>标签>通配符>继承>浏览器默认）
+     权重性：只能用于  直接选中 （行内样式>内部样式>外部样式，而添加了!important命令声明的属性有最高显示级别）
+     id选择器、类选择器、标签选择器、属性选择器以及通配符选择器都可以作为直接选中的选择器
+     类选择器与属性选择器权重相同
+     权重的计算规则：（1）计算id数
+                     （2）计算class数
+                     （3）计算标签名数
+                     上面都相同则按优先级相同，谁在后选谁
+    */
+
+/*        #father{
+            color:red;
+        }
+        p{
+            color: blue;
+        }*/
+
+/*      div p{
+          color:red;
+      }
+        #father1{
+            color: pink;
+        }
+        p.box2{
+            color:blue;
+        }*/
+
+/*        div div {
+            color:red;
+        }
+        div{
+            color:blue;
+        }*/
+
+/*        div div div div{
+            color:red;
+        }
+        .box3{
+            color:blue;
+        }*/
+/* 
+       .box1 .box2 div{
+            color:red;
+        }
+        div #father3{
+            color:green;
+        }
+        #father1 div{
+            color:blue;
+        } */
+
+  #father #son{
+     color:red;
+ }
+#father p.box2{
+            color:green;
+        }
+div.box1 p.box2{
+    color:blue;
+}
+#father {
+    color:pink!important;
+}
+div#father.box1{
+           color:purple;
+        } 
+    </style>
+</head>
+<body>
+
+<!-- <div>
+    <ul>
+        <li type="a123" class="a666" >我产生了层叠，根据优先级只显示设置相同属性的优先级最高的一种（注意：暂时理解为属性选择器更精确，所以优先级高）</li>
+    </ul>
+</div> -->
+
+
+<!--<div id="father">
+    <p>此例id选择器不是直接选中p，所以显示p选择器设置的蓝色</p>
+</div>-->
+
+<!--<div id="father1" class="box1">
+    <p class="box2">
+        显示什么颜色呢？答案是：蓝色
+    </p>
+</div>-->
+
+<!--<div>
+    <div>
+        <div>显示什么颜色呢？答案是：red</div>
+    </div>
+</div>-->
+
+<!--<div>
+    <div>
+        <div>
+            <div class="box3">
+                显示什么颜色呢？答案是：blue
+            </div>
+        </div>
+    </div>
+</div>-->
+<!-- 
+<div id="father1" class="box1">
+    <div id="father2" class="box2">
+        <div id="father3" class="box3">
+            显示什么颜色呢？答案是：blue(注意)father1里面的div，表示选中里面的所有div标签，所以是直接选中！
+        </div>
+    </div>
+</div> -->
+
+<div id="father" class="box1">
+    显示什么颜色呢？答案是：pink,因为其加了！important命令
+    <p id="son" class="box2">
+        显示什么颜色呢？答案是：red
+    </p>
+</div>
+</body>
+</html>

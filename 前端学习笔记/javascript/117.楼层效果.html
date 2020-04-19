@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>117.楼层效果</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;;
+        }
+        ul{
+            width: 100%;
+            height: 100%;;
+        }
+        ul>li{
+            list-style: none;
+            width: 100%;
+            height: 100%;;
+            text-align: center;
+        }
+        ol{
+            position: fixed;
+            left: 10px;
+            top:50%;
+            transform:translateY(-50%);
+        }
+        ol>li{
+            list-style: none;
+            width: 100px;
+            line-height: 40px;
+            border: 1px solid;
+            text-align: center;
+            background-color: #1bd8bf;
+        }
+        .selected{
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>第一区域</li>
+        <li>第二区域</li>
+        <li>第三区域</li>
+        <li>第四区域</li>
+        <li>第五区域</li>
+    </ul>
+    <ol>
+        <li class="selected">第1层</li>
+        <li>第2层</li>
+        <li>第3层</li>
+        <li>第4层</li>
+        <li>第5层</li>
+    </ol>
+     <script src="tools/tools.js"></script>
+     <script src="封装的对象和方法/animation.js"></script>
+     <script src="tools/test.js"></script>
+     <script>
+         //1.获取操作元素
+         let pageAll=document.querySelectorAll("ul>li");
+         let colorList=['green','red','blue','pink','yellow'];
+         for(let i=0;i<pageAll.length;i++){
+             let page=pageAll[i];
+             page.style.background=colorList[i];
+         }
+         //1.实现ol中li的点击事件
+         let floorAll=document.querySelectorAll("ol>li");
+         let currentFloor=floorAll[0];
+         //2.获取浏览器可视区域的高度
+         let screenHeight=getScreen().height;
+         //3.实现动画效果
+         let timer=null;
+         for(let i=0;i<floorAll.length;i++){
+             let floor=floorAll[i];
+             floor.onclick=function(){
+                currentFloor.className="";
+                this.className="selected";
+                currentFloor=this;
+                //实现滚动
+                // window.scrollTo(0,i*screenHeight);
+                // document.documentElement.scrollTop=i*screenHeight;
+                // 注意点:通过document.documentElement.scrollTop实现网页的滚动时不能给值添加单位;
+                //.实现动画效果
+                // clearInterval(timer);
+                /* timer=setInterval(function(){
+                    let begin=document.documentElement.scrollTop;
+                    let target=i*screenHeight;
+                    let step=(target-begin)*0.3;
+                    begin+=step;
+                    if(Math.abs(Math.floor(step))<=1){
+                        clearInterval(timer);
+                        document.documentElement.scrollTop=i*screenHeight;
+                        return;
+                    }
+                    document.documentElement.scrollTop=begin;
+                },50); */
+                animation(i,screenHeight);
+             }
+         }
+     </script>
+</body>
+</html>

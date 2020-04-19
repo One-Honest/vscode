@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>55.数组的高级API之查找</title>
+    <script>
+        /*数组的查找
+        1.indexOf()通过查找索引的方法查找元素在数组中的位置;
+            let e=c.indexOf(5);//indexOf() 方法可返回某个指定的字符串值在字符串中首次出现的位置。
+            let f=c.indexOf(7);//注意点:indexOf函数是从左到右查找数组中的元素,一旦找到一个符合的就会停止查找,不管数组后面是否还有相同的元素; 
+            console.log(e);//返回值为3;
+            console.log(f);//若该查找的数据不在数组内则会返回-1
+            let g=c.indexOf(3,5);//indexOf可以接收两个参数,第一个参数是需要查找的数据,第二个参数则表示从哪个位置开始查找;
+            console.log(g);
+        2.lastIndexOf通过查找索引的方法查找元素在数组中的位置;
+            let h=c.lastIndexOf(3,5);//lastIndexOf表示从右至左查找数组中的元素,并且返回元素按照从左至右排序在数组中的位置;
+            console.log(h);
+        3.通过数组的.includes属性判断数组中是否包含某个元素;
+             //使用indexOf()或者lastIndexOf()查找某个元素,若返回值为-1,则数组不包含该元素;
+             let i=c.includes(5);//调用数组的.includes属性,可以判断数组中是否包含某个元素,返回值为true或false;
+             console.log(i);//返回值true
+        */
+       //4.findIndex方法即定制版的indexof,找到对应的值则返回索引,否则返回-1;
+       /*定义和用法
+findIndex() 方法返回传入一个测试条件（函数）符合条件的数组第一个元素位置。
+findIndex() 方法为数组中的每个元素都调用一次函数执行：
+当数组中的元素在测试条件时返回 true 时, findIndex() 返回符合条件的元素的索引位置，之后的值不会再调用执行函数。 
+如果没有符合条件的元素返回 -1
+注意: findIndex() 对于空数组，函数是不会执行的。
+注意: findIndex() 并没有改变数组的原始值。*/
+       let traversal=[1,true,false,null,'注意:字符串需要引号包裹;'];
+       let index=traversal.findIndex(function(currentValue,currentIndex,currentArray){
+            if(currentValue===1){
+                return true;
+            }
+        });
+        console.log(index);
+        //5.find方法找到对应的值则返回找到的元素的值,找不到则返回undefined;
+        let value=traversal.find(function(currentValue,currentIndex,currentArray){
+            if(currentValue===2){
+                return true;
+            }
+        });
+        console.log(value);
+        /*方法6.filter方法将满足条件的元素添加到一个 新的数组 中返回;
+        let newArray=traversal.filter(function(currentValue,currentIndex,currentArray){
+            if(currentValue%2===0){
+                return true;
+            }
+        });
+        console.log(newArray);*/
+        //方法6的实现原理(待完善)
+       Array.prototype.myFilter=function(fn){
+        for(let i=0;i<this.length;i++){
+                    if(this[i]%2===0){
+                        fn(this[i],i,this);//将符合要求的值/索引/数组作为fn函数的参数;
+                }else{
+                    this.splice(i,1);
+                }
+            }
+           
+       }
+       traversal.myFilter(function(currentValue,currentIndex,currentArray){
+            console.log(currentValue);
+        });
+        console.log(traversal);
+        /*7.map方法将满足条件的元素返回到一个与原来的数组一样的数组的相对应的索引中;
+        let newMap=traversal.map(function(currentValue,currentIndex,currentArray){
+            if(currentValue%2===0){
+                return currentValue;
+            }
+        });
+        console.log(newMap);*/
+        //方法7的实现原理(完善)
+        Array.prototype.myMap=function(fn){
+        for(let i=0;i<this.length;i++){
+                    if(this[i]%2===0){
+                        fn(this[i],i,this);//将符合要求的值/索引/数组作为fn函数的参数;
+                }else{
+                    delete this[i];
+                }
+            }
+           
+       }
+       traversal.myMap(function(currentValue,currentIndex,currentArray){
+            console.log(currentValue);
+        });
+        console.log(traversal);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

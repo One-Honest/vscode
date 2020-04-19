@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS3之3D模块</title>
+    <style>
+        /* 动画不需要手动触发
+            设置动画三要素：
+            1名称（name）  2关键帧（@keyframes） 3持续时间（duration）
+            其他属性：
+            animation-timing-function规定动画的速度曲线。默认是 "ease"。
+            animation-delay规定动画何时开始。默认是 0。
+            animation-iteration-count规定动画被播放的次数。默认是 1。
+            animation-direction规定动画是否在下一周期逆向地播放。默认是 "normal"不轮转播放。alternate轮转播放
+            animation-play-state规定动画是否正在运行或暂停。默认是 "running"运行。paused暂停
+            animation-fill-mode规定对象动画时间之外的状态。
+         */
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 200px;
+            height: 100px;
+            border: 1px solid #000;
+            background-color: pink;
+            animation-name: fltr;
+            animation-duration: 2s;
+            animation-timing-function:ease-in-out;
+            /* 动画播放的速率 */
+            /* animation-delay: 2s; 
+            延迟多长时间播放动画
+            */
+            animation-iteration-count:6;
+            /* 动画的播放次数 */
+            animation-direction: alternate;
+            /* 轮转播放 */
+        }
+        div:hover{
+            animation-play-state:paused;
+            /* animation-play-state: running; */
+            /* 控制动画的停或播
+            并且这个属性不能简写进animation
+             */
+        }
+        @keyframes fltr{
+            from{
+                margin: 0;
+            }
+            to{
+                margin-left: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

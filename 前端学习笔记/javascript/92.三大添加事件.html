@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>92.三大添加事件的方式</title>
+</head>
+<body>
+    <button id="btn">爱我就别伤害我</button>
+    <script>
+        let oBtn=document.querySelector("#btn");
+        //方式一:以.onxxx开头;//注意点:若绑定相同名称的事件,则后绑定的会覆盖先绑定的
+        /* oBtn.onclick=function(){
+            alert("缴枪不杀!");
+        }
+        oBtn.onclick=function(){
+            alert("缴枪就杀!");
+        } */
+        //方式二:.addEventListener("事件名称",回调函数);需要接收两个参数;
+        //注意点:这种方式若绑定相同名称的事件,事件会按绑定的先后顺序先后呈现;接收的事件名称不需要加on;但仅ie9及以上的浏览器支持;
+        /* oBtn.addEventListener("click",function(){
+            alert("缴枪不杀!");
+        })
+        oBtn.addEventListener("click",function(){
+            alert("缴枪就杀!");
+        }) */
+        //方式三:注意点,低版本浏览器才支持(ie8及以下),这种方式若绑定相同名称的事件,后添加的先呈现,先添加的后呈现;
+        /* oBtn.attachEvent("onclick",function(){
+            alert("缴枪就杀!");
+        }) */
+        function addEvent(ele,name,fn){
+            if(ele.attachEvent){
+                ele.attachEvent("on"+name,fn);
+            }else{
+                ele.addEventListener(name,fn);
+            }
+        }
+        addEvent(oBtn,"click",function(){
+            alert("封装添加事件的方法");
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>边框圆角</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .father{
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+            box-sizing: border-box;
+            margin: 100px auto;
+            /* border-radius: 100px 50px 100px 100px; */
+            border-radius: 100px 50px ;
+            /* border-radius: 50%; 
+            1.可按照上右下左用px设置，也可以用百分比设置边框圆角属性
+            2.电脑按照所给值当成圆的半径绘画圆弧！
+            3.当省略一个值，则这个角会参考其对角的值绘画圆
+            */
+            text-align: center;
+        }
+        .son{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            border: 20px solid black;
+            box-sizing: border-box;
+            border-radius:30px;
+            /* 只设置一个值，则其他三个角都会参照这个值
+                当圆角属性值大于边框的宽度时，内外都呈圆角显示
+                当圆角属性值小于等于边框的=宽度，则外边框为圆角，内边框为直角
+             */
+             display: inline-block;
+             margin-top: 50px;
+         }
+         .half{
+             width: 200px;
+             height: 100px;
+             border: 1px solid red;
+             box-sizing: border-box;
+             margin: 100px auto;
+             border-radius: 100px 100px 0 0;
+             /*border-top-right-radius:100px 100px; 
+             border-top-left-radius: 100px 100px;
+              border-方向-方向-radius可以设置单独一个角的圆角属性
+             取两个值：第一个水平方向的值，第二个垂直方向的值
+                        若只设置一个值，第二个值则参照第一个值
+              */
+         }
+         .ellipse{
+             width: 200px;
+             height: 100px;
+             border: 1px solid red;
+             box-sizing: border-box;
+             margin: 100px auto;
+             border-top-left-radius: 100px 50px;
+             border-top-right-radius: 100px 50px;
+             border-bottom-left-radius: 100px 50px;
+             border-bottom-right-radius: 100px 50px;
+             /* 绘制椭圆的方法
+                    设置每一个角的圆角值为长方形宽高的一半即可
+              */
+
+         }
+         .picture{
+             width: 300px;
+             height: 300px;
+             border: 1px solid black;
+             box-sizing:border-box;
+             margin: 100px auto;
+             /* background-color: yellowgreen; */
+             position: relative;
+         }
+         .white{
+             width: 300px;
+             height: 150px;
+             border: 1px solid black;
+             border-radius: 150px 150px 0 0;
+             background-color: #fff;
+             box-sizing: border-box;
+         }
+         .black{
+             width: 300px;
+             height: 150px;
+             border: 1px solid black;
+             border-radius:0 0 150px 150px;
+             background-color: black;
+             box-sizing: border-box;
+         }
+         .smallwhite{
+             width: 150px;
+             height: 150px;
+             border: 60px solid black;
+             box-sizing: border-box;
+             border-radius: 50%;
+             position: absolute;
+             left: 0;
+             top: 75px;
+             background-color: #fff;
+         }
+         .smallblack{
+             width: 150px;
+             height: 150px;
+             border: 60px solid white;
+             box-sizing: border-box;
+             border-radius: 50%;
+             position: absolute;
+             right: 0;
+             top: 75px;
+             background-color: black;
+         }
+         .heart{
+             width:450px;
+             height: 450px;
+             /* border: 1px solid; */
+             box-sizing: border-box;
+             margin: 100px auto;
+             position: relative;
+             animation: jump 0.5s linear 0s infinite alternate; 
+         }
+         .left{
+             width: 250px;
+             height: 250px;
+             /* border: 1px solid; */
+             background-color: red;
+             border-radius: 50%;
+             position: absolute;
+             left: 0;
+             top: 0;
+             box-sizing: border-box;
+             box-shadow:20px 20px 100px 2px  ;
+         }
+         .right{
+             width: 250px;
+             height: 250px;
+             /* border: 1px solid #000; */
+             background-color: red;
+             border-radius: 50%;
+             position: absolute;
+             right: 0;
+             top: 0;
+             box-sizing: border-box;
+             box-shadow:20px 20px 100px 2px ;
+         }
+         .bottom{
+             width: 250px;
+             height: 250px;
+             /* border: 1px solid ; */
+             background-color: red;
+             position: absolute;
+             bottom:100px;
+             left:50%;
+             transform: translateX(-50%) rotateZ(45deg);
+             /* 企业开发中，使用定位属性left：50%，transform：translateX(-50%)来水平居中
+                        使用top：50%，transform：translateY(-50%)来垂直居中
+              */
+             box-sizing: border-box;
+             box-shadow:20px 20px 100px 2px;
+         }
+         @keyframes jump {
+             from{
+                 transform: scale(1,1)
+             }
+             to{
+                 transform: scale(1.3,1.3)
+             }
+         }
+        .add1{
+            width: 250px;
+             height: 250px;
+             /* border: 1px solid; */
+             background-color: red;
+             border-radius: 50%;
+             position: absolute;
+             left: 0;
+             top: 2px;
+        }
+        .add2{
+            width: 250px;
+             height: 250px;
+             /* border: 1px solid #000; */
+             background-color: red;
+             border-radius: 50%;
+             position: absolute;
+             right: 0;
+             top:2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son"></div>
+
+     <!-- 半圆 -->
+    </div>
+    <div class="half">   
+    </div>
+     <!-- 椭圆 -->
+    <div class="ellipse"></div>
+    <!-- 八卦图 -->
+    <div class="picture">
+        <div class="white"></div>
+        <div class="black"></div>
+        <div class="smallwhite"></div>
+        <div class="smallblack"></div>
+    </div>
+    <!-- 跳动的心 -->
+    <div class="heart">
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="bottom"></div>
+        <div class="add1"></div>
+        <div class="add2"></div>
+    </div>
+</body>
+</html>

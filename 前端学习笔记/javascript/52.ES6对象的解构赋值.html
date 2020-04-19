@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>52.对象的解构赋值</title>
+    <script>
+        /*
+        数组的解构赋值:let [a,b,c]=[1,3,5];
+                        let [a,b,c]=[1,3];//c返回值为undefined;
+                        let [a,b,c=666]=[1,3];//c返回左边设定的默认值
+        对象的解构赋值与数组的解构赋值方式基本一样;
+        对象的解构赋值的注意点是:对象的解构赋值左边的属性或方法名称必须与右边的一致才能解构赋值;
+
+对象的解构赋值的应用场景:
+            解构赋值可以调用类的所有属性(包括存储在类的原型对象中的方法);
+        */
+        /*let obj={
+            name:"谢壹诚",
+            age:26
+        }
+        // let {name,age}=obj;
+        // console.log(name,age);
+        // let {name}=obj;
+        // console.log(name);
+        // let {name="壹诚谢",age,say=666}=obj;
+        // console.log(age);
+        // console.log(name,age,say);
+//对象的解构赋值左边的属性或方法名称必须与右边的一致才能解构赋值;
+        let {age}=obj;
+        console.log(age);//可以指定名称赋值,只取obj中的age属性赋值;*/
+
+        //应用场景:
+            //应用场景1.
+            let num=[1,3];
+            function sum([a,b]){//这里会接收a,b的值,即让[a,b]=num;以此形成解构赋值;
+                return a+b;
+            }
+            let res=sum(num);//
+            console.log(res);
+            //应用场景2.
+            let obj={
+                name:"谢壹诚",
+                age:26
+            }
+            function say({name,age}){//同理:此处的name和age会接收来自say(obj)调用时输入的参数obj,形成解构赋值{name,age}=obj;
+                console.log(name,age);
+            }
+            say(obj);
+
+            //应用场景3.
+            class Dog{
+            constructor(itsName,itsAge){//实例属性和方法,存储在Dog类的实例对象中
+                this.name=itsName;
+                this.age=itsAge;
+            }
+            jump(){//静态方法,存储在Dog类的原型对象中;
+                console.log("蹦蹦跳跳");
+            } 
+        }
+        class Teddy extends Dog{//extends表示当前类需要继承Dog的属性;
+            constructor(itsName,itsAge,itsColor){
+                super(itsName,itsAge);//与call/apply属性一样,但前面由extends调用了Dog构造函数,而super只负责传递参数;
+                this.color=itsColor;
+            }
+            catch(){
+                console.log("抓抓抓");
+            }
+        }
+        Teddy.prototype.run=function(){//直接给Teddy的原型对象赋值,则存储在Teddy的原型对象中;
+           console.log('我是Teddy新增的方法;');
+       }
+
+        let ted=new Teddy('小黑',3,"black");//传递参数;
+        console.log(ted);
+
+        function getTed({name,age,color,run}){//创建一个getTed方法,让{name,age,color,run}接收ted的解构赋值(包括其原型对象中的属性或者方法)
+                console.log(name,age,color,run);//最后输出解构赋值的值;
+            }
+            getTed(ted);
+        
+        /*let dog=new Dog("小强",666);
+        console.log(dog);
+        function getDog({name,age,jump}){//创建一个getDog方法,让{name,age,jump}接收dog的解构赋值
+                console.log(name,age,jump);//最后输出解构赋值的值;
+            }
+            //注意点:解构赋值可以调用类的所有属性(包括存储在类的原型对象中的方法);
+        getDog(dog);*/
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

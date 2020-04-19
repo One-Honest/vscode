@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>48.ES6继承属性地运用方法</title>
+    <script>
+        /*
+
+        */
+       //ES6之后的继承:
+        class Dog{
+            constructor(itsName,itsAge){//实例属性和方法,存储在Dog类的实例对象中
+                this.name=itsName;
+                this.age=itsAge;
+            }
+            jump(){//静态方法,存储在Dog类的原型对象中;
+                console.log("蹦蹦跳跳");
+            } 
+        }
+        class Teddy extends Dog{//extends表示当前类需要继承Dog的属性;
+            constructor(itsName,itsAge,itsColor){
+                super(itsName,itsAge);//与call/apply属性一样,但前面由extends调用了Dog构造函数,而super只负责传递参数;
+                this.color=itsColor;
+            }
+            catch(){
+                console.log("抓抓抓");
+            }
+        }
+        // Teddy.prototype=new Dog();
+        // Teddy.prototype.construcor=Teddy;
+
+        Teddy.prototype.run=function(){//直接给Teddy的原型对象赋值,则存储在Teddy的原型对象中;
+           console.log('我是Teddy新增的方法;');
+       }
+       let dog=new Dog("小小",666);
+        console.log(dog);
+        let ted=new Teddy("black");//传递参数;继承了Dog的属性名称,但不会继承该属性后面通过传递参数的值,ted可以自己传递参数
+        console.log(ted);
+        ted.catch();
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

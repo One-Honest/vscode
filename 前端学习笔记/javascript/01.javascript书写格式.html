@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>01.javascript书写格式</title>
+    <!-- 
+        与css的书写格式差不多一致：
+        行内
+        内嵌：head标签或body标签内
+        外链式
+
+        注意点：1.不能把js代码(无论是内嵌还是外链)直接放head标签中，因为浏览器是从上至下渲染代码，
+        想使用head标签内的js代码控制页面的元素需要加window.onload=function(){js代码}
+        或者将js代码放至body标签所有html代码后面
+                2.javascript严格区分大小写，输出语句需要注意大小写的区分
+
+        常见的输出方式：
+            通过弹窗形式【alert（数字可以不用引号，其他字符串需要引号才能展示）】
+                       【confirm属性与alert属性差不多，弹窗比alert属性多了一个取消按钮】
+                       【prompt则比confirm属性多了一个输入框】
+            通过网页内容区域的形式:[dovument.write(数字可以不用引号，其他字符串需要引号才能展示)]
+            通过开发者工具控制台的形式[console.log()]普通输出
+                                    [console.warn]警告输出
+                                    [console.error]错误输出
+
+     -->
+     <!-- <script src="./js文件/write.js">
+        // alert('let us go');
+     </script> -->
+</head>
+<body>
+    <p onclick="alert('搞不死就往死里搞')">行内设置js样式</p>
+    <script src="./js文件/write.js"></script>
+</body>
+</html>

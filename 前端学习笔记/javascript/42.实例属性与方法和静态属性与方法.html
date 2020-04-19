@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>42.实例属性与方法和静态属性与方法</title>
+    <script>
+        /*
+        1.通过实例对象访问的属性叫实例属性;通过实例对象调用的方法叫实例方法;
+        2.通过构造函数访问的属性称之为静态属性;通过构造函数调用的方法称之为静态方法;
+        */
+        function Person(myName,myAge){
+                this.name=myName;
+                let age=26;
+                this.setAge=function(myAge){
+                    if(myAge>=0){
+                        age=myAge;
+                    }
+                }
+                this.getAge=function(){
+                    return age;
+                }
+                this.learn=function(){
+                console.log("构造函数中的learn方法");
+                };
+            }
+
+        let a=new Person('壹诚谢',27);//通过构造函数创造一个实例对象a;
+        console.log(a.name);//通过实例对象访问的属性叫实例属性;
+        a.learn();//通过实例对象调用的方法叫实例方法;
+        Person.num=123;//这里设置的num属性存储在Person构造函数的原型对象中;
+        console.log(Person.num);//通过构造函数访问的属性称之为静态属性;
+        Person.study=function(){//这里设置的study方法存储在Person构造函数的原型对象中;
+            console.log("study");
+        }
+        Person.study();//通过构造函数调用的方法称之为静态方法;
+        console.log(Person.learn);//构造函数的属性必须用new创建对象之后才能被对象使用,而直接通过构造函数使用其属性则返回值为undefined;
+        console.log(Person);
+        console.log(Person.prototype);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

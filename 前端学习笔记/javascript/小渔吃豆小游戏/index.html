@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>小渔吃豆小游戏</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/SnakeMap.js"></script>
+    <script src="js/SnakeFood.js"></script>
+    <script src="js/Snake.js"></script>
+</head>
+<body>
+    <!-- <div class="map"></div> -->
+    <script>
+       let snakeMap= new SnakeMap();
+       
+       let snakeFood=new SnakeFood(62.5,62.5,"images/button4.jpg",snakeMap)
+       snakeFood.render();
+
+       let parameter={
+           width:62.5,
+           height:62.5,
+           headImg:"images/button5.jpg",
+           bodyImg:"images/button4.jpg",
+           snakeMap:snakeMap
+       }
+       let snake=new Snake(parameter);
+       snake.render();
+       snake.update(snakeFood);
+    </script>
+</body>
+</html>

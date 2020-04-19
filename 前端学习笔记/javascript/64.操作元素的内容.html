@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>64.操作元素的内容</title>
+</head>
+<body>
+    <div>
+        我是div
+        <h1>我是标题</h1>
+        <span>我是span</span>
+        <a href="#">我是a</a>
+        <p>我是段落</p>
+        <p>我是段落</p>
+    </div>
+<script>
+    //1.获取元素内容
+    //2.设置元素内容
+    //  innerHTML   innerText   textContent 三种方式都可以设置元素的内容,并且都会覆盖元素的全部内容;
+    let oDiv=document.querySelector("div");
+    console.log(oDiv.innerHTML);//1.获取元素的内容(包括在该元素内的html标签)并且不会去除两端的空格;
+    console.log(oDiv.innerText);//只获取元素的内容并且会去除两端的空格;p标签前一行会空一行;行内标签不会换行;
+    console.log(oDiv.textContent);//只获取元素的内容但不会去除内容两端的空格;获取的每个元素都独占一行
+    // console.log(oDiv.innerHTML="<p>123</p>");//2.设置的内容有标签的按照html格式转化,没有标签的按字符串格式转换
+
+    //下面两种有兼容性问题:
+    // console.log(oDiv.innerText="<p>123</p>");//设置的内容全部按照字符串格式转化
+    console.log(oDiv.textContent="<p>123</p>");//设置的内容全部按照字符串格式转化
+    //解决兼容性问题:
+    setText(oDiv,"我来自偶然")
+    function setText(obj,text){
+        if("textContent" in obj){//判断obj对象是否有textContent这个属性
+            obj.textContent=text;//有就让对象的文本按textContent格式显示
+        }else{
+            obj.innerText=text;//没有就让对象的文本按innerText格式显示
+        }
+    }
+</script>
+</body>
+</html>

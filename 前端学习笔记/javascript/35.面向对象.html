@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>35.面向对象</title>
+    <script>
+        /*
+        面向过程:强调的是功能行为,关注的是解决问题需要哪些步骤;
+        面向对象:将功能封装进对象,强调具备了功能的对象,关注的是解决问题需要哪些对象
+        面向对象是基于面向过程而言;
+        主要是为了当需求更改,功能增加时能够更方便快捷地处理;根据不同的功能和方法进行不同的封装,功能类型一样的封装在一起,这样结构就清晰多了;
+        当需要使用时,找到对应功能的类直接调用即可;
+        */
+
+        //创建默认的对象(通过系统默认的类Object创建对象)
+            /*第一种方法:
+        let obj=new Object();
+        obj.name='谢壹诚';//给对象添加属性:对象名.属性名=值;
+        obj.age=26;//给对象添加属性:对象名.属性名=值;
+        obj.learn=()=>console.log('正在学习javascript');
+        console.log(obj.name);
+        console.log(obj.age+'岁');
+        obj.learn();//对象的行为是函数,所以需要调用函数才能显示*/
+            /*第二种方法:
+        let obj={};
+        obj.name='谢壹诚';//给对象添加属性:对象名.属性名=值;
+        obj.age=26;//给对象添加属性:对象名.属性名=值;
+        obj.learn=()=>console.log('正在学习javascript');
+        console.log(obj.name);
+        console.log(obj.age+'岁');
+        obj.learn();//对象的行为是函数,所以需要调用函数才能显示*/
+            /*第三种方法:*/
+        let obj={
+        name:'谢壹诚',//注意,此处给对象的属性赋值用:并且属性与属性之间用,分隔;
+        age:26,
+        learn:()=>console.log('正在学习javascript')
+        }
+        console.log(obj.name);
+        console.log(obj.age+'岁');
+        obj.learn();//对象的行为是函数,所以需要调用函数才能显示*/
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

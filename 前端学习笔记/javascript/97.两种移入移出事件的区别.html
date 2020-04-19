@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>97.两种移入移出事件的区别</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .father{
+            width: 400px;
+            height: 400px;
+            background-color: red;
+        }
+        .son{
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+    <script>
+        /* 
+        移入:onmouseover和onmouseenter
+            onmouseover移入子元素,父元素的移入事件也会被触发
+            而onmouseenter移入子元素,父元素的移入事件不会被触发
+        移出:onmouseout和onmouseleave
+            onmouseout移出子元素,父元素的移出事件也会被触发
+            而onmouseleave移出子元素,父元素的移出事件不会被触发
+         */
+         let oFather=document.querySelector(".father");
+        let oSon=document.querySelector(".son");
+        /* oFather.onmouseover=function(){
+            console.log("father");
+        }
+        oSon.onmouseover=function(event){
+            console.log("son");
+        } */
+        /* oFather.onmouseout=function(){
+            console.log("father");
+        }
+        oSon.onmouseout=function(event){
+            console.log("son");
+        } */
+         oFather.onmouseenter=function(){
+            console.log("father");
+        }
+        oSon.onmouseenter=function(event){
+            console.log("son");
+        }
+        oFather.onmouseleave=function(){
+            console.log("leavefather");
+        }
+        oSon.onmouseleave=function(event){
+            console.log("leaveson");
+        }
+    </script>
+</body>
+</html>

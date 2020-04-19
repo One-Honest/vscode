@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>50.对象的增删改查</title>
+    <script>
+        /*
+        1.增
+            对象.新属性名="新属性";//增 方法1
+            对象["新属性名"]="新属性";//增 方法2
+        2.删
+            delete 对象.属性名;//删 方法1
+            delete 对象["属性名"];//删 方法2
+        3.改
+            对象.属性名="新属性";//改 方法1
+            对象["属性名"]="新属性";//改 方法2
+        4.查[属性]和调用[方法]
+            console.log(p.name);//查 方法1
+            console.log(p["name"]);//查 方法2
+            p.say();//调用 方法1
+            p["say"]();//调用 方法2
+
+        */
+       class Person{};
+       let p=new Person();
+       p.name="谢壹诚";//增 方法1
+       p.say=function(){
+           console.log("努力!");
+       }
+       console.log(p);
+       p["name1"]="壹诚谢";//增 方法2;注意属性名若相同,后增的会覆盖新增的属性;
+       p["say1"]=function(){
+           console.log("奋斗!");
+       }
+       console.log(p);
+       delete p.name1;//删 方法1
+       delete p["say1"];//删 方法2
+       console.log(p);
+       p.name="壹诚谢";//改 方法1
+       p["say"]=function(){//改 方法2
+           console.log("奋斗!");
+       }
+       console.log(p);
+       console.log(p.name);//查 方法1
+       console.log(p["name"]);//查 方法2
+       p.say();//调用 方法1
+       p["say"]();//调用 方法2
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

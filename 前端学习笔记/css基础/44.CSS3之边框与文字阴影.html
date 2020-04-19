@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>43.CSS3之边框与文字阴影</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box1{
+            width: 300px;
+            height: 300px;
+            border: 1px solid #ccc;
+            background-color: pink;
+            margin: 100px auto;
+            box-shadow: 10px 10px 20px 3px,20px 20px 20px 2px inset;
+             /* 给盒子添加阴影
+            box-shadow: h-shadow v-shadow blur   spread     color inset;
+                          水平     垂直    模糊 尺寸（扩展）   颜色   内外
+             */
+            /* box-shadow 向框添加一个或多个阴影。该属性是由逗号分隔的阴影列表，
+            每个阴影由 2-4 个长度值、可选的颜色值以及可选的 inset 关键词来规定。省略长度的值是 0。 */
+            color: #ccc;
+            /* 默认情况下，阴影的颜色与内容的颜色一致 */
+            text-align: center;
+            line-height: 300px;
+            font-size: 50px;
+        }
+        .box2{
+            width: 300px;
+            height: 300px;
+            border: 1px solid #ccc;
+            background-color: yellowgreen;
+            margin: 100px auto;
+            box-shadow: 10px 10px 20px 5px,20px 20px 20px 5px ;
+            line-height: 300px;
+            text-align: center;
+            font-size: 50px;
+            text-shadow: 5px 5px  5px green;
+        }
+         /* 给文字添加阴影
+            text-shadow: h-shadow v-shadow blur   color ;
+                          水平     垂直    模糊    颜色   
+                            默认情况下，阴影的颜色与内容的颜色一致 
+             */
+    </style>
+</head>
+<body>
+    <div class="box1">
+        盒子阴影
+    </div>
+    <div class="box2">文字阴影</div>
+</body>
+</html>

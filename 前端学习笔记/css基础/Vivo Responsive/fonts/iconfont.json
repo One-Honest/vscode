@@ -1,0 +1,23 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "100743",
+      "name": "搜索",
+      "font_class": "sousuo",
+      "unicode": "e62f",
+      "unicode_decimal": 58927
+    },
+    {
+      "icon_id": "13744033",
+      "name": "vivo",
+      "font_class": "vivo",
+      "unicode": "e69a",
+      "unicode_decimal": 59034
+    }
+  ]
+}

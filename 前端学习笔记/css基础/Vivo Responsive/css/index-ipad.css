@@ -1,0 +1,58 @@
+/* 内容开始 */
+.content{
+    height: 600px;
+}
+.content .contentnav .nav1{
+    display: none;
+}
+.content .contentnav .nav2{
+    display: block;
+}
+.order>a>img{
+    width: 120%;
+}
+.order>a>h2{
+    font-size:24px;
+}
+.order>a>p{
+    font-size: 14px;
+}
+.order .orderbtn>a{
+    font-size:16px;
+}
+/* 内容结束 */
+/* 横幅广告开始 */
+.banner .banner_top{
+    height: 450px;
+}
+.banner .des>h2{
+    font-size:26px;
+}
+.banner .des>p{
+    font-size:18px;
+}
+.banner .banner_middle{
+    height:600px;
+}
+.banner .banner_bottom{
+    height:600px;
+}
+/* 横幅广告结束 */
+/* 小横幅 开始*/
+.bannersmall{
+    height:580px;
+}
+.bannersmall .list{
+   flex-wrap: wrap;
+}
+.bannersmall .list>li{
+    flex: none;
+    width: 50%;
+    overflow: hidden;
+}
+/* 小横幅 结束 */
+/* 底部开始 */
+.footer{
+    margin-top:660px;
+}
+/* 底部结束 */

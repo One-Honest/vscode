@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>119.函数防抖</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <input type="text">
+    <script src="tools/tools.js"></script>
+    <script>
+        //1.什么是函数防抖?函数防抖是优化高频执行js代码的一种手段,可以让被调用的函数在一次连续的高频操作过程中只被调用一次;做到减少代码执行次数,提升网页性能;
+        //2.函数防抖的应用场景:oninput/onmousemove/onscroll/onresize等事件;
+         let oInput=document.querySelector("input");
+        /* let timerId=null;
+        oInput.oninput=function(){
+            timerId&&clearTimeout(timerId);
+            timerId=setTimeout(function(){
+                console.log("发送一次请求");
+            },1000);
+        } */
+
+    //     function debounce(fn,delay){
+    //         let timerId=null;
+    //         return function(){
+    //             let self=this;
+    //             let args=arguments;
+    //             timerId&&clearTimeout(timerId);
+    //             timerId=setTimeout(function(){
+    //                 fn.apply(self,args);//将self和args中的this改为oInput(调用函数的对象)
+    //             },delay||1000);
+    //         }
+    //     }
+    //     function test(event){
+    //         console.log("发送一次请求");
+    //         console.log(this);
+    //         console.log(event);
+    //     }
+    //     oInput.oninput=debounce(test,1000);
+    oInput.oninput=debounce(function(event){//调用debounce封装函数实现高频js代码执行的防抖操作;
+        console.log("发送一次请求");
+        console.log(this);
+        console.log(event);
+    },4000)
+    </script>
+</body>
+</html>

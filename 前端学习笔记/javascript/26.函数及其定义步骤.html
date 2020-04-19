@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>函数</title>
+    <script>
+       /* 
+        1.函数是专门用于封装代码的,函数是一段可以被反复执行的代码块;
+        2.函数的格式[定义步骤]:
+            1.起个有意义的函数名[为了提高代码可读性以及遵守标识符的命名规范;]
+            2.确定函数的形参列表:即确定使用函数时需要传入哪些辅助的数据;
+            3.将需要封装的代码放到{}中;
+            4.使用return方式确定函数的返回值;
+        function 函数名(形参列表){
+            被封装的代码;
+        }
+        3.不使用函数的弊端:冗余代码过多;当需求变更时需要进行大量的代码修改;
+        4.使用函数的好处:减少冗余代码;当需求变更时只需要修改函数中的代码即可;
+        5.注意点:
+            1.函数中的形参可为0个也可以为多个;
+            2.函数中可以有返回值也可以没有返回值;
+            3.函数中若不明确返回值,则返回值默认为unfefined;
+            4.return与break的作用相似,其作用是结束当前的函数,return后不能编写任何语句,编写了也不会被运行;
+        5.函数中形参和实参的个数可以不一致,若实参多余形参,多余的实参不会被接收;若实参少于形参,则少了实参的那个形参返回值为undefined;
+            6.函数与数组一样都是引用数据类型[即对象类型],既然是一种数据类型,也可以被保存到变量中;
+                let change=function(){
+                    console.log("我是一种数据类型,我可以被保存到变量中");
+                }
+        */
+       function better(){
+           console.log('我被封装起来了');
+           console.log('以后直接调用我的函数名就可以使用我了');
+           console.log('后续需要修改只需要找到我的本体修改即可');
+       }
+       better();//直接用函数名调用即可;
+
+       //定义两个数相加的函数,返回两个数相加的和;
+       function getSum(num1,num2){
+           let sum=num1+num2;
+           return sum;
+       }
+       let num1=1,num2=2;
+    //    let res=getSum(num1,num2);
+       console.log(getSum(num1,num2));
+    //    getSum();
+
+    let change=function statics(){
+                    console.log("我是一种数据类型,我可以被保存到变量中");
+                }
+                change();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

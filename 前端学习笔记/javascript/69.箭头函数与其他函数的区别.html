@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>69.箭头函数与其他函数的区别</title>
+</head>
+<body>
+<script>
+    let p={
+        name:"谢壹诚",
+        say:function(){
+            console.log(this);
+        },
+        run:()=>{//注意点:因为没有将箭头函数放在其他函数中,所以箭头函数属于全局作用域;JS中只有定义一个新的函数才会开启一个新的作用域;
+            console.log(this);//这里的this不是调用run的对象p,而是全局作用域中的window
+        }
+    }
+    p.say();
+    p.run();
+
+    function Person(){//构造函数
+        this.name="xyc";
+        this.say=function(){
+            console.log(this);
+        }
+        this.run=()=>{//因为将箭头函数放在了其他函数中,所以箭头函数属于其他函数;
+            console.log(this);
+        }
+    }
+    let q=new Person();
+    q.say();
+    q.say.call(p.name);//修改say中的this
+    q.run();
+    q.run.call(p.name);//无法通过bind/call/apply等修改箭头函数run的this,因为箭头函数中的this永远只看其所在的作用域的this;
+</script>
+</body>
+</html>

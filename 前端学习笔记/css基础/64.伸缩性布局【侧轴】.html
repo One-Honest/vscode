@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>64.伸缩布局【侧轴】</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .box{
+            list-style: none;
+            width: 600px;
+            height: 600px;
+            border: 1px solid black;
+            margin: 100px auto;
+            /* overflow: hidden; */
+            display: flex;
+           flex-direction: row;
+           /* 告诉浏览器主轴的起点在伸缩器的最左边，从左至右排版 */
+           justify-content: flex-start;
+           /* 告诉浏览器排版好的伸缩项需要和伸缩器的主轴的起点对齐 */
+           /* align-items: center;
+           flex-start属性告诉浏览器排版好的伸缩项需要和侧轴的起点对齐；flex-end属性则是与侧轴的终点对齐
+           center属性则是与侧轴的中点对齐
+
+            注意：侧轴相对于主轴，侧轴无两端对齐（space-between）与环绕对齐（space-around）
+            */
+            /*align-items: baseline;
+             基线对齐，即伸缩项内的所有内容的基线在同一水平线上 */
+             align-items: stretch;
+             /*拉伸对齐即让所有的伸缩项拉伸成与侧轴的高度一致
+             注意点：若伸缩项设置了高度，则此属性失效
+              */
+        }
+        .box>li{
+            width: 100px;
+            /* height: 100px;为了配合align-items属性，将伸缩项li的高度去掉 */
+            line-height: 100px;
+            text-align: center;
+            font-size: 30px;
+            background-color: yellowgreen;
+            /* display:inline-block; */
+            /* float: left; */
+        }
+        .box>li:nth-child(2){
+            background-color: pink;
+            padding-top: 100px;
+        }
+        .box>li:nth-child(3){
+            background-color: skyblue;
+        }
+        .box1{
+            list-style: none;
+            width: 600px;
+            height: 600px;
+            border: 1px solid black;
+            margin: 100px auto;
+            /* overflow: hidden; */
+            display: flex;
+           flex-direction: row;
+           /* 告诉浏览器主轴的起点在伸缩器的最左边，从左至右排版 */
+           justify-content: space-between;
+        }
+        .box1>li{
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            font-size: 30px;
+        }
+        /* 
+        使用align-items是在伸缩器里设置，统一设置伸缩器里的所有伸缩项的侧轴对齐方式
+        而align-self属性则是在伸缩项本身设置属性，单独控制每一个伸缩项的侧轴对齐方式
+        其取值与align-items一致：flex-start;center;flex-end;baseline;stretch;
+        只是控制范围与设置位置不一样
+         */
+        .box1>li:nth-child(1){
+            background-color: yellowgreen;
+            align-self:flex-end;
+        }
+        .box1>li:nth-child(2){
+            background-color: pink;
+            align-self: center;
+        }
+        .box1>li:nth-child(3){
+            background-color: skyblue;
+            align-self:flex-start;
+        }
+    </style>
+</head>
+<body>
+    <ul class="box">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+
+    <!-- align-self属性 -->
+    <ul class="box1">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+    <img src="images/flex.png" alt="">
+
+</body>
+</html>

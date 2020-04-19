@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>108.获取元素宽高的scroll属性</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            padding:50px;
+            border:150px solid;
+            background-color: red;
+            background-clip: content-box;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p>我是内容</p>
+        <p>我是内容</p>
+        <p>我是内容</p>
+        <p>我是内容</p>
+        <p>我是内容</p>
+        <p>我是内容</p>
+        <p>我是内容</p>
+        <p>我是内容</p>
+        <p>我是内容</p>
+        <p>我是内容</p>
+        <p>我是内容</p>
+        <p>我是内容</p>
+        <p>我是内容</p>
+        <p>我是内容</p>
+        <p>我是内容</p>
+        <p>我是内容</p>
+        <p>我是内容</p>
+        <p>我是内容</p>
+    </div>
+    <img src="images/ocs.png" alt="">
+    <img src="images/scrollTop.png" alt="">
+    <script>
+        //当内容宽高不大于元素宽高时:通过元素的scroll属性获取元素的宽高(包括元素的内边距)===client属性获取的宽高
+        //当内容宽高大于元素宽高时:通过元素的scroll属性获取元素的宽高===client属性获取的宽高+超出元素内边距以外的内容的距离
+    //注意:scroll属性获取的宽高不包括滚动条的宽高;
+        let oDiv=document.querySelector("div");
+        console.log(oDiv.scrollWidth);
+        console.log(oDiv.scrollHeight);
+        //通过元素的client属性获取元素的偏移位
+        oDiv.onscroll=function(){//onscroll可以监听内容的滚动
+            // console.log(oDiv.scrollLeft);
+            console.log(oDiv.scrollTop);//从内边距开始计算
+        }
+        
+    </script>
+</body>
+</html>

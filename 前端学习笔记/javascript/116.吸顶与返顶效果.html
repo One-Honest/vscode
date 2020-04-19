@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>116.吸顶与返顶效果</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        img{
+            width: 100%;
+            vertical-align: top;
+        }
+        .content{
+            height:2000px;
+        }
+        span{
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 1px solid;
+            background-color:yellowgreen;
+            position: fixed;
+            right: 10px;
+            bottom: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <img src="images/nbatop.png" alt="" id="top">
+    <img src="images/nbanav.png" alt="" id="nav">
+    <img src="images/nbacontent.png" alt="" class="content">
+    <span>回到顶部</span>
+    <script src="tools/tools.js"></script>
+    <script>
+        //1.获取操作元素
+        let oTop=document.querySelector("#top");
+        let oNav=document.querySelector("#nav");
+        let oBtn=document.querySelector("span");
+        //2.获取top区域的高度
+        let topHeight=oTop.offsetHeight;
+        //3.监听网页的滚动然后判断网页滚动的距离是否超出top区域
+        window.onscroll=function(){
+            let pageOffsetY=getPageScroll().y;
+            if(pageOffsetY>=topHeight){
+                oNav.style.position="fixed";
+                oNav.style.left="0px";
+                oNav.style.top="0px";
+            }else{
+                oNav.style.position="";
+            }
+            if(pageOffsetY>200){
+                oBtn.style.display="block";
+            }else{
+                oBtn.style.display="none";
+            }
+        }
+        let timer=null;
+        oBtn.onclick=function(){
+            // window.scrollTo(x,y);此方法可以将页面移动到某个位置;x代表水平方向,y代表垂直方向;
+            clearInterval(timer);
+            timer=setInterval(function(){
+                let begin=getPageScroll().y;
+                let target=0;
+                let step=(target-begin)*0.3;
+                begin+=step;
+                if(Math.abs(Math.floor(step))<=1){
+                    clearInterval(timer);
+                    window.scrollTo(0,0);
+                    return;
+                }else{
+                    window.scrollTo(0,begin);
+                }
+            },50)
+        }
+    </script>
+</body>
+</html>

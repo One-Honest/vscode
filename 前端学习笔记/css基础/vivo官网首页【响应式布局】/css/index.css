@@ -1,0 +1,248 @@
+body{
+    /* background-color: pink; */
+    margin: 0;
+    padding: 0;
+}
+/* 头部开始 */
+.header{
+    width: 100%;
+    height: 40px;
+    background-color: #333;
+    display: flex;
+    justify-content: space-between;
+    line-height: 40px;
+}
+.header li{
+    float: left;
+    margin-right: 42px;
+    color: #ccc;
+}
+.header li>a{
+    text-decoration: none;
+    color: #ccc;
+}
+.header .header_left{
+    margin-left: 48px;
+}
+.header .header_left>li{
+    font-size: 14px;
+    color: #ccc;
+    font-weight: 400;
+}
+.header .header_right{
+    margin-right: 48px;
+}
+.header .header_right>li:last-child{
+    margin-right:0;
+}
+/* 头部结束 */
+/* 内容开始 */
+.main{
+    width: 100%;
+    height: 720px;
+    background: url("../images/bg.jpg") no-repeat;
+}
+.main  .main_nav{
+    width: 1200px;
+    height: 60px;
+    line-height: 60px;
+    margin: 0 auto;
+    /* background-color: yellowgreen; */
+    display: flex; 
+}
+.main h1>a{
+    text-decoration: none;
+    font-size: 90px;
+    font-weight: 200;
+    color: #fff;
+}
+.main h1>a:hover{
+    color: #417fff;
+}
+.main .nav{
+    width: 800px;
+    height: 100%;
+    /* display: flex; */
+    margin-left: 135px;
+     position: relative; 
+}
+.main .nav1{
+     display: none;
+    width: 800px;
+    height: 100%;
+    /* display: flex; */
+    margin-left: 135px;
+     position: relative;
+}
+.main .nav>li{
+    float: left;
+    margin-right: 28px;
+}
+.main .nav>li:last-child{
+    margin-right: 0;
+}
+.main .nav>li>a{
+    text-decoration: none;
+    font-size: 16px;
+    color: #999;
+}
+.main .nav>li>a:hover{
+    color:#417fff;
+}
+.main .main_nav>p{
+    padding-right: 200px;
+}
+.main .main_nav>p>a{
+    font-size: 26px;
+    color: #fff;
+    text-decoration: none;
+    vertical-align: middle;
+}
+.main .main_nav>img{
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    top: 250px;
+    left:250px;
+}
+.main .main_nav>ol{
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.main .main_nav>ol>li{
+    float: left;
+    width: 40px;
+    height: 5px;
+    background-color:rgba(255, 255, 255, 0.5);
+    margin: 0 4px;
+    border-radius: 3px;
+
+}
+.main .main_nav>ol>li:hover{
+    background-color: #fff;
+}
+.main .main_nav .logo{
+    width: 200px;
+    position: absolute;
+    top: 450px;
+    left:260px;
+    text-align: center;
+}
+.main .phonenav{
+    display: none;
+}
+.main .main_nav .logo>span{
+    display: block;
+    height: 12px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.5);
+    transition: all 1s;
+}
+.main .main_nav .logo>b{
+    display: inline-block;
+    width: 16px;
+    height: 2px;
+    background-color:rgba(255, 255, 255, 0.5);
+    transition: all 1s;
+}
+.main .main_nav .logo:hover span{
+    color: #fff;
+}
+.main .main_nav .logo:hover b{
+    background-color: #fff;
+    width:60px;
+}
+/* 内容结束 */
+/* 底部开始 */
+.footer{
+    width: 100%;
+    margin-top: 5px;
+    position: relative;
+}
+.footer .footer_top {
+    width: 100%;
+    display: flex;
+}
+.footer .footer_top div{
+    flex: 1;
+    overflow: hidden;
+    height: 300px;
+    position: relative;
+}
+.footer .footer_top div>a{
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+}
+.footer .footer_top div:nth-child(even) a{
+    color: #fff;
+}
+.footer .footer_top div>a>img{
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.footer .footer_top div>a .tip{
+    text-align: center;
+    margin-top: 25px;
+}
+.footer .footer_bottom{
+    width: 1200px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: space-between;
+    margin: 76px 0;
+    border-bottom: 1px solid #666;
+    box-sizing: border-box;
+}
+.footer .list{
+    display: flex;
+    width: 800px;
+    text-align: center;
+    margin-bottom: 76px;
+}
+.footer .list>dl{
+    float: left;
+    flex: 1;
+}
+.footer .list>dl dd{
+    color: #333;
+    margin-top: 18px;
+}
+.footer .list>dl>dt{
+    margin-bottom: 40px;
+}
+.footer .phone{
+    width: 15%;
+}
+.footer .phone>p:nth-child(2){
+    font-size: 20px;
+    color: #417fff;
+    margin-top: 60px;
+}
+.footer .phone>p:nth-child(3){
+    font-size: 14px;
+}
+.footer>p{
+    width: 1200px;
+    font-size: 12px;
+    color: #666;
+    position:absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom:-450px;
+    text-align: center;
+}
+.footer>p>a{
+    text-decoration: none;
+    color:#666;
+}
+/* 底部结束 */
+.footer .phone1{
+    display: none;
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>65.操作元素的样式</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<div class="box"></div>
+
+<script>
+//1.设置元素的样式
+    let oDiv=document.querySelector("div");
+    //oDiv.className="box";//第一种方式:元素名.className="元素类名";
+
+    oDiv.style.width="300px";//第二种方式:元素名.style.样式名="样式值";注意点:样式名命名方式为驼峰式命名;
+/*//注意点:若css与js同时设置了元素的相同样式,则js中的样式优先级比css高,因为js设置的样式都是行内样式;
+    oDiv.style.width="300px";
+    oDiv.style.height="300px";
+    oDiv.style.backgroundColor="skyblue";
+    
+
+
+
+//获取元素的样式:
+    方法1:
+    oDiv.style.width="300px";//获取js中设置的行内样式属性值;
+    console.log(oDiv.style.width);
+    //注意点:通过style属性只能获取行内样式的属性值,而无法获取css中设置的元素样式的属性值; */   
+//方法2: window.getComputedStyle会将元素目前的所有样式和样式的属性值打包成一个对象返回给我们;
+    // let cstyle=window.getComputedStyle(oDiv);//通过window.getComputedStyle(元素).样式  可以获取元素中的样式;
+    console.log(window.getComputedStyle(oDiv).width);//获取当前使用的样式的属性值;
+    
+</script>
+</body>
+</html>

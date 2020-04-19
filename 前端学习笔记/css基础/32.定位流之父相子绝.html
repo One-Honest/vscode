@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>父相子绝</title>
+    <style>
+         *{
+            margin:0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+            width: 800px;
+            height: 50px;
+            background-color: red;
+            margin: 0 auto;
+            line-height: 50px;
+            margin-top: 100px;
+        }
+        ul li{
+            float: left;
+            width: 100px;
+            height:50px;
+            text-align: center; 
+            background-color: #ccc;
+         
+        }
+        ul li:nth-of-type(4){
+            background-color: yellow;
+            position: relative;
+        }
+        ul li img{
+            width: 26px;
+            height: 20px;
+            /* position: relative;
+            top: -20px;
+            left: -42px; 
+            企业开发不单独使用相对定位属性(会占用标准流中的空间)或绝对定定位属性（不会随浏览器变化而变化）
+            */
+            position: absolute;
+            top: -10px;
+            /* 利用百分比设置元素离祖元素一半，再利用元素的外边距向左边移动元素宽度的一半（绝对元素的水平居中） */
+            left: 50%;
+            margin-left: -13px;
+        }
+    </style>
+</head>
+<body>
+        <ul>
+                <li>锦上城</li>
+                <li>锦上城</li>
+                <li>锦上城</li>
+                <li>全球购
+                    <img src="images/1.jpg" alt="图片">
+                </li>
+                <li>锦上城</li>
+                <li>锦上城</li>
+                <li>锦上城</li>
+                <li>锦上城</li>
+    </ul>
+</body>
+</html>

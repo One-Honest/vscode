@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>115.跟随广告</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        img{
+            position:absolute;
+            left: 0;
+            /* top: 50%;
+            transform: translateY(-50%); */
+        }
+        p{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <img src="images/baidu.png" alt="">
+    <script src="封装的对象和方法/animation.js"></script>
+    <script src="tools/tools.js"></script>
+    <script>
+        let oImg=document.querySelector("img");
+        //1.计算图片的top值
+        let screenHeight=getScreen().height;
+        let imgHeight=oImg.offsetHeight;
+        let offsetY=(screenHeight-imgHeight)/2;
+        // oImg.style.top=offsetY+"px";
+        //2.将计算后的top值传给图片
+        linearAnimation(oImg,{"top":offsetY});
+        //3.监听网页的滚动事件
+        window.onscroll=function(){
+            //获取网页滚动的距离
+            let pageOffsetY=getPageScroll().y;
+            linearAnimation(oImg,{"top":offsetY+pageOffsetY});
+        }
+    </script>
+</body>
+</html>

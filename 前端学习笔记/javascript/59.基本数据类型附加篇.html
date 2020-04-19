@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>59.基本数据类型附加篇</title>
+    <script>
+        /*
+        1.基本数据类型有:数值类型,字符串类型,布尔类型,空类型,未定义类型;
+            2.通过字面量创建的基本数据类型都是常量;
+            3.常量不能被修改;
+            4.常量的每一次修改或者拼接都是生成一个新的常量,开辟新的存储空间,因此企业开发中注意尽量少通过拼接或修改生成新的常量,避免占用过多内存空间;
+            
+            let str4="我是常量,不能被修改";
+            let newStr=str4.replace("我","你");//此处并不会修改原有的常量,而是替换了常量中的内容返回一个新的常量给我们;
+            console.log(str4);
+            console.log(newStr);
+        2.基本包装类型
+            基本类型的特点:没有属性与方法;
+            之前之所以能使用字符串的各种属性,是因为在使用这个属性的时候,系统就会识别这个属性并且帮我们将基本数据类型中的字符串类型包装
+            成了对象类型;
+            //let newStr=new String(str);
+            let newStr=str4.replace("我","你");
+        */
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

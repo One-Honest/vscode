@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>109.获取网页可视区域的宽高</title>
+</head>
+<body>
+    <script>
+        //1.通过inner属性获取网页的宽高:但有浏览器兼容性问题:只在ie9以上浏览器支持;
+        console.log(window.innerWidth);
+        console.log(window.innerHeight);
+        //2.标准渲染下(有!DOCTYPE声明,document.compatMode为CSSlCompat)通过document.documentElement.clientWidth/clientHeight可在ie8以下的浏览器下获取网页宽高;
+    console.log(document.documentElement.clientWidth);
+        /* //3.混杂渲染下(无!DOCTYPE声明,document.compatMode为BackCompat)通过document.body.clientWidth/clientHeight在ie8以下的浏览器下获取网页宽高
+        console.log(document.body.clientWidth);
+        console.log(document.body.clientHeight); */
+
+        //针对以上兼容性问题,企业开发中一般将其封装成一个获取页面宽高的方法;
+        let{width,height}=getScreen();
+        console.log(width);
+        console.log(height);
+        function getScreen(){
+            let width,height;
+            if(window.innerWidth){
+                width=window.innerWidth;
+                height=window.innerHeight;
+            }else if(document.compatMode==="BackCompat"){
+                width=document.body.clientWidth;
+                height=document.body.clientHeight;
+            }else{
+                width=document.documentElement.clientWidth;
+                height=document.documentElement.clientHeight;
+            }
+            return{
+                width:width,
+                height:height
+            }
+        }
+    </script>
+</body>
+</html>

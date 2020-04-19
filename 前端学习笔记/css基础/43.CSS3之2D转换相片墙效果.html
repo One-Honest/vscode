@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>43.CSS3之2D转换相片墙效果</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            height: 400px;
+            background-color: pink;
+            border: 1px solid #ccc;
+            margin-top: 100px;
+            text-align: center;
+        }
+        ul li{
+            list-style: none;
+            display:inline-block;
+            margin-top: 100px;
+            transition: all 1s;
+            position:relative;
+        }
+       
+        ul li:nth-child(1){
+            transform:rotate(30deg);
+        }
+        ul li:nth-child(2){
+            transform:rotate(-380deg);
+        }
+        ul li:nth-child(3){
+            transform:rotate(45deg);
+        }
+        ul li img{
+            width: 300px;
+            height: 200px;
+            border:8px solid white;
+            box-sizing:border-box;
+            box-shadow: 0 0 10px;
+            /* 给盒子添加阴影
+            box-shadow: h-shadow v-shadow blur   spread     color inset;
+                          水平     垂直    模糊 尺寸（扩展）   颜色   内外
+             */
+        }
+        ul li:hover{
+            /* transform:none; 
+            此处可省略，因为下面的transform样式遮盖了
+            */
+            transform: scale(1.3,1.3);
+            
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><img src="images/1.jpg"></li>
+        <li><img src="images/3.jpg"></li>
+        <li><img src="images/1.jpg"></li>
+    </ul>
+</body>
+</html>

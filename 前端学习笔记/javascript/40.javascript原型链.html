@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>40.javascript中的(__proto__)原型链</title>
+    <script>
+        /*
+        理解原型链需要知道的几个点:
+            1.Function函数是所有函数的祖先函数,因此其__proto__属性指向的不是构造它的构造函数,而是指向了它的原型对象;
+            2.所有构造函数都有prototype属性,且指向其原型对象;
+            3.而所有原型对象也都有一个constructer属性,指向创造了它们的构造函数;
+            4.所有函数都是对象;
+            5.所有对象都有__proto__属性;
+            6.实例对象的__proto__属性指向其构造函数的原型对象;
+            7.实例对象是构造函数,而原型对象不是;
+            8.Object也是Function构造函数创造的一个实例对象,它的原型对象的__proto__属性指向的是null;
+
+        */
+        function Person(myName,myAge){
+                this.name=myName;
+                this.learn=function(){
+                console.log("构造函数中的learn方法");
+            };
+            }
+        Person.prototype={      //为了不破坏原有的关系;
+            constructor:Person,//用Person的原型对象的constructor属性指向Person,否则Person.prototype.constructor返回的不是Person构造函数;
+            learn:function(){
+                console.log("构造函数的prototype属性中的learn方法");
+            },
+            age:26
+        }
+        let a1=new Person('谢壹诚',26);
+        let a2=new Person('壹诚谢',27);
+        console.log(Object.prototype.__proto__);//返回值是null,Object构造函数的原型对象的__proto__属性指向的是null;
+
+        console.log(Function.prototype===Object.__proto__);//三者都指向了Function函数的原型对象;
+        console.log(Function.prototype===Person.__proto__);
+        console.log(Object.__proto__===Person.__proto__);
+
+        console.log(Function.prototype.__proto__===Person.prototype.__proto__);//三者的偶指向了Object构造函数的原型对象;
+        console.log(Function.prototype.__proto__===Object.prototype);
+        console.log(Object.prototype===Person.prototype.__proto__);
+
+        console.log(Person.prototype.constructor);//因为给Person的原型对象赋值之后,覆盖了系统上Person的原型对象;所以返回的不是Person构造函数;
+                                                //优化只需要在给Person的原型对象赋值的时候,用Person的原型对象的constructor属性指向Person即可;
+            
+//注意点:
+        a1.age=27;//在给一个对象设置一个其本身不存在的属性的时候,不会去其原型对象中查找,而是直接给当前的对象设置这个属性然后直接调用;
+        console.log(a1);
+    </script>
+</head>
+<body>
+    <p>通过函数的__proto__属性指向原型对象形成的指向关系称为原型链</p>
+    <p>在原型链中,若函数的实例函数中有相关的方法和属性,则会优先调用自身的方法和属性,
+        若没有则调用构造函数的原型对象中的方法和属性
+        再没有则去调用Object函数的原型对象中的方法和属性;
+    </p>
+    <img src="images/yuanxinglian.png" alt="">
+    <img src="images/yxl.png" alt="">
+    
+</body>
+</html>

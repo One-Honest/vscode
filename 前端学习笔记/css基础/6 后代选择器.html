@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>后代选择器</title>
+    <style>
+       /* ul li{
+            color: red;
+        } */
+       #list li{
+           color:red;
+       }
+     /* ul .red{
+           color: rgb(255, 37, 37);
+       } */
+        /*后代选择器需要用空格隔开；会选中所有的后代*/
+    </style>
+</head>
+<body>
+<ul id="list">
+    <li class="red">我要变红色</li>
+    <li>我也要变红色
+        <ul>
+            <li >我也变红了哦</li>
+            <!--后代的后代也会被选中-->
+        </ul>
+    </li>
+    <li>我们都变红了额</li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>绝对定位</title>
+    <style>
+         *{
+            margin:0;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+        }
+        .box1{
+            background-color: red;
+        }
+        .box2{
+            background-color: green;
+            position: absolute;
+            /* left:0; */
+            right:0;
+            top: 0;
+            /* bottom: 0; */
+            /* 
+            绝对定位脱离标准流
+            不区分行内、块级
+            同一方向只用一个属性来设置
+            绝对定位相对于body（包含元素的父盒子）来定位
+            注意：
+             1默认情况下，绝对定位的元素会以body为参考对象
+            2若元素的祖先元素也是定位流(绝对、相对、固定定位)，则以祖先元素为参考对象   
+            3祖先元素有多个定位流，以最近的祖先元素为参考对象     
+             */
+        }
+        .box22{
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            background-color: rgb(151, 49, 49);
+        }
+ 
+        .box3{
+            background-color: blue;
+        }
+        span{
+            position: absolute;
+            width: 100px;
+            height:100px;
+            background-color: rgb(225, 255, 93);
+
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+  <div class="box2">
+      <div class="box22"></div>
+  </div>
+  <div class="box3"></div>
+  <span>我是span标签，绝对定位后脱标，可设置宽高</span> 
+</body>
+</html>

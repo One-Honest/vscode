@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>88.无限轮播图</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 670px;
+            height: 300px;
+            border:2px dashed pink;
+            margin: 100px auto;
+            position: relative;
+            overflow: hidden;
+        }
+        ul{
+            list-style: none;
+            display: flex;
+        }
+        div>p{
+            width: 100%;
+            height: 64px;
+            position: absolute;
+            left: 0;
+            top:50%;
+            transform: translateY(-50%);
+        }
+        div>p>span{
+            display: inline-block;
+            width: 30px;
+            height: 64px;
+            background: url("images/index.png") no-repeat;
+            background-position:-82px -145px;
+        }
+        .right{
+            background-position:-120px -145px;
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul class="contain">
+            <li><img src="images/ad1.jpg" alt=""></li>
+            <li><img src="images/ad2.jpg" alt=""></li>
+            <li><img src="images/ad3.jpg" alt=""></li>
+            <li><img src="images/ad4.jpg" alt=""></li>
+            <li><img src="images/ad5.jpg" alt=""></li>
+            <li><img src="images/ad1.jpg" alt=""></li><!--实现无限轮播  -->
+        </ul>
+        <p>
+            <span class="left"></span>
+            <span class="right"></span>
+        </p>
+    </div>
+    <script>
+        //获取操作元素
+        let oLeft=document.querySelector(".left");
+        let oRight=document.querySelector(".right");
+        let oContain=document.querySelector(".contain");
+        let oItems=document.querySelectorAll(".contain>li");
+        let oDiv=document.querySelector(".box");
+        //获取图片的宽度
+        let imgWidth=parseFloat(getComputedStyle(oDiv).width);
+        //定义一个变量记录当前的索引
+        let currentIndex=0;
+        //监听按钮的点击事件
+        oRight.onclick=function(){
+            currentIndex++;
+            if(currentIndex>oItems.length-1){
+                currentIndex=0;
+                oContain.style.marginLeft= -currentIndex*imgWidth+"px";//快速跳转到第一张图片;
+                currentIndex++;//实现无限轮播
+            }
+            // oContain.style.marginLeft= -currentIndex*imgWidth+"px";
+            // linearAnimation(oContain, -currentIndex*imgWidth);匀速
+            linearslowAnimation(oContain,-currentIndex*imgWidth);
+        }
+        oLeft.onclick=function(){
+            currentIndex--;
+            if(currentIndex<0){
+                currentIndex=oItems.length-1;
+                oContain.style.marginLeft= -currentIndex*imgWidth+"px";//快速跳转到最后一张图片;
+                currentIndex--;//实现无限轮播
+            }
+            // oContain.style.marginLeft= -currentIndex*imgWidth+"px";
+            // linearAnimation(oContain, -currentIndex*imgWidth);匀速
+            linearslowAnimation(oContain,-currentIndex*imgWidth);
+        }
+        let timerId=null;
+        function linearAnimation(ele,destination){//两个参数:移动的元素和终点位置
+             //解决bug1:在每一次点击的开始将上一次的定时器删除,避免多个定时器同时设置元素;
+             clearInterval(timerId);
+            //定义终点位置的变量
+            timerId=setInterval(() => {
+                //拿到元素当前的位置
+                let begin=parseInt(ele.style.marginLeft)||0;
+                //定义一个变量来记录步长(每次移动的距离)
+                let step=(begin-destination)>0?-13:13;
+                //盒子的新位置
+                begin+=step;
+                //if(begin>=destination){判断方法1
+                 if(Math.abs(destination-begin)<=Math.abs(step)){//判断方法2//解决bug2:在终点停止
+                    clearInterval(timerId);
+                    begin=destination;//解决bug3:当步长不能被整除,停止后将终点位置的值赋值给begin(复位)
+                }
+                //将新位置的值传递给元素的属性
+                ele.style.marginLeft=begin+"px";
+            }, 100);
+        }
+        function linearslowAnimation(ele,destination){//两个参数:移动的元素和终点位置
+             //解决bug1:在每一次点击的开始将上一次的定时器删除,避免多个定时器同时设置元素;
+             clearInterval(timerId);
+            //定义终点位置的变量
+            timerId=setInterval(() => {
+                //拿到元素当前的位置
+                let begin=parseInt(ele.style.marginLeft)||0;
+                //定义一个变量来记录步长(每次移动的距离);匀减速动画公式:(begin-destination)*系数[0~1]
+                let step=(destination-begin)*0.3;
+                //盒子的新位置
+                begin+=step;
+                //if(begin>=destination){判断方法1
+                 if(Math.abs(Math.floor(step))<=1){//判断方法2//解决bug2:在终点停止
+                    clearInterval(timerId);
+                    begin=destination;//解决bug3:当步长不能被整除,停止后将终点位置的值赋值给begin(复位)
+                }
+                //将新位置的值传递给元素的属性
+                ele.style.marginLeft=begin+"px";
+            }, 100);
+        }
+    </script>
+</body>
+</html>

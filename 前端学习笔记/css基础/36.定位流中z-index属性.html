@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>z-index</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+        }
+        .box1{
+            background-color: red;
+            position: relative;
+            z-index:2;
+            /* z-index值大的显示在上面，只能设置整数？（疑问）
+                默认情况下所有的标签都有z-index为0的值
+                注意：z-index值的从父现象
+                    1.两个元素的父元素都不设置z-index值，则谁的 z-index大则显示在上方
+                    2.若两个元素的父元素都设置了z-index值（子元素的z-index值会失效），则谁的父元素的z-index值大则显示在上方
+            */
+        }
+        .box11{
+            width: 40px;
+            height: 40px;
+            background-color: #ccc;
+            position: absolute;
+            left: 200px;
+            top: 50px;
+            z-index: 1;
+            /* 其父元素设置了z-index值，这里的值无效 */
+        }
+        .box22{
+            width: 40px;
+            height: 40px;
+            background-color: pink;
+            position: absolute;
+            left: 170px;
+            top: 30px;
+            z-index:2;
+            /* 其父元素设置了z-index值，这里的值无效 */
+        }
+        .box2{
+            background-color: green;
+            position: fixed;
+            left: 50px;
+            top: 50px;
+            z-index:1;
+        }
+        .box3{
+            background-color: blue;
+            position: fixed;
+            left: 100px;
+            top: 100px;
+        }
+        /* 1默认情况，定位流的元素会遮盖标准流的元素
+            2默认情况，定位流后编写的元素会遮盖前面编写的元素
+         */
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <div class="box11"></div>
+    </div>
+    <div class="box2">
+        <div class="box22"></div>
+    </div>
+    <div class="box3"></div>
+</body>
+</html>

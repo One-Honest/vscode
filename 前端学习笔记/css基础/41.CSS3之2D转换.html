@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>41.CSS3之2D转换</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            width: 500px;
+            height: 500px;
+            margin: 100px auto;
+            background-color: yellow;
+            border: 1px solid #cccccc;
+            /* 若不设置，其靠近顶部的子元素的相对于其的margin-top属性会无效 */
+        }
+        ul li{
+            list-style: none;
+            width: 70px;
+            height: 50px;
+            background-color: pink;
+            margin:40px auto;
+            margin-top: 40px;
+            text-align: center;
+            line-height: 50px;
+        }
+        ul li:nth-child(2){
+            transform: rotate(45deg);
+            /* 将元素（改变）旋转45°（deg） */
+        }
+        ul li:nth-child(3){
+            transform: translate(200px,20px);
+        }
+        /* 通过 translate() 方法，元素从其当前位置移动，根据给定的 left（x 坐标） 和 top（y 坐标） 位置参数： */
+        ul li:nth-child(4){
+            transform: scale(2);
+        }
+        /*通过 scale() 方法，元素的尺寸会增加或减少相应的倍数，根据给定的宽度（X 轴）和高度（Y 轴）参数：
+            若两个参数相同，可只写一个即可
+            参数可取正、负数或小数
+            正数基于指定宽高放大元素、负数则会先翻转元素再缩放元素、小数则会缩小元素
+            注意：ie浏览器不支持
+            Firefox、Safari、Chrome、Opera 10.50皆可支持
+          */
+        ul li:nth-child(5){
+            transform: translate(200px,20px) rotate(-45deg) scale(2);
+            /* 注意：若是先旋转再平移，元素将不再是按水平或垂直方向移动，因为旋转后坐标轴改变了 
+            所以，若是组合起来写，建议先写其他两个属性再写旋转属性
+            */
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>正常</li>
+        <li>旋转</li>
+        <li>平移</li>
+        <li>缩放</li>
+        <li>综合</li>
+    </ul>
+</body>
+</html>

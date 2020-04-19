@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>39.过渡模块练习（弹性效果）</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            /* 此处可不设置盒子的宽度，会继承其父元素（body）的宽度 */
+            height: 600px;
+            background-color: rgb(224, 224, 26);
+            margin-top: 100px;
+            text-align: center;
+            line-height: 600px;
+        }
+        div span{
+            font-size: 40px;
+            transition: margin 3s,font-size 5s;
+        }
+        div:hover span{
+            margin:0 20px;
+            font-size:60px;
+        }
+        /* 编写过渡效果的步骤：
+            1先编写基本界面
+            2修改需要修改的属性
+            3最后再给修改属性的元素添加过渡属性
+
+         */
+    </style>
+</head>
+<body>
+    <div>
+        <span>壹</span>
+        <span>诚</span>
+        <span>带</span>
+        <span>你</span>
+        <span>学</span>
+        <span>蔡</span>
+        <span>徐</span>
+        <span>坤</span>
+    </div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>56.背景CSS3新增属性练习</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 600px;
+            height: 190px;
+            border: 1px solid black;
+            margin: 100px auto;
+            background-image: url("images/bg-plane.png"),url("images/bg-sun.png") ,url("images/bg-clouds.png") ;
+            background-repeat: no-repeat,no-repeat,no-repeat;
+            background-position: 100px 170px,400px 70px,0px 0px;
+            background-size: 50px 50px,50px 50px,auto auto;
+            animation: move 5s linear 0s infinite normal;
+        }
+        @keyframes move{
+            from{
+                background-position: 100px 170px,400px 70px,0px 0px;
+            }
+            to{
+                background-position: 500px -100px,400px 70px,-600px 0px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

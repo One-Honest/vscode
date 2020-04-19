@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>38.构造函数</title>
+    <script>
+        /*
+        什么是构造函数?即专门用于创建对象的函数;是工厂函数的简写;
+        两者的区别:1.构造函数的函数名手写字母必须大写;
+                    2.构造函数只能通过new来调用;
+        工厂函数:
+        function createPerson(myName,myAge){
+                let obj={
+                name:myName,
+                age:myAge,
+                learn:()=>console.log('正在学习javascript'),
+                }
+                return obj;
+            }
+        let a=createPerson('谢壹诚',26);
+        console.log(a);
+
+        构造函数:
+        function Person(myName,myAge){
+                this.name=myName;
+                this.age=myAge;
+                this.learn=()=>console.log('正在学习javascript');
+            }
+        let a=new Person('谢壹诚',26);//构造函数需要用new来调用;
+                                    在用new调用构造函数时,系统是怎么操作的呢?
+                                        1.会在构造函数中自动创建一个对象;
+                                        2.会将刚创建的对象赋值给this;
+                                        3.会在构造函数的最后自动添加return this;
+                                                                            
+        console.log(a);
+        */
+       /*注意点1:
+        function Person(myName,myAge){
+                this.name=myName;
+                this.age=myAge;
+                this.learn=()=>console.log(this.name);//此处leran方法被Person[a]函数调用,此处的this即Person[a]函数;
+            }
+        let a=new Person('谢壹诚',666);
+        console.log(a);
+console.log(a.name);//需要调用了函数之后才能继续调用函数的属性,而不能直接调用Person.name(错误的调用);
+        a.learn();//再次注意:函数直接用()调用;
+
+        //注意点2:
+        let a1=new Person('谢壹诚',26);
+        let a2=new Person('壹诚谢',27);
+        console.log(a1.learn===a2.learn);//用三个等号判断两个函数是否存在于同一个存储空间;结果是false;
+                            //也就是说每一次new都会开辟一个新的空间来存储新的数据;
+                            //两个函数的learn函数都一样却各自占用了不同的空间,因此存在性能问题;*/
+            /*优化代码1:[优化后仍然有缺陷:阅读性降低;占用了全局变量的命名空间;]了解即可
+        function mySay(){
+            console.log("在学习javascript");
+        }
+        function Person(myName,myAge){
+                this.name=myName;
+                this.age=myAge;
+                this.learn=mySay;
+            }
+        let a1=new Person('谢壹诚',26);
+        let a2=new Person('壹诚谢',27);
+        console.log(a1,a2);
+        console.log(a1.learn===a2.learn);//返回值为true*/
+            /*代码优化2:[了解]
+        let fns={//定义对象
+            mySay(){//将函数作为对象的属性;
+                console.log("在学习javascript");
+            }
+        }
+        function Person(myName,myAge){
+                this.name=myName;
+                this.age=myAge;
+                this.learn=fns.mySay;
+            }
+        let a1=new Person('谢壹诚',26);
+        let a2=new Person('壹诚谢',27);
+        console.log(a1.learn===a2.learn);//返回值为true*/
+
+//代码优化3:[企业开发推荐使用]
+        function Person(myName,myAge){
+                this.name=myName;
+                this.age=myAge;
+                // this.learn=fns.mySay;
+            }
+        Person.prototype={//构造函数的prototype属性可以使你有能力向对象添加属性和方法。[用于保存公共的函数和变量]
+            learn:function(){//添加的方法用:声明;
+                console.log("在学习javascript");
+            }
+        }
+        let a1=new Person('谢壹诚',26);
+        let a2=new Person('壹诚谢',27);
+        console.log(a1.learn);
+        console.log(a1.learn===a2.learn);//返回值为true
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

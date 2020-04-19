@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>12.js的流程控制</title>
+    <script>
+        //三种流程控制结构:顺序[从上至下] 选择[只运行一次] 循环[多次运行至条件不成立]
+        //选择结构if
+                //1.第一种格式:if(条件表达式){条件表达式为真时执行的语句}  特点:条件为真时只执行一次
+                let num=11;
+                if(num>=10){
+                    console.log('我大于10');
+                }
+                console.log('我正常输出');
+                //2第二种格式:if(条件表达式){条件表达式为真时执行的语句}else{条件不成立时执行的语句} 特点:条件成立则执行前者,不成立则执行后者且都只执行一次;
+                let num1=11;
+                if(num>=12){
+                    console.log('我大于12');
+                }
+                else{
+                    console.log('我小于12');
+                }
+                console.log('我正常输出');
+                //3.第三种格式:if(条件表达式){条件表达式为真时执行的语句}elseif[可以多个elseif]{条件成立时执行的语句}else{前面条件都不成立时执行的语句}
+                let num2=11;
+                if(num2>=13){
+                    console.log('我大于等于13');
+                }
+                else if(num2>=12){
+                    console.log('我大于等于12');
+                }else{
+                    console.log('我小于12');
+                }
+                console.log('我正常输出');
+        //选择结构if注意点:
+                //1.对于非布尔类型的数据,会先转换为布尔类型数据之后再去判断条件是否成立;
+                if(1){
+                    console.log('1转换为布尔类型为真,所以我输出了');
+                }
+                //2.对于赋值语句==/===,企业开发中一般将常量放在赋值语句之前,避免将==写成=号造成错误判断;
+                let voi=10;
+                if(voi==8){
+                    console.log('我等于8');
+                }else{console.log('我不等于8');}
+                let vo=10;
+        if(vo=8){//==错误写成=号,造成判断错误,造成执行语句后出现10=8的错误;此处将8放vo前面,若错写成=号,系统会报错;
+                    console.log('我等于8');
+                }else{console.log('我不等于8');}
+                //3.if/else if/else后面的大括号都可以省略,但省略之后只有紧随其后的语句受其控制
+                if(false)
+                    console.log('只有我受控制');
+                    console.log('没有大括号包含我,我不受控制了');
+                //4.js中;号也是一条语句,代表空语句
+                if(false);
+                    console.log('前面有;空语句占用了我的位置,我不受控制了');
+                    console.log('没有大括号包含我,我不受控制了');
+                //5.if选择语句可以嵌套使用
+                if(true){
+                        if(false){
+                        console.log('我大于12');
+                    }
+                    else{
+                        console.log('我小于12');//会输出这个语句
+                    }
+                }
+                else{
+                    if(false){
+                    console.log('我大于12');
+                }
+                else{
+                    console.log('我小于12');
+                }
+                }
+                //6.当if选择结构省略大括号时,else if/else会与其最靠近的没被使用的if匹配
+                if(0)
+                if(1)
+                    console.log('A');
+                else
+                    console.log('B');
+                else
+                if(1)
+                    console.log('C');//输出此语句,输出语句为C
+                else
+                    console.log('D');
+                    //变形之后
+                    if(0)
+                        if(1)
+                            console.log('A');
+                        else
+                            console.log('B');
+                    else
+                        if(1)
+                            console.log('C');//输出此语句,输出语句为C
+                        else
+                            console.log('D');
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

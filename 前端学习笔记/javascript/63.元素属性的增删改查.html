@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>63.元素属性的增删改查.thml</title>
+</head>
+<body>
+    <img src="images/picture.jpg" alt="我是alt" title="我是title" nj="666">
+    <!-- nj是自定义的属性 -->
+<script>
+    /*
+    无论是通过创建还是查询出来的标签,系统都会将元素包装成一个对象返回给我们,并且系统在包装这个对象的时候会自动将元素的属性都包装到这个对象中;
+    所以只要我们拿到这个对象就可以拿到标签的属性进而操作标签的属性;
+    1.如何获取元素的属性
+        方法1:对象.属性     方法2:对象.getAttribute("");可以获取自定义属性的值
+    2.如何修改元素的属性
+        方法1:对象.属性="新属性"     方法2:对象.setAttribute("原属性名","新属性值");可以修改自定义属性
+    3.如何新增元素的属性
+        对象.setAttribute("新属性名","新属性值");   setAttribute方法如果属性存在就是修改,若属性不存在就是新增一个属性;
+    4.如何删除元素的属性
+    */
+    let oImg=document.querySelector("img");
+    console.dir(oImg);//dir表示显示文件列表;即获取对象的属性列表;
+    console.log(oImg.alt);//1.获取元素的属性方法1;不能获取自定义属性的值
+    console.log(oImg.getAttribute("nj"));//获取元素的属性方法2,可以获取自定义属性的值
+    console.log(oImg.title="新的title");//2.修改元素属性方法1;
+    oImg.setAttribute("nj","newnj");//修改元素属性方法2;可以修改自定义属性[该属性存在于元素中]
+    oImg.setAttribute("newat","nj");//3.新增元素的属性;注意:oImg.setAttribute("new666","");新增无属性值的属性;
+    oImg.alt="";//4.删除元素属性方法1
+    oImg.removeAttribute("newat");//删除元素属性方法2;可以删除自定义的属性;
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>51.对象的遍历</title>
+    <script>
+        /*
+        1.对象的遍历:依次取出对象中的方法和属性;
+        2对象的遍历是通过高级for循环来遍历对象;
+          以下代码的含义:将指定对象中的属性和方法的名称取出来赋值给key这个变量
+            for(let key in 对象){}
+        注意点:该方法只能遍历到该对象中的属性和方法而不能遍历该对象原型对象中的方法;
+        */
+        class Person{
+            run(){//存储在原型对象中
+                console.log("我是Person的静态方法被存储在原型对象中,无法被高级for循环遍历");
+            }
+        };
+       let p=new Person();
+       p.name="谢壹诚";//增 方法1
+       p.say=function(){
+           console.log("努力!");
+       }
+       console.log(p);
+       p["name1"]="壹诚谢";//增 方法2;注意属性名若相同,后增的会覆盖新增的属性;
+       p["say1"]=function(){
+           console.log("奋斗!");
+       }
+       console.log(p);
+       for(let key in p){
+           if(p[key] instanceof Function){//不遍历方法,只遍历属性值;
+                continue;
+           }
+        // console.log(key);//遍历对象的属性名称
+        console.log(p[key]);//遍历对象的属性对应的取值;
+       }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

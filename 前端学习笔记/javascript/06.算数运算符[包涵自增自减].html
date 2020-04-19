@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>06.算数运算符[包涵自增自减]</title>
+    <script>
+    //算术运算符:+ - * /分别代表加减乘除;%代表取余,即10%3=3 1;10%3取余为1;
+        //加法运算注意点1.:任何非数值类型的数据参与加法运算都会先被自动转换为数值类型数据再参与加法运算;
+            let opr=12+true;
+            console.log(opr);
+        //2.任何数据与NaN相加返回的数值皆为NaN
+            let opra=12+NaN;
+            console.log(opra);
+        //3.任何数据与字符串相加,都会先被转换为字符串类型后相加,而字符串的相加显示为字符串的拼接;
+            let oprat=12+'3';
+            console.log(oprat);
+        //减法运算的注意点1.:任何非数值类型的数据参与减法运算都会先被自动转换为数值类型数据再参与加法运算;
+            //2.任何数据与NaN相减返回的数值皆为NaN
+            //3.任何数据与字符串相减,都会先被转换为数值类型后再相减
+            let cut=12-'2' ;//若字符串内的不是数值类型,则参照第2点,返回NaN
+            console.log(cut);
+        //乘除运算与减法运算规则一致
+        //取模(取余)运算注意点:
+            //m%n=余数
+            //1.若m>n,则正常取余;
+            //2.若m<n,则余数为m;
+            //3.若n为0,则取余返回值为NaN
+            let un=12%13;//若m<n,则余数为m;
+            console.log(un);
+
+            let unl=12%0;//若n为0,则取余返回值为NaN
+            console.log(unl);
+            //4.取余运算的正负性取决于m的正负性;
+            let unle=-12%-5;//若m为正数,余数为正,m为负数,则取余值为负数;
+            console.log(unle);
+    //自增运算符:++   可以快速对一个变量中保存的数据进行加1操作,此运算符放在变量前后皆可;
+    let num=3;
+    num++;//或++num输出效果一样
+    console.log(num);
+    //注意:++放在变量前面表示:变量先自增再参加运算,++放在变量后面则变量先参加运算再自增
+        let numm=6;
+        let numb=numm++ +1;//++放在变量后面则变量先参加运算再自增
+        console.log(numm);//numm会自增,输出的是numm自增后的值;
+        console.log(numb);//输出的是变量直接参与运算的值,即输出7
+
+        let numm1=6;
+        let numb1=++numm1 +1;//++放在变量前面表示:变量先自增再参加运算
+        console.log(numm1);
+        console.log(numb1);//输出的是变量先自增再参与运算,即输出8
+
+    //自减运算符:--   可以快速对一个变量中保存的数据进行减1操作,此运算符放在变量前后皆可;
+    let num1=3;
+    num1--//或++num输出效果一样
+    console.log(num1);//输出2
+    //注意:--放在变量前面表示:变量先自减再参加运算,--放在变量后面则变量先参加运算再自减
+        let numm2=6;
+        let numb2=numm2-- +1;//--放在变量后面则变量先参加运算再自减
+        console.log(numm2);//numm会自减,输出的是numm自减后的值5;
+        console.log(numb2);//输出的是变量直接参与运算的值,即输出7
+
+        let numm3=6;
+        let numb3=--numm3 +1;//--放在变量前面表示:变量先自增再参加运算
+        console.log(numm3);//numm会自减,输出的是numm自减后的值5;
+        console.log(numb3);//输出的是变量先自减再参与运算,即输出6
+  //自增自减运算符的注意点:1.只能在变量前后出现,不能在常量或表达式[即用运算符连接在一起的语句]前后出现,否则会报错;  
+                        //2.企业开发中,自增自减运算符最好不要在表达式中出现,应单独出现;
+                        let boom=7;
+                        let moon=boom++ +1;//此处代码可分成:let moon=boom+1; boom++;企业开发中建议这种分开写的方式;
+                        console.log(boom);
+                        console.log(moon);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>08.关系运算符</title>
+    <script>
+        //关系运算符:> < >= <= == != ===[恒等于] !===
+        //关系运算符的输出值为true或false,关系成立则返回true,反之返回false;
+        let rel=6>5;
+        console.log(rel);//返回值为true;
+        //关系运算符的注意点:
+            //1.对于非数值类型的数据,会先将其变为数值类型再参与关系运算;
+            let rela=1>true;//先将true变为数值类型true=1;
+            console.log(rela);//返回值为false
+            let relaa=1>'a';
+            console.log(relaa);//返回值为false;
+    //2.任何数值与NaN和undefined比较,返回的值都是false
+        let relat=1>NaN;
+        console.log(relat);//返回值为false;
+            let relati=1>undefined;
+            console.log(relati);//返回值为false;
+            //3.若参与比较的都是字符串型数据,则不会转换为数值类型再比较,而是根据字符串的Unicode编码来作比较;若有多个字符串,则从左到右比较至条件不满足;
+            let relatio='a'>'b';//a的Uinicode编码为0061;b的Unicode编码为0062;
+            console.log(relatio);//返回值为false
+            //4.特殊的比较结果
+            //let relation=null==0;返回值为false
+            //let relation=undefined==0;返回值也是false;
+    //[注意重点]let ship=null==undefined;返回值则为true;底层结构设定如此;
+            //let shipp=NaN==NaN;返回值为false;
+            let relation=undefined==0;
+            console.log(relation);//返回值为false
+            let ship=null==undefined;
+            console.log(ship);//返回值为true
+            let shipp=NaN==NaN;
+            console.log(shipp);//返回值为false
+
+            //判断一个数据是否为NaN有一个对应的函数可调用;企业开发中禁止直接用xx=NaN来判断数值是否为NaN
+            let nan=NaN;
+            let res=isNaN(nan);
+            console.log(res);//返回值为true,即该数据为NaN
+    //5.===[恒等于]:不仅比较返回的数值数据是否相等,还会比较数据的类型是否相等;若有一个不相等则返回值为false;
+    //6!==[非恒等于]不仅比较返回的数值数据是否相等,还会比较数据的类型是否相等;若有一个相等则返回值为true;
+            let ddy=123!=='123';
+            console.log(ddy);//返回值为true;
+        //关系运算符的结合性与优先级
+    //关系运算符都是左结合性[从左至右];因此无法用关系运算符来判断区间;
+    //关系运算符的优先级:> < >= <=优先级高于 == === !==;
+            let section=16>=15>=14;
+            console.log(section);//返回值为false
+            let best=6==6>0;//此处优先运算6>0为true=1;再运算6==1,所有返回值为false;
+            console.log(best);//返回值为false,因为>号优先级高于==,优先运算>
+    </script>
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

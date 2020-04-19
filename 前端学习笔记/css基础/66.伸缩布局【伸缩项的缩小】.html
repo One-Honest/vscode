@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>66.伸缩布局【伸缩项的缩小】</title>
+    <style>
+         *{
+            padding: 0;
+            margin: 0;
+        }
+        .box{
+            list-style: none;
+            width: 600px;
+            height: 600px;
+            border: 1px solid black;
+            margin: 100px auto;
+            display: flex;
+            flex-direction: column;
+        }
+        .box>li{
+            width: 100px;
+            height: 300px;
+            line-height: 100px;
+            text-align: center;
+            font-size: 30px;
+            background-color: yellowgreen;
+            /* flex-shrink:0; 给所有的伸缩项取值为0*/
+        }
+        .box>li:nth-child(1){
+            background-color: yellowgreen;
+            flex-shrink:1;
+            /* 伸缩项的扩张属性flex-shrink
+            可给每一个伸缩项设置此属性，默认值为1，按照所取的值的比例大小扩张至与伸缩器的大小一致
+                                    给所有的伸缩项都取值为0时，超出伸缩器宽度也不按比例缩小，会溢出伸缩器外面
+            注意：只有当伸缩项的宽度总和大于伸缩器宽度时此属性才能生效 
+
+            缩小公式：（伸缩项总宽度-伸缩器的宽度）/所有的伸缩器的flex-grow的取值=缩小一份（取值为1）的大小
+            然后计算权重值：1*300+2*300+1*300=1200
+            最后：伸缩项的宽度-（溢出宽度*伸缩项的宽度*份数/权重值）=伸缩项缩小后的宽度
+                即 300-（300*300*2/1200)=150
+             */
+        }
+        .box>li:nth-child(2){
+            background-color: pink;
+            flex-shrink:2;
+            /* 若不设置flex-shrink属性或者flex-shrink属性取值为0，则当前的伸缩项宽度（或高度【由主轴方向决定flex-direction;
+            注意主轴方向改变，则伸缩项的总宽或高需要对应大于伸缩器的宽度，flex-shrink属性才会生效】）不变 */
+        }
+        .box>li:nth-child(3){
+            background-color: skyblue;
+            flex-shrink:1;
+            flex-basis: 200px;
+            /* 伸缩布局中可用flex-basis属性设置伸缩项的宽度，且优先级高于width设置的宽度属性
+            若flex-basis属性取值为auto（自适应，不确定值）且设置了具体的width属性值，则浏览器会显示width属性
+             */
+        }
+    </style>
+</head>
+<body>
+        <ul class="box">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+            </ul>
+</body>
+</html>

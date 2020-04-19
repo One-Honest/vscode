@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>63.伸缩布局</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        ul{
+            list-style: none;
+            width: 600px;
+            border: 1px solid black;
+            margin: 100px auto;
+            /* overflow: hidden; */
+            display: flex;
+            /* 不需要设置盒子的宽高，由盒子内的元素撑起盒子的高度 
+            默认情况下，水平方向为主轴，主轴的起点在伸缩容器的最左边，默认情况下所有的伸缩容器都是从左往右开始排版
+            可通过更改flex-direction属性改变主轴的起点
+            取值有【row为默认取值，行，即主轴起点从左至右】
+            【row-reverse，起点相反，即主轴起点从右到左】
+            主轴与侧轴永远是成十字交叉的
+            【column，列，主轴起点由上至下】
+            【column-reverse，起点由下至上】
+            */
+            /* flex-direction: column-reverse; */
+            flex-direction: row;
+            justify-content:space-around;
+            /*
+            justify-content属性设置伸缩容器里的元素的排版方式
+            取值：flex-start【与主轴的起点对齐】 flex-end【与主轴的终点对齐】 center【与主轴的中点对齐】
+             space-between【与主轴的两端对齐】 space-around【元素的两端的距离相同】 */
+        }
+        ul>li{
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            font-size: 30px;
+            background-color: yellowgreen;
+            /* display:inline-block; */
+            /* float: left; */
+        }
+        ul>li:nth-child(2){
+            background-color: pink;
+        }
+        ul>li:nth-child(3){
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <img src="images/flex.png" alt="">
+</body>
+</html>

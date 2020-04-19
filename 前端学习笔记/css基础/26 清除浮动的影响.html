@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>清浮动</title>
+    <style>
+        body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{
+            margin:0;
+            padding:0;
+        }
+        /* 注意：企业开发中一般在整体网页垂直方向上采用标准流布局，而水平方向上则采用浮动流布局
+                面对复杂的页面，遵循从上到下，由外到内的布局顺序，水平方向上可以根据从左到右的顺序 */
+      /*  .box1{
+            background-color:orangered;
+            !*height: 50px;*!
+        }*/
+       /* .text1{
+            width:100px;
+            height:100px;
+            background-color: greenyellow;
+            float:right;
+        }*/
+        /*1
+            不设置高度的盒子将由内容的高度撑起高度，但内容元素浮动后脱离标准流，将无法撑起盒子高度
+            解决方法：给盒子设置高度；
+            注意：企业开发中一般不给盒子设置高度，因此 不推荐使用 此方法
+        */
+        .box2{
+            background-color: hotpink;
+            /*float:left;*/
+            overflow:hidden;
+            *zoom:1;
+            /*适配IE6浏览器*/
+            /*margin-top:30px;*/
+        }
+        /*第一个盒子不浮动并设置overflow：hidden属性
+            第二个盒子的浮动元素将不浮靠第一个盒子
+            但若是多个浮动的盒子呢？
+
+            overflow:hidden;属性的作用
+            1、将超出盒子的内容隐藏
+            2、清除盒子旁边的浮动元素
+            3、嵌套关系的两个盒子，给父元素的盒子设置此属性，当给子元素盒子设置margin-top属性时不会随子元素盒子一起下移
+            overflow：auto；的作用：
+            如果包含图片的元素的高度没有图片高，而且它是浮动的，可以用此属性来清除浮动。（疑问）
+        */
+        .box3{
+            /*margin-top:30px;*/
+            /*margin值是否能用？*/
+            background-color: yellow;
+            float:left;
+            /*clear:both;*/
+           
+        }
+        /*2
+        设置了clear属性的盒子，将不允许浮动元素出现在盒子的某侧（left、right、both、none）
+        设置clear属性后不能设置margin属性？（疑问：会失效吗？）
+        */
+/*        .wall1 {
+            height:30px;
+        }
+        .wall2{
+            height:30px;
+            display:inline-block;
+
+        }*/
+        /*3
+        使用添墙法也可以实现，可以使用margin属性，但第一个盒子无法使用margin-bottom属性
+        内墙法会撑起没设置高度的盒子的高度
+        但会多添加代码量，一般不建议使用*/
+/*        .box2::after{
+            content: "";
+            display:block;
+            height:0px;
+            visibility:hidden;
+            clear:both;
+            *zoom:1;
+            兼容IE6浏览器
+        }*/
+        /*利用伪元素选择器给第一个盒子最后或者第二个盒子前面添加一个不占用空间的虚拟盒子
+            设置内容为空；块级元素；高度为零；可视性为隐藏；左右清空浮动元素；
+            */
+        p{
+            float:left;
+        }
+    </style>
+</head>
+<body>
+<!--
+<div class="box1">
+    <p class="text1"></p>
+</div>
+-->
+
+<div class="box2">
+    <p>1111111</p><p>2222222</p><p>3333333</p>
+    <!--<div class="wall2"></div>-->
+    <!--内墙法-->
+</div>
+<!--<div class="wall1"></div>-->
+<!--外墙法-->
+<div class="box3">
+    <p>1111111</p>
+    <p>2222222</p>
+    <p>3333333</p>
+</div>
+</body>
+</html>

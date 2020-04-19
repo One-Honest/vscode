@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>87.匀速动画[待完善]</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+            background: red;
+            margin-top: 10px;
+        }
+        .line1{
+            width: 800px;
+            height: 10px;
+            background-color: skyblue;
+        }
+        .line2{
+            width: 300px;
+            height: 10px;
+            background-color: pink;
+        }
+        
+    </style>
+</head>
+<body>
+    <button class="forward">前移</button>
+    <button class="backward">后退</button>
+    <button class="pause">暂停</button>
+    <div class="box"></div>
+    <div class="line1"></div>
+    <div class="line2"></div>
+    <script>
+        //1.获取需要操作的元素
+        let forwardBtn=document.querySelector(".forward");
+        let backwardBtn=document.querySelector(".backward");
+        let pauseBtn=document.querySelector(".pause");
+        let oDiv=document.querySelector(".box");
+        let line1=document.querySelector(".line1");
+        let line2=document.querySelector(".line2");
+        //定义一个变量保存定时器的ID
+        let timerId=null;
+        //2.监听按钮的点击事件
+        /* forwardBtn.onclick=function(){
+            //解决bug1:在每一次点击的开始将上一次的定时器删除,避免多个定时器同时设置元素;
+            clearInterval(timerId);
+            //定义终点位置的变量
+            let destination=parseInt(getComputedStyle(line1).width);
+            timerId=setInterval(() => {
+                //拿到元素当前的位置
+                let begin=parseInt(oDiv.style.marginLeft)||0;
+                //定义一个变量来记录步长(每次移动的距离)
+                let step=13;
+                //盒子的新位置
+                begin+=step;
+                //if(begin>=destination){判断方法1
+                if(Math.abs(destination-begin)<=Math.abs(step)){//判断方法2//解决bug2:
+                    clearInterval(timerId);
+                    begin=destination;//解决bug3:当步长不能被整除,停止后将终点位置的值赋值给begin(复位)
+                }
+                //将新位置的值传递给元素的属性
+                oDiv.style.marginLeft=begin+"px";
+            }, 100);
+        }
+        backwardBtn.onclick=function(){
+            oDiv.style.marginLeft="800px";
+             //解决bug1:在每一次点击的开始将上一次的定时器删除,避免多个定时器同时设置元素;
+             clearInterval(timerId);
+            //定义终点位置的变量
+            let destination=parseInt(getComputedStyle(line2).width);
+            timerId=setInterval(() => {
+                //拿到元素当前的位置
+                let begin=parseInt(oDiv.style.marginLeft)||0;
+                //定义一个变量来记录步长(每次移动的距离)
+                let step=-13;
+                //盒子的新位置
+                begin+=step;
+                //if(begin>=destination){判断方法1
+                 if(Math.abs(destination-begin)<=Math.abs(step)){//判断方法2//解决bug2:在终点停止
+                    clearInterval(timerId);
+                    begin=destination;//解决bug3:当步长不能被整除,停止后将终点位置的值赋值给begin(复位)
+                }
+                //将新位置的值传递给元素的属性
+                oDiv.style.marginLeft=begin+"px";
+            }, 100);
+        }
+         */
+        /*匀速动画 function linearAnimation(ele,destination){//两个参数:移动的元素和终点位置
+             //解决bug1:在每一次点击的开始将上一次的定时器删除,避免多个定时器同时设置元素;
+             clearInterval(timerId);
+            //定义终点位置的变量
+            timerId=setInterval(() => {
+                //拿到元素当前的位置
+                let begin=parseInt(ele.style.marginLeft)||0;
+                //定义一个变量来记录步长(每次移动的距离)
+                let step=(begin-destination)>0?-13:13;
+                //盒子的新位置
+                begin+=step;
+                //if(begin>=destination){判断方法1
+                 if(Math.abs(destination-begin)<=Math.abs(step)){//判断方法2//解决bug2:在终点停止
+                    clearInterval(timerId);
+                    begin=destination;//解决bug3:当步长不能被整除,停止后将终点位置的值赋值给begin(复位)
+                }
+                //将新位置的值传递给元素的属性
+                ele.style.marginLeft=begin+"px";
+            }, 100);
+        } */
+        //匀减速动画
+        function linearAnimation(ele,destination){//两个参数:移动的元素和终点位置
+             //解决bug1:在每一次点击的开始将上一次的定时器删除,避免多个定时器同时设置元素;
+             clearInterval(timerId);
+            //定义终点位置的变量
+            timerId=setInterval(() => {
+                //拿到元素当前的位置
+                let begin=parseInt(ele.style.marginLeft)||0;
+                //定义一个变量来记录步长(每次移动的距离);匀减速动画公式:(begin-destination)*系数[0~1]
+                let step=(destination-begin)*0.1;
+                //盒子的新位置
+                begin+=step;
+                //if(begin>=destination){判断方法1
+                 if(Math.abs(Math.floor(step))<=1){//判断方法2//解决bug2:在终点停止
+                    clearInterval(timerId);
+                    begin=destination;//解决bug3:当步长不能被整除,停止后将终点位置的值赋值给begin(复位)
+                }
+                //将新位置的值传递给元素的属性
+                ele.style.marginLeft=begin+"px";
+            }, 100);
+        }
+        forwardBtn.onclick=function(){
+            linearAnimation(oDiv,800);
+        }
+        backwardBtn.onclick=function(){//依然有bug:(1)刷新之后直接点击后退按钮,盒子会移动到300的位置;(2)点击前移按钮后在0-300之间再点击后退按钮,终点会停在300处;
+            if(oDiv.style.marginLeft>=0){//解决刚刷新直接点击后退按钮会向前的bug(1)[此方法中后退按钮只对300-800的距离有效,在0-300之间后退按钮无效]
+                oDiv.style.marginLeft="800px";
+            }
+            linearAnimation(oDiv,300);
+        }
+        pauseBtn.onclick=function(){
+            clearInterval(timerId);
+        }
+    </script>
+</body>
+</html>

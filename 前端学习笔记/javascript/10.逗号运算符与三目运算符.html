@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>10.逗号运算符与三目运算符</title>
+    <script>
+        //逗号运算符:一般用于简化代码;
+        //其结合性为左,优先级在所有的运算符中最低;
+        //其也有运算结果,即最后一个表达式的结果;
+        let douhao=((1+1),(2+2),(3+3));
+        console.log(douhao);
+
+        //三目运算符又名条件运算符
+            //格式:条件表达式?结果A:结果B;[若条件为true则返回结果A,反之返回结果B]  注意:格式中?与:必须同时存在才生效;
+            let three=true?123:456;
+            console.log(three);//返回值123
+            let three1=false?123:456;
+            console.log(three1);//返回值456
+            let three2=(1>2)?123:456;
+            console.log(three2);//返回456
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

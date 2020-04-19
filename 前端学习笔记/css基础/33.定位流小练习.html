@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=tu, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>团购界面练习</title>
+    <style>
+        *{
+          margin: 0;
+          padding: 0;  
+        }
+        div{
+            width: 280px;
+            height: 300px;
+            background-color: rgb(167, 243, 67);
+            background: url("images/1.jpg") no-repeat;
+            background-size:280px 250px;
+            margin: 0 auto;
+            margin-top: 100px;
+            border:2px solid #ccc;
+            position: relative;
+        }
+        span:nth-of-type(1){
+            width:20px;
+            height: 20px;
+            background:url("images/2.jpg") no-repeat -10px -10px;
+            position: absolute;
+        }
+        span:nth-of-type(2){
+            width:50px;
+            height: 20px;
+            background:url("images/3.jpg") no-repeat -60px -60px;
+            position: absolute;
+            left: 0;
+            bottom: 50px;
+        }
+        div p{
+            width:280px;
+            height: 50px;
+            background-color: pink;
+            position: absolute;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <span></span>
+        <span></span>
+        <p>【两店通用】爱味道牛排生活馆两人套餐，提供免费WiFi</p>
+    </div>
+</body>
+</html>

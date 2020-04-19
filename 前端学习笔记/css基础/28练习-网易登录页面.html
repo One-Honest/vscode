@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>网易登录页面</title>
+    <style>
+        /*  1.清空默认边距
+            2.清空默认样式：比如去除a标签的下划线，ul标签的圆点等等
+            3.利用body设置整个界面的文字：比如文字大小、文字颜色等等
+            注意：h系列的标签，父级设置的样式无法继承
+         */
+        body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{
+            margin:0;
+            padding:0;
+        }
+        /* body{
+            font-size: 12px;
+            font-family: "宋体";
+            color: #333;
+        } */
+        a{
+            text-decoration: none;
+            font-size: 12px;
+            color: #ccc;
+        }
+        /* ul,ol{
+            list-style: none;
+        }
+ */
+
+
+        .header{
+            /* background-color: rgba(223, 48, 48,0.5); */
+            width: 960px;
+            height:80px;
+            margin: auto;
+            padding-top: 28px;
+            box-sizing: border-box;
+        }
+        .header .logo{
+                width:644px;
+                height: 27px;
+               background: url("images/1.jpg") no-repeat 0 0;
+               float:left;
+               line-height: 27px;
+        }
+        .header .logo a{
+            width: 145px;
+            height: 27px;
+            float: left;
+            /* background-color: rgb(100, 223, 253); */
+        }
+        .header .link{
+            float: right;
+            width:210px;
+            height: 27px;
+             /* background-color: blanchedalmond;  */
+            line-height: 27px;
+            text-align: right;
+        }
+
+
+        .content{
+            background-color:rgb(253, 253,253); 
+            width: 960px;
+            height:600px;
+            margin: auto;
+            border: 1px solid #ccc;
+            border-radius: 2px;
+        }
+        .content .top{
+            width: 958px;
+            height: 38px;
+            border: 1px solid #ccc;
+            border-top:none;
+            background:url("images/1.png") repeat 0 0;
+           
+        }
+        .content .top h1{
+            color: rgb(184, 185, 185);
+            font-size: 12px;
+            line-height: 38px;
+            text-indent: 2em;
+        }
+        .content .bottom{
+            width:960px;
+            height: 562px;
+            /* background-color: rgb(59, 247, 131); */
+        }
+        .content .bottom .btleft{
+            float: left;
+            width:642px;
+            height:562px;
+            /* background-color: rgb(245, 51, 196); */
+            padding-top: 50px;
+            padding-left: 80px;
+            box-sizing: border-box;
+        }
+        .content .bottom .btleft .btlTop{
+            width:560px;
+            height:60px;
+            /* background-color: rgb(241, 238, 46); */
+        }
+        .content .bottom .btleft .btlTop ul{
+            list-style: none;
+            width: 412px;
+            height: 34px;
+            /* background-color: rgb(36, 77, 212); */
+            background:url("images/2.jpg") repeat left 0;
+            background-size: 137px 34px;
+        }
+        .content .bottom .btleft .btlTop ul li{
+            float: left;
+            width:137px;
+            height:34px;
+            /* background-color: rgb(43, 226, 150); */
+            line-height: 34px;
+            text-align: center;
+        }
+
+        .content .bottom .btleft .btlBottom{
+            width:560px;
+            height: 373px;
+            /* background-color: rgb(248, 110, 31); */
+        }
+        .content .bottom .btleft .btlBottom .line{
+            width:413px;
+            height:28px;
+            /* background-color: rgb(187, 170, 20);  */
+        }
+        .content .bottom .btleft .btlBottom .line span{
+            float: left;
+            width:60px;
+            height:28px;
+            /* background-color: rgb(187, 62, 68); */
+            font-size: 12px;
+            line-height: 28px;
+            text-align: right;
+        }
+        .content .bottom .btleft .btlBottom .line .star{
+            width: 0;
+            color: red;
+        }
+        .content .bottom .btleft .btlBottom .line div{
+            float: right;
+            width:333px;
+            height:28px;
+            /* background-color: rgb(31, 39, 85); */
+        }
+        .content .bottom .btleft .btlBottom .line div input{
+            width:222px;
+            height:24px;
+        }
+        .content .bottom .btleft .btlBottom .line div select{
+            width:90px;
+            height:26px;
+        }
+        .content .bottom .btleft .btlBottom .line .special{
+            width:330px;
+        }
+        .content .bottom .btleft .btlBottom .line img{
+            width:90px;
+            height:28px;
+            float:right;
+
+        }
+        .content .bottom .btleft .btlBottom p{
+            font-size:12px;
+            /* margin-left:80px; */
+            text-indent: 80px;
+            line-height: 28px;
+        }
+        .content .bottom .btleft .btlBottom input[type=submit]{
+            width:119px;
+            height:37px;
+            background:url("images/2.jpg") no-repeat 0 0;
+            background-size: cover;
+            border: none ;
+            font-size:20px;
+            color:white;
+            margin-left:80px;
+            margin-top: 20px;
+        }
+
+        .content .bottom .btright{
+            float:right;
+            width:318px;
+            height:562px;
+            /* background-color: rgb(45, 212, 73); */
+            background-image: url("images/1.bmp");
+            background-size: contain;
+            /* 调节背景图片的大小：像素或百分比或cover（覆盖，部分图片会看不到）contain（图片扩到最大，宽高适应背景区域）
+             */
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            border-top: none;
+        }
+
+        .footer{
+            /* background-color: rgb(95, 22, 129); */
+            width: 960px;
+            height:48px;
+            margin: auto;
+        }
+        .footer p{
+            font-size: 12px;
+            color:#ccc;
+            text-align: center;
+            line-height: 48px;
+        }
+    </style>
+    、
+</head>
+
+<body>
+    <!-- 头部的开始 -->
+    <div class="header">
+        <div class="logo">
+            <a href="#" title="网易163免费邮箱">网易163免费邮箱</a><a href="#" title="网易126免费邮箱">网易126免费邮箱</a><a href="#" title="网易Yeah.net免费邮箱">网易Yeah.net邮箱</a>
+            <p>|中国第一大电子邮箱服务商</p>
+        </div>
+        <div class="link">
+            <a href="#">了解更多</a><a href="#">｜反馈意见</a>
+        </div>
+    </div>
+    <!-- 头部的结束 -->
+
+
+    <!-- 内容的开始 -->
+    <div class="content">
+            <!-- 内容顶部开始 -->
+            <div class="top">
+                <h1>欢迎注册无限容量的网易邮箱</h1>
+            </div>
+            <!-- 内容顶部结束 -->
+
+            <!-- 内容底部开始 -->
+            <div class="bottom">
+                    <div class="btleft">
+                        <div class="btlTop">
+                            <ul>
+                                <li>注册字母邮箱</li>
+                                <li>注册手机号码邮箱</li>
+                                <li>注册VIP邮箱</li>
+                            </ul>
+                        </div>
+
+                        <div class="btlBottom">
+                            <div class="line">
+                                <span><span class="star">*</span>邮箱地址</span>
+                                <div>
+                                    <input type="text" value="建议使用手机号注册">@<select >
+                                        <option value="163.com" selected="selected">163.com</option>
+                                        <option value="126.com">126.com</option>
+                                        <option value="lnj.net">lnj.net</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <p>6~18个字符，可使用字母、数字、下划线，需以字母开头</p>
+                            <div class="line">
+                                    <span><span class="star">*</span>密码</span>
+                                    <div>
+                                        <input type="password"  class="special">
+                                    </div>
+                            </div>
+                             <p>6~16个字符，请注意大小写</p>
+                             <div class="line">
+                                    <span><span class="star">*</span>确认密码</span>
+                                    <div>
+                                        <input type="password"  class="special">
+                                    </div>
+                            </div>
+                             <p>请再次确认密码</p>
+                             <div class="line">
+                                    <span><span class="star">*</span>手机号码</span>
+                                    <div>
+                                        <input type="text"  class="special">
+                                    </div>
+                            </div>
+                             <p>如若忘记密码，请输入手机号码找回密码</p>
+                             <div class="line">
+                                    <span><span class="star">*</span>验证码</span>
+                                    <div>
+                                        <input type="text" value="建议使用手机号注册">
+                                        <img src="images/3.jpg" alt="">
+                                    </div>
+                                </div>
+                                <p>请选择图片的文字填写，不区分大小写</p>
+                                <p>
+                                    <input type="checkbox" checked="checked">
+                                    同意<a href="#">"服务条款"</a>和<a href="#">"隐私权保护和个人信息利用政策"</a>
+                                </p>
+                                <input type="submit" value="立即注册">
+                        </div>
+                            
+                    </div>
+
+                    <div class="btright"></div>
+            </div>
+            <!-- 内容底部结束 -->
+    </div>
+    <!-- 内容的结束 -->
+
+    
+    <!-- 底部的开始 -->
+    <div class="footer">
+        <p>
+            <a href="#">关于网易</a>
+            <a href="#">关于网易免费</a>
+            <a href邮箱官方微博a>
+            <a href="#">客户服务</a>
+            <a href="#">隐私政策</a>｜网易公司版权所有© 1997-2019
+    </div>
+    <!-- 底部的结束 -->
+</body>
+</html>

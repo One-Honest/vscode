@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>113.大图展示</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width:500px;
+            height: 334px;
+            border: 1px solid;
+            margin-left: 100px;
+            margin-top: 100px;
+            position: relative;
+        }
+        .small>img{
+            vertical-align:bottom;
+        }
+        .small>span{
+            display: inline-block;
+            width: 200px;
+            height: 200px;
+            background-color: rgba(0,0,0,0.5);
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: none;
+        }
+        .big{
+            width: 500px ;
+            height: 334px;
+            position: absolute;
+            left:510px;
+            top: 0;
+            overflow: hidden;
+            display: none;
+        }
+        .big>img{
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="small"><img src="images/small.png" alt="">
+            <span></span>
+        </div>
+        <div class="big"><img src="images/big.jpg" alt=""></div>
+    </div>
+
+    <script>
+        //1.获取操作元素
+        let oDiv=document.querySelector(".box");
+        let oSmall=document.querySelector(".small");
+        let oSpan=document.querySelector(".small>span");
+        let oBig=document.querySelector(".big");
+        let oBigImg=document.querySelector(".big>img");
+        //2.监听小图的移入移出事件
+        oSmall.onmouseenter=function(){
+            oSpan.style.display="block";
+            oBig.style.display="block";
+        }
+        oSmall.onmouseleave=function(){
+            oSpan.style.display="none";
+            oBig.style.display="none";
+        }
+        //3.监听鼠标在小图内的移动事件
+        oSmall.onmousemove=function(event){
+            event=event||window.event;
+            //1.计算鼠标在小图中的位置
+            let mouseX=event.pageX-oDiv.offsetLeft;
+            let mouseY=event.pageY-oDiv.offsetTop;
+            //2.重新计算鼠标的位置并让鼠标位于蒙版中点
+                //蒙版span的宽高
+            let spanWidth=oSpan.offsetWidth;
+            let spanHeight=oSpan.offsetHeight;
+            mouseX=mouseX-spanWidth/2;
+            mouseY=mouseY-spanHeight/2
+            //3.安全校验
+                //校验左上两边
+            mouseX=mouseX<0?0:mouseX;
+            mouseY=mouseY<0?0:mouseY;
+                //小图的宽高
+            let smallWidth=oSmall.offsetWidth;
+            let smallHeight=oSmall.offsetHeight;
+                //鼠标的最大移动距离
+            let maxMouseX=smallWidth-spanWidth;
+            let maxMouseY=smallHeight-spanHeight;
+                //校验右下两边
+            mouseX=mouseX>maxMouseX?maxMouseX:mouseX;
+            mouseY=mouseY>maxMouseY?maxMouseY:mouseY;
+
+            //4.将鼠标当前的位置设置给蒙版;
+            oSpan.style.left=mouseX+"px";
+            oSpan.style.top=mouseY+"px";
+            //5.计算大图的移动距离:公式>大图的移动距离=蒙版移动的距离/蒙版最大的移动距离*大图最大的移动距离
+                //计算大图最大的移动距离
+            let maxBigX=oBig.offsetWidth-oBigImg.offsetWidth;
+            let maxBigY=oBig.offsetHeight-oBigImg.offsetHeight;
+                //计算大图的移动距离
+            let bigX=mouseX/maxMouseX*maxBigX;
+            let bigY=mouseY/maxMouseY*maxBigY;
+                //将大图的移动距离设置给大图
+            oBigImg.style.left=bigX+"px";
+            oBigImg.style.top=bigY+"px";
+        }
+    </script>
+</body>
+</html>

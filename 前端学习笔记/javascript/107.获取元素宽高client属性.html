@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>107.获取元素宽高client属性</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            padding:50px;
+            border:150px solid;
+            background-color: red;
+            background-clip: content-box;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        //通过元素的client属性获取元素的宽高(包括元素的内边距)
+        let oDiv=document.querySelector("div");
+        console.log(oDiv.clientWidth);
+        console.log(oDiv.clientHeight);
+        //通过元素的client属性获取元素的偏移位(即获取到的是元素的左上边框的宽)
+        console.log(oDiv.clientLeft);
+        console.log(oDiv.clientTop);
+    </script>
+</body>
+</html>

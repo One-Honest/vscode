@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>15.js的流程控制循环结构while与do while]</title>
+    <script>
+        //while语句的格式和特点和if语句几乎一样,但while中的符合条件的语句可以被多次执行;
+        //while(条件表达式){条件表达式为真时执行的语句}  大括号中的语句可能被多次执行
+        //while循环语句的执行流程为:首先判断条件表达式是否成立,执行语句,然后继续返回判断条件表达式,直至表达式不成立才停止while循环语句;
+
+        //循环语句while的书写顺序:1.先写循环结构代码 2.需要重复执行的代码放到{}中 3.在()中指定循环的结束条件;
+        let num=1;
+        while(num<=10){
+            console.log("导弹发射"+num+"次");
+            num++;
+        }
+        //什么是死循环?即()的条件永远为真,则{}中的语句会一直不断地执行;while(true){console.log("我不会停的")};
+        //什么是循环体?即{}内的语句为循环体;
+        //注意点与if结构差不多一样:1.对于非布尔类型的数据,会先转换为布尔类型数据之后再去判断条件是否成立;
+                                //2.while后面的大括号都可以省略,但省略之后只有紧随其后的语句受其控制
+                                //3.;号也是一条语句,代表空语句
+        //最简单的死循环是:while(1);
+
+    //练习1.需求:打印1-100之间7的倍数并统计个数;
+    let numb=1;
+    let count=0;
+    while(numb<=100){
+        if(numb%7===0){
+            console.log(numb);
+            count++;
+        }
+        numb++;
+    }
+    console.log("1-100之间有"+count+"个7的倍数");
+    //练习2.需求:要求用户输入一个正整数,计算1+2+...+n的和;
+    let str=prompt("请输入一个正整数:");
+    let tj=+str;
+    let numbb=1;
+    let sum=0;
+    while(numbb<=tj){
+        sum=sum+numbb;
+        numbb++;
+    }
+    console.log(sum);
+    //do while 循环语句与while循环语句的不同点:
+        //while(条件表达式){循环体;}  do{循环体;}while(条件表达式);
+        //两者不同点在于do while 中的循环体无论条件表达式是否为真都会先执行一次;
+    //练习3.让用户输入密码,判断输入的密码是否正确,正确则输出'欢迎回来';
+    let psw=prompt("请输入密码:");
+    while(psw!=="123456"){
+        psw=prompt("请输入密码:");//此处不要再次定义变量psw,再定义psw会变成局部变量,只在大括号{}内有效,将不能参与大括号外的运算;
+    }
+    alert("欢迎回来!")
+
+    let psw1;//这里可以随意赋值或者不赋值也可以,因为do里面的语句肯定会执行一次,psw1会被重新赋值;
+    do{
+        psw1=prompt("请输入密码:");
+    }while(psw1!=="123456");
+    alert("欢迎回来!")
+
+//企业开发中若循环体无论条件表达式如何都要先执行一次,则使用do while语句,其他的一律建议使用while语句来实现;
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

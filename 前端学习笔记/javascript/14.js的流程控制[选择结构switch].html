@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>14.js的流程控制[选择结构switch]</title>
+    <script>
+        /*switch语句的格式:
+        switch(表达式){
+            case 判断表达式1;
+                语句1;
+                break;
+            case 判断表达式2;
+                语句2;
+                break;
+            ......
+            default:
+                前面所有case都不匹配时执行的语句;
+                break;
+        }
+
+        特点:会从上到下判断每一个case是否与switch(表达式)中的值相等,若相等则执行case后面的语句,若都不相等则执行default后面的语句;
+            case与default有且只有一个会被执行;
+        */
+       let year=2019;
+       switch(year){
+           case 2019:
+           console.log("今年是2019年");
+           break;
+           case 2018:
+           console.log("今年不是2019年");
+           break;
+           case 2020:
+           console.log("今年不是2019年");
+           break;
+           default:
+               console.log("我也不知道今年是哪一年");
+               break;
+       }
+//注意点:
+            //1.判断case的是===而不是==;既判断数值是否相同也判断数据类型是否相同;
+            //2.switch()和case后面都可以是常量\变量\表达式;
+            //3.break的作用是结束整个switch语句;switch中一旦case或者default被匹配,则其他的case与default都失效;
+            //switch会将之匹配的case的语句 和 在break出现前的语句都执行;
+            let year1=2019;
+       switch(year1){
+           case 2019:
+           console.log("今年是2019年");//会被执行
+        //    break;
+           case 2018:
+           console.log("今年不是2019年");//会被执行
+           break;
+           case 2020:
+           console.log("今年不是2019年");//不会被执行
+           break;
+           default:
+            console.log("我也不知道今年是哪一年");//不会被执行
+            break;
+       }
+//4.default不一定要写在最后;无论其放在什么位置,default都会等case全部比较完之后再执行;
+            //5.与if/else if中的else一样,switch中的default也可以省略;若case都不匹配则输出结果为空;
+
+    //练习1.需求:根据用户输入的分数输出对应的等级;A.90-100 B.80-89 C.70-79 D.60-69 E.0-59;
+    let str=prompt("请输入你的分数:");
+    let num=+str;//将字符串转换为数值类型数据
+    let score=parseInt(num/10);//用num除以10,然后用parseInt截取其商的整数部分,再拿来参与switch语句的比较;
+    switch(score){
+        case 10:
+        case 9:
+            alert("A");
+            break;
+        case 8:
+            alert("B");
+            break;
+        case 7:
+            alert("C");
+            break;
+        case 6:
+            alert("D");
+            break;
+        case 5:
+        case 4:
+        case 3:
+        case 2:
+        case 1:
+        case 0:
+            alert("E");
+            break;
+        default:
+            prompt("请重新输入0-100的你的分数:");
+    }
+//企业开发中,if语句与switch语句该选择哪个适合?
+    //1.若是判断区间则使用if语句,若是判断单个或是多个的数值,则选择switch语句
+    //2.原则:优先使用if语句,即能用if语句就用if语句;
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

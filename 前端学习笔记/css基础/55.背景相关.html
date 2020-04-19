@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>背景相关</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+       ul{
+           width: 1000px;
+           height: 500px;
+           margin: 50px auto;
+           background-color: greenyellow;
+           
+       } 
+       ul li{
+            list-style: none;
+            float: left;
+            border: 1px solid black;
+            width: 200px;
+            height: 200px;
+            margin: 20px;
+            font-size: 20px;
+            text-align: center;
+            line-height: 200px;
+            
+       }
+       ul li:nth-child(1){
+           background:url("images/dog.jpg") no-repeat,url("images/animal2.png") no-repeat right bottom ;
+           /* 多重背景图设置可用逗号隔开
+           若背景过多，建议将背景的属性分开设置
+           如：
+           background-image：url("images/dog.jpg"),url("images/dog.jpg")
+           background-repeat：no-repeat,no-repeat
+           background-position:right bottom,right bottom
+            */
+       }
+       ul li:nth-child(2){
+           background:url("images/dog.jpg") no-repeat ;
+           background-size: 150px 75px;
+       }
+       ul li:nth-child(3){
+           background:url("images/dog.jpg") no-repeat ;
+           background-size: 50%;
+       }
+       ul li:nth-child(4){
+           background:url("images/dog.jpg") no-repeat ;
+           background-size: auto 150px;
+       }
+       ul li:nth-child(5){
+           background:url("images/dog.jpg") no-repeat ;
+           background-size: 350px auto;
+       }
+       ul li:nth-child(6){
+           background:url("images/dog.jpg") no-repeat ;
+           background-size: cover;
+           /* 等比拉伸至宽高皆沾满元素 */
+       }
+       ul li:nth-child(7){
+           background:url("images/dog.jpg") no-repeat ;
+           background-size: contain;
+           /* 等比拉伸至宽或高沾满元素 */
+       }
+       ul li:nth-child(8){
+           background:url("images/dog.jpg") no-repeat ;
+           /* background-size: contain; */
+           /* 等比拉伸至宽或高沾满元素 */
+           border: 10px dashed skyblue;
+           width: 150px;
+           height: 150px;
+           padding: 20px;
+           margin: 20px;
+           background-color:red;
+           
+           background-origin: border-box;
+           /* 默认情况下图片是从padding区域开始展示
+           取值有：border（从边框开始展示） content-box（从内容区域开始展示）
+            */
+            background-clip: content-box;
+            /* 默认情况下图片是从padding区域开始绘制背景
+           取值有：border（背景从边框开始绘制） content-box（背景从内容区域开始绘制）
+
+           注意：此属性比background-origin优先级高！！！会覆盖background-origin属性
+            */
+       }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>默认</li>
+        <li>像素</li>
+        <li>百分比</li>
+        <li>等宽拉伸</li>
+        <li>等高拉伸</li>
+        <li>cover</li>
+        <li>contain</li>
+        <li>background-origin属性</li>
+    </ul>
+</body>
+</html>

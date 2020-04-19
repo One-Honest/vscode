@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>属性选择器</title>
+    <style type="text/css">
+        p[id] {
+            color: red;
+        }
+        p[class]{
+            color: green;
+        }
+        input[type=text]{
+            color:blue;
+        }
+        input[type=checkbox]{
+            width: 100px;
+        }
+        /*只要有id的该标签都可以设置属性*/
+        
+        img[alt^="123"]{
+            width:100px;
+        }
+        /*以什么属性值开头的属性会被选中，只能选择一种类型*/
+
+        img[alt*="abc"]{
+            width:150px;
+        }
+        /*所有有该属性值字符的属性都可以被选中，不管属性值是否一致*/
+
+        img[alt$="c"]{
+            width: 200px;
+        }
+        /*以该字符结尾的属性值都可以被选中*/
+    </style>
+
+</head>
+
+<body>
+<p id="red">我有ID，我会变红</p>
+<p class="green">我有class，我会变绿</p>
+<p id="red2">我也有ID，我也会变红</p>
+<p class="green2">我也有class，我也会变绿</p>
+<input type="text" value="我会变蓝色">
+<input type="checkbox" value="我会变宽" >
+<p>
+<img src="images/1.jpg" alt="123" title="我会变小">
+</p>
+<p>
+<img src="images/1.jpg" alt="a123" title="我不会变小">
+</p>
+
+<p>
+    <img src="images/1.jpg" alt="abc" title="我们都会变小">
+</p>
+<p>
+    <img src="images/1.jpg" alt="abc1" title="我们都会变小">
+</p>
+<p>
+    <img src="images/1.jpg" alt="xyc1" title="我不会变小">
+</p>
+<p>
+    <img src="images/1.jpg" alt="2xyc" title="我会变小">
+</p>
+</body>
+</html>

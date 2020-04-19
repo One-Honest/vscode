@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>30.箭头函数</title>
+    <script>
+    /*
+    箭头函数的作用:为了简化函数的定义;
+
+    常规函数定义的格式:
+                1.function 函数名(形参列表){封装的代码};
+                2.let 函数名=function(形参列表){封装的代码};
+    箭头函数的定义格式:
+                1.let 函数名=(形参列表)=>{封装的代码};
+                2.若形参只有一个,()可以省略:let 函数名=形参列表=>{封装的代码};
+                3.若形参只有一个并且封装的代码也只有一句,()与{}都可以省略:let 函数名=形参列表=>封装的代码;
+    */
+   /*1.let 函数名=(形参列表)=>{封装的代码};
+   let getName=(name)=>{console.log('我叫'+name);}
+   getName('张三');*/
+   /*若形参只有一个:let 函数名=形参列表=>{封装的代码};
+   let getName=name=>{console.log('我叫'+name);}
+   getName('张三');*/
+   //若形参只有一个并且封装的代码也只有一句:let 函数名=形参列表=>封装的代码;
+   let getName=name=>console.log('我叫'+name);
+   getName('张三');
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

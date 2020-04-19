@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>111.天猫弹性导航</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .nav{
+            width: 800px;
+            height: 63px;
+            border: 1px solid;
+            margin: 100px auto;
+            position: relative;
+        }
+        ul{
+            position: relative;
+            z-index: 999;
+        }
+        ul>li{
+            width: 100px;
+            height: 63px;
+            list-style: none;
+            float: left;
+            line-height: 63px;
+            text-align: center;
+        }
+        span{
+            width:90px;
+            height:63px;
+            display: inline-block;
+            background: url("images/tianmao.png") no-repeat;
+            background-size:cover;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <ul>
+            <li>天猫导航</li>
+            <li>天猫导航</li>
+            <li>天猫导航</li>
+            <li>天猫导航</li>
+            <li>天猫导航</li>
+            <li>天猫导航</li>
+            <li>天猫导航</li>
+            <li>天猫导航</li>
+        </ul>
+        <span></span>
+    </div>
+    <script src="封装的对象和方法/animation.js"></script>
+    <script>
+        //1.获取需要操作的元素
+        let oItems=document.querySelectorAll("li");
+        let oSpan=document.querySelector("span");
+        //2.监听每个li元素的点击时间
+        for(i=0;i<oItems.length;i++){
+            let item=oItems[i];
+            item.onclick=function(){
+                // oSpan.style.left=this.offsetLeft+"px";
+                linearAnimation(oSpan,{left:this.offsetLeft});
+            }
+        }
+        
+    </script>
+</body>
+</html>

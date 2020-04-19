@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>49.获取对象类型及判断实例对象/原型对象/属性</title>
+    <script>
+        /*
+            对象.constructor.name属性;
+        */
+        class Dog{
+            constructor(itsName,itsAge){
+                this.name=itsName;
+                this.age=itsAge;
+            }
+            jump(){
+                console.log("蹦蹦跳跳");
+            } 
+        }
+        class Teddy extends Dog{//extends表示当前类需要继承Dog地属性;
+            constructor(itsName,itsAge,itsColor){
+                super(itsName,itsAge);//与call/apply属性一样,但前面由extends调用了Dog构造函数,而super只负责传递参数;
+                this.color=itsColor;
+            }
+            catch(){
+                console.log("抓抓抓");
+            }
+        }
+        // Teddy.prototype=new Dog();
+        // Teddy.prototype.construcor=Teddy;
+
+        Teddy.prototype.run=function(){
+           console.log('我是Teddy新增的方法;');
+       }
+        let ted=new Teddy('小黑',3,"black");
+console.log(ted.constructor.name);//获取ted的类型[name属性]
+
+        let arr=new Array();
+        //获取对象的类型 .constructor.name
+        console.log(arr.constructor.name);//获取arr的类型
+//判断实例对象 a instanceof A    [a是A的实例对象吗?]
+        console.log(arr instanceof Array);//返回true,判断对象的实例;
+        console.log(ted instanceof Teddy);//返回true,
+                                        //注意点:因为Teddy继承了Dog,所以Dog的实例对象变成了ted对象的原型对象,
+        console.log(ted instanceof Dog);//ted出现在了Dog函数的原型链中,只要对象出现在构造函数的原型链中,那该对象就是构造函数的实例对象;
+//判断原型对象 a.isPrototypeOf(A) [a是A的原型对象吗?]
+        console.log(Dog.prototype.isPrototypeOf(ted));//判断Dog.prototype是否是ted的原型对象;因为Dog的原型对象在stu的原型链上;所以返回true;
+
+//判断对象的属性;in的特点:只要类中或者类的原型对象中有这个属性就会返回true;
+       console.log("name" in Dog);//返回true,表明Dog中有name这个属性;
+       console.log("run" in ted);//返回true,run存储在Teddy的原型对象中;
+       console.log("name" in ted);//返回true,表明ted中有name这个属性;因为ted继承了Dog的属性;
+//判断对象的实例属性:对象.hasOwnProperty("属性");不会去原型对象中查找;
+       console.log(ted.hasOwnProperty("name"));//返回true
+       console.log(ted.hasOwnProperty("run"));//返回false
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

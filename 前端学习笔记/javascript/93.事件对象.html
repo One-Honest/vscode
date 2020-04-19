@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>93.事件对象</title>
+</head>
+<body>
+    <button id="btn">创建事件对象</button>
+    <a href="https://www.baidu.com">前往百度</a>
+    <script>
+        /* 
+        什么是事件对象?
+            事件对象就是系统自动创建的一个对象;当注册的事件被触发时,系统就会自动创建事件对象;
+         */
+        let oBtn=document.querySelector("#btn");
+        oBtn.onclick=function(event){//高级浏览器中系统会通过event参数将事件对象返回给我们;而低级浏览器不会,可以添加兼容代码获取
+            event=event||window.event;//兼容低级浏览器获取事件对象
+            alert("来呀快活呀");
+            console.log(event);
+            console.log(typeof event);
+        }
+        let oA=document.querySelector("a");
+        oA.onclick=function(event){
+            event=event||window.event;//兼容低级浏览器
+            alert("我不要前往百度");
+            //return false;//阻止默认行为[a标签的超链接行为]  企业开发推荐使用的方法
+
+            //利用event.preventDefault();方法也可以阻止默认行为;但有需要注意的是只有高级浏览器支持preventDefault
+            // event.preventDefault();
+            event.returnValue=false;//ie8及以下浏览器支持的方法,google也支持;了解即可;
+        }
+    </script>
+</body>
+</html>

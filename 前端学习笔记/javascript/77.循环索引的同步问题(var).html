@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>77.循环索引的同步问题</title>
+</head>
+<body>
+    <button>我是按钮1</button>
+    <button>我是按钮2</button>
+    <button>我是按钮3</button>
+    <img src="images/bibao.png" alt="">
+    <script>
+        //需求:给三个按钮添加点击事件;
+        /* let oButtons=document.querySelectorAll("button");
+        for(var i=0;i<oButtons.length;i++){//用var声明,最终返回值只有循环结束后的i;
+            let btn=oButtons[i];
+            btn.onclick=function(){
+                console.log(i);
+            }
+        } */
+        let oButtons=document.querySelectorAll("button");
+        for(var i=0;i<oButtons.length;i++){//用var声明,最终返回值只有循环结束后的i;
+            let btn=oButtons[i];
+            (function(index){
+                // console.log(i);
+                btn.onclick=function(){//此处onclick就是闭包函数:在函数内并且使用了函数的参数index;
+                    console.log(index);//
+                }
+            })(i);
+        }
+
+
+        // 默认情况下是顺序结构从上至下地执行,前面的没执行完后面的代码不能执行;
+        //默认情况下通过var声明的变量,只要不是定义在函数中的都是全局变量;
+
+        /* 1.常规for循环
+        for(var i=0;i<3;i++){
+            function test(){
+                console.log(i);
+            }
+            test();//返回值0 1 2;
+        }
+        test();//返回值为3,for循环已经结束,最后一次循环i的值为3; */
+        /* 2.立即执行的函数
+        for(var i=0;i<3;i++){
+            (function test(index){//此处的index表示参数,即将i传参给index
+                //此处省略了 let index=i;
+                console.log(index);
+            })(i);//返回值也是0 1 2;能够同步获取i的值;
+        } */
+    </script>
+</body>
+</html>

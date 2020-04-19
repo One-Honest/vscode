@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>70.鼠标的单击事件(关闭广告)</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            position: fixed;
+            left: 0;
+            bottom: 0;
+        }
+        div>img:first-child{
+            width: 80px;
+            height: 30px;
+            position: absolute;
+            right: 0;
+            top: -30px;
+        }
+    </style>
+</head>
+<body>
+        
+<div>
+    <img src="images/close.jpg" alt="">
+    <img src="images/bg.jpg" alt="">
+
+</div>
+<script>
+    let oImgBtn=document.querySelector("div>img:first-child");//查找
+    oImgBtn.onclick=function(){
+        //1.找到关闭按钮的父元素
+        let oDiv=this.parentNode;
+        //2.关闭广告
+        oDiv.parentNode.removeChild(oDiv);
+    }
+</script>
+</body>
+</html>

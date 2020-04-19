@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>62.节点的增删改查</title>
+</head>
+<body>
+    <div>
+        <h1>我是标题</h1>
+        <p>我是段落</p>
+    </div>
+<script>
+        /*
+        1.创建节点  document.createElement("标签名");
+        2.添加节点  父元素.append(子元素);
+        3.插入节点  父元素.insertBefore(子元素a,子元素b)
+        4.删除节点  父元素.removeChild(子元素);
+        注意点:在js中,要删除一个元素,只能通过其父元素的removeChild属性来删除;不能直接删除;
+        5.克隆节点  元素.cloneNode(true);
+        注意点:.cloneNode属性默认不会克隆该元素的子元素,若想连其子元素一起克隆,则传递一个true参数;
+        */
+        let oDiv=document.querySelector("div");
+        let oSpan=document.createElement("span");//1.创建一个新的元素节点;
+        oDiv.appendChild(oSpan);//2.append方法会默认将指定的元素节点添加到最后;
+        console.log(oDiv);
+        let oH1=document.querySelector("h1");
+        oDiv.insertBefore(oSpan,oH1);//3.insertBefore(a,b)方法可以将指定的元素a插入到元素b的前面;
+        console.log(oDiv);
+    oSpan.parentNode.removeChild(oSpan);//4.removeChild属性可以将指定的子元素从父元素中删除;
+        console.log(oDiv);
+        oDiv.cloneNode();
+        console.log(oDiv.cloneNode(true));
+</script>
+</body>
+</html>

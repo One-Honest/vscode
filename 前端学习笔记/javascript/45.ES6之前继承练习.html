@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        function Dog(itsName,itsAge){
+            this.name=itsName;
+            this.age=itsAge;
+        }
+        Dog.prototype.jump=function(){
+                console.log("蹦蹦跳跳");
+            }
+        function Teddy(itsName,itsAge,itsColor){
+            Dog.call(this,itsName,itsAge),
+            this.color=itsColor;
+        }
+        Teddy.prototype=new Dog();
+        Teddy.prototype.construcor=Teddy;
+
+        Teddy.prototype.run=function(){
+           console.log('我是Teddy新增的方法;');
+       }
+        let ted=new Teddy('QAQ',3,"black");
+        console.log(ted);
+        ted.jump();
+        ted.run();//Teddy.prototype新增的方法,在Teddy的实例对象中
+                //没有对应的方法,ted则会去Teddy的原型对象中查找;
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

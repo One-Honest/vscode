@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>81.全选与反选</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .music{
+            width: 400px;
+            box-shadow: 0 0 5px yellowgreen;
+            margin:200px auto;
+            padding: 10px 20px;
+            box-sizing: border-box;
+        }
+        .music>h3{
+            line-height: 40px;
+            border-bottom: 1px solid;
+            text-align: center;
+        }
+        .music>ul>li{
+            list-style: none;
+            line-height: 30px;
+            border-bottom: 1px solid;
+        }
+        .music>div{
+            line-height: 40px;
+            text-align: center;
+        }
+        .music>div>button{
+            width: 100px;
+            margin: 5px 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="music">
+        <h3>歌曲排行榜</h3>
+        <ul>
+            <li><input type="checkbox">music 11</li>
+            <li><input type="checkbox">music 22</li>
+            <li><input type="checkbox">music 33</li>
+            <li><input type="checkbox">music 44</li>
+            <li><input type="checkbox">music 55</li>
+            <li><input type="checkbox">music 66</li>
+            <li><input type="checkbox">music 77</li>
+            <li><input type="checkbox">music 88</li>
+        </ul>
+        <div>
+            <button id="all_select">全选</button>
+            <button id="cancel_select">取消全选</button>
+            <button id="reverse_select">反选</button>
+        </div>   
+    </div>
+
+    <script>
+        //1.拿到需要操作的元素
+        let oItems=document.querySelectorAll("input");
+        let allSelectBtn=document.querySelector("#all_select");
+        let cancelSelectBtn=document.querySelector("#cancel_select");
+        let reverseSelectBtn=document.querySelector("#reverse_select");
+        //2.监听全选按钮的点击
+        allSelectBtn.onclick=function(){
+            oItems.forEach(function(item){
+                item.checked=true;
+            });
+        }
+        cancelSelectBtn.onclick=function(){
+            oItems.forEach(function(item){
+                item.checked=false;
+            });
+        }
+        reverseSelectBtn.onclick=function(){
+            oItems.forEach(function(item){
+                item.checked=!item.checked;//!可以将数据变成布尔类型,做逻辑运算常常会用！做类型判断，可以用！与上一个对象来求得一个布尔值
+            });
+        }
+    </script>
+</body>
+</html>

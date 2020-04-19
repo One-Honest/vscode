@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>37.a标签伪类选择器</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+        }
+
+        /* link属性设置未被访问过的a标签的样式 */
+        /* a:link{
+            color: aqua;
+        } */
+        /* visited属性设置已被访问过的a标签的样式 */
+        /* a:visited{
+            color: bisque;
+        } */
+        /* hover属性设置a标签鼠标悬停状态的样式
+            注意：此属性会使active属性失效？（疑问）【解答：a标签的四种属性一起使用的时候需要按照特定顺序：未访>已访>悬停>长按】
+         */
+         /* a:hover{
+            color:crimson;
+        } */
+        /* active 属性设置长按状态的a标签的样式*/
+        /* a:active{
+            color: blueviolet;
+        } */
+        /* 简写格式可直接用a设置，则可省略link与visited设置相同样式的代码 */
+
+        ul{
+            width:560px;
+            height: 40px;
+            margin: 100px auto;
+            background-color: red;
+        }
+        ul li{
+            list-style: none;
+            width: 70px;
+            height: 40px;
+            background-color: pink;
+            float: left;
+            text-align: center;
+            line-height: 40px;
+            font-size: 12px;
+        }
+        /* 在企业开发中需要注意
+            1.a标签伪类选择器最好写在标签选择器后面
+            2.a标签盒子的属性（显示模式、宽高、内外边距等）写在标签选择器中
+            3.a标签的文字、背景相关的属性写在伪类选择器中
+         */
+        ul li a{
+            width: 70px;
+            height: 40px;
+            display: inline-block;
+        }
+        ul li a:link{
+            color: pink;
+            text-decoration: none;
+        }
+        ul li a:visited{
+            color: yellow;
+        }
+        /* ul li a:visited{
+            color:black;
+        } */
+        ul li a:hover{
+            color:chartreuse;
+            background-color: #ccc;
+        }
+        ul li a:active{
+            color: red;
+        }
+
+    </style>
+    <!-- a标签的状态
+        1.未被访问（蓝色）2.被访问（紫色）3。长按（红色）
+     -->
+</head>
+<body>
+    <!-- <a href="http://www.taobao.com">淘宝</a>
+    <a href="http://www.jd.com">京东</a> -->
+    <ul>
+        <li><a href="#">我是导航</a></li>
+        <li><a href="#">我是导航</a></li>
+        <li><a href="#">我是导航</a></li>
+        <li><a href="#">我是导航</a></li>
+        <li><a href="#">我是导航</a></li>
+        <li><a href="#">我是导航</a></li>
+        <li><a href="#">我是导航</a></li>
+        <li><a href="#">我是导航</a></li>
+    </ul>
+</body>
+</html>

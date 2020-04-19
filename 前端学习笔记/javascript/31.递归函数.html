@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>31.递归函数</title>
+    <script>
+        /*
+        回顾练习:
+            需求:让用户输入密码,正确则输出"欢迎回来!,错误则继续输入;
+            let psw=0;
+            do{
+                psw=prompt("请输入密码:");
+            }while(psw!=="123456");
+            alert('欢迎回来!!');
+        */
+
+        //什么是递归函数:即自己调用自己的函数;在一定程度上可以实现循环的功能;
+            //注意点:每输入一次密码,都会重新开辟一个新的空间执行函数,所以输入多少次代码,当最终条件不满足输出最终结果时就会输出多少次最终结果;
+        function login(){
+            let psw=prompt("请输入密码:");
+            if(psw!=="123456"){
+                login();
+            }
+            alert('欢迎回来!!');
+        }
+        login();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

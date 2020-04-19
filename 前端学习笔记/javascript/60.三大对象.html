@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>60.三大对象[Math内置对象]</title>
+    <script>
+        /*
+        1.JS中自带三种对象:本地对象,内置对象,宿主对象;
+        2.什么是宿主?宿主就是指JS运行的环境,JS可以在浏览器上运行,也可以在服务器上运行(node.js)
+
+        3.本地对象:与宿主无关,无论在浏览器还是服务器上运行都有的对象,就是ECMAScript标准中定义的类(构造函数);在使用过程中需要我们手动通过new创建;
+            例如:Boolean,Number,String,Array,Function,Object,Date,RegExp等
+        4.内置对象:与宿主无关,无论在浏览器还是服务器上运行都有的对象,是ECMAScript已经帮我们创建好的对象;在使用过程中 不 需要我们手动通过new创建;
+            例如:Global(全局对象),Math,JSON等
+        5.宿主对象:对于嵌入到网页中的JS代码,其宿主就是浏览器,所以宿主就是浏览器提供的对象;
+            例如:Window和Document等;所有的BOM和DOM对象都属于宿主对象;
+        */
+        //6.Math 是一个内置对象， 它具有数学常数和函数的属性和方法。不是一个函数对象。Math 适用于 Number 类型。它不支持 BigInt。
+        //企业开发中常用的Math对象;
+        /*  1.Math.floor()向下取整
+            2.Math.ceil()向上取整
+            3.Math.round四舍五入
+            4.Math.abs 绝对值
+            5.Math.random()生成随机数([0,1)之间的随机数);
+                要生成各种类型的随机数,可以到官方文档找代码;
+                https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math
+    */
+    /*let num=3.14;
+    Math.floor(num);
+    console.log(Math.floor(num));//向下取整
+    console.log(Math.ceil(num));//向上取整
+    console.log(Math.round(num));//四舍五入
+    let num1=-3.14;
+    let rand=console.log(Math.abs(num1));//取绝对值*/
+    let rand=Math.random();
+    console.log(rand);
+
+    //需求:生成[1,100]的整数;
+    function getRandomIntInclusive(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min; //含最大值，含最小值 
+    }
+    let value=getRandomIntInclusive(1,100);
+    console.log(value);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

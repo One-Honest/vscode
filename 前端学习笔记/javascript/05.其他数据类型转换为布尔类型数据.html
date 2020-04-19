@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>05.其他数据类型转换为布尔类型数据</title>
+    <script>
+        //1.将字符串转换为布尔类型:只要字符串中有内容就会返回true[包括空格],没内容返回false
+        let str='';
+        console.log(str);
+        console.log(typeof str);
+        let num=Boolean(str);
+        console.log(num);
+        console.log(typeof num);
+        //2.将数值转换为布尔类型数据:只要数值为非零数值返回都是true,数值为0或NaN时返回false
+        let numb=NaN;
+        console.log(typeof numb);//NaN是属于数值类型
+        let nan=Boolean(numb);
+        console.log(nan);//返回为false
+        console.log(typeof nan);
+        //3.将undefined类型转换为布尔类型:返回值为false
+        //4.将null类型转换为布尔类型:返回值也为false
+
+
+        
+    </script>
+</head>
+<body>
+        规律:空字符串/0/NaN/undefined/null会转换为false
+            其他的都转换为true
+</body>
+</html>

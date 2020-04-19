@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>76.闭包函数</title>
+    <!-- 
+        1.什么是闭包? 闭包是一种特殊的函数
+        2.如何生成一个闭包?
+            当一个内部函数引用了外部函数的数据(变量/函数)时,那么内部的函数就是闭包函数;
+            只要满足"是函数嵌套"和"内部函数引用外部函数"两个特点,那就是闭包;
+        3.闭包特点:
+            只要内部函数还在使用外部函数的数据,那么外部函数的数据就一直不会被释放,
+        即闭包会延长外部函数的生命周期;
+        4.闭包的注意点:
+            当后续不再需要使用闭包时,需手动将闭包设置为null,避免出现内存泄露;
+        function test(){
+            var i=666;
+            return function demo(){
+                console.log(i);//内部函数使用了外部函数的变量i;
+            }
+        }
+        let fn=test();//此处调用test函数
+        fn();//返回值为666
+     -->
+    <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .contain{
+                width: 500px;
+                height:350px;
+                background-color: pink;
+                margin: 100px auto;
+            }
+            ul{
+                width: 100%;
+                height: 70px;
+                display: flex;
+                justify-content: space-between;
+            }
+            ul>li{
+                list-style:none;
+                width: 100%;
+                height:100%;
+                border-right: 1px solid skyblue;
+                box-sizing: border-box;
+                line-height: 70px;
+                text-align: center;
+            }
+            .current{
+                background-color:#0e8b8b;
+            }
+            ul>li:last-child{
+                border-right:none;
+            }
+            .bottom{
+                width: 100%;
+                height: 280px;
+                background-color: yellowgreen;
+            }
+            .bottom .content{
+                width: 100%;
+                height: 100%;
+                display: none;
+            }
+            .bottom .content:nth-child(1){
+                background-color: rgb(172, 31, 31);
+                display: block;
+            }
+            .bottom .content:nth-child(2){
+                background-color: rgb(172, 146, 31);
+            }
+            .bottom .content:nth-child(3){
+                background-color: rgb(61, 158, 42);
+            }
+            .bottom .content:nth-child(4){
+                background-color: rgb(40, 109, 150);
+            }
+            .bottom .content:nth-child(5){
+                background-color: rgb(68, 29, 131);
+            }
+    </style>
+</head>
+<body>
+    <div class="contain">
+        <ul class="top">
+            <li class="current">新闻</li>
+            <li >视频</li>
+            <li >音乐</li>
+            <li >军事</li>
+            <li >财经</li>
+        </ul>
+        <div class="bottom">
+            <div class="content">新闻内容区域</div>
+            <div class="content">视频内容区域</div>
+            <div class="content">音乐内容区域</div>
+            <div class="content">军事内容区域</div>
+            <div class="content">财经内容区域</div>
+    </div>
+
+    <script>
+        //1.获取需要操作的元素
+        let oLis=document.querySelectorAll("li");
+        let oDivs=document.querySelectorAll(".content");
+        //2.初始化第一个li
+        let previousLiIndex=0;
+        for(let i=0;i<oLis.length;i++){
+            //3.定义li
+            let liChild=oLis[i];
+            liChild.onclick=function(){//每一次onclick都会获取对应按钮的i值
+                //4.隐藏上一个li和div
+                let preLiChild=oLis[previousLiIndex];
+                preLiChild.className="";
+                let preDiv=oDivs[previousLiIndex];
+                preDiv.style.display="none";//注意点:哪里显示出问题就去哪部分查找问题
+                //5.显示onclick的这个li和与之对应显示的div
+                this.className="current";
+                let oDiv=oDivs[i];
+                oDiv.style.display="block";
+                //将当前的i赋值给上一个li的索引值,将充当下一次循环中的上一个li的索引号;
+                previousLiIndex=i;
+            };
+        }
+    </script>
+</body>
+</html>

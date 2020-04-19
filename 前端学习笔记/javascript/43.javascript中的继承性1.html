@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>43.javascript中的继承性1</title>
+    <script>
+        /*什么是继承性?
+            即将子类中的公有的方法存储到父类中;减少代码的冗余度;
+        注意:在企业开发中,如果构造函数与构造函数之间的关系是is a关系[即构造函数A is a构造函数B],则可以使用继承的方法来减少代码的冗余度;
+        */
+       function Person(){
+           this.name=null,
+           this.age=0,
+           this.say=function(){
+               console.log(this.name,this.age);
+           }
+       }
+       let person=new Person();
+       person.name="父类";
+       person.age=99;
+       person.say();
+
+       function Student(){
+        /*this.name=null,
+        this.age=0,
+        this.say=function(){
+               console.log(this.name,this.age);
+           }*/
+
+        this.score=100;
+        this.study=function(){
+            console.log('好好学习天天向上');
+           }
+       }
+
+       Student.prototype=new Person();//继承:只有当Student is a Person时才能使用;
+       Student.prototype.constructor=Student;//原理:原型链(__proto__);调用Student本身没有的属性或方法,
+                                            //在Student的实例对象中没有查到,会去Student的原型对象中查找
+                                            //这里就是将父类构造函数传递给Student的原型对象,则Student创建的对象可以使用父类中的属性和方法;
+//注意:弊端:student对象在调用Person函数中的属性时无法给Person中属性赋值;
+       let student=new Student();
+    //    student.name="子类";
+    //    student.age=18;
+       console.log(student);
+       student.say();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

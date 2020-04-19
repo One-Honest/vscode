@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>09.逻辑运算符</title>
+    <script>
+        //逻辑运算符:
+            //1.与&&  格式:条件表达式A&&条件表达式B  返回值:true或false  特点:一假则假
+            let yu=(3>2)&&(2>3);
+            console.log(yu);//返回值为false,只有&&两边表达式都为true,返回值才为true;
+            //2.或||  格式:条件表达式A||条件表达式B  返回值:true或false  特点:一真则真
+            let huo=(3>2)||(2>3);
+            console.log(huo);//返回值为true,只有||两边表达式都为false,返回值才为false;
+            //3.非!   格式:!条件表达式A             返回值:true或false  特点:真变假,假变真;
+            let fei=!(3>2);
+            console.log(fei);//返回值为false,3>2为true,!使其变为false;真变假,假变真;
+
+        //逻辑运算符的结合性与优先级:  结合性为左结合[从左至右]
+    //优先级:&&优先级高于||
+            let high=true||false&&false;//此处&&优先级高于||,优先运算&&;
+            console.log(high);//返回值为true
+
+        //逻辑运算符的注意点:
+            //1.若逻辑运算中数据不是布尔类型则会先转换你为布尔类型再运算;
+            let look=!0;//此处0被转换为布尔类型数据false,!false=true;
+            console.log(look);//返回值为true
+            //2.逻辑&&运算中,若参与的不是布尔类型,返回值有一特点:若条件A不成立则返回A[一假则假];若条件A成立,则无论条件B是否成立都返回B;
+            let spe=0&&123;
+            console.log(spe);//返回值为0;
+            let spec=1&&123;
+            console.log(spec);//返回值为123;
+            //3.逻辑||运算中,若参与的不是布尔类型,返回值有一特点:若条件A成立则返回A[一真则真],若条件A不成立则无论条件B是否成立都返回B;
+            let speci=1||123;
+            console.log(speci);//返回值为1;
+            let specia=0||null;
+            console.log(specia);//返回值为null;
+            //4.逻辑&&运算中,存在一个短路现象,因为其特性一假则假,所以当A条件不成立返回A则条件B将不会继续参与运算;
+            let special=1;
+            let hhh=(3>4)&&(++special);
+            console.log(special);//返回值为1,并没有自增+1运算;
+            console.log(hhh);//条件A不成立,返回条件A的值false;
+            //5.逻辑||运算中,存在一个短路现象,因为其特性一真则真,所以当A条件成立返回A则条件B将不会继续参与运算;
+            let special1=1;
+            let hhh1=(4>3)||(++special1);
+            console.log(special1);//返回值为1,并没有自增+1运算;
+            console.log(hhh1);//条件A成立,返回条件A的值true;
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

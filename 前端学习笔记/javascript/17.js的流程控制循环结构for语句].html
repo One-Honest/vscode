@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>17.js的流程控制循环结构for语句]</title>
+    <script>
+        /*while语句的结构示意图:
+        //初始化表达式
+        let num=1;
+            //条件表达式
+        while(num<=5){
+            console.log("子弹发射"+num);
+            //循环后增量表达式
+            num++;
+        }
+
+        for语句的结构示意图:
+        for(let num=1;num<=5;num++){
+            console.log("子弹发射"+num);
+        }
+
+        for语句特点:只有条件为真才执行循环体内的语句;
+        for语句的执行流程参照while语句的执行流程:定义初始化表达式一次,判断条件表达式是否成立,成立则执行循环体,然后再执行循环后增量表达式,之后再次用
+                              执行循环后增量表达式后的值判断条件表达式是否成立,直到条件表达式不为真为止;
+        */
+        for(let num=1;num<=5;num++){
+            console.log("子弹发射"+num);
+        }
+        // console.log(num);会报错
+
+    //注意:企业开发中如何区分使用while循环和for循环
+    //while循环语句结束之后,其变量还可以继续使用;
+    //而for循环语句若是初始化表达式写在()内,则循环语句结束后将不能再调用;要想使用循环后的初始化表达式中的值则可以将其在for循环之前单独设置;
+    //因此,在企业开发中,能使用for循环就尽量使用for循环语句,因其比较灵活,可让初始表达式中的值在循环语句结束后可调用,也可以设置不可调用;
+    let num1=1;
+            //条件表达式
+        while(num1<=5){
+            console.log("子弹发射"+num1);
+            //循环后增量表达式
+            num1++;
+        }
+        console.log(num1);//返回值为6
+    
+    //while语句与for循环语句的注意点:
+    //1.while中的条件表达式不可以不写,否则会报错,而for语句中可以不写:for(;;){}这样系统不会报错,而会将其默认为true一直不断输出循环体;
+    //2.其他注意点与while循环语句一样,1.对于非布尔类型的数据,会先转换为布尔类型数据之后再去判断条件是否成立;
+                                //2.while后面的大括号都可以省略,但省略之后只有紧随其后的语句受其控制
+                                //3.;号也是一条语句,代表空语句
+    //for语句中也可以像switch选择语句一样使用break属性,其作用也一样:结束当前的[循环/选择]语句,即在循环嵌套语句中只结束其所在的那个循环语句!!!
+    //循环结构中有一个continue关键字,其只在循环结果中有作用,其作用是跳过本次循环进行下一次循环;与break一样在循环嵌套语句中只结束其所在的那个循环语句!!
+    //break与continue后面的语句都不会被执行;
+    for(let num2=1;num2<=5;num2++){
+        if(num2===1){
+            continue;//即第一次发射会被跳过,将不会输出;
+        }
+            console.log("子弹发射"+num2);
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

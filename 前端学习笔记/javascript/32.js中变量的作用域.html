@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>32.js中变量的作用域</title>
+    <script>
+        /*
+        1.在JAVASCRIPT中函数后面{}中的作用域称为"局部作用域';
+        2.而在ES6中,只要{}没有和函数结合,都叫'"块级作用域";例如:if(){局部作用域};switch(){};do{}while();for(;;){};
+        3.在块级作用域中用var定义的变量为全局变量;在局部作用域中用var定义的变量为局部变量;
+4.无论是在块级作用域还是局部作用域中,省略前面的let或者var,都会变成全局变量;
+        {
+           num=666;//可以被{}外面的函数调用,是全局变量;
+        }
+       console.log(num);
+        */
+       {
+           var num=666;//可以被{}外面的函数调用,是全局变量;
+       }
+       console.log(num);
+
+       function whole(){
+           var num1=333;//此处num1无法被函数{}外面的函数调用,为局部变量;
+       }
+        // console.log(num1);
+
+        {
+           num2=666;//可以被{}外面的函数调用,是全局变量;
+        }
+       console.log(num2);
+
+function hole(){
+    num3=999;//全局变量
+}
+hole();
+console.log(num3);//需要先调用函数才能使用其中的变量;
+
+
+
+    /*练习1.
+    1.判断哪些是全局作用域,哪些是局部作用域;
+       var num1=123;//全局
+       function test(){
+           var num2=456;//局部
+       }
+       {
+           var num3=789;//全局
+       }
+       function test(){
+           num=666;//全局
+       }
+
+       let num1=123;//全局
+       function test(){
+           let num2=456;//局部
+       }
+       {
+           let num3=789;//全局
+       }
+       function test(){
+           num4=666;//全局
+       }
+    2.下列代码是否会报错:
+       var num=123;
+       var num=456;
+       结论:不会报错,后定义的num会覆盖先定义的;
+
+       {
+           var num=123;
+           {
+               var num=456;
+           }
+       }
+       结论:不会报错,后定义的num会覆盖先定义的;
+
+       console.log(num);
+       var num=555;
+       结论:不会报错,通过var定义的变量可以先使用再定义;
+
+       let num=123;
+       let num=345;
+       结论:报错,不能通过let定义相同名称的变量;
+
+       {
+           let num=123;
+           {
+               let num=456;
+           }
+       }
+       //注意:    console.log(num6);此处let定义在{}内属于全局变量但也只能在{}内有效;
+注意点:结论:不会报错,在不同作用域中可以定义相同名称的变量;但只能在各自的作用域内被调用;
+
+       console.log(num);
+       let num=3333;
+       结论:会报错,let定义的变量不能先调用再定义;
+
+       let num=123;
+       var num=456;
+
+       var num=123;
+       let num=456;
+       结论:会报错,只要出现let定义变量,则在相同作用域内不能出现相同名称的变量;无论是let在前还是var在前都一样;
+    */
+    
+
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

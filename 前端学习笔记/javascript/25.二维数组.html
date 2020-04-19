@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>二维数组</title>
+    <script>
+        /*
+        什么是二维数组?即数组之中的元素也是数组;
+        如何操作二维数组:
+            1.如何获取数据
+            let arr=[[1,2],[4,5]];
+            let arr1=arr[0];//获取二维数组中索引为0的元素;
+            let arr2=arr[0][1]//获取二维数组中索引为0的元素(数组)中的索引为1的元素;第二个[]中表示的是一维数组的索引;
+            2.如何存储数据
+                let arr=[[],[]];//在定义二维数组时,要存储多少个一维数组就添加多少个[]即可;
+                arr[0]=[1,2,5,8,0];//给二维数组的0号索引位置存储一个数组
+                arr[1][1]=5;//给二维数组中的索引1的数组中的索引2的位置赋值;
+            3.如何遍历二维数组:
+            let double=[[1,3],[6,9]];//遍历二维数组中的元素
+            for(i=0;i<double.length;i++){
+                console.log(double[i]);
+            }
+let double1=[[1,3],[6,9]];//遍历二维数组中的一维数组的元素;
+            for(i=0;i<double1.length;i++){
+                let ct=double1[i];
+                for(j=0;j<ct.length;j++){
+                    console.log(ct[j]);
+                }
+            }
+        */
+        let arr=[[1,2],[4,5]];
+            let arr1=arr[0];//获取数组中索引为0的元素;
+            let arr2=arr[0][1];//获取数组中索引为0的元素(数组)中的索引为1的元素;第二个[]中表示的是一维数组的索引;
+            console.log(arr1);
+            console.log(arr2);
+        let arr3=[[],[],[]];//在定义二维数组时,要存储多少个一维数组就添加多少个[]即可;
+            arr3[0]=[1,2,5,8,0];
+            console.log(arr3);
+            arr3[2][1]=666;//给二维数组中的索引2的数组中的索引1的位置赋值;
+            console.log(arr3);
+
+        let double=[[1,3],[6,9]];//遍历二维数组中的元素
+            for(i=0;i<double.length;i++){
+                console.log(double[i]);
+            }
+        let double1=[[1,3],[6,9]];//遍历二维数组中的一维数组的元素;
+            for(i=0;i<double1.length;i++){
+                let ct=double1[i];
+                for(j=0;j<ct.length;j++){
+                    console.log(ct[j]);
+                }
+            }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

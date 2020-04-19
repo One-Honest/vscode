@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>42.CSS3之形变中心点</title>
+    <style>
+        /* 默认情况下，元素都以自己的中心点进行旋转
+            也可以利用transform-origin属性来改变形变中心点
+         */
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            width: 200px;
+            height: 200px;
+            border: 1px solid pink;
+            margin:100px auto;
+            position: relative;
+            perspective: 500px;
+            /* 透视效果 （近大远小）
+                取值大小意味着从远还是近去看这个效果
+                即视野点
+                注意：此属性只能添加到形变的元素的父（祖）元素里面才有效果
+            */
+        }
+        ul li{
+            width: 200px;
+            height: 200px;
+            list-style: none;
+            position:absolute;
+            transform-origin:200px 0;
+            /* 第一个值水平方向 第二个值垂直方向 
+                取值方式有：1像素（px）2.百分比3.特殊语义词（left、top、right、bottom）
+            */
+        }
+        ul li:nth-child(1){
+            background-color: red;
+            transform: rotateX(45deg);
+            /* 要元素围绕轴来抓，直接=在rotate属性后面添加（X/Y/Z）轴即可 
+            默认情况下是围绕着Z轴旋转
+            */
+        }
+        ul li:nth-child(2){
+            background-color: green;  
+            transform: rotate(50deg);          
+        }
+        ul li:nth-child(3){
+            background-color: blue;
+            transform: rotate(70deg);
+        }
+        div{
+            width: 500px;
+            height: 300px;
+            border: 1px dashed pink;
+            margin:0 auto;
+            background-color: white;
+            perspective:200px;
+        }
+        div img{
+            width: 500px;
+            height: 300px;
+            transform-origin: center bottom; 
+            transition: transform 2s;
+        }
+        div:hover img{
+            transform:rotateX(45deg);
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <div>
+        <img src="images/1.jpg" >
+    </div>
+</body>
+</html>

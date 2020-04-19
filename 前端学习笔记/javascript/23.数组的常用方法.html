@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>23.数组的常用方法</title>
+    <script>
+        /*
+        1.如何清空数组;
+        2.如何将数组转换为字符串;
+        3.如何将数组转换为指定格式字符串;
+        4.如何将两个数组拼接成一个数组;
+        5.如何对数组中的内容进行反转;
+        6.如何截取数组中指定范围内容;
+        7.如何查找元素在数组中的位置;
+        8.如何判断数组中是否包含某个元素;
+        */
+       let traversal=[1,2,3,4,5];
+    //    traversal=[];//1.清空数组方法1;
+    //    traversal.length=0;
+    //    traversal.splice(0,traversal.length);
+    //    console.log(traversal);
+
+       let str=traversal.toString();//2.将数组转换为字符串;直接在数组后面+""也可以;
+       console.log(typeof str);
+       let strr=traversal.join(">");//3.将数组转换为指定格式字符串;
+                                    //join方法默认情况下若没传参,就是调用.toString();传参之后,数据间的,连接符号会变成传入的参数;
+       console.log(strr);
+       console.log(typeof strr);
+
+       //4.将两个数组拼接成一个数组;
+       let a=[1,3,5];
+       let b=[2,4,6];
+       //let c=a+b;不能这样拼接,直接用+号,会将数组分别转换为字符串之后显示为两个字符串的拼接;
+       let c=a.concat(b);//concat() 方法用于连接两个或多个数组。该方法不会改变现有的数组,而仅仅会返回被连接数组的一个副本。
+//let c=[...a,...b];扩展符号在=号左边表示将左边数组的剩余数据打包成一个新数组,而在=右边表示将一个数组，变为参数序列;
+//企业开发中推荐使用扩展符拼接数组!!!!
+       console.log(a);//不会改变现有的数组
+       console.log(b);//不会改变现有的数组
+       console.log(c);//返回被连接数组的一个副本;但新数组会对数据排序;
+       //5.对数组中的内容进行反转;
+       c.reverse();
+       console.log(c);//会反转修改原来的数组;
+       //6.截取数组中指定范围内容;
+       let d=c.slice(1,3);//slice() 方法可从已有的数组中返回选定的元素。其特点是包头不包尾:包含起始位置的数据,不包含结束位置的数据
+       console.log(d);
+       //7.查找指定元素在数组中的位置;
+       let e=c.indexOf(5);//indexOf() 方法可返回某个指定的字符串值在字符串中首次出现的位置。
+       let f=c.indexOf(7);//注意点:indexOf函数是从左到右查找数组中的元素,一旦找到一个符合的就会停止查找,不管数组后面是否还有相同的元素; 
+       console.log(e);//返回值为3;
+       console.log(f);//若该查找的数据不在数组内则会返回-1
+let g=c.indexOf(3,5);//indexOf可以接收两个参数,第一个参数是需要查找的数据,第二个参数则表示从哪个位置开始查找;
+       console.log(g);
+       let h=c.lastIndexOf(3,5);//lastIndexOf表示从右至左查找数组中的元素,并且返回元素按照从左至右排序在数组中的位置;
+       console.log(h);
+       //8.如何判断数组中是否包含某个元素;
+        //使用indexOf()或者lastIndexOf()查找某个元素,若返回值为-1,则数组不包含该元素;
+        let i=c.includes(5);//调用数组的.includes属性,可以判断数组中是否包含某个元素,返回值为true或false;
+        console.log(i);//返回值true
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
