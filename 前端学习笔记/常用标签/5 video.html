@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>视频标签</title>
+
+</head>
+<body>
+<video src="videos/23-路径练习(理解)-李南江.mp4" autoplay="autoplay" controls="controls" poster="eaxmple1.jpg" loop="loop" preload="auto">
+</video>
+<video autoplay="autoplay" controls="controls" poster="eaxmple1.jpg" loop="loop" preload="auto">
+    <source src="" type="video/webm" >
+        <!-- 解决浏览器视频支持的问题(source标签),当然前提是该浏览器支持h5新增的video标签 -->
+    <source src="" type="video/mp4" >
+    <source src="" type="video/ogg" >
+</video>
+<!--第二种video格式，但需要浏览器支持h5标签，需通过js的html5media实现-->
+<!--
+    video标签有多种属性
+    1.播放：autoplay=“autoplay”
+    2.控制条：controls=“controls”
+    3.占位图片（未播放前的图片） poster=“图片的链接地址”   与src的用法一致
+    4.循环播放：loop=“loop”
+    5.预加载：preload=“preload”
+       注意：若preload属性与autoplay属性共用，preload属性的作用会失效
+             video标签支持三种视频格式：webm、MP4、ogg
+    6.静音:muted="muted"
+    -->
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表格标签</title>
+</head>
+<body>
+<table bgcolor="#7fffd4" width="300" border="1">
+    <caption>我爱前端</caption>
+ <!--表格的标题，表现：自动随表格居中于表格-->
+    <tr>
+        <th>第一行</th>
+        <th>第二行</th>
+        <th>第三行</th>
+    </tr>   <!--表格标签的标题-->
+    <tr>
+        <td colspan="2">1</td>
+
+        <td>3</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td colspan="2" rowspan="2">5</td>
+
+    </tr>
+    <tr>
+        <td>7</td>
+
+    </tr>
+</table>
+<!--
+    单元格合并：colspan水平方向  rowspan垂直方向
+    赋值方式：colspan=“x” 对应的原有表格应该删除x-1个水平方向的单元格
+    colspan与rowspan一起使用时，先colspan后rowspan
+
+    bgcolor属性
+    cellspacing属性设置单元格间的外边距，cellpadding属性设置内容与单元格之间的内边距
+    align属性控制水平方向的对齐；valign属性设置竖直方向的对齐
+    width和height属性
+    以上属性都用css来控制-->
+
+<!--加深练习-->
+<table border="1">
+    <colgroup>
+        <tr>
+        <td rowspan="2">排名</td>
+        <td rowspan="2">校名</td>
+        <td scope="col" colspan="3">人才培养</td>
+        <td scope="col" colspan="3">科学研究</td>
+        <td colspan="2" rowspan="2">分省排名</td>
+        <td rowspan="2">学校类型</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+        </tr>
+    </colgroup>
+</table>
+
+</body>
+</html>

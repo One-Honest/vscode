@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>音频标签</title>
+</head>
+<body>
+    <audio src=""></audio>
+    <audio autoplay="autoplay" controls="controls"  loop="loop" preload="auto">
+        <source src="videos/23-路径练习(理解)-李南江.mp4">
+    </audio>
+    <!-- 除了width\height\poster属性不可用,其他属性与video标签一致 
+        支持三种音频:Ogg Vorbis\MP3\wav
+        谷歌浏览器audio标签自动播放音乐问题解决:
+            1.在chrome 浏览器中输入：chrome://flags，搜索“Autoplay policy”，默认为“Default”，
+            修改为 “No user gesture is required” 就可以了；此方法仅限谷歌浏览器，而且比较笨拙，
+            但是问题可以解决；
+            2.function toggleSound() {
+            var music = document.getElementById("vd");//获取ID  
+                console.log(music);
+                console.log(music.paused);
+            if (music.paused) { //判读是否播放  
+                music.paused=false;
+                music.play(); //没有就播放 
+                }  
+            
+            }
+            setInterval("toggleSound()",1);-->
+</body>
+</html>

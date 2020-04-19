@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单标签</title>
+</head>
+<body>
+<form action="http://www.baidu.com">
+<fieldset>
+    <legend>注册页面</legend>
+    <label for="account">文本</label>
+    <input type="text" value="1" name="text" id="account">
+    <label>文本<input type="text"></label>
+    <!--
+        第一种可用label标签的for属性绑定文本与输入框
+        第二种有局限性，非官方推荐（无法指定多个输入框的任意绑定，只会统一绑定）
+    -->
+
+    <p>
+    <input type="radio" name="6" value="new">1
+    <input type="radio" name="6" value="old">2
+    <input type="radio" name="6" value="bad" checked="checked">3
+    </p>
+    <!--
+        在单选框与多选框中所有的项目的name属性必须一致
+        在表单标签中，除了按钮标签外的标签都可以用value属性来指定需要提交到服务器的数据
+        -->
+    <p>
+    <input type="checkbox" checked="checked" name="9">a
+    <input type="checkbox" checked="checked" name="9">b
+    <input type="checkbox" checked="checked" name="9">
+    </p>
+    <!--
+    value属性可定义文本框里的初始文本
+    若要单选框只选其中一个，给多个单选框标签添加同样的name属性值
+    checked属性可选责初始的单选框，也可用于多选框里同时选中多个多选框的初始状态
+    -->
+    <input type="button" value="button">
+    <input type="image" src="eaxmple1.jpg" onclick="alert('lnj')" width="300">
+    <!--button标签与image标签均可用于设计按钮，且image标签可用于配合JS完成一些操作-->
+
+    <p>
+        生日<input type="date">
+        邮箱<input type="email">
+        电话<input type="number">
+    </p>
+    <input type="reset" value="重置按钮">
+    <input type="submit" value="提交按钮">
+    <!--提交按钮可将表单中的数据提交到远程服务器
+    需要满足两个条件：使用form标签的action属性，规定远程服务器
+                       再在input标签里面添加一个name属性
+    -->
+    <input type="hidden">
+    <!--用于秘密收集数据且不会显示在页面上-->
+
+    <!--非input类型的表单标签-->
+    <select  >
+        <optgroup label="数字">
+            <!--可用optgroup标签给下拉列表中的选项分组，lable标签为分组设定组名-->
+        <option >1</option>
+        <option >2</option>
+        <option  selected="selected">3</option>
+            <!--selected属性可给下拉列表项添加指定的一个选项，多个的话选最后一个-->
+        </optgroup>
+        <optgroup label="字母">
+        <option >a</option>
+        <option >b</option>
+        <option selected="selected">c</option>
+        </optgroup>
+    </select>
+
+    <textarea cols="4" rows="4" >
+    <!--若需要控制多行文本框不可手动拉伸，可用css中的resize=none；属性控制-->
+    </textarea>
+</fieldset>
+    </form>
+</body>
+</html>

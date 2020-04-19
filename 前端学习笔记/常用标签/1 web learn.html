@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>前端学习笔记--标签</title>
+    <base href="_blank">
+</head>
+<body>
+<a href="#bottom" >跳转到当前页面的某一位置</a>
+
+<!--Webstorm 使用快捷键
+    新建.html文件的快捷键：Ctrl+Alt+Insert
+    直接敲元素名称然后按TAB键可快速建立闭合标签
+    按住Alt键不放鼠标往下拖则可以给多行文本添加相同内容
+    Ctrl+D可以快速复制当前行的内容，Ctrl+X则为删除
+    注释快捷键 Ctrl+/
+    快速移动光标：Ctrl+左右方向键
+    -->
+<h1 >标题1</h1>
+<h2>标题2</h2>
+<h3>标题3</h3>
+<h4>标题4</h4>
+<h5>标题5</h5>
+<h6>标题6</h6>
+<h1>标题1</h1>
+<h2>标题2</h2>
+<h3>标题3</h3>
+<h4>标题4</h4>
+<h5>标题5</h5>
+<h6>标题6</h6>
+<h1 >标题1</h1>
+<h2>标题2</h2>
+<h3>标题3</h3>
+<h4>标题4</h4>
+<h5>标题5</h5>
+<h6>标题6</h6>
+<h1>标题1</h1>
+<h2>标题2</h2>
+<h3>标题3</h3>
+<h4>标题4</h4>
+<h5>标题5</h5>
+<h6>标题6</h6>
+<h1>标题1</h1>
+<h2>标题2</h2>
+<h3>标题3</h3>
+<h4>标题4</h4>
+<h5>标题5</h5>
+<h6 id="bottom">标题6</h6>
+<!--H系列标签是用来给文本添加标题语义而不是用来修改样式的
+    被H系列标签包裹的内容会独占一行
+    企业开发只允许一个H1标签出现包裹的内容会独占一行
+-->
+<p>p标签</p>
+<hr/>
+<!--p标签包裹的内容会独占一行下面的hr标签也一样-->
+
+<img src="eaxmple1.jpg" alt="404" title="例2" width="100">
+<img src="images/eclipse_logos.jpg" alt="404" width="100"  title="例1">
+<img src="../../greenbook/2.jpg" alt="404" width="100" title="例3">
+<!--img标签不会独占一行，为了不是图片变形，只指定宽度，系统会自动按比例显示高度
+    相对路径（企业开发应用）：每次都从.html文件所在的文件夹开始查找。
+    同级如上面例1
+    下级如上面例2
+    上级如上面例3(需点击原.html文件打开才能看到效果)
+    -->
+
+<a href="#">伪链接</a><!--用#表示可以做为返回顶部的假链接，用javascript则不行-->
+<a href="videos/accessKey.html#666">快捷键页面</a><!--跳转到指定文件夹的指定页面的指定位置-->
+<a href="videos/accessKey.html" target="_self">链接到文件夹的指定位置</a>
+<a href="#bottom" target="_blank" >跳转到当前页面的某一位置</a>
+<!--
+    利用id属性，用a标签跳转到对应id的页面
+    控制全部超链接打开方式可用base标签，且只能写在head标签里面  也可在a标签内用target属性优先定义-->
+<p>
+<strong>定义重要性的文字，取代b标签</strong>
+<ins>定义插入的文字 取代u标签的下划线</ins>
+<em>定义强调的文字，取代i标签</em>
+<del>定义删除的文字删除线  取代s标签</del>
+</p>
+<p>
+    字符实体&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;字符实体&lt;小于号（less than）&gt;大于号（greater than）
+</p>
+</body>
+</html>
