@@ -16,7 +16,7 @@
             console.log(rela);//返回值为false
             let relaa=1>'a';
             console.log(relaa);//返回值为false;
-    //2.任何数值与NaN和undefined比较,返回的值都是false
+    //2.任何数值与NaN和undefined比较,返回的值都是false(注意:null会转化为0,此处作比较则返回值为true)
         let relat=1>NaN;
         console.log(relat);//返回值为false;
             let relati=1>undefined;
