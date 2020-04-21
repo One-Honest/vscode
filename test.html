@@ -9,13 +9,33 @@
     <p>这是我的第一次分支测试</p>
 
     <script>
-        let num=+prompt("please input a parseInt num:");
-        let num1=+prompt("please input a parseInt num:");
-        num=num+num1;
-        num1=num-num1;
-        num=num-num1;
-        alert("num="+num+",num1="+num1);
-        console.log(typeof num);
+       /* function createPerson(myName,myAge){
+           let obj={};
+           obj.name=myName;
+           obj.age=myAge;
+           obj.say=function(){
+               console.log("hello world!");
+           }
+           return obj;
+       }
+       let mydreamer=createPerson("新垣结衣","31");
+       console.log(mydreamer);
+       mydreamer.say(); */
+
+       function Person(myName,myAge){
+           this.name=myName;
+           this.age=myAge;
+          /*  this.say=function(){
+               console.log("come on!");
+           } */
+       }
+       Person.prototype={
+           say:function(){
+            console.log("code blue!");
+           }
+       }
+       let mydreamer=new Person("新垣结衣","31");
+       console.log(mydreamer);
     </script>
 </body>
 </html>
