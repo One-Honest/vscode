@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>53.深拷贝和浅拷贝</title>
+    <script src="tools/tools.js"></script>
     <script>
         /*
         1.什么是深拷贝?
@@ -58,7 +59,7 @@
         let p1=new Person();//new后会分配一个存储空间给p
         let p2=new Object();//new后会另外分配一个存储空间给p1
 depCopy(p2,p1);//将p1中的属性和方法深拷贝到p2中;
-        function depCopy(target,source){
+        /* function depCopy(target,source){
             //1.通过遍历拿到source中的所有属性和方法;
             for(let key in source){
             //取出当前遍历到的属性和方法的取值;
@@ -74,9 +75,9 @@ depCopy(p2,p1);//将p1中的属性和方法深拷贝到p2中;
                     target[key]=sourceValue;//将基本类型数据直接放入target[key]中;
                 }
             }
-        }
+        } */
         console.log(p2);
-        p2.cat.age=336;
+        p2.cat.age=33;
         console.log(p1.cat.age);
         console.log(p2.cat.age);//p2的cat.age属性改变了,而p1的cat.age没改变,完成深拷贝;
         

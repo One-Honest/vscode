@@ -146,6 +146,24 @@
             },delay||1000);
         }
     }
+    function depCopy(target,source){//数据的深拷贝
+        //1.通过遍历拿到source中的所有属性和方法;
+        for(let key in source){
+        //取出当前遍历到的属性和方法的取值;
+        let sourceValue=source[key];
+            if (sourceValue instanceof Object){//判断sourceValue是否是Object的实例对象;[所有对象都是Object的实例对象]
+//这里是为了避免p2从p1中复制过来的数组或者函数会一起存储在p2的原型对象中;
+                let subTarget=new sourceValue.constructor;//通过constructor属性可以找到实例对象的构造函数,从而判断该实例对象是对象还是数组;
+                                                        //再通过new来创造一个新的对象,这样就会创造出一个新的存储空间
+                                                        //从而让p2中的数据存储在新的存储空间中,不影响p1存储空间中的数据;
+                depCopy(subTarget,sourceValue);//将遍历到的属性或者方法的值传递给新建的对象中;
+                target[key]=subTarget;//将新建的对象或数组放入target[key]中; 
+            }else{
+                target[key]=sourceValue;//将基本类型数据直接放入target[key]中;
+            }
+        }
+    }
+
     window.throttle=throttle;
     window.debounce=debounce;
     window.animation=animation;
@@ -156,6 +174,7 @@
     window.getScreen=getScreen;
     window.addEvent=addEvent;
     window.getStyleAttribute=getStyleAttribute;
+    window.depCopy=depCopy;
 })()
 
 

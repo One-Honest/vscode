@@ -90,6 +90,95 @@
     let dog=new Dog("小黑",6);
     console.log(dog.body);
     console.log(Dog.value);
+    
+     /* function Person(myName,myAge){
+           this.name=myName;
+           let age;
+           this.setAge=function(myAge){
+                if (myAge>=0){
+                    age=myAge;
+                }
+                return age;
+           }
+           this.study=function(){
+               console.log("学无止境,不耻下问!");
+           }
+       }
+       Person.prototype={
+           walk:function(){
+               console.log("走出六亲不认的步伐");
+           }
+       }
+       function Student(myScore,myHobby,myName,myAge){
+           Person.call(this,myName,myAge);
+            this.score=myScore;
+            let hobby;
+            this.setHobby=function(myHobby){
+                if(myHobby>=0){
+                    hobby=myHobby;
+                }
+                return hobby;
+            }
+       }
+       Student.prototype=new Person();
+       Student.prototype.constructor=Student;
+       let per=new Person("新垣结衣");
+       per.setAge(31);
+       console.log(per.name);
+       console.log(per.setAge(31));
+       per.walk();
+       let stu=new Student(99,"basketball","gakki");
+       stu.walk();
+       console.log(stu);
+       console.log(stu.setAge(18));
+       stu.study();
+       console.log(stu.name);//stu实例对象不会使用Person函数其他的实例对象设置的name属性值;
+       Student.prototype.help=function(){//此处是给Student添加一个新的方法;因为Student的prototype改变了
+               console.log("awsl救救孩子吧!");//所以不能像Person.prototype={方法名:function(){};}这样书写?
+           }
+       stu.help(); */
+    
+       class Person{
+        constructor(myName,myAge){
+            this.name=myName;
+            this.age=myAge;
+            this.smile=function(){
+                console.log("gakki笑起来真好看!");
+            }
+        }
+        run(){//此处的run方法存储在Person函数的原型对象上;实例对象可直接写在constructor上;
+              //ES6中给函数原型对象中添加方法的方式:
+              //1.直接写在Person中;2.动态添加:Person.prototype.属性(或方法)=xxx;
+              //不能自定义原型对象(即创建一个对象然后赋值给函数的原型对象)
+            console.log("跑出六亲不认的步伐!");
+        }
+        //static  nation="china";ES6不支持静态属性的定义,只支持静态方法的定义;
+        //若需要定义,直接给Person函数定义即可:Person.属性名:属性值;
+        static sleep(){
+            console.log("不说了,我要抱着gakki睡觉了!");
+        }
+    }
+    //ES6继承
+    class Student extends Person{//此处代表Student将继承于Person;
+        constructor(myName,myAge,myScore){
+            super(myName,myAge);//此处相当于call,将继承Person里面的方法;
+            this.score=myScore;
+        }
+        study(){
+            console.log("好好学习天天向上");
+        }
+
+    }
+    let gakki=new Person("新垣结衣",18);
+    console.log(gakki);
+    gakki.run();
+    gakki.smile();
+    console.log(gakki.name);
+    console.log(gakki.age);
+    Person.sleep();
+    let stu=new Student("新垣结衣",31,99);
+    console.log(stu);
+    stu.run();
     </script>
 </head>
 <body>
