@@ -9,33 +9,83 @@
     <p>这是我的第一次分支测试</p>
 
     <script>
-       /* function createPerson(myName,myAge){
-           let obj={};
-           obj.name=myName;
-           obj.age=myAge;
-           obj.say=function(){
-               console.log("hello world!");
-           }
-           return obj;
-       }
-       let mydreamer=createPerson("新垣结衣","31");
-       console.log(mydreamer);
-       mydreamer.say(); */
+        class Dog{
+            constructor(itsName,itsAge){
+                this.name=itsName;
+                this.age=itsAge;
+                this.run=function(){
+                    console.log("走出六亲不认的步伐");
+                }
+            }
+            jump(){
+                    console.log("跳得比新垣结衣还要高!");
+                }
+            static stand(){
+                console.log("它居然会会站立!");
+            }
+        }
+        class Teddy extends Dog{
+            constructor(itsName,itsAge,itsColor){
+                super(itsName,itsAge);
+                this.color=itsColor;
+            }
+            smile(){
+                console.log("但是笑起来肯定没gakki那么可爱呀!");
+            }
+        }
+        let dog=new Dog("沙朵",5);
+        console.log(dog.name);
+        console.log(dog.age);
+        dog.run();
+        dog.jump();
+        Dog.stand();
+        let teddy=new Teddy("皮皮",6,"蓝色");
+        console.log(teddy);
+        console.log(teddy.name);
+        console.log(teddy.age+"岁了");
+        teddy.run();
+        teddy.jump();
+        teddy.smile();
+        console.log(dog instanceof Dog);
+        console.log(dog.constructor.name);
+        console.log(Dog.prototype.isPrototypeOf(teddy));
+        console.log("name" in teddy);
+        console.log(Dog.prototype.hasOwnProperty("jump"));
 
-       function Person(myName,myAge){
-           this.name=myName;
-           this.age=myAge;
-          /*  this.say=function(){
-               console.log("come on!");
-           } */
-       }
-       Person.prototype={
-           say:function(){
-            console.log("code blue!");
-           }
-       }
-       let mydreamer=new Person("新垣结衣","31");
-       console.log(mydreamer);
+        teddy["chase"]="追击";
+        teddy.bark="狗吠";
+        delete teddy.bark;
+        teddy.bark="乱吠";
+        teddy["bark"]=function(){
+            console.log("别乱叫!");
+        }
+        teddy.bark();
+        delete teddy.bark;
+        console.log(teddy.bark);//undefined,因为删了bark属性
+        console.log(teddy);
+        for(let key in teddy){
+            console.log(teddy[key]);
+        }
+        let{name,age,female="male"}=teddy;
+        console.log(name);
+        console.log(female);
+        let arr=[1,2,5,8,0];
+        function getSum([a,b,c,d,e]){
+            return a+b+c+d+e;
+        }
+        let result=getSum(arr);
+        console.log(result);
+
+        let obj={myName:"gakki",myAge:31};
+        class Girl{
+            constructor({myName,myAge}){
+                this.name=myName;
+                this.age=myAge;
+            }
+        }
+        let gir=new Girl(obj);
+        console.log(gir.name);
+        console.log(gir.age);
     </script>
 </body>
 </html>
