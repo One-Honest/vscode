@@ -50,7 +50,7 @@
             content: "";
             display: block;
             width: 100%;
-            height: 2px;
+            height:1px;
             background-color: #dd0000;
             position: absolute;
             left: 0;
@@ -67,10 +67,10 @@
 </head>
 <body>
     <div class="box">
-        <h2>2019年倒计时</h2>
-        <p>To 2020</p>
+        <h2>2020年倒计时</h2>
+        <p>To 2021</p>
         <p class="iconfont icon-lightningbshandian"></p>
-        <p>距离2019年结束还剩</p>
+        <p>距离2020年结束还剩</p>
         <div class="time">
             <div class="day">00</div>
             <div class="hour">00</div>
@@ -86,7 +86,7 @@
         let oMinute=document.querySelector(".minute");
         let oSecond=document.querySelector(".second");
         //2.获取时间的差值
-        let remDate=new Date("2020-01-01 00:00:00");//设置截止时间
+        let remDate=new Date("2021-01-01 00:00:00");//设置截止时间
         setTime(remDate);//定时器开始之前先将差值赋值给元素;
         setInterval(() => {//开启定时器,每隔一秒获取一次当前时间
             //3.将差值赋值给元素

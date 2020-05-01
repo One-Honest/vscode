@@ -17,12 +17,12 @@
 
         let agent=window.navigator.userAgent;
         if(/chrome/i.test(agent)){
-            alert("欢迎进入谷歌浏览器!");
+            document.write("欢迎进入谷歌浏览器!");
         }else if(/firefox/i.test(agent)){
             alert("欢迎进入火狐浏览器!");
-        }else if(/msie/i.test(agent)){
+        }else if(/msie/i.test(agent)){//有bug
             alert("欢迎进入ie浏览器!");
-        }else if("ActiveXObject" in winndow){
+        }else if("ActiveXObject" in window){
             alert("欢迎进入高级IE浏览器!");
         }
         //更多终端和浏览器的判断请百度搜索https://www.w3school.com.cn/jsref/prop_nav_useragent.asp;

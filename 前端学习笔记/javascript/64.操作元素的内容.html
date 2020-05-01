@@ -15,6 +15,7 @@
         <p>我是段落</p>
         <p>我是段落</p>
     </div>
+<script src="tools/tools.js"></script>
 <script>
     //1.获取元素内容
     //2.设置元素内容
@@ -30,13 +31,13 @@
     console.log(oDiv.textContent="<p>123</p>");//设置的内容全部按照字符串格式转化
     //解决兼容性问题:
     setText(oDiv,"我来自偶然")
-    function setText(obj,text){
+    /* function setText(obj,text){
         if("textContent" in obj){//判断obj对象是否有textContent这个属性
             obj.textContent=text;//有就让对象的文本按textContent格式显示
         }else{
             obj.innerText=text;//没有就让对象的文本按innerText格式显示
         }
-    }
+    } */
 </script>
 </body>
 </html>

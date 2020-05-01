@@ -43,7 +43,7 @@
         //第一步:创建正则表达式
         // let reg=new RegExp();
         //第二步:在括号内指定判断的规则
-        let reg=new RegExp("A","i");//判断是否含有a字符;
+        let reg=new RegExp("A","i");//判断是否含有a字符;正则表达式可以接受两个参数,第二个参数为i则表示查找的规则不规定大小写;
         //第三步:利用正则表达式的test方法匹配需要判断的对象
         reg.test(str);
         console.log(reg.test(str));//返回值为true或者false; */

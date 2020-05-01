@@ -1,5 +1,5 @@
 (function(){
-    function getPageScroll(){
+    function getPageScroll(){//获取网页的滚动距离
         let x,y;
         if(window.pageXOffset){
             x=window.pageXOffset;
@@ -15,8 +15,8 @@
             x:x,
             y:y
         }
-    }//获取网页的滚动距离
-    function getScreen(){
+    }
+    function getScreen(){//获取网页可视区域的宽高(兼容性写法)
         let width,height;
         if(window.innerWidth){
             width=window.innerWidth;
@@ -32,24 +32,25 @@
             width:width,
             height:height
         }
-    }//获取网页可视区域的宽高
-    function addEvent(ele,name,fn){
+    }
+    function addEvent(ele,name,fn){//添加事件,name为事件名称,例如""click";
         if(ele.attachEvent){
             ele.attachEvent("on"+name,fn);
         }else{
             ele.addEventListener(name,fn);
         }
-    }//添加事件,name为事件名称,例如""click";
-    function getStyleAttribute(obj,name){
+    }
+    function getStyleAttribute(obj,name){//获取元素的样式,传入的name为样式名,需要""包裹起来":比如""width";
         if(obj.currentStyle){
             return obj.currentStyle[name];
         }else{
             return getComputedStyle(obj)[name];
         }
-    }//获取元素的样式,传入的name为样式名,需要""包裹起来":比如""width";
+    }
 
     let timerId=null;
     function linearAnimation(ele,obj,fn){//缓动动画
+        // (传递参数分别为:元素名称,元素属性数组,动画结束后的其他操作的函数)
         clearInterval(timerId);
         timerId=setInterval(() => {//定时器的回调函数
             //定义flag用于标记是否所有的属性都执行完了动画
@@ -74,7 +75,7 @@
                 clearInterval(timerId);//只有在flag为真时才关闭定时器
                 fn&&fn();//并字符串表示只有前者为真才执行后者,若前者为假则不执行后者;
             }
-        }, 100); 
+        },150); 
     }
 
     function easeinAnimation(ele,obj,fn){//匀速动画
@@ -103,7 +104,7 @@
                 clearInterval(timerId);//只有在flag为真时才关闭定时器
                 fn&&fn();//并字符串表示只有前者为真才执行后者,若前者为假则不执行后者;
             }
-        }, 100); 
+        },150); 
     }
     function animation(i,screenHeight){//页面滚动缓动动画
         clearInterval(timer);
@@ -121,6 +122,7 @@
         },50); 
     }
     function debounce(fn,delay){//函数防抖(十次只执行一次)
+        //传递参数为:需要执行的函数和delay延迟执行函数的时间;
         let timerId=null;
         return function(){
             let self=this;
@@ -163,18 +165,70 @@
             }
         }
     }
+    function setText(obj,text){//通过js控制文本内容按字符串格式转化的兼容方法
+        if("textContent" in obj){//判断obj对象是否有textContent这个属性
+            obj.textContent=text;//有就让对象的文本按textContent格式显示
+        }else{
+            obj.innerText=text;//没有就让对象的文本按innerText格式显示
+        }
+    }
+    function dateFormart(fmt,date){//日期格式化
+        //格式化参数:fmt为格式化格式:如"yy-MM-dd hh:mm:ss","yy-MM-dd","hh:mm:ss" date则为需要格式化的日期;
+        //1.处理年:1.1找到yyyy
+            //let reg=/y+/;   // +号在正则表达式中表示匹配一个或多个指定字符;
+            let yearStr=fmt.match(/y+/);//提取字符串中的y
+            if(yearStr){
+                yearStr=yearStr[0];
+                //1.2.获取当前的年
+            let yearNum=date.getFullYear()+"";//将获取的当前的年转化为字符串;
+            yearNum=yearNum.substr(4-yearStr.length);//获取当前的年的长度随着字符串中年的长度变化而变化;
+            //1.3利用当前的年替换掉yyyy
+            fmt=fmt.replace(yearStr,yearNum);
+            } 
+            
+        //2.处理其他的时间
+            let obj={
+                "M+":date.getMonth()+1,
+                "d+":date.getDate(),
+                "h+":date.getHours(),
+                "m+":date.getMinutes(),
+                "s+":date.getSeconds(),
+            }
+            //2.1遍历取出所有的时间
+            for(let key in obj){
+                let reg=new RegExp(`${key}`);//创建一个正则表达式并插入字符串;
+                //取出格式化字符串中对应的格式字符
+                let fmtStr=fmt.match(reg);
+                if(fmtStr){
+                    fmtStr=fmtStr[0];
+                    //单独处理一位或者两位的时间显示
+                    if(fmtStr.length===1){//一位时间显示
+                    //将获取的现在的时间替换掉格式字符;
+                        fmt=fmt.replace(fmtStr,obj[key]);
+                    }else{//两位时间显示
+                        let numStr="00"+obj[key];
+                        numStr=numStr.substr((obj[key]+"").length);//将当前的时间转换为字符串然后获取其字符串长度作为截取当前时间显示为两位数的索引;
+                        fmt=fmt.replace(fmtStr,numStr);
+                    }
+                }
+            }
+        //3.将格式化之后的字符串返回;
+            return fmt;
+            console.log(fmt);          
+        }
 
     window.throttle=throttle;
     window.debounce=debounce;
     window.animation=animation;
     window.linearAnimation=linearAnimation;
     window.easeinAnimation=easeinAnimation;
-
     window.getPageScroll=getPageScroll;
     window.getScreen=getScreen;
     window.addEvent=addEvent;
     window.getStyleAttribute=getStyleAttribute;
     window.depCopy=depCopy;
+    window.setText=setText;
+    window.dateFormart=dateFormart;
 })()
 
 
