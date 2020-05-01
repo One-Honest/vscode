@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>视频播放器</title>
+    <style>
+       *{
+            margin: 0;
+            padding: 0;
+        }
+        a{
+            text-decoration: none;
+        }
+       figure{
+           border: 1px solid tomato;
+           width: 800px;
+           height:480px;
+           position: absolute;
+           left: 50%;
+           top: 50%;
+           transform: translateX(-50%) translateY(-50%);
+           margin: 0;
+           padding: 0;
+           background:rgb(81, 197, 87) url("../Aragakki Yui/images/gakki3.jpg") no-repeat center center;
+       }
+       figcaption{
+           font-size: 30px;
+           text-align: center;
+       }
+       video{
+           width:100%;
+           vertical-align: bottom;
+           display: none;
+       }
+       .control{
+           width:95%;
+           height: 50px;
+           line-height: 50px;
+           position: absolute;
+           left: 50%;
+           bottom: 10px;
+           transform: translateX(-50%);
+           display: flex;
+           background-color: rgba(0,255,0,0.5);
+           border-radius:20px;
+           justify-content: space-around;
+       }
+       .progress{
+           width:450px;
+           height:10px;
+           background-color: #333;
+           border-radius:5px;
+           margin-top:20px;
+           overflow: hidden;
+       }
+       .progress .line{
+           width:0px;
+           height: 100%;
+           background-color: #fff;
+       }
+    </style>
+</head>
+<body>
+    <figure>
+        <figcaption>视频播放器</figcaption>
+        <video src="../css基础/风暴英雄/images/WIN_20190613_01_31_41_Pro.mp4" ></video>
+        <div class="control">
+            <a href="#" id="play">播放</a>
+            <div class="progress">
+                <div class="line"></div>
+            </div>
+            <div class="time">
+                <span class="current-time">00:00:00</span>
+                /
+                <span class="total-time">00:00:00</span>
+            </div>
+            <a href="#" id="full">全屏播放</a>
+        </div>
+    </figure>
+   <script>
+       let oVideo=document.querySelector("video");
+       let oFigure=document.querySelector("figure");
+       let oTotalTime=document.querySelector(".total-time")
+       let oPlay=document.querySelector("#play");
+       let oCurrentTime=document.querySelector(".current-time");
+       let oLine=document.querySelector(".line");
+       let oProgress=document.querySelector(".progress");
+       let oFullScreen=document.querySelector("#full");
+       oVideo.oncanplay=function(){//监听viideo是否已经缓存完毕
+           oFigure.style.backgroundImage="none";
+           oVideo.style.display="block";
+           let obj=grtDifferTime(oVideo.duration);
+           oTotalTime.innerHTML=`${obj.differHours}:${obj.differMinutes}:${obj.differSecond}`;
+       }
+       let flag=false;
+       oPlay.onclick=function(){//监听播放按钮的点击事件
+            if(flag){
+                flag=false;
+                oPlay.innerHTML="播放";
+                oVideo.pause();
+            }else{
+                flag=true;
+                oPlay.innerHTML="暂停";
+                oVideo.play();
+            }
+       }
+       oVideo.ontimeupdate=function(){//监听video的已播放时间
+            let obj=grtDifferTime(oVideo.currentTime);
+            oCurrentTime.innerHTML=`${obj.differHours}:${obj.differMinutes}:${obj.differSecond}`;
+            let line=oVideo.currentTime/oVideo.duration*100;
+            oLine.style.width=line+"%";
+       }
+       oProgress.onclick=function(event){//进度条的点击事件:快进或后退
+            event=event||window.event;
+            let progressWidth=event.offsetX;
+            oVideo.currentTime=progressWidth/oProgress.offsetWidth*oVideo.duration;
+       }
+       oVideo.onended=function(){//监听video是否已经播放完毕
+            oPlay.innerHTML="播放";
+            oLine.style.width="0%";
+            oCurrentTime.innerHTML="00:00:00";
+            flag=false;
+       }
+       oFullScreen.onclick=function(){
+           oVideo.requestFullscreen();//注意:此方法有兼容性问题,若使用需要到mdn去查找兼容性写法;
+       }
+
+
+       function grtDifferTime(differSeconds){
+            //4.计算两者之间相差的小时
+            let differHours=parseInt(differSeconds/(60*60)%24);
+            differHours=differHours>=10?differHours:"0"+differHours;
+            //5.计算两者之间相差的分钟
+            let differMinutes=parseInt(differSeconds/60%60);//此处parseInt可以用Math.floor代替(向下取整)
+            differMinutes=differMinutes>=10?differMinutes:"0"+differMinutes;
+
+            //6.计算两者之间相差的秒数
+            let differSecond=parseInt(differSeconds%60);
+            differSecond=differSecond>=10?differSecond:"0"+differSecond;
+            //返回差值
+            return {
+                differHours:differHours,
+                differMinutes:differMinutes,
+                differSecond:differSecond
+            }
+        }
+   </script>
+</body>
+</html>
