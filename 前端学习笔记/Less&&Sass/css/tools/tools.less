@@ -1,0 +1,23 @@
+/* 三角形封装 */
+.triangle(@_,@width,@color){
+    width: 0;
+    height: 0;
+    border-style: solid solid solid solid;
+}
+.triangle(Bottom,@width,@color){
+    border-width:@width;
+    border-color: @color transparent transparent transparent;
+}
+.triangle(Left,@width,@color){
+    border-width:@width;
+    border-color:transparent @color transparent transparent;
+}
+.triangle(Top,@width,@color){
+    border-width:@width;
+    border-color: transparent transparent @color transparent;
+}
+.triangle(Right,@width,@color){
+    border-width:@width;
+    border-color:transparent transparent transparent @color;
+}
+/* 三角形封装 */

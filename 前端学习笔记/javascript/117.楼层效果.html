@@ -29,6 +29,7 @@
             left: 10px;
             top:50%;
             transform:translateY(-50%);
+            display: none;
         }
         ol>li{
             list-style: none;
@@ -61,7 +62,7 @@
      <script src="tools/tools.js"></script>
      <script src="封装的对象和方法/animation.js"></script>
      <script src="tools/test.js"></script>
-     <script>
+     <script>    
          //1.获取操作元素
          let pageAll=document.querySelectorAll("ul>li");
          let colorList=['green','red','blue','pink','yellow'];
@@ -103,6 +104,18 @@
                 animation(i,screenHeight);
              }
          }
+         //  滚动一定距离后才出现固定导航栏
+        let moveHeight=screenHeight/2;
+        let fixFloors=document.querySelector("ol");
+        window.onscroll=function(){
+            let scrollHeight=getPageScroll().y;
+            if(scrollHeight>=moveHeight){
+                fixFloors.style.display="block";
+            }else{
+                fixFloors.style.display="none";
+            }
+        }
+        console.log(moveHeight);
      </script>
 </body>
 </html>

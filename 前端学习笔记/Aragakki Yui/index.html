@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新垣结衣mygakki</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background:url("images/gakki7.png") no-repeat;
+            background-size: cover;
+        }
+        /* 自动轮播开始 */
+        .autoplay{
+             width: 400px;
+             height:112.5px;
+             overflow: hidden;
+             border: 2px rgb(29, 199, 94) solid;
+             border-radius: 5px;
+             box-sizing: border-box;
+             margin: 25px;
+             background-color: black;
+        }
+        .autoplay ul{
+            width:1200px;
+            height:112.5px;
+            animation: move 8s linear infinite;
+        }
+        .autoplay ul:hover{
+            animation-play-state: paused;
+        }
+        .autoplay ul li{
+            list-style: none;
+            float: left;
+        }
+        .autoplay ul li img{
+            width:200px;
+        }
+        .autoplay ul:hover li{
+            opacity: 0.5;
+        }
+        .autoplay ul li:hover{
+            opacity: 1;
+        }
+        @keyframes move {
+            from{
+                margin-left: 0;
+            }
+            to{
+                margin-left: -800px;
+            }
+        }
+        /* 自动轮播结束 */
+
+        /* 立体轮播开始 */
+        .animate{
+            width: 192px;
+            height: 108px;
+            /* overflow: hidden; */
+            transform-style: preserve-3d;
+            animation: run 8s linear infinite;
+            margin-top: 50px;
+            margin-left: 100px;
+        }
+        .animate ul{
+            width: 192px;
+            position: relative;
+        }
+        .animate:hover{
+            animation-play-state: paused;
+        }
+        
+        .animate ul li{
+            width: 192px;
+            height: 108px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            list-style: none;
+            background-color: #000;
+            /* 注意:当a标签保护img标签时,img无法继承li标签的背景颜色当作蒙版的背景颜色 */
+        }
+        .animate ul:hover li img{
+            opacity: 0.5;
+        }
+        .animate ul li:hover img{
+            opacity: 1;
+        }
+        .animate ul li:nth-child(1){
+            transform: rotateY(90deg) translateZ(96px);
+        }
+        .animate ul li:nth-child(2){
+            transform: rotateY(180deg) translateZ(96px);
+        }
+        .animate ul li:nth-child(3){
+            transform: rotateY(270deg) translateZ(96px);
+        }
+        .animate ul li:nth-child(4){
+            transform: rotateY(360deg) translateZ(96px);
+        }
+        .animate ul li img{
+            border: 1px solid skyblue;
+            box-sizing: border-box;
+            width: 192px;
+            height: 108px;
+        }
+        @keyframes run {
+            from{
+                transform:rotateY(0deg);
+            }
+            to{
+                transform:rotateY(360deg); 
+            }
+        }
+        /* 立体轮播结束 */
+        /* 3D播放器开始 */
+        .musicplayer{
+            width:192px;
+            /* 注意:当盒子旋转时根据盒子的宽度,盒子的Y轴的位置也会改变,所以设置盒子宽度与图片一致才不会导致旋转轴发生改变 */
+            margin: 150px;
+            
+        }
+        .musicplayer ul:hover{
+            animation-play-state: paused;
+        }
+        .musicplayer ul:hover li img{
+            opacity: 0.5;
+        }
+        .musicplayer ul li:hover img{
+            opacity:1;
+        }
+        .musicplayer ul{
+            width: 192px;
+            position: relative;
+            transform-style: preserve-3d;
+            animation:play 10s linear infinite ;
+        }
+        .musicplayer ul li{
+            list-style: none;
+            width: 192px;
+            height: 108px;
+            position: absolute;
+            left: 0;
+            padding: 0;
+            background-color: black;
+            /* 注意:img的蒙版继承的是元素li的背景颜色 */
+        }
+        .musicplayer ul li:nth-child(1){
+            transform: rotateY(60deg) translateZ(200px);
+        }
+        .musicplayer ul li:nth-child(2){
+            transform: rotateY(120deg) translateZ(200px);
+        }
+        .musicplayer ul li:nth-child(3){
+            transform: rotateY(180deg) translateZ(200px);
+        }
+        .musicplayer ul li:nth-child(4){
+            transform: rotateY(240deg) translateZ(200px);
+        }
+        .musicplayer ul li:nth-child(5){
+            transform: rotateY(300deg) translateZ(200px);
+        }
+        .musicplayer ul li:nth-child(6){
+            transform: rotateY(360deg) translateZ(200px);
+        }
+        .musicplayer ul li img{
+            border: 5px solid skyblue;
+            box-sizing: border-box;
+            width: 192px;
+            height:108px;
+        }
+        @keyframes play {
+            from{
+                transform:rotateX(-8deg) rotateY(0deg);
+            }
+            to{
+                transform:rotateX(-8deg) rotateY(360deg);
+            }
+            
+        }
+        /* 3D播放器结束 */
+    </style>
+</head>
+<body>
+    <!-- 自动轮播开始 -->
+    <div class="autoplay">
+        <ul>
+          <li><img src="images/gakki3.jpg"></li>
+          <li><img src="images/gakki5.jpg"></li>
+          <li><img src="images/gakki7.png"></li>
+          <li><img src="images/gakki10.jpg"></li>
+          <li><img src="images/gakki3.jpg"></li>
+          <li><img src="images/gakki5.jpg"></li>
+        </ul>
+    </div>
+    <!-- 自动轮播结束 -->
+    <!-- 立体轮播开始 -->
+    <div class="animate">
+        <ul>
+            <li><img src="images/gakki3.jpg" alt=""></li>
+            <li><img src="images/gakki4.jpg" alt=""></li>
+            <li><img src="images/gakki6.jpg" alt=""></li>
+            <li><img src="images/gakki8.jpg" alt=""></li>
+        </ul>
+    </div>
+    <!-- 立体轮播结束 -->
+    <!-- 3D播放器开始 -->
+    <div class="musicplayer">
+        <ul>
+            <li><img src="images/gakki11.jpg" alt=""></li>
+            <li><img src="images/gakki3.jpg" alt=""></li>
+            <li><img src="images/gakki4.jpg" alt=""></li>
+            <li><img src="images/gakki5.jpg" alt=""></li>
+            <li><img src="images/gakki7.png" alt=""></li>
+            <li><img src="images/gakki10.jpg" alt=""></li>
+        </ul>
+    </div>
+    <!-- 3D播放器结束 -->
+    <!-- 音乐开始 -->
+    <audio autoplay loop >
+        <source src="images/新垣結衣 - 小さな恋のうた.mp3" type="audio/mp4">
+    </audio>
+    <!-- 音乐结束 -->
+    <script>
+        let autoPlay=document.querySelector(".autoplay");
+        let oAudio=document.querySelector("audio");
+        autoPlay.onclick=function(){
+            oAudio.play();
+        }
+    </script>
+</body>
+</html>

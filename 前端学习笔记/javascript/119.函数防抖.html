@@ -28,7 +28,7 @@
     //         let timerId=null;
     //         return function(){
     //             let self=this;
-    //             let args=arguments;
+    //             let args=arguments;//arguments包含了event事件;此处为了后续传递的函数可以使用event事件;
     //             timerId&&clearTimeout(timerId);
     //             timerId=setTimeout(function(){
     //                 fn.apply(self,args);//将self和args中的this改为oInput(调用函数的对象)

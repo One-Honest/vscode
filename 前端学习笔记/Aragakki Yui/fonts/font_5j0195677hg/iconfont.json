@@ -1,0 +1,16 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "792370",
+      "name": "lightning-b-闪电",
+      "font_class": "lightningbshandian",
+      "unicode": "e6b9",
+      "unicode_decimal": 59065
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片预加载</title>
+</head>
+<body>
+    <script>
+    
+    preloadImage("images/ad2.jpg",function(oImg){
+        document.body.appendChild(oImg);
+        console.log(oImg.offsetHeight);
+    })
+    let urls=["images/ad1.jpg","images/ad2.jpg","images/ad3.jpg"]
+    preloadImages(urls,function(oImages){
+        document.body.appendChild(oImages[1]);
+    });
+
+    function preloadImages(urls,fn){//多图预加载
+        let totalCount=urls.length;
+        let count=0;
+        let oImages=[];
+        for(let i=0;i<urls.length;i++){
+            let url=urls[i];
+            preloadImage(url,function(oImg){
+                oImages.push(oImg);
+                count++;
+                if(count===totalCount){
+                    fn(oImages);
+                }
+            })
+        }
+    }
+        
+    function preloadImage(url,fn){//单图预加载
+        let oImg=document.createElement("img");
+        oImg.src=url;
+        oImg.onload=function(){
+            fn(oImg);
+        }
+    }
+    </script>
+</body>
+</html>

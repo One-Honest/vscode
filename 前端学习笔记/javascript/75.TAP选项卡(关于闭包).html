@@ -81,38 +81,37 @@
             <div class="content">军事内容区域</div>
             <div class="content">财经内容区域</div>
         </div>
-
-        <script>
-            //1.拿到需要操作的元素
-            let oItems=document.querySelectorAll("li");
-            let oDivs=document.querySelectorAll(".content");
-            //2.给所有的选项卡添加点击事件
-            /* for(let item of oItems){
-                item.onclick=change;
-            } */
-            //定义一个变量保存上一次设置的索引
-            let previousIndex=0;
-            for(let i=0;i<oItems.length;i++){//此处需要用let声明,不用或者用var都无效
-                let item=oItems[i];
-                // item.setAttribute("index",i);
-
-                item.onclick=function(){
-                //清空上一次对应元素对应的样式
-                let preItem=oItems[previousIndex];
-                preItem.className="";
-                let preDiv=oDivs[previousIndex];
-                preDiv.style.display="none";
-                //设置当前对应的元素对应的样式
-                // let index=this.getAttribute("index");
-                // let item=oItems[index];此处的item就是this
-                this.className="current";
-                let oDiv=oDivs[i];
-                oDiv.style.display="block";
-                //保存这一次的选项卡的index
-                previousIndex=i;
-            };
-            }  
-        </script>
     </div>
+    <script>
+        //1.拿到需要操作的元素
+        let oItems=document.querySelectorAll("li");
+        let oDivs=document.querySelectorAll(".content");
+        //2.给所有的选项卡添加点击事件
+        /* for(let item of oItems){
+            item.onclick=change;
+        } */
+        //定义一个变量保存上一次设置的索引
+        let previousIndex=0;
+        for(let i=0;i<oItems.length;i++){//此处需要用let声明,不用或者用var都无效
+            let item=oItems[i];
+            // item.setAttribute("index",i);
+
+            item.onclick=function(){
+            //清空上一次对应元素对应的样式
+            let preItem=oItems[previousIndex];
+            preItem.className="";
+            let preDiv=oDivs[previousIndex];
+            preDiv.style.display="none";
+            //设置当前对应的元素对应的样式
+            // let index=this.getAttribute("index");
+            // let item=oItems[index];此处的item就是this
+            this.className="current";
+            let oDiv=oDivs[i];
+            oDiv.style.display="block";
+            //保存这一次的选项卡的index
+            previousIndex=i;
+        }
+        }  
+    </script>
 </body>
 </html>

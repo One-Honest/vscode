@@ -1,6 +1,6 @@
 (function(){
     let timerId=null;
-    function linearAnimation(ele,obj,fn){//缓动动画
+    function linearAnimation(ele,obj,fn){//缓动动画(传递参数分别为:元素名称,元素属性数组,动画结束后的其他操作的函数)
         clearInterval(timerId);
         timerId=setInterval(() => {//定时器的回调函数
             //定义flag用于标记是否所有的属性都执行完了动画
@@ -25,7 +25,7 @@
                 clearInterval(timerId);//只有在flag为真时才关闭定时器
                 fn&&fn();//并字符串表示只有前者为真才执行后者,若前者为假则不执行后者;
             }
-        }, 100); 
+        }, 200); 
     }
 
     function easeinAnimation(ele,obj,fn){//匀速动画
@@ -54,7 +54,7 @@
                 clearInterval(timerId);//只有在flag为真时才关闭定时器
                 fn&&fn();//并字符串表示只有前者为真才执行后者,若前者为假则不执行后者;
             }
-        }, 100); 
+        }, 200); 
     }
     window.linearAnimation=linearAnimation;
     window.easeinAnimation=easeinAnimation;

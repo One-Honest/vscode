@@ -40,14 +40,14 @@
         });
         */
 
-    方法4的实现原理:
-        let traversal=[1,true,false,null,'注意:字符串需要引号包裹;'];
+    // 方法4的实现原理:
+        let arr=[1,true,false,null,'注意:字符串需要引号包裹;'];
         Array.prototype.myForEach=function(fn){
             for(let i=0;i<this.length;i++){
                 fn(this[i],i,this);
             }
         }
-        traversal.myForEach(function(currentValue,currentIndex,currentArray){
+        arr.myForEach(function(currentValue,currentIndex,currentArray){
             console.log(currentValue,currentIndex,currentArray);
         });
     </script>

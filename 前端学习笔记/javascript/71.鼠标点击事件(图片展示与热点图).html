@@ -121,6 +121,53 @@
     function change(){//将赋值方法独立出来,解决性能问题:每次赋值给大图片都会开辟一个存储空间;
         oImg.src=this.src;
     }
+    /* 按钮点击时给小图添加边框(因为点击功能与鼠标移入移出获取的src不一致,所以扔有bug:移入移出后点击事件的src并没有跟着改变,仍然按之前的src去触发点击事件)
+     let oImg=document.querySelector("div>img");
+        let forwardBtn=document.querySelector(".forward");
+        let backwardBtn=document.querySelector(".backward");
+        let oItems=document.querySelectorAll("li>img");
+        let images=[
+        "前端学习笔记/javascript/images/ad1.jpg",
+        "前端学习笔记/javascript/images/ad2.jpg",
+        "前端学习笔记/javascript/images/ad3.jpg",
+        "前端学习笔记/javascript/images/ad4.jpg",
+        "前端学习笔记/javascript/images/ad5.jpg"
+        ]
+        let currentIndex=0;
+        let maxIndex=images.length-1;
+        let index;//定义一个索引来接受currentIndex
+        forwardBtn.onclick=function(){
+            oItems[currentIndex].parentNode.className="";
+            currentIndex++;
+            if(currentIndex>maxIndex){
+                currentIndex=0;
+            }
+            oImg.src=images[currentIndex];
+            oItems[currentIndex].parentNode.className="current";
+            return index=this.currentIndex;
+        }
+        backwardBtn.onclick=function(){
+            oItems[currentIndex].parentNode.className="";
+            currentIndex--;
+            if(currentIndex<0){
+                currentIndex=maxIndex;
+            }
+            oImg.src=images[currentIndex];
+            oItems[currentIndex].parentNode.className="current";
+            return index=this.currentIndex;
+        }
+
+        for(let item of oItems){
+            item.onmouseenter=function(){
+                oItems[currentIndex].parentNode.className="";
+                oImg.src=this.src;
+                item.parentNode.className="current";
+            }
+            item.onmouseleave=function(){
+                item.parentNode.className="";
+            }
+        }
+     */
 </script>
 </body>
 </html>
