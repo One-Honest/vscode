@@ -1,0 +1,266 @@
+.section-one{
+    .logo{
+        text-align: center;
+        padding-top:5%;
+        box-sizing: border-box;
+    }
+    .text{
+        text-align: center;
+        margin:5% 0;
+        img{
+            margin: 0 3%;
+            opacity:0.3;
+            transition: all 1s linear 0s;
+        }
+    }
+    .info{
+        text-align: center;
+        // margin:5% 0;
+    }
+    &.current{//此处加&会使代码变成.section-one.current,即交集选择器;
+        .text{
+            img{
+                margin:0;
+                opacity:1;
+            }
+        }
+    }
+}
+.section-two{
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    padding:0 5%;
+    .shield{
+        width: 428px;
+        height: 498px;
+        img{
+            transition: all 1s linear 0s;
+            &:nth-child(1){
+                transform:translate(135px,178px) rotate(45deg);
+            }
+            &:nth-child(2){
+                transform:translate(155px,182px) rotate(65deg);
+            }
+            &:nth-child(3){
+                transform:translate(187px,162px) rotate(35deg);
+            }
+            &:nth-child(4){
+                transform:translate(125px,178px) rotate(125deg);
+            }
+            &:nth-child(5){
+                transform:translate(125px,98px) rotate(145deg);
+            }
+            &:nth-child(6){
+                transform:translate(75px,48px) rotate(245deg);
+            }
+            &:nth-child(7){
+                transform:translate(65px,68px) rotate(145deg);
+            }
+            &:nth-child(8){
+                transform:translate(55px,78px) rotate(65deg);
+            }
+            &:nth-child(9){
+                transform:translate(45px,78px) rotate(95deg);
+            }
+        }
+    }
+    &.current{
+        .shield{
+            img{
+                transform:none;
+            }
+        }
+    }
+}
+.section-three{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:0 3%;
+    .rocket{
+        transform: translate(-200px,300px);
+        transition: all 1s linear 0s;
+    }
+    .circle{
+        transform: rotate(360deg);
+        transition: all 1s linear 0s;
+    }
+    &.current{
+        .rocket{
+            transform:translate(230px,-40px);
+        }
+        .circle{
+            transform:none;
+        }
+    }
+}
+.section-four{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:0 3%;
+    .search{
+        height: 446px;
+        .top{
+            overflow: hidden;
+            position: relative;
+            img{
+                transform: translateX(-529px);
+                transition: all 1s linear 0s;
+            }
+            .key{
+                width:0px;
+                height: 22px;
+                background:url("../images/section4-zqwhs.png") no-repeat;
+                position: absolute;
+                left: 20px;
+                top: 25px;
+            }
+        }
+        .bottom{
+            height: 0;
+            overflow: hidden;
+            transition: all 1s linear 4s;
+        }
+    }
+    &.current{
+        .top{
+            img{
+                transform:none;
+            }
+            .key{
+                animation:write 3s steps(5) 1s forwards;//steps(5)表示将3s的动画拆分成五个步骤
+            }
+        }
+        .bottom{
+            height: 372px;
+        }
+    }
+}
+@keyframes write{
+    from{
+        width: 0;
+    }
+    to{
+        width: 99px;
+    }
+}
+.section-five{
+    .top{
+        text-align: center;
+        padding-top:5%;
+    }
+    .bottom{
+        width: 1004px;
+        height:400px;
+        background: rgba(255,255,255,0.3);
+        position: relative;
+        left: 50%;
+        top: 4%;
+        transform: translateX(-50%);
+        .v-line{
+            display:inline-block;
+            width: 1px;
+            height:0px;
+            background: #fff;
+            position: absolute;
+            top:0;
+            &:nth-of-type(1){
+            transition: all 1s linear 0s;
+                left: 0;
+            }
+            &:nth-of-type(2){
+            transition: all 1s linear 2s;
+                right: 0;
+            }
+        }
+        .h-line{
+            display:inline-block;
+            width:0px;
+            height: 1px;
+            background: #fff;
+            position: absolute;
+            left:0;
+            transition: all 1s linear 0s;
+            &:nth-of-type(1){
+            transition: all 1s linear 1s;
+                top: 0;
+            }
+            &:nth-of-type(2){
+            transition: all 1s linear 3s;
+                bottom:0;
+            }
+        }
+        .nav{
+            position: relative;
+            overflow: hidden;
+            img{
+                transform: translateX(-1004px);
+                transition: all 1s linear 5s;
+            }
+            span{
+                width: 920px;
+                height: 30px;
+                display: inline-block;
+                border: 1px solid #fff;
+                position: absolute;
+                left: 70px;
+                top:30px;
+                box-sizing: border-box;
+                opacity:0;
+                transition: all 1s linear 4s;
+            }
+        }
+        .content{
+            opacity:0;
+            transition: all 1s linear 6s;
+            &::before{
+                content: "";
+                display:block ;
+                width: 1004px;
+                height: 1px;
+                background: #fff;
+                position: absolute;
+                left: -610px;
+            }
+            width:394px;
+            height: 29px;
+            background: url("../images/section5-2.png") no-repeat;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
+    }
+    &.current{
+        .bottom{
+            .v-line{
+                &:nth-of-type(1){
+                    height:400px;
+                }
+                &:nth-of-type(2){
+                    height:400px;
+                }
+            }
+            .h-line{
+                &:nth-of-type(1){
+                    width:1004px;
+                }
+                &:nth-of-type(2){
+                    width:1004px;
+                }
+            }
+            .nav{
+                img{
+                    transform:none;
+                }
+                span{
+                    opacity:1;
+                }
+            }
+            .content{
+                opacity:1;
+            }
+        }
+    }
+}

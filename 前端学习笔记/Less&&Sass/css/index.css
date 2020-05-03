@@ -1,0 +1,96 @@
+/* 定义变量,可以用于赋值给属性等 */
+/* 变量插值,企业开发一般不用,若要用需添加{},如:@{w} */
+.center,
+.father,
+.father .son {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+/* 封装混合 */
+.father {
+  /* @{w}: @size;
+    height:@size;
+    background-color: tomato; */
+  width: 300px;
+  height: 300px;
+  background: red;
+}
+.father::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 50px;
+  background: yellowgreen;
+}
+.father .son {
+  width: 200px;
+  height: 200px;
+  background: skyblue;
+  /* transition: all 1s linear 0s; */
+  transition: all 1s;
+}
+.father .son:hover {
+  width: 250px;
+  height: 250px;
+  background: orange;
+}
+/* 混合的匹配模式 */
+/* .triangle(@_,@width,@color){
+    width: 0;
+    height: 0;
+    border-style: solid solid solid solid;
+}
+.triangle(Top,@width,@color){
+    // width: 0;
+    // height: 0;
+    border-width:@width;
+    // border-style: solid solid solid solid;
+    border-color: @color transparent transparent transparent;
+}
+.triangle(Right,@width,@color){
+    border-width:@width;
+    border-color:transparent @color transparent transparent;
+}
+.triangle(Bottom,@width,@color){
+    border-width:@width;
+    border-color: transparent transparent @color transparent;
+}
+.triangle(Left,@width,@color){
+    border-width:@width;
+    border-color:transparent transparent transparent @color;
+} */
+/* 三角形封装 */
+/* 三角形封装 */
+.triangle {
+  /* width: 0;
+    height: 0;
+    border-width:40px 40px 40px 40px;
+    border-style: solid solid solid solid;
+    border-color: transparent tomato orange orangered; */
+  width: 0;
+  height: 0;
+  border-style: solid solid solid solid;
+  border-width: 20px;
+  border-color: tomato transparent transparent transparent;
+  margin: 0 auto;
+}
+/* less中的内置函数 */
+.inset {
+  width: 960px;
+  height: 540px;
+  background: url("../images/gakki3.jpg") no-repeat center center;
+}
+/* less中添加执行限定条件 
+    用> = >= <= 逻辑运算符或者检查函数来添加执行限定条件
+    逻辑 或: when (@w=100px),(@h=100px) 表示只有当传入的宽高至少有一个是100px,混合才会进行;
+    逻辑 与: when (@w=100px)and(@h=100px) 表示只有当传入的宽高都是100px,混合才会进行;
+    内置函数:when(ispixel(@w))表示只有当传入的参数带单位px才执行混合;
+*/
+/* .mix(@w:300px,@h:300px,@c:tomato) when(ispixel(@w)){//可给在参数后面添加:给参数设定默认值
+    //宽高背景混合
+    width:@w;
+    height:@h;
+    background:@c;
+} */
