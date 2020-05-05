@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>什么是JSON</title>
+</head>
+<body>
+    <script>
+        /* 
+        1.什么是JSON?JSON(JavaScript Object Notation, JS 对象简谱) 是一种轻量
+        级的数据交换格式。它基于 ECMAScript (欧洲计算机协会制定的js规范)的一
+        个子集，采用完全独立于编程语言的文本格式来存储和表示数据。简洁和清晰的
+        层次结构使得 JSON 成为理想的数据交换语言。 易于人阅读和编写，同时也易
+        于机器解析和生成，并有效地提升网络传输效率。
+        2.JSON的格式
+        JSON其实就是字符串版本的JS对象;我们可以将对象转化为json,也可以将json转化为JS对象;
+        '{"firstName":"json"}'  JSON
+        {firstName:"json"}      js对象
+        3.注意点:JSON中的key只能是字符串,value可以是任意js数据类型;
+         */
+        //1.定义一个js对象
+        let obj={
+            name:"gakki",
+            age:31,
+            hobby:"sleep"
+        }
+        //2.将js对象转化为JSON
+        let json=JSON.stringify(obj);
+        console.log(json);
+        //3.将JSON转化为js对象
+        let obj1=JSON.parse(json);
+        console.log(obj1);
+    </script>
+</body>
+</html>

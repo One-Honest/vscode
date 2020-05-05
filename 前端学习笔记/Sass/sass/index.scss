@@ -1,0 +1,117 @@
+@import "tools/tools.scss";//导入其他sass文件;
+$size:200px;//sass定义变量示例
+$h:$size;//sass使用变量给其他变量赋值
+$w:width;//sass中的变量插值
+/* sass变量特点:1.后定义的会覆盖先定义的同名变量2.可以给其他变量赋值
+               3.区分全局与局部变量,就近原则
+               4.不可以先使用再定义(与less相反),sass中的变量不是延迟加载的
+    sass变量插值格式:#{$w};
+    sass运算的特点:与less一样需要用()将需要运算的值包裹起来;
+    sass混合的定义格式:@mixin 混合名称{}或者@mixin 混合名称(参数){};
+            使用格式:@include 混合名称;
+            带参数混合特点1:与less一样可以给参数设定默认值,若不传参则执行默认值;
+                    特点2:与less一样可以给参数中任一指定参数设值;
+                    如@mixin base($w,$h,$bg);调用时可只给$w传参并赋值:@include base($w:200px);其他参数则使用默认值赋值;
+                    但不能不指定却传只一个参数:错误示例:@include base(200px);
+            带参数混合中的可变参数:与less不同(less因为是用js开发的,含有[arguments])
+                                sass需要先定义可变参数:$args...;然后才能通过$args来使用可变参数;
+    sass文件中导入其他sass文件:与less中的导入格式一样:@import 文件名;
+        [拓展:css也可以用import导入文件,但只有当执行到@import时才选择对应的文件,因此导致请求次数变多,页面加载速度缓慢]
+        [而less与sass中的@import则是直接将导入的其他文件复制粘贴到当前的sass文件中生成一份新的sass文件,只请求一次,速度更快]
+    sass中的函数:常见函数建议参考文档;
+                自定义函数的格式:@function 函数名(参数){};
+                例如:@function sum($num1,$num2){
+                    @return $num1+$num2;
+                }
+    sass中的层级结构:与less的层级结构一样:&:hover或&:nth-child();等
+      而&.类名(&符号的作用是告诉编译器不要将此处当做后代来编译,
+        而是直接作为字符串与其他类名拼接成复合选择器,
+        例如.top与.top-in,.top为.top-in的父元素,则可以这样书写代码:
+            .top{
+                &-in{
+                    width;200px;
+                }
+            )
+    sass中的继承:格式与less不一样:
+                less:.father:extend(.center){}
+                sass:.father{@extend .center;
+                }
+    sass中的条件判断:@if(条件){}@else if(条件){}@else if(){}...
+    sass与less不同的是直接支持循环语句[for/while循环语句]:
+            for循环:@for $随便定义 from num to num{};[包头不包尾]
+                    @for $随便定义 from num through num{};[包头包尾]
+            while循环:$num:5;//定义一个值是5的变量;
+                    @while($num<?){执行语句};
+*/
+/* @mixin center {//sass混合示例
+    position:absolute;
+    left: 50%;
+    top: 50%;
+    transform:translate(-50%,-50%);
+} */
+@mixin base($w,$h,$bg) {//带参数混合
+    width:$w;
+    height:$h;
+    background:$bg;
+}
+@mixin animate($name,$time,$args...) {
+    transition:$name,$time,$args;
+}
+.center {//水平垂直居中(类)
+    position:absolute;
+    left: 50%;
+    top: 50%;
+    transform:translate(-50%,-50%);
+}
+.father{
+    #{$w}: $size;//sass变量赋值示例以及变量插值示例
+    height:$h;//sass使用变量给其他变量赋值示例
+    background: tomato;
+    @include animate(all,70s ,ease-in,3s);//定义了可变参数的混合示例;(有bug,这里的时间后传递的会覆盖先传递的)
+    @include center;//sass混合示例
+    .son{
+        @include base(100px,100px,rgb(53, 252, 142));//带参数混合示例
+        @include center;
+        &-daughter{
+            width: 50px;
+            height: 50px;
+            background: #000;
+            @extend .center;//sass中继承的格式示例,注意此处的.center是一个类,不是混合;less中也如此;
+        }
+    }
+    &:hover{
+        width: 300px;
+        height:300px;
+        background: #000;
+    }
+}
+/* 利用判断语句封装混合 */
+.triangle{
+    @include triangle(Left,30px,tomato);
+    @include center;
+}
+/* 循环语句 */
+ul{
+    li{
+        text-align: center;
+        width: 100%;
+        height:50px;
+        line-height: 50px;
+        border:1px solid turquoise;
+        font: size 30px;
+        color: wheat;
+        background: #000;
+        @for $var from 1 through 2{//用to则包头不包尾;through则包头包尾;
+            &:nth-child(#{$var}){
+                background: tomato;
+            }
+        }
+        $num:5;
+        @while ($num<=9) {
+            &:nth-child(#{$num}){
+                background: tomato;
+            }
+            $num:$num+1;
+        }
+    }
+}

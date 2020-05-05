@@ -1,0 +1,28 @@
+@mixin center {//水平垂直居中
+    position:absolute;
+    left: 50%;
+    top: 50%;
+    transform:translate(-50%,-50%);
+}
+@mixin base($w,$h,$bg) {//宽高背景
+    width:$w;
+    height:$h;
+    background:$bg;
+}
+/* 三角形封装 */
+@mixin triangle($dir,$width,$color){
+    width: 0;
+    height: 0;
+    border-style: solid solid solid solid;
+    border-width:$width;
+    @if($dir==Up){
+        border-color: transparent transparent $color transparent;
+    }@else if($dir==Down){
+        border-color:$color transparent transparent transparent;
+    }@else if($dir==Left){
+        border-color:transparent $color  transparent transparent;
+    }@else if($dir==Right){
+        border-color: transparent transparent transparent $color;
+    }
+}
+/* 三角形封装 */

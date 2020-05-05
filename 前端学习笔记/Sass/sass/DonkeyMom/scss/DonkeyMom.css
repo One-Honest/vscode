@@ -1,0 +1,10 @@
+body {
+  background: #fff;
+  font: 12px/22px "Helvetica Neue", "Arial", "PingFang SC", "Microsoft Yahei","SimSun",sans-serif;
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+  color: #666;
+}

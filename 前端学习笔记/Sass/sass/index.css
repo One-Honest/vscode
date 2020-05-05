@@ -1,0 +1,142 @@
+@charset "UTF-8";
+/* 三角形封装 */
+/* 三角形封装 */
+/* sass变量特点:1.后定义的会覆盖先定义的同名变量2.可以给其他变量赋值
+               3.区分全局与局部变量,就近原则
+               4.不可以先使用再定义(与less相反),sass中的变量不是延迟加载的
+    sass变量插值格式:width;
+    sass运算的特点:与less一样需要用()将需要运算的值包裹起来;
+    sass混合的定义格式:@mixin 混合名称{}或者@mixin 混合名称(参数){};
+            使用格式:@include 混合名称;
+            带参数混合特点1:与less一样可以给参数设定默认值,若不传参则执行默认值;
+                    特点2:与less一样可以给参数中任一指定参数设值;
+                    如@mixin base($w,$h,$bg);调用时可只给$w传参并赋值:@include base($w:200px);其他参数则使用默认值赋值;
+                    但不能不指定却传只一个参数:错误示例:@include base(200px);
+            带参数混合中的可变参数:与less不同(less因为是用js开发的,含有[arguments])
+                                sass需要先定义可变参数:$args...;然后才能通过$args来使用可变参数;
+    sass文件中导入其他sass文件:与less中的导入格式一样:@import 文件名;
+        [拓展:css也可以用import导入文件,但只有当执行到@import时才选择对应的文件,因此导致请求次数变多,页面加载速度缓慢]
+        [而less与sass中的@import则是直接将导入的其他文件复制粘贴到当前的sass文件中生成一份新的sass文件,只请求一次,速度更快]
+    sass中的函数:常见函数建议参考文档;
+                自定义函数的格式:@function 函数名(参数){};
+                例如:@function sum($num1,$num2){
+                    @return $num1+$num2;
+                }
+    sass中的层级结构:与less的层级结构一样:&:hover或&:nth-child();等
+      而&.类名(&符号的作用是告诉编译器不要将此处当做后代来编译,
+        而是直接作为字符串与其他类名拼接成复合选择器,
+        例如.top与.top-in,.top为.top-in的父元素,则可以这样书写代码:
+            .top{
+                &-in{
+                    width;200px;
+                }
+            )
+    sass中的继承:格式与less不一样:
+                less:.father:extend(.center){}
+                sass:.father{@extend .center;
+                }
+    sass中的条件判断:@if(条件){}@else if(条件){}@else if(){}...
+    sass与less不同的是直接支持循环语句[for/while循环语句]:
+            for循环:@for $随便定义 from num to num{};[包头不包尾]
+                    @for $随便定义 from num through num{};[包头包尾]
+            while循环:$num:5;//定义一个值是5的变量;
+                    @while($num<?){执行语句};
+*/
+/* @mixin center {//sass混合示例
+    position:absolute;
+    left: 50%;
+    top: 50%;
+    transform:translate(-50%,-50%);
+} */
+.center, .father .son-daughter {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.father {
+  width: 200px;
+  height: 200px;
+  background: tomato;
+  transition: all, 70s, ease-in, 3s;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.father .son {
+  width: 100px;
+  height: 100px;
+  background: #35fc8e;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.father .son-daughter {
+  width: 50px;
+  height: 50px;
+  background: #000;
+}
+
+.father:hover {
+  width: 300px;
+  height: 300px;
+  background: #000;
+}
+
+/* 利用判断语句封装混合 */
+.triangle {
+  width: 0;
+  height: 0;
+  border-style: solid solid solid solid;
+  border-width: 30px;
+  border-color: transparent tomato transparent transparent;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* 循环语句 */
+ul li {
+  text-align: center;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  border: 1px solid turquoise;
+  font: size 30px;
+  color: wheat;
+  background: #000;
+}
+
+ul li:nth-child(1) {
+  background: tomato;
+}
+
+ul li:nth-child(2) {
+  background: tomato;
+}
+
+ul li:nth-child(5) {
+  background: tomato;
+}
+
+ul li:nth-child(6) {
+  background: tomato;
+}
+
+ul li:nth-child(7) {
+  background: tomato;
+}
+
+ul li:nth-child(8) {
+  background: tomato;
+}
+
+ul li:nth-child(9) {
+  background: tomato;
+}
